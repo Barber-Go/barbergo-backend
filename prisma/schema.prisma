@@ -1,0 +1,198 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────
+// Enums
+// ─────────────────────────────────────────────
+
+enum Role {
+  CLIENT
+  BARBER
+  ADMIN
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CARD
+  CASH
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum NotificationType {
+  BOOKING_CREATED
+  BOOKING_CONFIRMED
+  BOOKING_CANCELLED
+  BOOKING_COMPLETED
+  PAYMENT_RECEIVED
+  REVIEW_RECEIVED
+  GENERAL
+}
+
+// ─────────────────────────────────────────────
+// Models
+// ─────────────────────────────────────────────
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  phone     String?  @unique
+  password  String
+  name      String
+  avatarUrl String?
+  role      Role     @default(CLIENT)
+  isVerified Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  barberProfile Barber?
+  bookings      Booking[]      @relation("ClientBookings")
+  reviews       Review[]       @relation("ClientReviews")
+  notifications Notification[]
+
+  @@map("users")
+}
+
+model Barber {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  bio            String?
+  lat            Float?
+  lng            Float?
+  rating         Float    @default(0)
+  totalReviews   Int      @default(0)
+  isActive       Boolean  @default(true)
+  commissionRate Float    @default(0.15)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  services Service[]
+  bookings Booking[] @relation("BarberBookings")
+  reviews  Review[]  @relation("BarberReviews")
+  earnings Earning[]
+
+  @@map("barbers")
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  barberId    String
+  name        String
+  description String?
+  price       Decimal  @db.Decimal(10, 2)
+  durationMin Int
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  barber   Barber    @relation(fields: [barberId], references: [id], onDelete: Cascade)
+  bookings Booking[]
+
+  @@map("services")
+}
+
+model Booking {
+  id            String        @id @default(cuid())
+  clientId      String
+  barberId      String
+  serviceId     String
+  scheduledAt   DateTime
+  status        BookingStatus @default(PENDING)
+  paymentMethod PaymentMethod
+  totalAmount   Decimal       @db.Decimal(10, 2)
+  platformFee   Decimal       @db.Decimal(10, 2)
+  barberNet     Decimal       @db.Decimal(10, 2)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  client  User     @relation("ClientBookings", fields: [clientId], references: [id])
+  barber  Barber   @relation("BarberBookings", fields: [barberId], references: [id])
+  service Service  @relation(fields: [serviceId], references: [id])
+  payment Payment?
+  review  Review?
+  earning Earning?
+
+  @@map("bookings")
+}
+
+model Payment {
+  id             String        @id @default(cuid())
+  bookingId      String        @unique
+  method         PaymentMethod
+  amount         Decimal       @db.Decimal(10, 2)
+  status         PaymentStatus @default(PENDING)
+  transactionRef String?
+  createdAt      DateTime      @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  bookingId String   @unique
+  clientId  String
+  barberId  String
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  client  User    @relation("ClientReviews", fields: [clientId], references: [id])
+  barber  Barber  @relation("BarberReviews", fields: [barberId], references: [id])
+
+  @@map("reviews")
+}
+
+model Earning {
+  id            String        @id @default(cuid())
+  barberId      String
+  bookingId     String        @unique
+  date          DateTime
+  grossAmount   Decimal       @db.Decimal(10, 2)
+  platformFee   Decimal       @db.Decimal(10, 2)
+  netAmount     Decimal       @db.Decimal(10, 2)
+  paymentMethod PaymentMethod
+  createdAt     DateTime      @default(now())
+
+  barber  Barber  @relation(fields: [barberId], references: [id], onDelete: Cascade)
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@map("earnings")
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  type      NotificationType
+  title     String
+  body      String
+  isRead    Boolean          @default(false)
+  createdAt DateTime         @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
