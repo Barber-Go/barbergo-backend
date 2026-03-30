@@ -30,6 +30,7 @@ const BOOKING_INCLUDE = {
     },
   },
   client: { select: { id: true, name: true, avatarUrl: true } },
+  review: { select: { id: true } },
 } as const;
 
 @Injectable()
@@ -248,6 +249,7 @@ export class BookingsService {
         name: booking.client.name,
         avatarUrl: booking.client.avatarUrl,
       },
+      hasReview: booking.review != null,
     };
   }
 }
