@@ -75,6 +75,11 @@ export type Review = Prisma.ReviewModel
  */
 export type Earning = Prisma.EarningModel
 /**
+ * Model Availability
+ * 
+ */
+export type Availability = Prisma.AvailabilityModel
+/**
  * Model Notification
  * 
  */

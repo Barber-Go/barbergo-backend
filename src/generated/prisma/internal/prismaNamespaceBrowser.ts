@@ -58,6 +58,7 @@ export const ModelName = {
   Payment: 'Payment',
   Review: 'Review',
   Earning: 'Earning',
+  Availability: 'Availability',
   Notification: 'Notification'
 } as const
 
@@ -182,6 +183,18 @@ export const EarningScalarFieldEnum = {
 } as const
 
 export type EarningScalarFieldEnum = (typeof EarningScalarFieldEnum)[keyof typeof EarningScalarFieldEnum]
+
+
+export const AvailabilityScalarFieldEnum = {
+  id: 'id',
+  barberId: 'barberId',
+  dayOfWeek: 'dayOfWeek',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  isActive: 'isActive'
+} as const
+
+export type AvailabilityScalarFieldEnum = (typeof AvailabilityScalarFieldEnum)[keyof typeof AvailabilityScalarFieldEnum]
 
 
 export const NotificationScalarFieldEnum = {

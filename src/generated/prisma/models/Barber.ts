@@ -285,6 +285,7 @@ export type BarberWhereInput = {
   bookings?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
   earnings?: Prisma.EarningListRelationFilter
+  availabilities?: Prisma.AvailabilityListRelationFilter
 }
 
 export type BarberOrderByWithRelationInput = {
@@ -304,6 +305,7 @@ export type BarberOrderByWithRelationInput = {
   bookings?: Prisma.BookingOrderByRelationAggregateInput
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
   earnings?: Prisma.EarningOrderByRelationAggregateInput
+  availabilities?: Prisma.AvailabilityOrderByRelationAggregateInput
 }
 
 export type BarberWhereUniqueInput = Prisma.AtLeast<{
@@ -326,6 +328,7 @@ export type BarberWhereUniqueInput = Prisma.AtLeast<{
   bookings?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
   earnings?: Prisma.EarningListRelationFilter
+  availabilities?: Prisma.AvailabilityListRelationFilter
 }, "id" | "userId">
 
 export type BarberOrderByWithAggregationInput = {
@@ -380,6 +383,7 @@ export type BarberCreateInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.AvailabilityCreateNestedManyWithoutBarberInput
 }
 
 export type BarberUncheckedCreateInput = {
@@ -398,6 +402,7 @@ export type BarberUncheckedCreateInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.AvailabilityUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberUpdateInput = {
@@ -416,6 +421,7 @@ export type BarberUpdateInput = {
   bookings?: Prisma.BookingUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.AvailabilityUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberUncheckedUpdateInput = {
@@ -434,6 +440,7 @@ export type BarberUncheckedUpdateInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.AvailabilityUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberCreateManyInput = {
@@ -657,6 +664,20 @@ export type BarberUpdateOneRequiredWithoutEarningsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BarberUpdateToOneWithWhereWithoutEarningsInput, Prisma.BarberUpdateWithoutEarningsInput>, Prisma.BarberUncheckedUpdateWithoutEarningsInput>
 }
 
+export type BarberCreateNestedOneWithoutAvailabilitiesInput = {
+  create?: Prisma.XOR<Prisma.BarberCreateWithoutAvailabilitiesInput, Prisma.BarberUncheckedCreateWithoutAvailabilitiesInput>
+  connectOrCreate?: Prisma.BarberCreateOrConnectWithoutAvailabilitiesInput
+  connect?: Prisma.BarberWhereUniqueInput
+}
+
+export type BarberUpdateOneRequiredWithoutAvailabilitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.BarberCreateWithoutAvailabilitiesInput, Prisma.BarberUncheckedCreateWithoutAvailabilitiesInput>
+  connectOrCreate?: Prisma.BarberCreateOrConnectWithoutAvailabilitiesInput
+  upsert?: Prisma.BarberUpsertWithoutAvailabilitiesInput
+  connect?: Prisma.BarberWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BarberUpdateToOneWithWhereWithoutAvailabilitiesInput, Prisma.BarberUpdateWithoutAvailabilitiesInput>, Prisma.BarberUncheckedUpdateWithoutAvailabilitiesInput>
+}
+
 export type BarberCreateWithoutUserInput = {
   id?: string
   bio?: string | null
@@ -672,6 +693,7 @@ export type BarberCreateWithoutUserInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.AvailabilityCreateNestedManyWithoutBarberInput
 }
 
 export type BarberUncheckedCreateWithoutUserInput = {
@@ -689,6 +711,7 @@ export type BarberUncheckedCreateWithoutUserInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.AvailabilityUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberCreateOrConnectWithoutUserInput = {
@@ -722,6 +745,7 @@ export type BarberUpdateWithoutUserInput = {
   bookings?: Prisma.BookingUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.AvailabilityUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberUncheckedUpdateWithoutUserInput = {
@@ -739,6 +763,7 @@ export type BarberUncheckedUpdateWithoutUserInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.AvailabilityUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberCreateWithoutServicesInput = {
@@ -756,6 +781,7 @@ export type BarberCreateWithoutServicesInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.AvailabilityCreateNestedManyWithoutBarberInput
 }
 
 export type BarberUncheckedCreateWithoutServicesInput = {
@@ -773,6 +799,7 @@ export type BarberUncheckedCreateWithoutServicesInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.AvailabilityUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberCreateOrConnectWithoutServicesInput = {
@@ -806,6 +833,7 @@ export type BarberUpdateWithoutServicesInput = {
   bookings?: Prisma.BookingUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.AvailabilityUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberUncheckedUpdateWithoutServicesInput = {
@@ -823,6 +851,7 @@ export type BarberUncheckedUpdateWithoutServicesInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.AvailabilityUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberCreateWithoutBookingsInput = {
@@ -840,6 +869,7 @@ export type BarberCreateWithoutBookingsInput = {
   services?: Prisma.ServiceCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.AvailabilityCreateNestedManyWithoutBarberInput
 }
 
 export type BarberUncheckedCreateWithoutBookingsInput = {
@@ -857,6 +887,7 @@ export type BarberUncheckedCreateWithoutBookingsInput = {
   services?: Prisma.ServiceUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.AvailabilityUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberCreateOrConnectWithoutBookingsInput = {
@@ -890,6 +921,7 @@ export type BarberUpdateWithoutBookingsInput = {
   services?: Prisma.ServiceUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.AvailabilityUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberUncheckedUpdateWithoutBookingsInput = {
@@ -907,6 +939,7 @@ export type BarberUncheckedUpdateWithoutBookingsInput = {
   services?: Prisma.ServiceUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.AvailabilityUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberCreateWithoutReviewsInput = {
@@ -924,6 +957,7 @@ export type BarberCreateWithoutReviewsInput = {
   services?: Prisma.ServiceCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.AvailabilityCreateNestedManyWithoutBarberInput
 }
 
 export type BarberUncheckedCreateWithoutReviewsInput = {
@@ -941,6 +975,7 @@ export type BarberUncheckedCreateWithoutReviewsInput = {
   services?: Prisma.ServiceUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.AvailabilityUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberCreateOrConnectWithoutReviewsInput = {
@@ -974,6 +1009,7 @@ export type BarberUpdateWithoutReviewsInput = {
   services?: Prisma.ServiceUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.AvailabilityUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberUncheckedUpdateWithoutReviewsInput = {
@@ -991,6 +1027,7 @@ export type BarberUncheckedUpdateWithoutReviewsInput = {
   services?: Prisma.ServiceUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.AvailabilityUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberCreateWithoutEarningsInput = {
@@ -1008,6 +1045,7 @@ export type BarberCreateWithoutEarningsInput = {
   services?: Prisma.ServiceCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.AvailabilityCreateNestedManyWithoutBarberInput
 }
 
 export type BarberUncheckedCreateWithoutEarningsInput = {
@@ -1025,6 +1063,7 @@ export type BarberUncheckedCreateWithoutEarningsInput = {
   services?: Prisma.ServiceUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.AvailabilityUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberCreateOrConnectWithoutEarningsInput = {
@@ -1058,6 +1097,7 @@ export type BarberUpdateWithoutEarningsInput = {
   services?: Prisma.ServiceUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.AvailabilityUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberUncheckedUpdateWithoutEarningsInput = {
@@ -1075,6 +1115,95 @@ export type BarberUncheckedUpdateWithoutEarningsInput = {
   services?: Prisma.ServiceUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.AvailabilityUncheckedUpdateManyWithoutBarberNestedInput
+}
+
+export type BarberCreateWithoutAvailabilitiesInput = {
+  id?: string
+  bio?: string | null
+  lat?: number | null
+  lng?: number | null
+  rating?: number
+  totalReviews?: number
+  isActive?: boolean
+  commissionRate?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
+  services?: Prisma.ServiceCreateNestedManyWithoutBarberInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutBarberInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutBarberInput
+  earnings?: Prisma.EarningCreateNestedManyWithoutBarberInput
+}
+
+export type BarberUncheckedCreateWithoutAvailabilitiesInput = {
+  id?: string
+  userId: string
+  bio?: string | null
+  lat?: number | null
+  lng?: number | null
+  rating?: number
+  totalReviews?: number
+  isActive?: boolean
+  commissionRate?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  services?: Prisma.ServiceUncheckedCreateNestedManyWithoutBarberInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
+  earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutBarberInput
+}
+
+export type BarberCreateOrConnectWithoutAvailabilitiesInput = {
+  where: Prisma.BarberWhereUniqueInput
+  create: Prisma.XOR<Prisma.BarberCreateWithoutAvailabilitiesInput, Prisma.BarberUncheckedCreateWithoutAvailabilitiesInput>
+}
+
+export type BarberUpsertWithoutAvailabilitiesInput = {
+  update: Prisma.XOR<Prisma.BarberUpdateWithoutAvailabilitiesInput, Prisma.BarberUncheckedUpdateWithoutAvailabilitiesInput>
+  create: Prisma.XOR<Prisma.BarberCreateWithoutAvailabilitiesInput, Prisma.BarberUncheckedCreateWithoutAvailabilitiesInput>
+  where?: Prisma.BarberWhereInput
+}
+
+export type BarberUpdateToOneWithWhereWithoutAvailabilitiesInput = {
+  where?: Prisma.BarberWhereInput
+  data: Prisma.XOR<Prisma.BarberUpdateWithoutAvailabilitiesInput, Prisma.BarberUncheckedUpdateWithoutAvailabilitiesInput>
+}
+
+export type BarberUpdateWithoutAvailabilitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalReviews?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
+  services?: Prisma.ServiceUpdateManyWithoutBarberNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutBarberNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutBarberNestedInput
+  earnings?: Prisma.EarningUpdateManyWithoutBarberNestedInput
+}
+
+export type BarberUncheckedUpdateWithoutAvailabilitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalReviews?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  services?: Prisma.ServiceUncheckedUpdateManyWithoutBarberNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
+  earnings?: Prisma.EarningUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 
@@ -1087,6 +1216,7 @@ export type BarberCountOutputType = {
   bookings: number
   reviews: number
   earnings: number
+  availabilities: number
 }
 
 export type BarberCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1094,6 +1224,7 @@ export type BarberCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   bookings?: boolean | BarberCountOutputTypeCountBookingsArgs
   reviews?: boolean | BarberCountOutputTypeCountReviewsArgs
   earnings?: boolean | BarberCountOutputTypeCountEarningsArgs
+  availabilities?: boolean | BarberCountOutputTypeCountAvailabilitiesArgs
 }
 
 /**
@@ -1134,6 +1265,13 @@ export type BarberCountOutputTypeCountEarningsArgs<ExtArgs extends runtime.Types
   where?: Prisma.EarningWhereInput
 }
 
+/**
+ * BarberCountOutputType without action
+ */
+export type BarberCountOutputTypeCountAvailabilitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AvailabilityWhereInput
+}
+
 
 export type BarberSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1152,6 +1290,7 @@ export type BarberSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   bookings?: boolean | Prisma.Barber$bookingsArgs<ExtArgs>
   reviews?: boolean | Prisma.Barber$reviewsArgs<ExtArgs>
   earnings?: boolean | Prisma.Barber$earningsArgs<ExtArgs>
+  availabilities?: boolean | Prisma.Barber$availabilitiesArgs<ExtArgs>
   _count?: boolean | Prisma.BarberCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["barber"]>
 
@@ -1206,6 +1345,7 @@ export type BarberInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   bookings?: boolean | Prisma.Barber$bookingsArgs<ExtArgs>
   reviews?: boolean | Prisma.Barber$reviewsArgs<ExtArgs>
   earnings?: boolean | Prisma.Barber$earningsArgs<ExtArgs>
+  availabilities?: boolean | Prisma.Barber$availabilitiesArgs<ExtArgs>
   _count?: boolean | Prisma.BarberCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BarberIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1223,6 +1363,7 @@ export type $BarberPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     bookings: Prisma.$BookingPayload<ExtArgs>[]
     reviews: Prisma.$ReviewPayload<ExtArgs>[]
     earnings: Prisma.$EarningPayload<ExtArgs>[]
+    availabilities: Prisma.$AvailabilityPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1635,6 +1776,7 @@ export interface Prisma__BarberClient<T, Null = never, ExtArgs extends runtime.T
   bookings<T extends Prisma.Barber$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Barber$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reviews<T extends Prisma.Barber$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Barber$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   earnings<T extends Prisma.Barber$earningsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Barber$earningsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EarningPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  availabilities<T extends Prisma.Barber$availabilitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Barber$availabilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AvailabilityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2169,6 +2311,30 @@ export type Barber$earningsArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.EarningScalarFieldEnum | Prisma.EarningScalarFieldEnum[]
+}
+
+/**
+ * Barber.availabilities
+ */
+export type Barber$availabilitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Availability
+   */
+  select?: Prisma.AvailabilitySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Availability
+   */
+  omit?: Prisma.AvailabilityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AvailabilityInclude<ExtArgs> | null
+  where?: Prisma.AvailabilityWhereInput
+  orderBy?: Prisma.AvailabilityOrderByWithRelationInput | Prisma.AvailabilityOrderByWithRelationInput[]
+  cursor?: Prisma.AvailabilityWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AvailabilityScalarFieldEnum | Prisma.AvailabilityScalarFieldEnum[]
 }
 
 /**

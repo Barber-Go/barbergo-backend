@@ -5,9 +5,10 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { NotificationsService } from '../notifications/notifications.service';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { UpdateBookingStatusDto } from './dto/update-booking-status.dto';
-import { BookingStatus, Role } from '../generated/prisma/enums';
+import { BookingStatus, NotificationType, Role } from '../generated/prisma/enums';
 
 // Status transitions allowed per role
 const CLIENT_ALLOWED_TRANSITIONS: Partial<Record<BookingStatus, BookingStatus[]>> = {
@@ -35,7 +36,10 @@ const BOOKING_INCLUDE = {
 
 @Injectable()
 export class BookingsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly notifications: NotificationsService,
+  ) {}
 
   // ── CLIENT: create booking ─────────────────────────────────────────────────
 
@@ -99,6 +103,18 @@ export class BookingsService {
       },
       include: BOOKING_INCLUDE,
     });
+
+    // Notify the barber
+    const barberUserId = await this.getBarberUserId(dto.barberId);
+    const dateStr = scheduledAt.toLocaleDateString('es-CL', { weekday: 'long', day: 'numeric', month: 'long' });
+    this.notifications
+      .create(
+        barberUserId,
+        NotificationType.BOOKING_CREATED,
+        'Nueva reserva',
+        `Tienes una nueva reserva para ${booking.service.name} el ${dateStr}`,
+      )
+      .catch(() => {}); // fire-and-forget
 
     return this.formatBooking(booking);
   }
@@ -208,6 +224,24 @@ export class BookingsService {
         },
         update: {},
       });
+    }
+
+    // Send notification to client based on new status
+    const serviceName = updated.service.name;
+    const barberName = updated.barber.user.name;
+
+    if (dto.status === BookingStatus.CONFIRMED) {
+      this.notifications
+        .create(booking.clientId, NotificationType.BOOKING_CONFIRMED, 'Reserva confirmada', `Tu reserva de ${serviceName} fue confirmada`)
+        .catch(() => {});
+    } else if (dto.status === BookingStatus.CANCELLED) {
+      this.notifications
+        .create(booking.clientId, NotificationType.BOOKING_CANCELLED, 'Reserva cancelada', `Tu reserva de ${serviceName} fue cancelada`)
+        .catch(() => {});
+    } else if (dto.status === BookingStatus.COMPLETED) {
+      this.notifications
+        .create(booking.clientId, NotificationType.BOOKING_COMPLETED, '¿Cómo fue tu experiencia?', `Califica tu cita de ${serviceName} con ${barberName}`)
+        .catch(() => {});
     }
 
     return this.formatBooking(updated);

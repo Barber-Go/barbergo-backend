@@ -13,6 +13,8 @@ import {
 import { IsNumber, IsOptional, Min } from 'class-validator';
 import { Type } from 'class-transformer';
 import { BarbersService } from './barbers.service';
+import { AvailabilityService } from '../availability/availability.service';
+import { UpsertAvailabilityDto } from '../availability/dto/upsert-availability.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decorator';
@@ -41,7 +43,10 @@ class FindBarbersQuery {
 
 @Controller('v1/barbers')
 export class BarbersController {
-  constructor(private readonly barbersService: BarbersService) {}
+  constructor(
+    private readonly barbersService: BarbersService,
+    private readonly availabilityService: AvailabilityService,
+  ) {}
 
   @Get()
   findAll(@Query() query: FindBarbersQuery) {
@@ -89,7 +94,21 @@ export class BarbersController {
     return this.barbersService.deleteService(req.user.id, serviceId);
   }
 
+  // ── Availability ──
+
+  @Patch('me/availability')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBER)
+  upsertAvailability(@Request() req: any, @Body() dto: UpsertAvailabilityDto) {
+    return this.availabilityService.upsertForBarber(req.user.id, dto.slots);
+  }
+
   // ── Public ──
+
+  @Get(':id/availability')
+  getAvailability(@Param('id') barberId: string) {
+    return this.availabilityService.findByBarberId(barberId);
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {

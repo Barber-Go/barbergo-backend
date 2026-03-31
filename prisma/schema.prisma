@@ -86,11 +86,12 @@ model Barber {
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
-  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  services Service[]
-  bookings Booking[] @relation("BarberBookings")
-  reviews  Review[]  @relation("BarberReviews")
-  earnings Earning[]
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  services       Service[]
+  bookings       Booking[]      @relation("BarberBookings")
+  reviews        Review[]       @relation("BarberReviews")
+  earnings       Earning[]
+  availabilities Availability[]
 
   @@map("barbers")
 }
@@ -181,6 +182,20 @@ model Earning {
   booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
 
   @@map("earnings")
+}
+
+model Availability {
+  id        String  @id @default(cuid())
+  barberId  String
+  dayOfWeek Int
+  startTime String
+  endTime   String
+  isActive  Boolean @default(true)
+
+  barber Barber @relation(fields: [barberId], references: [id], onDelete: Cascade)
+
+  @@unique([barberId, dayOfWeek])
+  @@map("availabilities")
 }
 
 model Notification {

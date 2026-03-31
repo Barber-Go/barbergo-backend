@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { BarbersModule } from './barbers/barbers.module';
 import { BookingsModule } from './bookings/bookings.module';
 import { ReviewsModule } from './reviews/reviews.module';
+import { NotificationsModule } from './notifications/notifications.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -19,6 +20,7 @@ import { AppService } from './app.service';
     BarbersModule,
     BookingsModule,
     ReviewsModule,
+    NotificationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
