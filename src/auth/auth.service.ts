@@ -52,7 +52,7 @@ export class AuthService {
     });
 
     if (dto.role === Role.BARBER) {
-      await this.prisma.client.barber.create({
+      await this.prisma.client.barberProfile.create({
         data: { userId: user.id },
       });
     }

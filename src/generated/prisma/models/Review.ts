@@ -234,7 +234,7 @@ export type ReviewWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Review"> | Date | string
   booking?: Prisma.XOR<Prisma.BookingScalarRelationFilter, Prisma.BookingWhereInput>
   client?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  barber?: Prisma.XOR<Prisma.BarberScalarRelationFilter, Prisma.BarberWhereInput>
+  barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
 }
 
 export type ReviewOrderByWithRelationInput = {
@@ -247,7 +247,7 @@ export type ReviewOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   booking?: Prisma.BookingOrderByWithRelationInput
   client?: Prisma.UserOrderByWithRelationInput
-  barber?: Prisma.BarberOrderByWithRelationInput
+  barber?: Prisma.BarberProfileOrderByWithRelationInput
 }
 
 export type ReviewWhereUniqueInput = Prisma.AtLeast<{
@@ -263,7 +263,7 @@ export type ReviewWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Review"> | Date | string
   booking?: Prisma.XOR<Prisma.BookingScalarRelationFilter, Prisma.BookingWhereInput>
   client?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  barber?: Prisma.XOR<Prisma.BarberScalarRelationFilter, Prisma.BarberWhereInput>
+  barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
 }, "id" | "bookingId">
 
 export type ReviewOrderByWithAggregationInput = {
@@ -301,7 +301,7 @@ export type ReviewCreateInput = {
   createdAt?: Date | string
   booking: Prisma.BookingCreateNestedOneWithoutReviewInput
   client: Prisma.UserCreateNestedOneWithoutReviewsInput
-  barber: Prisma.BarberCreateNestedOneWithoutReviewsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutReviewsInput
 }
 
 export type ReviewUncheckedCreateInput = {
@@ -321,7 +321,7 @@ export type ReviewUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   booking?: Prisma.BookingUpdateOneRequiredWithoutReviewNestedInput
   client?: Prisma.UserUpdateOneRequiredWithoutReviewsNestedInput
-  barber?: Prisma.BarberUpdateOneRequiredWithoutReviewsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutReviewsNestedInput
 }
 
 export type ReviewUncheckedUpdateInput = {
@@ -536,7 +536,7 @@ export type ReviewCreateWithoutClientInput = {
   comment?: string | null
   createdAt?: Date | string
   booking: Prisma.BookingCreateNestedOneWithoutReviewInput
-  barber: Prisma.BarberCreateNestedOneWithoutReviewsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutReviewsInput
 }
 
 export type ReviewUncheckedCreateWithoutClientInput = {
@@ -637,7 +637,7 @@ export type ReviewCreateWithoutBookingInput = {
   comment?: string | null
   createdAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutReviewsInput
-  barber: Prisma.BarberCreateNestedOneWithoutReviewsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutReviewsInput
 }
 
 export type ReviewUncheckedCreateWithoutBookingInput = {
@@ -671,7 +671,7 @@ export type ReviewUpdateWithoutBookingInput = {
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutReviewsNestedInput
-  barber?: Prisma.BarberUpdateOneRequiredWithoutReviewsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutReviewsNestedInput
 }
 
 export type ReviewUncheckedUpdateWithoutBookingInput = {
@@ -698,7 +698,7 @@ export type ReviewUpdateWithoutClientInput = {
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   booking?: Prisma.BookingUpdateOneRequiredWithoutReviewNestedInput
-  barber?: Prisma.BarberUpdateOneRequiredWithoutReviewsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutReviewsNestedInput
 }
 
 export type ReviewUncheckedUpdateWithoutClientInput = {
@@ -767,7 +767,7 @@ export type ReviewSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   createdAt?: boolean
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["review"]>
 
 export type ReviewSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -780,7 +780,7 @@ export type ReviewSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   createdAt?: boolean
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["review"]>
 
 export type ReviewSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -793,7 +793,7 @@ export type ReviewSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   createdAt?: boolean
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["review"]>
 
 export type ReviewSelectScalar = {
@@ -810,17 +810,17 @@ export type ReviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 export type ReviewInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }
 export type ReviewIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }
 export type ReviewIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }
 
 export type $ReviewPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -828,7 +828,7 @@ export type $ReviewPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   objects: {
     booking: Prisma.$BookingPayload<ExtArgs>
     client: Prisma.$UserPayload<ExtArgs>
-    barber: Prisma.$BarberPayload<ExtArgs>
+    barber: Prisma.$BarberProfilePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1234,7 +1234,7 @@ export interface Prisma__ReviewClient<T, Null = never, ExtArgs extends runtime.T
   readonly [Symbol.toStringTag]: "PrismaPromise"
   booking<T extends Prisma.BookingDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BookingDefaultArgs<ExtArgs>>): Prisma.Prisma__BookingClient<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   client<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  barber<T extends Prisma.BarberDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberDefaultArgs<ExtArgs>>): Prisma.Prisma__BarberClient<runtime.Types.Result.GetResult<Prisma.$BarberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  barber<T extends Prisma.BarberProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__BarberProfileClient<runtime.Types.Result.GetResult<Prisma.$BarberProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

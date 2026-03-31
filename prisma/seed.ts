@@ -11,10 +11,10 @@ async function main() {
   console.log('🌱 Starting seed...');
 
   // ── Clean existing seed data (idempotent) ─────────────────────────────
-  await prisma.service.deleteMany({
+  await prisma.serviceItem.deleteMany({
     where: { barber: { user: { email: { in: ['barbero@test.com'] } } } },
   });
-  await prisma.barber.deleteMany({
+  await prisma.barberProfile.deleteMany({
     where: { user: { email: { in: ['cliente@test.com', 'barbero@test.com'] } } },
   });
   await prisma.user.deleteMany({
@@ -45,7 +45,7 @@ async function main() {
   });
   console.log(`✅ Barber user created: ${barberUser.email} (id: ${barberUser.id})`);
 
-  const barberProfile = await prisma.barber.create({
+  const barberProfile = await prisma.barberProfile.create({
     data: {
       userId: barberUser.id,
       bio: 'Barbero profesional con 5 años de experiencia',
@@ -56,7 +56,7 @@ async function main() {
   console.log(`✅ Barber profile created (id: ${barberProfile.id})`);
 
   const [corteClasico, corteBarba] = await Promise.all([
-    prisma.service.create({
+    prisma.serviceItem.create({
       data: {
         barberId: barberProfile.id,
         name: 'Corte clásico',
@@ -64,7 +64,7 @@ async function main() {
         durationMin: 30,
       },
     }),
-    prisma.service.create({
+    prisma.serviceItem.create({
       data: {
         barberId: barberProfile.id,
         name: 'Corte + barba',

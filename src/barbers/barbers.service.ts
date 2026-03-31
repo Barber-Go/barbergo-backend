@@ -1,4 +1,5 @@
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import { haversineKm } from '../shared/geo.utils';
 import { PrismaService } from '../prisma/prisma.service';
 import { UpdateBarberProfileDto } from './dto/update-barber-profile.dto';
 import { CreateServiceDto } from './dto/create-service.dto';
@@ -103,7 +104,7 @@ export class BarbersService {
   // ── Barber self-management ─────────────────────────────────────────────────
 
   async findMe(userId: string) {
-    const profile = await this.prisma.client.barber.findUnique({
+    const profile = await this.prisma.client.barberProfile.findUnique({
       where: { userId },
       include: {
         user: true,
@@ -121,7 +122,7 @@ export class BarbersService {
   }
 
   async updateMe(userId: string, dto: UpdateBarberProfileDto) {
-    const profile = await this.prisma.client.barber.findUnique({ where: { userId } });
+    const profile = await this.prisma.client.barberProfile.findUnique({ where: { userId } });
     if (!profile) throw new NotFoundException('Barber profile not found');
 
     // Split: name/phone/avatarUrl → User; bio → Barber
@@ -134,7 +135,7 @@ export class BarbersService {
           ...(dto.avatarUrl !== undefined && { avatarUrl: dto.avatarUrl }),
         },
       }),
-      this.prisma.client.barber.update({
+      this.prisma.client.barberProfile.update({
         where: { userId },
         data: {
           ...(dto.bio !== undefined && { bio: dto.bio }),
@@ -146,10 +147,10 @@ export class BarbersService {
   }
 
   async createService(userId: string, dto: CreateServiceDto) {
-    const profile = await this.prisma.client.barber.findUnique({ where: { userId } });
+    const profile = await this.prisma.client.barberProfile.findUnique({ where: { userId } });
     if (!profile) throw new NotFoundException('Barber profile not found');
 
-    const service = await this.prisma.client.service.create({
+    const service = await this.prisma.client.serviceItem.create({
       data: {
         barberId: profile.id,
         name: dto.name,
@@ -172,7 +173,7 @@ export class BarbersService {
   async updateService(userId: string, serviceId: string, dto: UpdateServiceDto) {
     await this.assertServiceOwnership(userId, serviceId);
 
-    const service = await this.prisma.client.service.update({
+    const service = await this.prisma.client.serviceItem.update({
       where: { id: serviceId },
       data: {
         ...(dto.name !== undefined && { name: dto.name }),
@@ -195,7 +196,7 @@ export class BarbersService {
   async deleteService(userId: string, serviceId: string) {
     await this.assertServiceOwnership(userId, serviceId);
 
-    await this.prisma.client.service.update({
+    await this.prisma.client.serviceItem.update({
       where: { id: serviceId },
       data: { isActive: false },
     });
@@ -206,10 +207,10 @@ export class BarbersService {
   // ── Private helpers ────────────────────────────────────────────────────────
 
   private async assertServiceOwnership(userId: string, serviceId: string) {
-    const profile = await this.prisma.client.barber.findUnique({ where: { userId } });
+    const profile = await this.prisma.client.barberProfile.findUnique({ where: { userId } });
     if (!profile) throw new NotFoundException('Barber profile not found');
 
-    const service = await this.prisma.client.service.findUnique({ where: { id: serviceId } });
+    const service = await this.prisma.client.serviceItem.findUnique({ where: { id: serviceId } });
     if (!service) throw new NotFoundException('Service not found');
 
     if (service.barberId !== profile.id) throw new ForbiddenException();
@@ -239,7 +240,7 @@ export class BarbersService {
   }
 
   async findOne(id: string): Promise<BarberResponse & { reviews: ReviewResponse[] }> {
-    const profile = await this.prisma.client.barber.findUnique({
+    const profile = await this.prisma.client.barberProfile.findUnique({
       where: { id },
       include: {
         user: true,
@@ -287,24 +288,4 @@ export class BarbersService {
       })),
     };
   }
-}
-
-// Haversine formula — returns distance in km between two lat/lng points
-function haversineKm(
-  lat1: number,
-  lng1: number,
-  lat2: number,
-  lng2: number,
-): number {
-  const R = 6371;
-  const dLat = toRad(lat2 - lat1);
-  const dLng = toRad(lng2 - lng1);
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-}
-
-function toRad(deg: number): number {
-  return (deg * Math.PI) / 180;
 }

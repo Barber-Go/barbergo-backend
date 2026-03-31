@@ -45,15 +45,45 @@ export { Prisma }
  */
 export type User = Prisma.UserModel
 /**
- * Model Barber
+ * Model ClientProfile
  * 
  */
-export type Barber = Prisma.BarberModel
+export type ClientProfile = Prisma.ClientProfileModel
 /**
- * Model Service
+ * Model BarberProfile
  * 
  */
-export type Service = Prisma.ServiceModel
+export type BarberProfile = Prisma.BarberProfileModel
+/**
+ * Model BarbershopProfile
+ * 
+ */
+export type BarbershopProfile = Prisma.BarbershopProfileModel
+/**
+ * Model BarbershopStaffMembership
+ * 
+ */
+export type BarbershopStaffMembership = Prisma.BarbershopStaffMembershipModel
+/**
+ * Model StaffCompensationRule
+ * 
+ */
+export type StaffCompensationRule = Prisma.StaffCompensationRuleModel
+/**
+ * Model ServiceItem
+ * 
+ */
+export type ServiceItem = Prisma.ServiceItemModel
+/**
+ * Model WeeklyAvailability
+ * 
+ */
+export type WeeklyAvailability = Prisma.WeeklyAvailabilityModel
+/**
+ * Model AvailabilityBlock
+ * 
+ */
+export type AvailabilityBlock = Prisma.AvailabilityBlockModel
 /**
  * Model Booking
  * 
@@ -70,17 +100,67 @@ export type Payment = Prisma.PaymentModel
  */
 export type Review = Prisma.ReviewModel
 /**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel
+/**
+ * Model BarberPortfolioItem
+ * 
+ */
+export type BarberPortfolioItem = Prisma.BarberPortfolioItemModel
+/**
+ * Model BarberPortfolioMedia
+ * 
+ */
+export type BarberPortfolioMedia = Prisma.BarberPortfolioMediaModel
+/**
  * Model Earning
  * 
  */
 export type Earning = Prisma.EarningModel
 /**
- * Model Availability
+ * Model Expense
  * 
  */
-export type Availability = Prisma.AvailabilityModel
+export type Expense = Prisma.ExpenseModel
 /**
- * Model Notification
+ * Model DailyLedgerEntry
  * 
  */
-export type Notification = Prisma.NotificationModel
+export type DailyLedgerEntry = Prisma.DailyLedgerEntryModel
+/**
+ * Model Follow
+ * 
+ */
+export type Follow = Prisma.FollowModel
+/**
+ * Model PointsWallet
+ * 
+ */
+export type PointsWallet = Prisma.PointsWalletModel
+/**
+ * Model Community
+ * 
+ */
+export type Community = Prisma.CommunityModel
+/**
+ * Model CommunityMembership
+ * 
+ */
+export type CommunityMembership = Prisma.CommunityMembershipModel
+/**
+ * Model CommunityPost
+ * 
+ */
+export type CommunityPost = Prisma.CommunityPostModel
+/**
+ * Model CommunityTopicTag
+ * 
+ */
+export type CommunityTopicTag = Prisma.CommunityTopicTagModel
+/**
+ * Model UserSettings
+ * 
+ */
+export type UserSettings = Prisma.UserSettingsModel

@@ -30,12 +30,24 @@ export type BookingAvgAggregateOutputType = {
   totalAmount: runtime.Decimal | null
   platformFee: runtime.Decimal | null
   barberNet: runtime.Decimal | null
+  grossAmount: runtime.Decimal | null
+  platformFeePercent: number | null
+  distributableAmount: runtime.Decimal | null
+  barberAmount: runtime.Decimal | null
+  shopAmount: runtime.Decimal | null
+  netPayoutToBarber: runtime.Decimal | null
 }
 
 export type BookingSumAggregateOutputType = {
   totalAmount: runtime.Decimal | null
   platformFee: runtime.Decimal | null
   barberNet: runtime.Decimal | null
+  grossAmount: runtime.Decimal | null
+  platformFeePercent: number | null
+  distributableAmount: runtime.Decimal | null
+  barberAmount: runtime.Decimal | null
+  shopAmount: runtime.Decimal | null
+  netPayoutToBarber: runtime.Decimal | null
 }
 
 export type BookingMinAggregateOutputType = {
@@ -49,6 +61,12 @@ export type BookingMinAggregateOutputType = {
   totalAmount: runtime.Decimal | null
   platformFee: runtime.Decimal | null
   barberNet: runtime.Decimal | null
+  grossAmount: runtime.Decimal | null
+  platformFeePercent: number | null
+  distributableAmount: runtime.Decimal | null
+  barberAmount: runtime.Decimal | null
+  shopAmount: runtime.Decimal | null
+  netPayoutToBarber: runtime.Decimal | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -64,6 +82,12 @@ export type BookingMaxAggregateOutputType = {
   totalAmount: runtime.Decimal | null
   platformFee: runtime.Decimal | null
   barberNet: runtime.Decimal | null
+  grossAmount: runtime.Decimal | null
+  platformFeePercent: number | null
+  distributableAmount: runtime.Decimal | null
+  barberAmount: runtime.Decimal | null
+  shopAmount: runtime.Decimal | null
+  netPayoutToBarber: runtime.Decimal | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -79,6 +103,13 @@ export type BookingCountAggregateOutputType = {
   totalAmount: number
   platformFee: number
   barberNet: number
+  grossAmount: number
+  platformFeePercent: number
+  distributableAmount: number
+  barberAmount: number
+  shopAmount: number
+  netPayoutToBarber: number
+  serviceSnapshot: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -89,12 +120,24 @@ export type BookingAvgAggregateInputType = {
   totalAmount?: true
   platformFee?: true
   barberNet?: true
+  grossAmount?: true
+  platformFeePercent?: true
+  distributableAmount?: true
+  barberAmount?: true
+  shopAmount?: true
+  netPayoutToBarber?: true
 }
 
 export type BookingSumAggregateInputType = {
   totalAmount?: true
   platformFee?: true
   barberNet?: true
+  grossAmount?: true
+  platformFeePercent?: true
+  distributableAmount?: true
+  barberAmount?: true
+  shopAmount?: true
+  netPayoutToBarber?: true
 }
 
 export type BookingMinAggregateInputType = {
@@ -108,6 +151,12 @@ export type BookingMinAggregateInputType = {
   totalAmount?: true
   platformFee?: true
   barberNet?: true
+  grossAmount?: true
+  platformFeePercent?: true
+  distributableAmount?: true
+  barberAmount?: true
+  shopAmount?: true
+  netPayoutToBarber?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -123,6 +172,12 @@ export type BookingMaxAggregateInputType = {
   totalAmount?: true
   platformFee?: true
   barberNet?: true
+  grossAmount?: true
+  platformFeePercent?: true
+  distributableAmount?: true
+  barberAmount?: true
+  shopAmount?: true
+  netPayoutToBarber?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -138,6 +193,13 @@ export type BookingCountAggregateInputType = {
   totalAmount?: true
   platformFee?: true
   barberNet?: true
+  grossAmount?: true
+  platformFeePercent?: true
+  distributableAmount?: true
+  barberAmount?: true
+  shopAmount?: true
+  netPayoutToBarber?: true
+  serviceSnapshot?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -240,6 +302,13 @@ export type BookingGroupByOutputType = {
   totalAmount: runtime.Decimal
   platformFee: runtime.Decimal
   barberNet: runtime.Decimal
+  grossAmount: runtime.Decimal
+  platformFeePercent: number
+  distributableAmount: runtime.Decimal
+  barberAmount: runtime.Decimal
+  shopAmount: runtime.Decimal
+  netPayoutToBarber: runtime.Decimal
+  serviceSnapshot: runtime.JsonValue | null
   createdAt: Date
   updatedAt: Date
   _count: BookingCountAggregateOutputType | null
@@ -278,11 +347,18 @@ export type BookingWhereInput = {
   totalAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFilter<"Booking"> | number
+  distributableAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.JsonNullableFilter<"Booking">
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   client?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  barber?: Prisma.XOR<Prisma.BarberScalarRelationFilter, Prisma.BarberWhereInput>
-  service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
+  barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
+  service?: Prisma.XOR<Prisma.ServiceItemScalarRelationFilter, Prisma.ServiceItemWhereInput>
   payment?: Prisma.XOR<Prisma.PaymentNullableScalarRelationFilter, Prisma.PaymentWhereInput> | null
   review?: Prisma.XOR<Prisma.ReviewNullableScalarRelationFilter, Prisma.ReviewWhereInput> | null
   earning?: Prisma.XOR<Prisma.EarningNullableScalarRelationFilter, Prisma.EarningWhereInput> | null
@@ -299,11 +375,18 @@ export type BookingOrderByWithRelationInput = {
   totalAmount?: Prisma.SortOrder
   platformFee?: Prisma.SortOrder
   barberNet?: Prisma.SortOrder
+  grossAmount?: Prisma.SortOrder
+  platformFeePercent?: Prisma.SortOrder
+  distributableAmount?: Prisma.SortOrder
+  barberAmount?: Prisma.SortOrder
+  shopAmount?: Prisma.SortOrder
+  netPayoutToBarber?: Prisma.SortOrder
+  serviceSnapshot?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   client?: Prisma.UserOrderByWithRelationInput
-  barber?: Prisma.BarberOrderByWithRelationInput
-  service?: Prisma.ServiceOrderByWithRelationInput
+  barber?: Prisma.BarberProfileOrderByWithRelationInput
+  service?: Prisma.ServiceItemOrderByWithRelationInput
   payment?: Prisma.PaymentOrderByWithRelationInput
   review?: Prisma.ReviewOrderByWithRelationInput
   earning?: Prisma.EarningOrderByWithRelationInput
@@ -323,11 +406,18 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   totalAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFilter<"Booking"> | number
+  distributableAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.JsonNullableFilter<"Booking">
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   client?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  barber?: Prisma.XOR<Prisma.BarberScalarRelationFilter, Prisma.BarberWhereInput>
-  service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
+  barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
+  service?: Prisma.XOR<Prisma.ServiceItemScalarRelationFilter, Prisma.ServiceItemWhereInput>
   payment?: Prisma.XOR<Prisma.PaymentNullableScalarRelationFilter, Prisma.PaymentWhereInput> | null
   review?: Prisma.XOR<Prisma.ReviewNullableScalarRelationFilter, Prisma.ReviewWhereInput> | null
   earning?: Prisma.XOR<Prisma.EarningNullableScalarRelationFilter, Prisma.EarningWhereInput> | null
@@ -344,6 +434,13 @@ export type BookingOrderByWithAggregationInput = {
   totalAmount?: Prisma.SortOrder
   platformFee?: Prisma.SortOrder
   barberNet?: Prisma.SortOrder
+  grossAmount?: Prisma.SortOrder
+  platformFeePercent?: Prisma.SortOrder
+  distributableAmount?: Prisma.SortOrder
+  barberAmount?: Prisma.SortOrder
+  shopAmount?: Prisma.SortOrder
+  netPayoutToBarber?: Prisma.SortOrder
+  serviceSnapshot?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.BookingCountOrderByAggregateInput
@@ -367,6 +464,13 @@ export type BookingScalarWhereWithAggregatesInput = {
   totalAmount?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatWithAggregatesFilter<"Booking"> | number
+  distributableAmount?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.JsonNullableWithAggregatesFilter<"Booking">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
 }
@@ -379,11 +483,18 @@ export type BookingCreateInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
-  barber: Prisma.BarberCreateNestedOneWithoutBookingsInput
-  service: Prisma.ServiceCreateNestedOneWithoutBookingsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
+  service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
@@ -400,6 +511,13 @@ export type BookingUncheckedCreateInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -415,11 +533,18 @@ export type BookingUpdateInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
-  barber?: Prisma.BarberUpdateOneRequiredWithoutBookingsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
+  service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
@@ -436,6 +561,13 @@ export type BookingUncheckedUpdateInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -454,6 +586,13 @@ export type BookingCreateManyInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -466,6 +605,13 @@ export type BookingUpdateManyMutationInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -481,6 +627,13 @@ export type BookingUncheckedUpdateManyInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -506,6 +659,13 @@ export type BookingCountOrderByAggregateInput = {
   totalAmount?: Prisma.SortOrder
   platformFee?: Prisma.SortOrder
   barberNet?: Prisma.SortOrder
+  grossAmount?: Prisma.SortOrder
+  platformFeePercent?: Prisma.SortOrder
+  distributableAmount?: Prisma.SortOrder
+  barberAmount?: Prisma.SortOrder
+  shopAmount?: Prisma.SortOrder
+  netPayoutToBarber?: Prisma.SortOrder
+  serviceSnapshot?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -514,6 +674,12 @@ export type BookingAvgOrderByAggregateInput = {
   totalAmount?: Prisma.SortOrder
   platformFee?: Prisma.SortOrder
   barberNet?: Prisma.SortOrder
+  grossAmount?: Prisma.SortOrder
+  platformFeePercent?: Prisma.SortOrder
+  distributableAmount?: Prisma.SortOrder
+  barberAmount?: Prisma.SortOrder
+  shopAmount?: Prisma.SortOrder
+  netPayoutToBarber?: Prisma.SortOrder
 }
 
 export type BookingMaxOrderByAggregateInput = {
@@ -527,6 +693,12 @@ export type BookingMaxOrderByAggregateInput = {
   totalAmount?: Prisma.SortOrder
   platformFee?: Prisma.SortOrder
   barberNet?: Prisma.SortOrder
+  grossAmount?: Prisma.SortOrder
+  platformFeePercent?: Prisma.SortOrder
+  distributableAmount?: Prisma.SortOrder
+  barberAmount?: Prisma.SortOrder
+  shopAmount?: Prisma.SortOrder
+  netPayoutToBarber?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -542,6 +714,12 @@ export type BookingMinOrderByAggregateInput = {
   totalAmount?: Prisma.SortOrder
   platformFee?: Prisma.SortOrder
   barberNet?: Prisma.SortOrder
+  grossAmount?: Prisma.SortOrder
+  platformFeePercent?: Prisma.SortOrder
+  distributableAmount?: Prisma.SortOrder
+  barberAmount?: Prisma.SortOrder
+  shopAmount?: Prisma.SortOrder
+  netPayoutToBarber?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -550,6 +728,12 @@ export type BookingSumOrderByAggregateInput = {
   totalAmount?: Prisma.SortOrder
   platformFee?: Prisma.SortOrder
   barberNet?: Prisma.SortOrder
+  grossAmount?: Prisma.SortOrder
+  platformFeePercent?: Prisma.SortOrder
+  distributableAmount?: Prisma.SortOrder
+  barberAmount?: Prisma.SortOrder
+  shopAmount?: Prisma.SortOrder
+  netPayoutToBarber?: Prisma.SortOrder
 }
 
 export type BookingScalarRelationFilter = {
@@ -741,10 +925,17 @@ export type BookingCreateWithoutClientInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
-  barber: Prisma.BarberCreateNestedOneWithoutBookingsInput
-  service: Prisma.ServiceCreateNestedOneWithoutBookingsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
+  service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
@@ -760,6 +951,13 @@ export type BookingUncheckedCreateWithoutClientInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -807,6 +1005,13 @@ export type BookingScalarWhereInput = {
   totalAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFilter<"Booking"> | number
+  distributableAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.JsonNullableFilter<"Booking">
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
 }
@@ -819,10 +1024,17 @@ export type BookingCreateWithoutBarberInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
-  service: Prisma.ServiceCreateNestedOneWithoutBookingsInput
+  service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
@@ -838,6 +1050,13 @@ export type BookingUncheckedCreateWithoutBarberInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -879,10 +1098,17 @@ export type BookingCreateWithoutServiceInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
-  barber: Prisma.BarberCreateNestedOneWithoutBookingsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
@@ -898,6 +1124,13 @@ export type BookingUncheckedCreateWithoutServiceInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -939,11 +1172,18 @@ export type BookingCreateWithoutPaymentInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
-  barber: Prisma.BarberCreateNestedOneWithoutBookingsInput
-  service: Prisma.ServiceCreateNestedOneWithoutBookingsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
+  service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
 }
@@ -959,6 +1199,13 @@ export type BookingUncheckedCreateWithoutPaymentInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
@@ -989,11 +1236,18 @@ export type BookingUpdateWithoutPaymentInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
-  barber?: Prisma.BarberUpdateOneRequiredWithoutBookingsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
+  service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
 }
@@ -1009,6 +1263,13 @@ export type BookingUncheckedUpdateWithoutPaymentInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
@@ -1023,11 +1284,18 @@ export type BookingCreateWithoutReviewInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
-  barber: Prisma.BarberCreateNestedOneWithoutBookingsInput
-  service: Prisma.ServiceCreateNestedOneWithoutBookingsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
+  service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
 }
@@ -1043,6 +1311,13 @@ export type BookingUncheckedCreateWithoutReviewInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -1073,11 +1348,18 @@ export type BookingUpdateWithoutReviewInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
-  barber?: Prisma.BarberUpdateOneRequiredWithoutBookingsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
+  service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
 }
@@ -1093,6 +1375,13 @@ export type BookingUncheckedUpdateWithoutReviewInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -1107,11 +1396,18 @@ export type BookingCreateWithoutEarningInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
-  barber: Prisma.BarberCreateNestedOneWithoutBookingsInput
-  service: Prisma.ServiceCreateNestedOneWithoutBookingsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
+  service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
 }
@@ -1127,6 +1423,13 @@ export type BookingUncheckedCreateWithoutEarningInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -1157,11 +1460,18 @@ export type BookingUpdateWithoutEarningInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
-  barber?: Prisma.BarberUpdateOneRequiredWithoutBookingsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
+  service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
 }
@@ -1177,6 +1487,13 @@ export type BookingUncheckedUpdateWithoutEarningInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -1193,6 +1510,13 @@ export type BookingCreateManyClientInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1205,10 +1529,17 @@ export type BookingUpdateWithoutClientInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  barber?: Prisma.BarberUpdateOneRequiredWithoutBookingsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
+  service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
@@ -1224,6 +1555,13 @@ export type BookingUncheckedUpdateWithoutClientInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -1241,6 +1579,13 @@ export type BookingUncheckedUpdateManyWithoutClientInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1255,6 +1600,13 @@ export type BookingCreateManyBarberInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1267,10 +1619,17 @@ export type BookingUpdateWithoutBarberInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingsNestedInput
+  service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
@@ -1286,6 +1645,13 @@ export type BookingUncheckedUpdateWithoutBarberInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -1303,6 +1669,13 @@ export type BookingUncheckedUpdateManyWithoutBarberInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1317,6 +1690,13 @@ export type BookingCreateManyServiceInput = {
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1329,10 +1709,17 @@ export type BookingUpdateWithoutServiceInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
-  barber?: Prisma.BarberUpdateOneRequiredWithoutBookingsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
@@ -1348,6 +1735,13 @@ export type BookingUncheckedUpdateWithoutServiceInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -1365,6 +1759,13 @@ export type BookingUncheckedUpdateManyWithoutServiceInput = {
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1382,11 +1783,18 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   totalAmount?: boolean
   platformFee?: boolean
   barberNet?: boolean
+  grossAmount?: boolean
+  platformFeePercent?: boolean
+  distributableAmount?: boolean
+  barberAmount?: boolean
+  shopAmount?: boolean
+  netPayoutToBarber?: boolean
+  serviceSnapshot?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
-  service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  service?: boolean | Prisma.ServiceItemDefaultArgs<ExtArgs>
   payment?: boolean | Prisma.Booking$paymentArgs<ExtArgs>
   review?: boolean | Prisma.Booking$reviewArgs<ExtArgs>
   earning?: boolean | Prisma.Booking$earningArgs<ExtArgs>
@@ -1403,11 +1811,18 @@ export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   totalAmount?: boolean
   platformFee?: boolean
   barberNet?: boolean
+  grossAmount?: boolean
+  platformFeePercent?: boolean
+  distributableAmount?: boolean
+  barberAmount?: boolean
+  shopAmount?: boolean
+  netPayoutToBarber?: boolean
+  serviceSnapshot?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
-  service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  service?: boolean | Prisma.ServiceItemDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["booking"]>
 
 export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1421,11 +1836,18 @@ export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   totalAmount?: boolean
   platformFee?: boolean
   barberNet?: boolean
+  grossAmount?: boolean
+  platformFeePercent?: boolean
+  distributableAmount?: boolean
+  barberAmount?: boolean
+  shopAmount?: boolean
+  netPayoutToBarber?: boolean
+  serviceSnapshot?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
-  service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  service?: boolean | Prisma.ServiceItemDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["booking"]>
 
 export type BookingSelectScalar = {
@@ -1439,36 +1861,43 @@ export type BookingSelectScalar = {
   totalAmount?: boolean
   platformFee?: boolean
   barberNet?: boolean
+  grossAmount?: boolean
+  platformFeePercent?: boolean
+  distributableAmount?: boolean
+  barberAmount?: boolean
+  shopAmount?: boolean
+  netPayoutToBarber?: boolean
+  serviceSnapshot?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "barberId" | "serviceId" | "scheduledAt" | "status" | "paymentMethod" | "totalAmount" | "platformFee" | "barberNet" | "createdAt" | "updatedAt", ExtArgs["result"]["booking"]>
+export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "barberId" | "serviceId" | "scheduledAt" | "status" | "paymentMethod" | "totalAmount" | "platformFee" | "barberNet" | "grossAmount" | "platformFeePercent" | "distributableAmount" | "barberAmount" | "shopAmount" | "netPayoutToBarber" | "serviceSnapshot" | "createdAt" | "updatedAt", ExtArgs["result"]["booking"]>
 export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
-  service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  service?: boolean | Prisma.ServiceItemDefaultArgs<ExtArgs>
   payment?: boolean | Prisma.Booking$paymentArgs<ExtArgs>
   review?: boolean | Prisma.Booking$reviewArgs<ExtArgs>
   earning?: boolean | Prisma.Booking$earningArgs<ExtArgs>
 }
 export type BookingIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
-  service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  service?: boolean | Prisma.ServiceItemDefaultArgs<ExtArgs>
 }
 export type BookingIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
-  service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  service?: boolean | Prisma.ServiceItemDefaultArgs<ExtArgs>
 }
 
 export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Booking"
   objects: {
     client: Prisma.$UserPayload<ExtArgs>
-    barber: Prisma.$BarberPayload<ExtArgs>
-    service: Prisma.$ServicePayload<ExtArgs>
+    barber: Prisma.$BarberProfilePayload<ExtArgs>
+    service: Prisma.$ServiceItemPayload<ExtArgs>
     payment: Prisma.$PaymentPayload<ExtArgs> | null
     review: Prisma.$ReviewPayload<ExtArgs> | null
     earning: Prisma.$EarningPayload<ExtArgs> | null
@@ -1484,6 +1913,13 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     totalAmount: runtime.Decimal
     platformFee: runtime.Decimal
     barberNet: runtime.Decimal
+    grossAmount: runtime.Decimal
+    platformFeePercent: number
+    distributableAmount: runtime.Decimal
+    barberAmount: runtime.Decimal
+    shopAmount: runtime.Decimal
+    netPayoutToBarber: runtime.Decimal
+    serviceSnapshot: runtime.JsonValue | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["booking"]>
@@ -1881,8 +2317,8 @@ readonly fields: BookingFieldRefs;
 export interface Prisma__BookingClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   client<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  barber<T extends Prisma.BarberDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberDefaultArgs<ExtArgs>>): Prisma.Prisma__BarberClient<runtime.Types.Result.GetResult<Prisma.$BarberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  service<T extends Prisma.ServiceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceClient<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  barber<T extends Prisma.BarberProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__BarberProfileClient<runtime.Types.Result.GetResult<Prisma.$BarberProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  service<T extends Prisma.ServiceItemDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceItemDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceItemClient<runtime.Types.Result.GetResult<Prisma.$ServiceItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   payment<T extends Prisma.Booking$paymentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$paymentArgs<ExtArgs>>): Prisma.Prisma__PaymentClient<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   review<T extends Prisma.Booking$reviewArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$reviewArgs<ExtArgs>>): Prisma.Prisma__ReviewClient<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   earning<T extends Prisma.Booking$earningArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$earningArgs<ExtArgs>>): Prisma.Prisma__EarningClient<runtime.Types.Result.GetResult<Prisma.$EarningPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -1925,6 +2361,13 @@ export interface BookingFieldRefs {
   readonly totalAmount: Prisma.FieldRef<"Booking", 'Decimal'>
   readonly platformFee: Prisma.FieldRef<"Booking", 'Decimal'>
   readonly barberNet: Prisma.FieldRef<"Booking", 'Decimal'>
+  readonly grossAmount: Prisma.FieldRef<"Booking", 'Decimal'>
+  readonly platformFeePercent: Prisma.FieldRef<"Booking", 'Float'>
+  readonly distributableAmount: Prisma.FieldRef<"Booking", 'Decimal'>
+  readonly barberAmount: Prisma.FieldRef<"Booking", 'Decimal'>
+  readonly shopAmount: Prisma.FieldRef<"Booking", 'Decimal'>
+  readonly netPayoutToBarber: Prisma.FieldRef<"Booking", 'Decimal'>
+  readonly serviceSnapshot: Prisma.FieldRef<"Booking", 'Json'>
   readonly createdAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Booking", 'DateTime'>
 }

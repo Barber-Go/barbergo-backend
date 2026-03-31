@@ -1,5 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// BarberGo v2 Schema
+// ─────────────────────────────────────────────────────────────────────────────
+// Migration strategy: additive only. No columns or tables dropped.
+// New columns have defaults so existing rows remain valid.
+// Model renames (Barber→BarberProfile, Service→ServiceItem, etc.) keep @@map
+// pointing to the original table name — zero SQL change for renames.
+// ─────────────────────────────────────────────────────────────────────────────
 
 generator client {
   provider = "prisma-client"
@@ -10,14 +15,23 @@ datasource db {
   provider = "postgresql"
 }
 
-// ─────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════════════════════
 // Enums
-// ─────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════════════════════
 
+// Named "Role" in DB for backward compat; conceptually UserRole
 enum Role {
   CLIENT
-  BARBER
+  BARBER              // Legacy — kept for existing rows
+  BARBER_INDEPENDENT
+  BARBER_EMPLOYEE
+  BARBERSHOP_OWNER
   ADMIN
+}
+
+enum BarberEmploymentType {
+  INDEPENDENT
+  EMPLOYEE
 }
 
 enum BookingStatus {
@@ -25,10 +39,12 @@ enum BookingStatus {
   CONFIRMED
   COMPLETED
   CANCELLED
+  NO_SHOW
 }
 
 enum PaymentMethod {
-  CARD
+  CARD    // Legacy — kept for existing rows
+  IN_APP
   CASH
 }
 
@@ -49,54 +65,175 @@ enum NotificationType {
   GENERAL
 }
 
-// ─────────────────────────────────────────────
-// Models
-// ─────────────────────────────────────────────
+enum BlockType {
+  LUNCH
+  ERRAND
+  PERSONAL
+  VACATION
+  DAY_OFF
+  CUSTOM
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+}
+
+enum LedgerEntryType {
+  INCOME
+  EXPENSE
+  ADJUSTMENT
+}
+
+enum CommunityCategory {
+  HAIRCUTS
+  TRENDS
+  COMPETITIONS
+  PRODUCTS
+  GENERAL
+}
+
+enum PublicEntityType {
+  INDEPENDENT_BARBER
+  BARBERSHOP
+  BARBER_EMPLOYEE
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Core: User & Profiles
+// ═══════════════════════════════════════════════════════════════════════════════
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  phone     String?  @unique
-  password  String
-  name      String
-  avatarUrl String?
-  role      Role     @default(CLIENT)
-  isVerified Boolean @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(cuid())
+  email      String   @unique
+  phone      String?  @unique
+  password   String
+  name       String
+  avatarUrl  String?
+  role       Role @default(CLIENT)
+  isVerified Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
-  barberProfile Barber?
+  // Profiles (one per role type)
+  clientProfile     ClientProfile?
+  barberProfile     BarberProfile?
+  barbershopProfile BarbershopProfile?
+
+  // Core relations (kept from v1)
   bookings      Booking[]      @relation("ClientBookings")
   reviews       Review[]       @relation("ClientReviews")
   notifications Notification[]
 
+  // V2 relations
+  settings             UserSettings?
+  follows              Follow[]              @relation("Follower")
+  pointsWallet         PointsWallet?
+  communityMemberships CommunityMembership[]
+  communityPosts       CommunityPost[]
+
   @@map("users")
 }
 
-model Barber {
-  id             String   @id @default(cuid())
-  userId         String   @unique
+model ClientProfile {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  preferredRadius Float    @default(10)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("client_profiles")
+}
+
+model BarberProfile {
+  id             String               @id @default(cuid())
+  userId         String               @unique
   bio            String?
   lat            Float?
   lng            Float?
-  rating         Float    @default(0)
-  totalReviews   Int      @default(0)
-  isActive       Boolean  @default(true)
-  commissionRate Float    @default(0.15)
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  rating         Float                @default(0)
+  totalReviews   Int                  @default(0)
+  isActive       Boolean              @default(true)
+  commissionRate Float                @default(0.15)
+  employmentType BarberEmploymentType @default(INDEPENDENT)
+  barbershopId   String?
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
 
-  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
-  services       Service[]
-  bookings       Booking[]      @relation("BarberBookings")
-  reviews        Review[]       @relation("BarberReviews")
-  earnings       Earning[]
-  availabilities Availability[]
+  user             User                        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  barbershop       BarbershopProfile?          @relation("BarbershopBarbers", fields: [barbershopId], references: [id])
+  services         ServiceItem[]
+  bookings         Booking[]                   @relation("BarberBookings")
+  reviews          Review[]                    @relation("BarberReviews")
+  earnings         Earning[]
+  availabilities   WeeklyAvailability[]
+  blocks           AvailabilityBlock[]
+  portfolio        BarberPortfolioItem[]
+  staffMemberships BarbershopStaffMembership[]
+  expenses         Expense[]
+  ledgerEntries    DailyLedgerEntry[]
 
   @@map("barbers")
 }
 
-model Service {
+model BarbershopProfile {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  name        String
+  description String?
+  address     String?
+  lat         Float?
+  lng         Float?
+  phone       String?
+  logoUrl     String?
+  coverUrl    String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user    User                        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  staff   BarbershopStaffMembership[]
+  barbers BarberProfile[]             @relation("BarbershopBarbers")
+
+  @@map("barbershop_profiles")
+}
+
+model BarbershopStaffMembership {
+  id              String   @id @default(cuid())
+  barbershopId    String
+  barberProfileId String
+  role            String   @default("BARBER")
+  joinedAt        DateTime @default(now())
+  isActive        Boolean  @default(true)
+
+  barbershop        BarbershopProfile       @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+  barberProfile     BarberProfile           @relation(fields: [barberProfileId], references: [id], onDelete: Cascade)
+  compensationRules StaffCompensationRule[]
+
+  @@unique([barbershopId, barberProfileId])
+  @@map("barbershop_staff_memberships")
+}
+
+model StaffCompensationRule {
+  id           String   @id @default(cuid())
+  membershipId String
+  label        String
+  percentage   Float
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+
+  membership BarbershopStaffMembership @relation(fields: [membershipId], references: [id], onDelete: Cascade)
+
+  @@map("staff_compensation_rules")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Services & Availability
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model ServiceItem {
   id          String   @id @default(cuid())
   barberId    String
   name        String
@@ -107,11 +244,43 @@ model Service {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  barber   Barber    @relation(fields: [barberId], references: [id], onDelete: Cascade)
+  barber   BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
   bookings Booking[]
 
   @@map("services")
 }
+
+model WeeklyAvailability {
+  id        String  @id @default(cuid())
+  barberId  String
+  dayOfWeek Int
+  startTime String
+  endTime   String
+  isActive  Boolean @default(true)
+
+  barber BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
+
+  @@unique([barberId, dayOfWeek])
+  @@map("availabilities")
+}
+
+model AvailabilityBlock {
+  id        String    @id @default(cuid())
+  barberId  String
+  type      BlockType
+  label     String?
+  startAt   DateTime
+  endAt     DateTime
+  createdAt DateTime  @default(now())
+
+  barber BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
+
+  @@map("availability_blocks")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Bookings & Payments
+// ═══════════════════════════════════════════════════════════════════════════════
 
 model Booking {
   id            String        @id @default(cuid())
@@ -121,15 +290,27 @@ model Booking {
   scheduledAt   DateTime
   status        BookingStatus @default(PENDING)
   paymentMethod PaymentMethod
-  totalAmount   Decimal       @db.Decimal(10, 2)
-  platformFee   Decimal       @db.Decimal(10, 2)
-  barberNet     Decimal       @db.Decimal(10, 2)
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
 
-  client  User     @relation("ClientBookings", fields: [clientId], references: [id])
-  barber  Barber   @relation("BarberBookings", fields: [barberId], references: [id])
-  service Service  @relation(fields: [serviceId], references: [id])
+  // V1 financial columns (kept for backward compat)
+  totalAmount Decimal @db.Decimal(10, 2)
+  platformFee Decimal @db.Decimal(10, 2)
+  barberNet   Decimal @db.Decimal(10, 2)
+
+  // V2 financial snapshot
+  grossAmount         Decimal @default(0) @db.Decimal(10, 2)
+  platformFeePercent  Float   @default(0.15)
+  distributableAmount Decimal @default(0) @db.Decimal(10, 2)
+  barberAmount        Decimal @default(0) @db.Decimal(10, 2)
+  shopAmount          Decimal @default(0) @db.Decimal(10, 2)
+  netPayoutToBarber   Decimal @default(0) @db.Decimal(10, 2)
+  serviceSnapshot     Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  client  User          @relation("ClientBookings", fields: [clientId], references: [id])
+  barber  BarberProfile @relation("BarberBookings", fields: [barberId], references: [id])
+  service ServiceItem   @relation(fields: [serviceId], references: [id])
   payment Payment?
   review  Review?
   earning Earning?
@@ -151,6 +332,10 @@ model Payment {
   @@map("payments")
 }
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// Reviews
+// ═══════════════════════════════════════════════════════════════════════════════
+
 model Review {
   id        String   @id @default(cuid())
   bookingId String   @unique
@@ -160,43 +345,16 @@ model Review {
   comment   String?
   createdAt DateTime @default(now())
 
-  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
-  client  User    @relation("ClientReviews", fields: [clientId], references: [id])
-  barber  Barber  @relation("BarberReviews", fields: [barberId], references: [id])
+  booking Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  client  User          @relation("ClientReviews", fields: [clientId], references: [id])
+  barber  BarberProfile @relation("BarberReviews", fields: [barberId], references: [id])
 
   @@map("reviews")
 }
 
-model Earning {
-  id            String        @id @default(cuid())
-  barberId      String
-  bookingId     String        @unique
-  date          DateTime
-  grossAmount   Decimal       @db.Decimal(10, 2)
-  platformFee   Decimal       @db.Decimal(10, 2)
-  netAmount     Decimal       @db.Decimal(10, 2)
-  paymentMethod PaymentMethod
-  createdAt     DateTime      @default(now())
-
-  barber  Barber  @relation(fields: [barberId], references: [id], onDelete: Cascade)
-  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
-
-  @@map("earnings")
-}
-
-model Availability {
-  id        String  @id @default(cuid())
-  barberId  String
-  dayOfWeek Int
-  startTime String
-  endTime   String
-  isActive  Boolean @default(true)
-
-  barber Barber @relation(fields: [barberId], references: [id], onDelete: Cascade)
-
-  @@unique([barberId, dayOfWeek])
-  @@map("availabilities")
-}
+// ═══════════════════════════════════════════════════════════════════════════════
+// Notifications
+// ═══════════════════════════════════════════════════════════════════════════════
 
 model Notification {
   id        String           @id @default(cuid())
@@ -210,4 +368,195 @@ model Notification {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("notifications")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Portfolio
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model BarberPortfolioItem {
+  id          String   @id @default(cuid())
+  barberId    String
+  title       String?
+  description String?
+  createdAt   DateTime @default(now())
+
+  barber BarberProfile        @relation(fields: [barberId], references: [id], onDelete: Cascade)
+  media  BarberPortfolioMedia[]
+
+  @@map("barber_portfolio_items")
+}
+
+model BarberPortfolioMedia {
+  id              String    @id @default(cuid())
+  portfolioItemId String
+  type            MediaType
+  url             String
+  thumbnailUrl    String?
+  sortOrder       Int       @default(0)
+  createdAt       DateTime  @default(now())
+
+  portfolioItem BarberPortfolioItem @relation(fields: [portfolioItemId], references: [id], onDelete: Cascade)
+
+  @@map("barber_portfolio_media")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Financial: Earnings, Expenses, Ledger
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model Earning {
+  id            String        @id @default(cuid())
+  barberId      String
+  bookingId     String        @unique
+  date          DateTime
+  grossAmount   Decimal       @db.Decimal(10, 2)
+  platformFee   Decimal       @db.Decimal(10, 2)
+  netAmount     Decimal       @db.Decimal(10, 2)
+  paymentMethod PaymentMethod
+  createdAt     DateTime      @default(now())
+
+  barber  BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
+  booking Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@map("earnings")
+}
+
+model Expense {
+  id          String   @id @default(cuid())
+  barberId    String
+  category    String
+  description String?
+  amount      Decimal  @db.Decimal(10, 2)
+  date        DateTime
+  receiptUrl  String?
+  createdAt   DateTime @default(now())
+
+  barber BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
+
+  @@map("expenses")
+}
+
+model DailyLedgerEntry {
+  id        String          @id @default(cuid())
+  barberId  String
+  date      DateTime
+  type      LedgerEntryType
+  label     String
+  amount    Decimal         @db.Decimal(10, 2)
+  createdAt DateTime        @default(now())
+
+  barber BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
+
+  @@map("daily_ledger_entries")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Social: Follows, Points
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model Follow {
+  id           String           @id @default(cuid())
+  followerId   String
+  followedType PublicEntityType
+  followedId   String
+  createdAt    DateTime         @default(now())
+
+  follower User @relation("Follower", fields: [followerId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followedType, followedId])
+  @@map("follows")
+}
+
+model PointsWallet {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  balance   Int      @default(0)
+  lifetime  Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("points_wallets")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Community
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model Community {
+  id          String            @id @default(cuid())
+  name        String
+  description String?
+  category    CommunityCategory @default(GENERAL)
+  coverUrl    String?
+  isPublic    Boolean           @default(true)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  memberships CommunityMembership[]
+  posts       CommunityPost[]
+  tags        CommunityTopicTag[]
+
+  @@map("communities")
+}
+
+model CommunityMembership {
+  id          String   @id @default(cuid())
+  communityId String
+  userId      String
+  role        String   @default("MEMBER")
+  joinedAt    DateTime @default(now())
+
+  community Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([communityId, userId])
+  @@map("community_memberships")
+}
+
+model CommunityPost {
+  id          String   @id @default(cuid())
+  communityId String
+  authorId    String
+  title       String?
+  body        String
+  imageUrl    String?
+  isPinned    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  community Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  author    User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@map("community_posts")
+}
+
+model CommunityTopicTag {
+  id          String @id @default(cuid())
+  communityId String
+  name        String
+
+  community Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
+
+  @@unique([communityId, name])
+  @@map("community_topic_tags")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Settings
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model UserSettings {
+  id                 String  @id @default(cuid())
+  userId             String  @unique
+  pushNotifications  Boolean @default(true)
+  emailNotifications Boolean @default(true)
+  language           String  @default("es")
+  currency           String  @default("CLP")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_settings")
 }

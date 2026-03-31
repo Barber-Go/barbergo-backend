@@ -52,14 +52,30 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  Barber: 'Barber',
-  Service: 'Service',
+  ClientProfile: 'ClientProfile',
+  BarberProfile: 'BarberProfile',
+  BarbershopProfile: 'BarbershopProfile',
+  BarbershopStaffMembership: 'BarbershopStaffMembership',
+  StaffCompensationRule: 'StaffCompensationRule',
+  ServiceItem: 'ServiceItem',
+  WeeklyAvailability: 'WeeklyAvailability',
+  AvailabilityBlock: 'AvailabilityBlock',
   Booking: 'Booking',
   Payment: 'Payment',
   Review: 'Review',
+  Notification: 'Notification',
+  BarberPortfolioItem: 'BarberPortfolioItem',
+  BarberPortfolioMedia: 'BarberPortfolioMedia',
   Earning: 'Earning',
-  Availability: 'Availability',
-  Notification: 'Notification'
+  Expense: 'Expense',
+  DailyLedgerEntry: 'DailyLedgerEntry',
+  Follow: 'Follow',
+  PointsWallet: 'PointsWallet',
+  Community: 'Community',
+  CommunityMembership: 'CommunityMembership',
+  CommunityPost: 'CommunityPost',
+  CommunityTopicTag: 'CommunityTopicTag',
+  UserSettings: 'UserSettings'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -94,7 +110,18 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-export const BarberScalarFieldEnum = {
+export const ClientProfileScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  preferredRadius: 'preferredRadius',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ClientProfileScalarFieldEnum = (typeof ClientProfileScalarFieldEnum)[keyof typeof ClientProfileScalarFieldEnum]
+
+
+export const BarberProfileScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   bio: 'bio',
@@ -104,14 +131,59 @@ export const BarberScalarFieldEnum = {
   totalReviews: 'totalReviews',
   isActive: 'isActive',
   commissionRate: 'commissionRate',
+  employmentType: 'employmentType',
+  barbershopId: 'barbershopId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type BarberScalarFieldEnum = (typeof BarberScalarFieldEnum)[keyof typeof BarberScalarFieldEnum]
+export type BarberProfileScalarFieldEnum = (typeof BarberProfileScalarFieldEnum)[keyof typeof BarberProfileScalarFieldEnum]
 
 
-export const ServiceScalarFieldEnum = {
+export const BarbershopProfileScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  name: 'name',
+  description: 'description',
+  address: 'address',
+  lat: 'lat',
+  lng: 'lng',
+  phone: 'phone',
+  logoUrl: 'logoUrl',
+  coverUrl: 'coverUrl',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BarbershopProfileScalarFieldEnum = (typeof BarbershopProfileScalarFieldEnum)[keyof typeof BarbershopProfileScalarFieldEnum]
+
+
+export const BarbershopStaffMembershipScalarFieldEnum = {
+  id: 'id',
+  barbershopId: 'barbershopId',
+  barberProfileId: 'barberProfileId',
+  role: 'role',
+  joinedAt: 'joinedAt',
+  isActive: 'isActive'
+} as const
+
+export type BarbershopStaffMembershipScalarFieldEnum = (typeof BarbershopStaffMembershipScalarFieldEnum)[keyof typeof BarbershopStaffMembershipScalarFieldEnum]
+
+
+export const StaffCompensationRuleScalarFieldEnum = {
+  id: 'id',
+  membershipId: 'membershipId',
+  label: 'label',
+  percentage: 'percentage',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+} as const
+
+export type StaffCompensationRuleScalarFieldEnum = (typeof StaffCompensationRuleScalarFieldEnum)[keyof typeof StaffCompensationRuleScalarFieldEnum]
+
+
+export const ServiceItemScalarFieldEnum = {
   id: 'id',
   barberId: 'barberId',
   name: 'name',
@@ -123,7 +195,32 @@ export const ServiceScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
+export type ServiceItemScalarFieldEnum = (typeof ServiceItemScalarFieldEnum)[keyof typeof ServiceItemScalarFieldEnum]
+
+
+export const WeeklyAvailabilityScalarFieldEnum = {
+  id: 'id',
+  barberId: 'barberId',
+  dayOfWeek: 'dayOfWeek',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  isActive: 'isActive'
+} as const
+
+export type WeeklyAvailabilityScalarFieldEnum = (typeof WeeklyAvailabilityScalarFieldEnum)[keyof typeof WeeklyAvailabilityScalarFieldEnum]
+
+
+export const AvailabilityBlockScalarFieldEnum = {
+  id: 'id',
+  barberId: 'barberId',
+  type: 'type',
+  label: 'label',
+  startAt: 'startAt',
+  endAt: 'endAt',
+  createdAt: 'createdAt'
+} as const
+
+export type AvailabilityBlockScalarFieldEnum = (typeof AvailabilityBlockScalarFieldEnum)[keyof typeof AvailabilityBlockScalarFieldEnum]
 
 
 export const BookingScalarFieldEnum = {
@@ -137,6 +234,13 @@ export const BookingScalarFieldEnum = {
   totalAmount: 'totalAmount',
   platformFee: 'platformFee',
   barberNet: 'barberNet',
+  grossAmount: 'grossAmount',
+  platformFeePercent: 'platformFeePercent',
+  distributableAmount: 'distributableAmount',
+  barberAmount: 'barberAmount',
+  shopAmount: 'shopAmount',
+  netPayoutToBarber: 'netPayoutToBarber',
+  serviceSnapshot: 'serviceSnapshot',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -170,6 +274,43 @@ export const ReviewScalarFieldEnum = {
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
 
 
+export const NotificationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  title: 'title',
+  body: 'body',
+  isRead: 'isRead',
+  createdAt: 'createdAt'
+} as const
+
+export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+
+
+export const BarberPortfolioItemScalarFieldEnum = {
+  id: 'id',
+  barberId: 'barberId',
+  title: 'title',
+  description: 'description',
+  createdAt: 'createdAt'
+} as const
+
+export type BarberPortfolioItemScalarFieldEnum = (typeof BarberPortfolioItemScalarFieldEnum)[keyof typeof BarberPortfolioItemScalarFieldEnum]
+
+
+export const BarberPortfolioMediaScalarFieldEnum = {
+  id: 'id',
+  portfolioItemId: 'portfolioItemId',
+  type: 'type',
+  url: 'url',
+  thumbnailUrl: 'thumbnailUrl',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+} as const
+
+export type BarberPortfolioMediaScalarFieldEnum = (typeof BarberPortfolioMediaScalarFieldEnum)[keyof typeof BarberPortfolioMediaScalarFieldEnum]
+
+
 export const EarningScalarFieldEnum = {
   id: 'id',
   barberId: 'barberId',
@@ -185,29 +326,115 @@ export const EarningScalarFieldEnum = {
 export type EarningScalarFieldEnum = (typeof EarningScalarFieldEnum)[keyof typeof EarningScalarFieldEnum]
 
 
-export const AvailabilityScalarFieldEnum = {
+export const ExpenseScalarFieldEnum = {
   id: 'id',
   barberId: 'barberId',
-  dayOfWeek: 'dayOfWeek',
-  startTime: 'startTime',
-  endTime: 'endTime',
-  isActive: 'isActive'
-} as const
-
-export type AvailabilityScalarFieldEnum = (typeof AvailabilityScalarFieldEnum)[keyof typeof AvailabilityScalarFieldEnum]
-
-
-export const NotificationScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  type: 'type',
-  title: 'title',
-  body: 'body',
-  isRead: 'isRead',
+  category: 'category',
+  description: 'description',
+  amount: 'amount',
+  date: 'date',
+  receiptUrl: 'receiptUrl',
   createdAt: 'createdAt'
 } as const
 
-export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
+
+
+export const DailyLedgerEntryScalarFieldEnum = {
+  id: 'id',
+  barberId: 'barberId',
+  date: 'date',
+  type: 'type',
+  label: 'label',
+  amount: 'amount',
+  createdAt: 'createdAt'
+} as const
+
+export type DailyLedgerEntryScalarFieldEnum = (typeof DailyLedgerEntryScalarFieldEnum)[keyof typeof DailyLedgerEntryScalarFieldEnum]
+
+
+export const FollowScalarFieldEnum = {
+  id: 'id',
+  followerId: 'followerId',
+  followedType: 'followedType',
+  followedId: 'followedId',
+  createdAt: 'createdAt'
+} as const
+
+export type FollowScalarFieldEnum = (typeof FollowScalarFieldEnum)[keyof typeof FollowScalarFieldEnum]
+
+
+export const PointsWalletScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  balance: 'balance',
+  lifetime: 'lifetime',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PointsWalletScalarFieldEnum = (typeof PointsWalletScalarFieldEnum)[keyof typeof PointsWalletScalarFieldEnum]
+
+
+export const CommunityScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  category: 'category',
+  coverUrl: 'coverUrl',
+  isPublic: 'isPublic',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CommunityScalarFieldEnum = (typeof CommunityScalarFieldEnum)[keyof typeof CommunityScalarFieldEnum]
+
+
+export const CommunityMembershipScalarFieldEnum = {
+  id: 'id',
+  communityId: 'communityId',
+  userId: 'userId',
+  role: 'role',
+  joinedAt: 'joinedAt'
+} as const
+
+export type CommunityMembershipScalarFieldEnum = (typeof CommunityMembershipScalarFieldEnum)[keyof typeof CommunityMembershipScalarFieldEnum]
+
+
+export const CommunityPostScalarFieldEnum = {
+  id: 'id',
+  communityId: 'communityId',
+  authorId: 'authorId',
+  title: 'title',
+  body: 'body',
+  imageUrl: 'imageUrl',
+  isPinned: 'isPinned',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CommunityPostScalarFieldEnum = (typeof CommunityPostScalarFieldEnum)[keyof typeof CommunityPostScalarFieldEnum]
+
+
+export const CommunityTopicTagScalarFieldEnum = {
+  id: 'id',
+  communityId: 'communityId',
+  name: 'name'
+} as const
+
+export type CommunityTopicTagScalarFieldEnum = (typeof CommunityTopicTagScalarFieldEnum)[keyof typeof CommunityTopicTagScalarFieldEnum]
+
+
+export const UserSettingsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  pushNotifications: 'pushNotifications',
+  emailNotifications: 'emailNotifications',
+  language: 'language',
+  currency: 'currency'
+} as const
+
+export type UserSettingsScalarFieldEnum = (typeof UserSettingsScalarFieldEnum)[keyof typeof UserSettingsScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -216,6 +443,14 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -232,4 +467,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

@@ -12,17 +12,29 @@
 export const Role = {
   CLIENT: 'CLIENT',
   BARBER: 'BARBER',
+  BARBER_INDEPENDENT: 'BARBER_INDEPENDENT',
+  BARBER_EMPLOYEE: 'BARBER_EMPLOYEE',
+  BARBERSHOP_OWNER: 'BARBERSHOP_OWNER',
   ADMIN: 'ADMIN'
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
 
 
+export const BarberEmploymentType = {
+  INDEPENDENT: 'INDEPENDENT',
+  EMPLOYEE: 'EMPLOYEE'
+} as const
+
+export type BarberEmploymentType = (typeof BarberEmploymentType)[keyof typeof BarberEmploymentType]
+
+
 export const BookingStatus = {
   PENDING: 'PENDING',
   CONFIRMED: 'CONFIRMED',
   COMPLETED: 'COMPLETED',
-  CANCELLED: 'CANCELLED'
+  CANCELLED: 'CANCELLED',
+  NO_SHOW: 'NO_SHOW'
 } as const
 
 export type BookingStatus = (typeof BookingStatus)[keyof typeof BookingStatus]
@@ -30,6 +42,7 @@ export type BookingStatus = (typeof BookingStatus)[keyof typeof BookingStatus]
 
 export const PaymentMethod = {
   CARD: 'CARD',
+  IN_APP: 'IN_APP',
   CASH: 'CASH'
 } as const
 
@@ -57,3 +70,52 @@ export const NotificationType = {
 } as const
 
 export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
+
+
+export const BlockType = {
+  LUNCH: 'LUNCH',
+  ERRAND: 'ERRAND',
+  PERSONAL: 'PERSONAL',
+  VACATION: 'VACATION',
+  DAY_OFF: 'DAY_OFF',
+  CUSTOM: 'CUSTOM'
+} as const
+
+export type BlockType = (typeof BlockType)[keyof typeof BlockType]
+
+
+export const MediaType = {
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO'
+} as const
+
+export type MediaType = (typeof MediaType)[keyof typeof MediaType]
+
+
+export const LedgerEntryType = {
+  INCOME: 'INCOME',
+  EXPENSE: 'EXPENSE',
+  ADJUSTMENT: 'ADJUSTMENT'
+} as const
+
+export type LedgerEntryType = (typeof LedgerEntryType)[keyof typeof LedgerEntryType]
+
+
+export const CommunityCategory = {
+  HAIRCUTS: 'HAIRCUTS',
+  TRENDS: 'TRENDS',
+  COMPETITIONS: 'COMPETITIONS',
+  PRODUCTS: 'PRODUCTS',
+  GENERAL: 'GENERAL'
+} as const
+
+export type CommunityCategory = (typeof CommunityCategory)[keyof typeof CommunityCategory]
+
+
+export const PublicEntityType = {
+  INDEPENDENT_BARBER: 'INDEPENDENT_BARBER',
+  BARBERSHOP: 'BARBERSHOP',
+  BARBER_EMPLOYEE: 'BARBER_EMPLOYEE'
+} as const
+
+export type PublicEntityType = (typeof PublicEntityType)[keyof typeof PublicEntityType]

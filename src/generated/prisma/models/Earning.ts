@@ -256,7 +256,7 @@ export type EarningWhereInput = {
   netAmount?: Prisma.DecimalFilter<"Earning"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFilter<"Earning"> | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFilter<"Earning"> | Date | string
-  barber?: Prisma.XOR<Prisma.BarberScalarRelationFilter, Prisma.BarberWhereInput>
+  barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
   booking?: Prisma.XOR<Prisma.BookingScalarRelationFilter, Prisma.BookingWhereInput>
 }
 
@@ -270,7 +270,7 @@ export type EarningOrderByWithRelationInput = {
   netAmount?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  barber?: Prisma.BarberOrderByWithRelationInput
+  barber?: Prisma.BarberProfileOrderByWithRelationInput
   booking?: Prisma.BookingOrderByWithRelationInput
 }
 
@@ -287,7 +287,7 @@ export type EarningWhereUniqueInput = Prisma.AtLeast<{
   netAmount?: Prisma.DecimalFilter<"Earning"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFilter<"Earning"> | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFilter<"Earning"> | Date | string
-  barber?: Prisma.XOR<Prisma.BarberScalarRelationFilter, Prisma.BarberWhereInput>
+  barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
   booking?: Prisma.XOR<Prisma.BookingScalarRelationFilter, Prisma.BookingWhereInput>
 }, "id" | "bookingId">
 
@@ -331,7 +331,7 @@ export type EarningCreateInput = {
   netAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod: $Enums.PaymentMethod
   createdAt?: Date | string
-  barber: Prisma.BarberCreateNestedOneWithoutEarningsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutEarningsInput
   booking: Prisma.BookingCreateNestedOneWithoutEarningInput
 }
 
@@ -355,7 +355,7 @@ export type EarningUpdateInput = {
   netAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  barber?: Prisma.BarberUpdateOneRequiredWithoutEarningsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutEarningsNestedInput
   booking?: Prisma.BookingUpdateOneRequiredWithoutEarningNestedInput
 }
 
@@ -613,7 +613,7 @@ export type EarningCreateWithoutBookingInput = {
   netAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod: $Enums.PaymentMethod
   createdAt?: Date | string
-  barber: Prisma.BarberCreateNestedOneWithoutEarningsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutEarningsInput
 }
 
 export type EarningUncheckedCreateWithoutBookingInput = {
@@ -651,7 +651,7 @@ export type EarningUpdateWithoutBookingInput = {
   netAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  barber?: Prisma.BarberUpdateOneRequiredWithoutEarningsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutEarningsNestedInput
 }
 
 export type EarningUncheckedUpdateWithoutBookingInput = {
@@ -721,7 +721,7 @@ export type EarningSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   netAmount?: boolean
   paymentMethod?: boolean
   createdAt?: boolean
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["earning"]>
 
@@ -735,7 +735,7 @@ export type EarningSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   netAmount?: boolean
   paymentMethod?: boolean
   createdAt?: boolean
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["earning"]>
 
@@ -749,7 +749,7 @@ export type EarningSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   netAmount?: boolean
   paymentMethod?: boolean
   createdAt?: boolean
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["earning"]>
 
@@ -767,22 +767,22 @@ export type EarningSelectScalar = {
 
 export type EarningOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "bookingId" | "date" | "grossAmount" | "platformFee" | "netAmount" | "paymentMethod" | "createdAt", ExtArgs["result"]["earning"]>
 export type EarningInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
 }
 export type EarningIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
 }
 export type EarningIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  barber?: boolean | Prisma.BarberDefaultArgs<ExtArgs>
+  barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
 }
 
 export type $EarningPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Earning"
   objects: {
-    barber: Prisma.$BarberPayload<ExtArgs>
+    barber: Prisma.$BarberProfilePayload<ExtArgs>
     booking: Prisma.$BookingPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1189,7 +1189,7 @@ readonly fields: EarningFieldRefs;
  */
 export interface Prisma__EarningClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  barber<T extends Prisma.BarberDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberDefaultArgs<ExtArgs>>): Prisma.Prisma__BarberClient<runtime.Types.Result.GetResult<Prisma.$BarberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  barber<T extends Prisma.BarberProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__BarberProfileClient<runtime.Types.Result.GetResult<Prisma.$BarberProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   booking<T extends Prisma.BookingDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BookingDefaultArgs<ExtArgs>>): Prisma.Prisma__BookingClient<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.

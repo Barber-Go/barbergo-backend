@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { NotificationsService } from '../notifications/notifications.service';
+import { CommissionsService } from '../commissions/commissions.service';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { UpdateBookingStatusDto } from './dto/update-booking-status.dto';
 import { BookingStatus, NotificationType, Role } from '../generated/prisma/enums';
@@ -39,13 +40,14 @@ export class BookingsService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly notifications: NotificationsService,
+    private readonly commissions: CommissionsService,
   ) {}
 
   // ── CLIENT: create booking ─────────────────────────────────────────────────
 
   async create(clientId: string, dto: CreateBookingDto) {
     // Validate barber + service belong together and are active
-    const service = await this.prisma.client.service.findFirst({
+    const service = await this.prisma.client.serviceItem.findFirst({
       where: {
         id: dto.serviceId,
         barberId: dto.barberId,
@@ -57,8 +59,9 @@ export class BookingsService {
       throw new NotFoundException('Service not found for this barber');
     }
 
-    const barber = await this.prisma.client.barber.findUnique({
+    const barber = await this.prisma.client.barberProfile.findUnique({
       where: { id: dto.barberId, isActive: true },
+      select: { id: true, isActive: true, userId: true, employmentType: true, commissionRate: true },
     });
 
     if (!barber) {
@@ -86,9 +89,12 @@ export class BookingsService {
       throw new BadRequestException('This time slot is already taken');
     }
 
-    const totalAmount = Number(service.price);
-    const platformFee = Number((totalAmount * barber.commissionRate).toFixed(2));
-    const barberNet = Number((totalAmount - platformFee).toFixed(2));
+    const calc = this.commissions.calculate({
+      grossAmount: Number(service.price),
+      employmentType: barber.employmentType,
+      paymentMethod: dto.paymentMethod,
+      service: { id: service.id, name: service.name, price: Number(service.price), durationMin: service.durationMin },
+    });
 
     const booking = await this.prisma.client.booking.create({
       data: {
@@ -97,9 +103,18 @@ export class BookingsService {
         serviceId: dto.serviceId,
         scheduledAt,
         paymentMethod: dto.paymentMethod,
-        totalAmount,
-        platformFee,
-        barberNet,
+        // V1
+        totalAmount: calc.totalAmount,
+        platformFee: calc.platformFee,
+        barberNet: calc.barberNet,
+        // V2
+        grossAmount: calc.grossAmount,
+        platformFeePercent: calc.platformFeePercent,
+        distributableAmount: calc.distributableAmount,
+        barberAmount: calc.barberAmount,
+        shopAmount: calc.shopAmount,
+        netPayoutToBarber: calc.netPayoutToBarber,
+        serviceSnapshot: calc.serviceSnapshot,
       },
       include: BOOKING_INCLUDE,
     });
@@ -112,7 +127,7 @@ export class BookingsService {
         barberUserId,
         NotificationType.BOOKING_CREATED,
         'Nueva reserva',
-        `Tienes una nueva reserva para ${booking.service.name} el ${dateStr}`,
+        `Tienes una nueva reserva para ${service.name} el ${dateStr}`,
       )
       .catch(() => {}); // fire-and-forget
 
@@ -133,7 +148,7 @@ export class BookingsService {
   // ── BARBER: list own bookings ──────────────────────────────────────────────
 
   async findForBarber(userId: string) {
-    const barber = await this.prisma.client.barber.findUnique({
+    const barber = await this.prisma.client.barberProfile.findUnique({
       where: { userId },
     });
     if (!barber) throw new NotFoundException('Barber profile not found');
@@ -250,7 +265,7 @@ export class BookingsService {
   // ── Helpers ────────────────────────────────────────────────────────────────
 
   private async getBarberUserId(barberId: string): Promise<string> {
-    const barber = await this.prisma.client.barber.findUnique({
+    const barber = await this.prisma.client.barberProfile.findUnique({
       where: { id: barberId },
       select: { userId: true },
     });

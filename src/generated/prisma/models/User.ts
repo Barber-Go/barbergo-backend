@@ -222,10 +222,17 @@ export type UserWhereInput = {
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  barberProfile?: Prisma.XOR<Prisma.BarberNullableScalarRelationFilter, Prisma.BarberWhereInput> | null
+  clientProfile?: Prisma.XOR<Prisma.ClientProfileNullableScalarRelationFilter, Prisma.ClientProfileWhereInput> | null
+  barberProfile?: Prisma.XOR<Prisma.BarberProfileNullableScalarRelationFilter, Prisma.BarberProfileWhereInput> | null
+  barbershopProfile?: Prisma.XOR<Prisma.BarbershopProfileNullableScalarRelationFilter, Prisma.BarbershopProfileWhereInput> | null
   bookings?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
+  settings?: Prisma.XOR<Prisma.UserSettingsNullableScalarRelationFilter, Prisma.UserSettingsWhereInput> | null
+  follows?: Prisma.FollowListRelationFilter
+  pointsWallet?: Prisma.XOR<Prisma.PointsWalletNullableScalarRelationFilter, Prisma.PointsWalletWhereInput> | null
+  communityMemberships?: Prisma.CommunityMembershipListRelationFilter
+  communityPosts?: Prisma.CommunityPostListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -239,10 +246,17 @@ export type UserOrderByWithRelationInput = {
   isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  barberProfile?: Prisma.BarberOrderByWithRelationInput
+  clientProfile?: Prisma.ClientProfileOrderByWithRelationInput
+  barberProfile?: Prisma.BarberProfileOrderByWithRelationInput
+  barbershopProfile?: Prisma.BarbershopProfileOrderByWithRelationInput
   bookings?: Prisma.BookingOrderByRelationAggregateInput
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
+  settings?: Prisma.UserSettingsOrderByWithRelationInput
+  follows?: Prisma.FollowOrderByRelationAggregateInput
+  pointsWallet?: Prisma.PointsWalletOrderByWithRelationInput
+  communityMemberships?: Prisma.CommunityMembershipOrderByRelationAggregateInput
+  communityPosts?: Prisma.CommunityPostOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -259,10 +273,17 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  barberProfile?: Prisma.XOR<Prisma.BarberNullableScalarRelationFilter, Prisma.BarberWhereInput> | null
+  clientProfile?: Prisma.XOR<Prisma.ClientProfileNullableScalarRelationFilter, Prisma.ClientProfileWhereInput> | null
+  barberProfile?: Prisma.XOR<Prisma.BarberProfileNullableScalarRelationFilter, Prisma.BarberProfileWhereInput> | null
+  barbershopProfile?: Prisma.XOR<Prisma.BarbershopProfileNullableScalarRelationFilter, Prisma.BarbershopProfileWhereInput> | null
   bookings?: Prisma.BookingListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
+  settings?: Prisma.XOR<Prisma.UserSettingsNullableScalarRelationFilter, Prisma.UserSettingsWhereInput> | null
+  follows?: Prisma.FollowListRelationFilter
+  pointsWallet?: Prisma.XOR<Prisma.PointsWalletNullableScalarRelationFilter, Prisma.PointsWalletWhereInput> | null
+  communityMemberships?: Prisma.CommunityMembershipListRelationFilter
+  communityPosts?: Prisma.CommunityPostListRelationFilter
 }, "id" | "email" | "phone">
 
 export type UserOrderByWithAggregationInput = {
@@ -308,10 +329,17 @@ export type UserCreateInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  barberProfile?: Prisma.BarberCreateNestedOneWithoutUserInput
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -325,10 +353,17 @@ export type UserUncheckedCreateInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  barberProfile?: Prisma.BarberUncheckedCreateNestedOneWithoutUserInput
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUpdateInput = {
@@ -342,10 +377,17 @@ export type UserUpdateInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  barberProfile?: Prisma.BarberUpdateOneWithoutUserNestedInput
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -359,10 +401,17 @@ export type UserUncheckedUpdateInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  barberProfile?: Prisma.BarberUncheckedUpdateOneWithoutUserNestedInput
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -468,6 +517,20 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+export type UserCreateNestedOneWithoutClientProfileInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutClientProfileInput, Prisma.UserUncheckedCreateWithoutClientProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutClientProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutClientProfileNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutClientProfileInput, Prisma.UserUncheckedCreateWithoutClientProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutClientProfileInput
+  upsert?: Prisma.UserUpsertWithoutClientProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutClientProfileInput, Prisma.UserUpdateWithoutClientProfileInput>, Prisma.UserUncheckedUpdateWithoutClientProfileInput>
+}
+
 export type UserCreateNestedOneWithoutBarberProfileInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutBarberProfileInput, Prisma.UserUncheckedCreateWithoutBarberProfileInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutBarberProfileInput
@@ -480,6 +543,20 @@ export type UserUpdateOneRequiredWithoutBarberProfileNestedInput = {
   upsert?: Prisma.UserUpsertWithoutBarberProfileInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBarberProfileInput, Prisma.UserUpdateWithoutBarberProfileInput>, Prisma.UserUncheckedUpdateWithoutBarberProfileInput>
+}
+
+export type UserCreateNestedOneWithoutBarbershopProfileInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBarbershopProfileInput, Prisma.UserUncheckedCreateWithoutBarbershopProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBarbershopProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutBarbershopProfileNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBarbershopProfileInput, Prisma.UserUncheckedCreateWithoutBarbershopProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBarbershopProfileInput
+  upsert?: Prisma.UserUpsertWithoutBarbershopProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBarbershopProfileInput, Prisma.UserUpdateWithoutBarbershopProfileInput>, Prisma.UserUncheckedUpdateWithoutBarbershopProfileInput>
 }
 
 export type UserCreateNestedOneWithoutBookingsInput = {
@@ -524,6 +601,184 @@ export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationsInput, Prisma.UserUpdateWithoutNotificationsInput>, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
 }
 
+export type UserCreateNestedOneWithoutFollowsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFollowsInput, Prisma.UserUncheckedCreateWithoutFollowsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutFollowsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFollowsInput, Prisma.UserUncheckedCreateWithoutFollowsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowsInput
+  upsert?: Prisma.UserUpsertWithoutFollowsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFollowsInput, Prisma.UserUpdateWithoutFollowsInput>, Prisma.UserUncheckedUpdateWithoutFollowsInput>
+}
+
+export type UserCreateNestedOneWithoutPointsWalletInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPointsWalletInput, Prisma.UserUncheckedCreateWithoutPointsWalletInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPointsWalletInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPointsWalletNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPointsWalletInput, Prisma.UserUncheckedCreateWithoutPointsWalletInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPointsWalletInput
+  upsert?: Prisma.UserUpsertWithoutPointsWalletInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPointsWalletInput, Prisma.UserUpdateWithoutPointsWalletInput>, Prisma.UserUncheckedUpdateWithoutPointsWalletInput>
+}
+
+export type UserCreateNestedOneWithoutCommunityMembershipsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCommunityMembershipsInput, Prisma.UserUncheckedCreateWithoutCommunityMembershipsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommunityMembershipsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCommunityMembershipsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCommunityMembershipsInput, Prisma.UserUncheckedCreateWithoutCommunityMembershipsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommunityMembershipsInput
+  upsert?: Prisma.UserUpsertWithoutCommunityMembershipsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCommunityMembershipsInput, Prisma.UserUpdateWithoutCommunityMembershipsInput>, Prisma.UserUncheckedUpdateWithoutCommunityMembershipsInput>
+}
+
+export type UserCreateNestedOneWithoutCommunityPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCommunityPostsInput, Prisma.UserUncheckedCreateWithoutCommunityPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommunityPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCommunityPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCommunityPostsInput, Prisma.UserUncheckedCreateWithoutCommunityPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommunityPostsInput
+  upsert?: Prisma.UserUpsertWithoutCommunityPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCommunityPostsInput, Prisma.UserUpdateWithoutCommunityPostsInput>, Prisma.UserUncheckedUpdateWithoutCommunityPostsInput>
+}
+
+export type UserCreateNestedOneWithoutSettingsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSettingsInput, Prisma.UserUncheckedCreateWithoutSettingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSettingsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSettingsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSettingsInput, Prisma.UserUncheckedCreateWithoutSettingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSettingsInput
+  upsert?: Prisma.UserUpsertWithoutSettingsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSettingsInput, Prisma.UserUpdateWithoutSettingsInput>, Prisma.UserUncheckedUpdateWithoutSettingsInput>
+}
+
+export type UserCreateWithoutClientProfileInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutClientProfileInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutClientProfileInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutClientProfileInput, Prisma.UserUncheckedCreateWithoutClientProfileInput>
+}
+
+export type UserUpsertWithoutClientProfileInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutClientProfileInput, Prisma.UserUncheckedUpdateWithoutClientProfileInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutClientProfileInput, Prisma.UserUncheckedCreateWithoutClientProfileInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutClientProfileInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutClientProfileInput, Prisma.UserUncheckedUpdateWithoutClientProfileInput>
+}
+
+export type UserUpdateWithoutClientProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutClientProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
 export type UserCreateWithoutBarberProfileInput = {
   id?: string
   email: string
@@ -535,9 +790,16 @@ export type UserCreateWithoutBarberProfileInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutBarberProfileInput = {
@@ -551,9 +813,16 @@ export type UserUncheckedCreateWithoutBarberProfileInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutBarberProfileInput = {
@@ -583,9 +852,16 @@ export type UserUpdateWithoutBarberProfileInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBarberProfileInput = {
@@ -599,9 +875,124 @@ export type UserUncheckedUpdateWithoutBarberProfileInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateWithoutBarbershopProfileInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutBarbershopProfileInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutBarbershopProfileInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBarbershopProfileInput, Prisma.UserUncheckedCreateWithoutBarbershopProfileInput>
+}
+
+export type UserUpsertWithoutBarbershopProfileInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBarbershopProfileInput, Prisma.UserUncheckedUpdateWithoutBarbershopProfileInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBarbershopProfileInput, Prisma.UserUncheckedCreateWithoutBarbershopProfileInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBarbershopProfileInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBarbershopProfileInput, Prisma.UserUncheckedUpdateWithoutBarbershopProfileInput>
+}
+
+export type UserUpdateWithoutBarbershopProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBarbershopProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateWithoutBookingsInput = {
@@ -615,9 +1006,16 @@ export type UserCreateWithoutBookingsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  barberProfile?: Prisma.BarberCreateNestedOneWithoutUserInput
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutBookingsInput = {
@@ -631,9 +1029,16 @@ export type UserUncheckedCreateWithoutBookingsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  barberProfile?: Prisma.BarberUncheckedCreateNestedOneWithoutUserInput
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutBookingsInput = {
@@ -663,9 +1068,16 @@ export type UserUpdateWithoutBookingsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  barberProfile?: Prisma.BarberUpdateOneWithoutUserNestedInput
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBookingsInput = {
@@ -679,9 +1091,16 @@ export type UserUncheckedUpdateWithoutBookingsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  barberProfile?: Prisma.BarberUncheckedUpdateOneWithoutUserNestedInput
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateWithoutReviewsInput = {
@@ -695,9 +1114,16 @@ export type UserCreateWithoutReviewsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  barberProfile?: Prisma.BarberCreateNestedOneWithoutUserInput
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutReviewsInput = {
@@ -711,9 +1137,16 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  barberProfile?: Prisma.BarberUncheckedCreateNestedOneWithoutUserInput
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutReviewsInput = {
@@ -743,9 +1176,16 @@ export type UserUpdateWithoutReviewsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  barberProfile?: Prisma.BarberUpdateOneWithoutUserNestedInput
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewsInput = {
@@ -759,9 +1199,16 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  barberProfile?: Prisma.BarberUncheckedUpdateOneWithoutUserNestedInput
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -775,9 +1222,16 @@ export type UserCreateWithoutNotificationsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  barberProfile?: Prisma.BarberCreateNestedOneWithoutUserInput
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -791,9 +1245,16 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  barberProfile?: Prisma.BarberUncheckedCreateNestedOneWithoutUserInput
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -823,9 +1284,16 @@ export type UserUpdateWithoutNotificationsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  barberProfile?: Prisma.BarberUpdateOneWithoutUserNestedInput
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -839,9 +1307,556 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  barberProfile?: Prisma.BarberUncheckedUpdateOneWithoutUserNestedInput
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateWithoutFollowsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutFollowsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutFollowsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutFollowsInput, Prisma.UserUncheckedCreateWithoutFollowsInput>
+}
+
+export type UserUpsertWithoutFollowsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutFollowsInput, Prisma.UserUncheckedUpdateWithoutFollowsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutFollowsInput, Prisma.UserUncheckedCreateWithoutFollowsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutFollowsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutFollowsInput, Prisma.UserUncheckedUpdateWithoutFollowsInput>
+}
+
+export type UserUpdateWithoutFollowsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutFollowsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateWithoutPointsWalletInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutPointsWalletInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutPointsWalletInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPointsWalletInput, Prisma.UserUncheckedCreateWithoutPointsWalletInput>
+}
+
+export type UserUpsertWithoutPointsWalletInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPointsWalletInput, Prisma.UserUncheckedUpdateWithoutPointsWalletInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPointsWalletInput, Prisma.UserUncheckedCreateWithoutPointsWalletInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPointsWalletInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPointsWalletInput, Prisma.UserUncheckedUpdateWithoutPointsWalletInput>
+}
+
+export type UserUpdateWithoutPointsWalletInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPointsWalletInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateWithoutCommunityMembershipsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutCommunityMembershipsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCommunityMembershipsInput, Prisma.UserUncheckedCreateWithoutCommunityMembershipsInput>
+}
+
+export type UserUpsertWithoutCommunityMembershipsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCommunityMembershipsInput, Prisma.UserUncheckedUpdateWithoutCommunityMembershipsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCommunityMembershipsInput, Prisma.UserUncheckedCreateWithoutCommunityMembershipsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCommunityMembershipsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCommunityMembershipsInput, Prisma.UserUncheckedUpdateWithoutCommunityMembershipsInput>
+}
+
+export type UserUpdateWithoutCommunityMembershipsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateWithoutCommunityPostsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCommunityPostsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCommunityPostsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCommunityPostsInput, Prisma.UserUncheckedCreateWithoutCommunityPostsInput>
+}
+
+export type UserUpsertWithoutCommunityPostsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCommunityPostsInput, Prisma.UserUncheckedUpdateWithoutCommunityPostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCommunityPostsInput, Prisma.UserUncheckedCreateWithoutCommunityPostsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCommunityPostsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCommunityPostsInput, Prisma.UserUncheckedUpdateWithoutCommunityPostsInput>
+}
+
+export type UserUpdateWithoutCommunityPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCommunityPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSettingsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutSettingsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutSettingsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSettingsInput, Prisma.UserUncheckedCreateWithoutSettingsInput>
+}
+
+export type UserUpsertWithoutSettingsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSettingsInput, Prisma.UserUncheckedUpdateWithoutSettingsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSettingsInput, Prisma.UserUncheckedCreateWithoutSettingsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSettingsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSettingsInput, Prisma.UserUncheckedUpdateWithoutSettingsInput>
+}
+
+export type UserUpdateWithoutSettingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSettingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 
@@ -853,12 +1868,18 @@ export type UserCountOutputType = {
   bookings: number
   reviews: number
   notifications: number
+  follows: number
+  communityMemberships: number
+  communityPosts: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bookings?: boolean | UserCountOutputTypeCountBookingsArgs
   reviews?: boolean | UserCountOutputTypeCountReviewsArgs
   notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
+  follows?: boolean | UserCountOutputTypeCountFollowsArgs
+  communityMemberships?: boolean | UserCountOutputTypeCountCommunityMembershipsArgs
+  communityPosts?: boolean | UserCountOutputTypeCountCommunityPostsArgs
 }
 
 /**
@@ -892,6 +1913,27 @@ export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Ty
   where?: Prisma.NotificationWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountFollowsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FollowWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCommunityMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CommunityMembershipWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCommunityPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CommunityPostWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -904,10 +1946,17 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  clientProfile?: boolean | Prisma.User$clientProfileArgs<ExtArgs>
   barberProfile?: boolean | Prisma.User$barberProfileArgs<ExtArgs>
+  barbershopProfile?: boolean | Prisma.User$barbershopProfileArgs<ExtArgs>
   bookings?: boolean | Prisma.User$bookingsArgs<ExtArgs>
   reviews?: boolean | Prisma.User$reviewsArgs<ExtArgs>
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  settings?: boolean | Prisma.User$settingsArgs<ExtArgs>
+  follows?: boolean | Prisma.User$followsArgs<ExtArgs>
+  pointsWallet?: boolean | Prisma.User$pointsWalletArgs<ExtArgs>
+  communityMemberships?: boolean | Prisma.User$communityMembershipsArgs<ExtArgs>
+  communityPosts?: boolean | Prisma.User$communityPostsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -952,10 +2001,17 @@ export type UserSelectScalar = {
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "password" | "name" | "avatarUrl" | "role" | "isVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  clientProfile?: boolean | Prisma.User$clientProfileArgs<ExtArgs>
   barberProfile?: boolean | Prisma.User$barberProfileArgs<ExtArgs>
+  barbershopProfile?: boolean | Prisma.User$barbershopProfileArgs<ExtArgs>
   bookings?: boolean | Prisma.User$bookingsArgs<ExtArgs>
   reviews?: boolean | Prisma.User$reviewsArgs<ExtArgs>
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  settings?: boolean | Prisma.User$settingsArgs<ExtArgs>
+  follows?: boolean | Prisma.User$followsArgs<ExtArgs>
+  pointsWallet?: boolean | Prisma.User$pointsWalletArgs<ExtArgs>
+  communityMemberships?: boolean | Prisma.User$communityMembershipsArgs<ExtArgs>
+  communityPosts?: boolean | Prisma.User$communityPostsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -964,10 +2020,17 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    barberProfile: Prisma.$BarberPayload<ExtArgs> | null
+    clientProfile: Prisma.$ClientProfilePayload<ExtArgs> | null
+    barberProfile: Prisma.$BarberProfilePayload<ExtArgs> | null
+    barbershopProfile: Prisma.$BarbershopProfilePayload<ExtArgs> | null
     bookings: Prisma.$BookingPayload<ExtArgs>[]
     reviews: Prisma.$ReviewPayload<ExtArgs>[]
     notifications: Prisma.$NotificationPayload<ExtArgs>[]
+    settings: Prisma.$UserSettingsPayload<ExtArgs> | null
+    follows: Prisma.$FollowPayload<ExtArgs>[]
+    pointsWallet: Prisma.$PointsWalletPayload<ExtArgs> | null
+    communityMemberships: Prisma.$CommunityMembershipPayload<ExtArgs>[]
+    communityPosts: Prisma.$CommunityPostPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1374,10 +2437,17 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  barberProfile<T extends Prisma.User$barberProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$barberProfileArgs<ExtArgs>>): Prisma.Prisma__BarberClient<runtime.Types.Result.GetResult<Prisma.$BarberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  clientProfile<T extends Prisma.User$clientProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$clientProfileArgs<ExtArgs>>): Prisma.Prisma__ClientProfileClient<runtime.Types.Result.GetResult<Prisma.$ClientProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  barberProfile<T extends Prisma.User$barberProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$barberProfileArgs<ExtArgs>>): Prisma.Prisma__BarberProfileClient<runtime.Types.Result.GetResult<Prisma.$BarberProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  barbershopProfile<T extends Prisma.User$barbershopProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$barbershopProfileArgs<ExtArgs>>): Prisma.Prisma__BarbershopProfileClient<runtime.Types.Result.GetResult<Prisma.$BarbershopProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   bookings<T extends Prisma.User$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reviews<T extends Prisma.User$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  settings<T extends Prisma.User$settingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$settingsArgs<ExtArgs>>): Prisma.Prisma__UserSettingsClient<runtime.Types.Result.GetResult<Prisma.$UserSettingsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  follows<T extends Prisma.User$followsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$followsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  pointsWallet<T extends Prisma.User$pointsWalletArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$pointsWalletArgs<ExtArgs>>): Prisma.Prisma__PointsWalletClient<runtime.Types.Result.GetResult<Prisma.$PointsWalletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  communityMemberships<T extends Prisma.User$communityMembershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$communityMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityMembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  communityPosts<T extends Prisma.User$communityPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$communityPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1810,22 +2880,60 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.clientProfile
+ */
+export type User$clientProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ClientProfile
+   */
+  select?: Prisma.ClientProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ClientProfile
+   */
+  omit?: Prisma.ClientProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientProfileInclude<ExtArgs> | null
+  where?: Prisma.ClientProfileWhereInput
+}
+
+/**
  * User.barberProfile
  */
 export type User$barberProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Barber
+   * Select specific fields to fetch from the BarberProfile
    */
-  select?: Prisma.BarberSelect<ExtArgs> | null
+  select?: Prisma.BarberProfileSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Barber
+   * Omit specific fields from the BarberProfile
    */
-  omit?: Prisma.BarberOmit<ExtArgs> | null
+  omit?: Prisma.BarberProfileOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.BarberInclude<ExtArgs> | null
-  where?: Prisma.BarberWhereInput
+  include?: Prisma.BarberProfileInclude<ExtArgs> | null
+  where?: Prisma.BarberProfileWhereInput
+}
+
+/**
+ * User.barbershopProfile
+ */
+export type User$barbershopProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BarbershopProfile
+   */
+  select?: Prisma.BarbershopProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BarbershopProfile
+   */
+  omit?: Prisma.BarbershopProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BarbershopProfileInclude<ExtArgs> | null
+  where?: Prisma.BarbershopProfileWhereInput
 }
 
 /**
@@ -1898,6 +3006,116 @@ export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+}
+
+/**
+ * User.settings
+ */
+export type User$settingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserSettings
+   */
+  select?: Prisma.UserSettingsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserSettings
+   */
+  omit?: Prisma.UserSettingsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserSettingsInclude<ExtArgs> | null
+  where?: Prisma.UserSettingsWhereInput
+}
+
+/**
+ * User.follows
+ */
+export type User$followsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Follow
+   */
+  select?: Prisma.FollowSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Follow
+   */
+  omit?: Prisma.FollowOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FollowInclude<ExtArgs> | null
+  where?: Prisma.FollowWhereInput
+  orderBy?: Prisma.FollowOrderByWithRelationInput | Prisma.FollowOrderByWithRelationInput[]
+  cursor?: Prisma.FollowWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FollowScalarFieldEnum | Prisma.FollowScalarFieldEnum[]
+}
+
+/**
+ * User.pointsWallet
+ */
+export type User$pointsWalletArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PointsWallet
+   */
+  select?: Prisma.PointsWalletSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PointsWallet
+   */
+  omit?: Prisma.PointsWalletOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PointsWalletInclude<ExtArgs> | null
+  where?: Prisma.PointsWalletWhereInput
+}
+
+/**
+ * User.communityMemberships
+ */
+export type User$communityMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CommunityMembership
+   */
+  select?: Prisma.CommunityMembershipSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CommunityMembership
+   */
+  omit?: Prisma.CommunityMembershipOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CommunityMembershipInclude<ExtArgs> | null
+  where?: Prisma.CommunityMembershipWhereInput
+  orderBy?: Prisma.CommunityMembershipOrderByWithRelationInput | Prisma.CommunityMembershipOrderByWithRelationInput[]
+  cursor?: Prisma.CommunityMembershipWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommunityMembershipScalarFieldEnum | Prisma.CommunityMembershipScalarFieldEnum[]
+}
+
+/**
+ * User.communityPosts
+ */
+export type User$communityPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CommunityPost
+   */
+  select?: Prisma.CommunityPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CommunityPost
+   */
+  omit?: Prisma.CommunityPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CommunityPostInclude<ExtArgs> | null
+  where?: Prisma.CommunityPostWhereInput
+  orderBy?: Prisma.CommunityPostOrderByWithRelationInput | Prisma.CommunityPostOrderByWithRelationInput[]
+  cursor?: Prisma.CommunityPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommunityPostScalarFieldEnum | Prisma.CommunityPostScalarFieldEnum[]
 }
 
 /**

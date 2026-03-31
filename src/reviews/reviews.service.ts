@@ -56,7 +56,7 @@ export class ReviewsService {
       _count: { rating: true },
     });
 
-    await this.prisma.client.barber.update({
+    await this.prisma.client.barberProfile.update({
       where: { id: booking.barberId },
       data: {
         rating: Number((aggregate._avg.rating ?? 0).toFixed(2)),
