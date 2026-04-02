@@ -1,8 +1,10 @@
 import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { haversineKm } from '../shared/geo.utils';
+import { encrypt } from '../shared/crypto.utils';
 import { PrismaService } from '../prisma/prisma.service';
 import { StorageService } from '../storage/storage.service';
 import { UpdateBarberProfileDto } from './dto/update-barber-profile.dto';
+import { UpdateSiiCredentialsDto } from './dto/update-sii-credentials.dto';
 import { CreateServiceDto } from './dto/create-service.dto';
 import { UpdateServiceDto } from './dto/update-service.dto';
 
@@ -221,6 +223,23 @@ export class BarbersService {
     return { message: 'Servicio eliminado correctamente' };
   }
 
+  // ── SII credentials ────────────────────────────────────────────────────────
+
+  async updateSiiCredentials(userId: string, dto: UpdateSiiCredentialsDto) {
+    const profile = await this.prisma.client.barberProfile.findUnique({ where: { userId } });
+    if (!profile) throw new NotFoundException('Barber profile not found');
+
+    await this.prisma.client.barberProfile.update({
+      where: { userId },
+      data: {
+        rutTributario: dto.rut,
+        claveTributaria: encrypt(dto.clave),
+      },
+    });
+
+    return { success: true };
+  }
+
   // ── Private helpers ────────────────────────────────────────────────────────
 
   private async assertServiceOwnership(userId: string, serviceId: string) {
@@ -245,6 +264,8 @@ export class BarbersService {
       rating: profile.rating,
       totalReviews: profile.totalReviews,
       isActive: profile.isActive,
+      rutTributario: profile.rutTributario ?? null,
+      hasSiiCredentials: !!(profile.rutTributario && profile.claveTributaria),
       services: profile.services.map((s: any) => ({
         id: s.id,
         name: s.name,

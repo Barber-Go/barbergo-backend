@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../prisma/prisma.service';
+import { decrypt } from '../shared/crypto.utils';
 import { BookingStatus, Role } from '../generated/prisma/client';
 
 interface BoletaResponse {
@@ -29,11 +30,11 @@ export class SiiService {
     this.emisorRut = this.config.get<string>('SII_EMISOR_RUT');
   }
 
-  async emitirBoleta(amount: number): Promise<BoletaResponse> {
+  async emitirBoleta(amount: number, emisorRut?: string): Promise<BoletaResponse> {
     const fecha = new Date().toISOString().slice(0, 10);
 
     const body = {
-      emisor: this.emisorRut,
+      emisor: emisorRut ?? this.emisorRut,
       receptor: {
         rut: '66666666-6',
         razon_social: 'Consumidor Final',
@@ -75,7 +76,7 @@ export class SiiService {
       where: { id: bookingId },
       include: {
         client: { select: { name: true } },
-        barber: { select: { userId: true } },
+        barber: { select: { userId: true, rutTributario: true, claveTributaria: true } },
         service: { select: { name: true } },
       },
     });
@@ -88,8 +89,17 @@ export class SiiService {
     if (booking.boletaFolio)
       throw new ConflictException('Boleta already emitted for this booking');
 
+    // Use barber's own RUT if configured, otherwise fall back to company RUT
+    if (!booking.barber.rutTributario || !booking.barber.claveTributaria) {
+      throw new BadRequestException(
+        'Configura tus credenciales SII primero en Gestión → Credenciales SII',
+      );
+    }
+
+    const emisorRut = booking.barber.rutTributario;
+
     const amount = Number(booking.totalAmount);
-    const result = await this.emitirBoleta(amount);
+    const result = await this.emitirBoleta(amount, emisorRut);
 
     await this.prisma.client.booking.update({
       where: { id: bookingId },

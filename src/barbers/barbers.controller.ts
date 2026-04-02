@@ -23,6 +23,7 @@ import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { Role } from '../generated/prisma/enums';
 import { UpdateBarberProfileDto } from './dto/update-barber-profile.dto';
+import { UpdateSiiCredentialsDto } from './dto/update-sii-credentials.dto';
 import { CreateServiceDto } from './dto/create-service.dto';
 import { UpdateServiceDto } from './dto/update-service.dto';
 
@@ -103,6 +104,15 @@ export class BarbersController {
   @Roles(Role.BARBER)
   deleteService(@Request() req: any, @Param('serviceId') serviceId: string) {
     return this.barbersService.deleteService(req.user.id, serviceId);
+  }
+
+  // ── SII credentials ──
+
+  @Patch('me/credenciales-sii')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBER, Role.BARBER_INDEPENDENT)
+  updateSiiCredentials(@Request() req: any, @Body() dto: UpdateSiiCredentialsDto) {
+    return this.barbersService.updateSiiCredentials(req.user.id, dto);
   }
 
   // ── Availability ──

@@ -2357,6 +2357,8 @@ export const BarberProfileScalarFieldEnum = {
   commissionRate: 'commissionRate',
   employmentType: 'employmentType',
   barbershopId: 'barbershopId',
+  rutTributario: 'rutTributario',
+  claveTributaria: 'claveTributaria',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
