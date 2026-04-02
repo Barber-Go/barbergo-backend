@@ -123,6 +123,18 @@ export class PaymentsService {
     };
   }
 
+  async abortTransaction(tbkToken: string) {
+    const payment = await this.prisma.client.payment.findFirst({
+      where: { transactionRef: tbkToken },
+    });
+    if (payment) {
+      await this.prisma.client.payment.update({
+        where: { id: payment.id },
+        data: { status: PaymentStatus.FAILED },
+      });
+    }
+  }
+
   async getPaymentByBooking(bookingId: string) {
     const payment = await this.prisma.client.payment.findUnique({
       where: { bookingId },

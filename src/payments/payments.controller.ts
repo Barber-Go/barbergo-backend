@@ -4,17 +4,27 @@ import {
   Get,
   Body,
   Param,
+  Query,
+  Res,
   UseGuards,
   Request,
 } from '@nestjs/common';
+import { Response } from 'express';
+import { ConfigService } from '@nestjs/config';
 import { PaymentsService } from './payments.service';
 import { CreateWebpayPaymentDto } from './dto/create-payment.dto';
-import { ConfirmWebpayPaymentDto } from './dto/confirm-payment.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 @Controller('v1/payments')
 export class PaymentsController {
-  constructor(private readonly paymentsService: PaymentsService) {}
+  private readonly frontendUrl: string;
+
+  constructor(
+    private readonly paymentsService: PaymentsService,
+    private readonly config: ConfigService,
+  ) {
+    this.frontendUrl = this.config.get<string>('FRONTEND_URL') ?? 'http://localhost:8081';
+  }
 
   @Post('webpay/create')
   @UseGuards(JwtAuthGuard)
@@ -27,9 +37,50 @@ export class PaymentsController {
     );
   }
 
+  // Transbank POST callback after payment
   @Post('webpay/confirm')
-  confirmWebpay(@Body() dto: ConfirmWebpayPaymentDto) {
-    return this.paymentsService.confirmTransaction(dto.token_ws);
+  async confirmWebpayPost(
+    @Body() body: { token_ws?: string; TBK_TOKEN?: string; TBK_ORDEN_COMPRA?: string },
+    @Res() res: Response,
+  ) {
+    // User aborted at Transbank
+    if (body.TBK_TOKEN && !body.token_ws) {
+      await this.paymentsService.abortTransaction(body.TBK_TOKEN);
+      return res.redirect(`${this.frontendUrl}/(client)?payment=aborted`);
+    }
+
+    if (!body.token_ws) {
+      return res.redirect(`${this.frontendUrl}/(client)?payment=error`);
+    }
+
+    const result = await this.paymentsService.confirmTransaction(body.token_ws);
+    const status = result.status === 'APPROVED' ? 'success' : 'rejected';
+    return res.redirect(
+      `${this.frontendUrl}/(client)?payment=${status}&bookingId=${result.bookingId}`,
+    );
+  }
+
+  // Transbank GET callback (timeout/cancel fallback)
+  @Get('webpay/confirm')
+  async confirmWebpayGet(
+    @Query('token_ws') tokenWs: string,
+    @Query('TBK_TOKEN') tbkToken: string,
+    @Res() res: Response,
+  ) {
+    if (tbkToken && !tokenWs) {
+      await this.paymentsService.abortTransaction(tbkToken);
+      return res.redirect(`${this.frontendUrl}/(client)?payment=aborted`);
+    }
+
+    if (!tokenWs) {
+      return res.redirect(`${this.frontendUrl}/(client)?payment=error`);
+    }
+
+    const result = await this.paymentsService.confirmTransaction(tokenWs);
+    const status = result.status === 'APPROVED' ? 'success' : 'rejected';
+    return res.redirect(
+      `${this.frontendUrl}/(client)?payment=${status}&bookingId=${result.bookingId}`,
+    );
   }
 
   @Get('booking/:bookingId')
