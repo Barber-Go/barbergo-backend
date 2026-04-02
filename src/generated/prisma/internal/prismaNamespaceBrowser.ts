@@ -101,6 +101,7 @@ export const UserScalarFieldEnum = {
   password: 'password',
   name: 'name',
   avatarUrl: 'avatarUrl',
+  pushToken: 'pushToken',
   role: 'role',
   isVerified: 'isVerified',
   createdAt: 'createdAt',
@@ -241,6 +242,8 @@ export const BookingScalarFieldEnum = {
   shopAmount: 'shopAmount',
   netPayoutToBarber: 'netPayoutToBarber',
   serviceSnapshot: 'serviceSnapshot',
+  boletaFolio: 'boletaFolio',
+  boletaPdfUrl: 'boletaPdfUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

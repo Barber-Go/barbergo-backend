@@ -15,6 +15,10 @@ import { FinancesModule } from './finances/finances.module';
 import { CommunitiesModule } from './communities/communities.module';
 import { FollowsModule } from './follows/follows.module';
 import { SettingsModule } from './settings/settings.module';
+import { PaymentsModule } from './payments/payments.module';
+import { StorageModule } from './storage/storage.module';
+import { SiiModule } from './sii/sii.module';
+import { PushModule } from './push/push.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -25,6 +29,8 @@ import { AppService } from './app.service';
       envFilePath: '.env',
     }),
     PrismaModule,
+    StorageModule,
+    PushModule,
     AuthModule,
     CommissionsModule,
     BarbersModule,
@@ -39,6 +45,8 @@ import { AppService } from './app.service';
     CommunitiesModule,
     FollowsModule,
     SettingsModule,
+    PaymentsModule,
+    SiiModule,
   ],
   controllers: [AppController],
   providers: [AppService],

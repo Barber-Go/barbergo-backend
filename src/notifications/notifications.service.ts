@@ -1,15 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { PushService } from '../push/push.service';
 import { NotificationType } from '../generated/prisma/enums';
 
 @Injectable()
 export class NotificationsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly push: PushService,
+  ) {}
 
   async create(userId: string, type: NotificationType, title: string, body: string) {
-    return this.prisma.client.notification.create({
+    const notification = await this.prisma.client.notification.create({
       data: { userId, type, title, body },
     });
+
+    // Fire-and-forget push notification
+    this.push.sendPushNotification(userId, title, body, { type }).catch(() => {});
+
+    return notification;
   }
 
   async findAllForUser(userId: string) {

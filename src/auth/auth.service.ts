@@ -51,9 +51,17 @@ export class AuthService {
       },
     });
 
-    if (dto.role === Role.BARBER) {
+    if (dto.role === Role.BARBER || dto.role === Role.BARBER_INDEPENDENT) {
       await this.prisma.client.barberProfile.create({
-        data: { userId: user.id },
+        data: { userId: user.id, employmentType: 'INDEPENDENT' },
+      });
+    } else if (dto.role === Role.BARBER_EMPLOYEE) {
+      await this.prisma.client.barberProfile.create({
+        data: { userId: user.id, employmentType: 'EMPLOYEE' },
+      });
+    } else if (dto.role === Role.BARBERSHOP_OWNER) {
+      await this.prisma.client.barbershopProfile.create({
+        data: { userId: user.id, name: dto.name },
       });
     }
 

@@ -1,6 +1,7 @@
-import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { haversineKm } from '../shared/geo.utils';
 import { PrismaService } from '../prisma/prisma.service';
+import { StorageService } from '../storage/storage.service';
 import { UpdateBarberProfileDto } from './dto/update-barber-profile.dto';
 import { CreateServiceDto } from './dto/create-service.dto';
 import { UpdateServiceDto } from './dto/update-service.dto';
@@ -35,7 +36,10 @@ export interface ReviewResponse {
 
 @Injectable()
 export class BarbersService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly storage: StorageService,
+  ) {}
 
   async findAll(
     lat?: number,
@@ -144,6 +148,19 @@ export class BarbersService {
     ]);
 
     return this.findMe(userId);
+  }
+
+  async uploadAvatar(userId: string, file: Express.Multer.File) {
+    if (!file) throw new BadRequestException('No file provided');
+
+    const url = await this.storage.uploadImage(file, 'avatars');
+
+    await this.prisma.client.user.update({
+      where: { id: userId },
+      data: { avatarUrl: url },
+    });
+
+    return { avatarUrl: url };
   }
 
   async createService(userId: string, dto: CreateServiceDto) {

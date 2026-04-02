@@ -9,7 +9,10 @@ import {
   Query,
   Request,
   UseGuards,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { IsNumber, IsOptional, Min } from 'class-validator';
 import { Type } from 'class-transformer';
 import { BarbersService } from './barbers.service';
@@ -67,6 +70,14 @@ export class BarbersController {
   @Roles(Role.BARBER)
   updateMe(@Request() req: any, @Body() dto: UpdateBarberProfileDto) {
     return this.barbersService.updateMe(req.user.id, dto);
+  }
+
+  @Post('me/avatar')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBER)
+  @UseInterceptors(FileInterceptor('file', { limits: { fileSize: 5 * 1024 * 1024 } }))
+  uploadAvatar(@Request() req: any, @UploadedFile() file: Express.Multer.File) {
+    return this.barbersService.uploadAvatar(req.user.id, file);
   }
 
   @Post('me/services')
