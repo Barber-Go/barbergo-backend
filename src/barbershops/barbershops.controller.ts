@@ -36,6 +36,13 @@ export class BarbershopsController {
     return this.barbershopsService.update(req.user.id, dto);
   }
 
+  @Get('me/invite-code')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  getInviteCode(@Request() req: any) {
+    return this.barbershopsService.getOrCreateInviteCode(req.user.id);
+  }
+
   @Post('me/staff')
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.BARBERSHOP_OWNER)

@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ConflictException,
   Injectable,
   UnauthorizedException,
@@ -39,6 +40,18 @@ export class AuthService {
       }
     }
 
+    // Validate invite code before creating anything
+    let targetBarbershop: { id: string } | null = null;
+    if (dto.role === Role.BARBER_EMPLOYEE && dto.inviteCode) {
+      const shop = await this.prisma.client.barbershopProfile.findUnique({
+        where: { inviteCode: dto.inviteCode },
+      });
+      if (!shop) {
+        throw new BadRequestException('Código de invitación inválido');
+      }
+      targetBarbershop = shop;
+    }
+
     const hashedPassword = await bcrypt.hash(dto.password, BCRYPT_ROUNDS);
 
     const user = await this.prisma.client.user.create({
@@ -51,21 +64,62 @@ export class AuthService {
       },
     });
 
+    let membershipStatus: string | undefined;
+
     if (dto.role === Role.BARBER || dto.role === Role.BARBER_INDEPENDENT) {
       await this.prisma.client.barberProfile.create({
-        data: { userId: user.id, employmentType: 'INDEPENDENT' },
+        data: {
+          userId: user.id,
+          employmentType: 'INDEPENDENT',
+          bio: dto.specialty || null,
+        },
       });
     } else if (dto.role === Role.BARBER_EMPLOYEE) {
-      await this.prisma.client.barberProfile.create({
-        data: { userId: user.id, employmentType: 'EMPLOYEE' },
+      const barberProfile = await this.prisma.client.barberProfile.create({
+        data: {
+          userId: user.id,
+          employmentType: 'EMPLOYEE',
+          barbershopId: targetBarbershop?.id ?? null,
+        },
       });
+
+      if (targetBarbershop) {
+        // Valid invite code → create ACTIVE membership
+        await this.prisma.client.barbershopStaffMembership.create({
+          data: {
+            barbershopId: targetBarbershop.id,
+            barberProfileId: barberProfile.id,
+            role: 'BARBER',
+            isActive: true,
+          },
+        });
+        membershipStatus = 'ACTIVE';
+      } else {
+        // No code → PENDING membership
+        membershipStatus = 'PENDING';
+      }
     } else if (dto.role === Role.BARBERSHOP_OWNER) {
       await this.prisma.client.barbershopProfile.create({
-        data: { userId: user.id, name: dto.name },
+        data: {
+          userId: user.id,
+          name: dto.shopName || dto.name,
+          address: dto.shopAddress || null,
+          phone: dto.shopPhone || null,
+          status: 'DRAFT',
+        },
+      });
+    } else {
+      // CLIENT
+      await this.prisma.client.clientProfile.create({
+        data: { userId: user.id },
       });
     }
 
-    return { token: this.signToken(user), user: this.sanitize(user) };
+    return {
+      token: this.signToken(user),
+      user: this.sanitize(user),
+      membershipStatus,
+    };
   }
 
   async login(dto: LoginDto) {

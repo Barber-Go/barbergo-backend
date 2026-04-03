@@ -26,4 +26,29 @@ export class RegisterDto {
     message: 'role must be CLIENT, BARBER_INDEPENDENT, BARBER_EMPLOYEE, or BARBERSHOP_OWNER',
   })
   role: Role;
+
+  // ── Role-specific fields ──
+
+  /** BARBER_INDEPENDENT: optional specialty */
+  @IsOptional()
+  @IsString()
+  specialty?: string;
+
+  /** BARBERSHOP_OWNER: shop details */
+  @IsOptional()
+  @IsString()
+  shopName?: string;
+
+  @IsOptional()
+  @IsString()
+  shopAddress?: string;
+
+  @IsOptional()
+  @IsString()
+  shopPhone?: string;
+
+  /** BARBER_EMPLOYEE: optional invite code to join a barbershop */
+  @IsOptional()
+  @IsString()
+  inviteCode?: string;
 }

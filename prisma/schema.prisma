@@ -161,6 +161,7 @@ model BarberProfile {
   employmentType   BarberEmploymentType @default(INDEPENDENT)
   barbershopId     String?
   rutTributario    String?
+  tipoClaveSii     String?              // "tributaria" | "clave_unica"
   claveTributaria  String?              // AES-256-GCM encrypted
   createdAt        DateTime             @default(now())
   updatedAt        DateTime             @updatedAt
@@ -192,7 +193,9 @@ model BarbershopProfile {
   phone       String?
   logoUrl     String?
   coverUrl    String?
+  inviteCode  String?  @unique
   isActive    Boolean  @default(true)
+  status      String   @default("DRAFT")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -309,8 +312,12 @@ model Booking {
   serviceSnapshot     Json?
 
   // Boleta electrónica (SII)
-  boletaFolio  String?
-  boletaPdfUrl String?
+  boletaFolio       String?
+  boletaPdfUrl      String?
+  boletaEstado      String?    // EMITIDA | ANULADA
+  boletaEmitidaAt   DateTime?
+  boletaAnuladaAt   DateTime?
+  boletaAnulMotivo  String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

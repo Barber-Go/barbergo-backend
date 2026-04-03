@@ -2358,6 +2358,7 @@ export const BarberProfileScalarFieldEnum = {
   employmentType: 'employmentType',
   barbershopId: 'barbershopId',
   rutTributario: 'rutTributario',
+  tipoClaveSii: 'tipoClaveSii',
   claveTributaria: 'claveTributaria',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -2377,7 +2378,9 @@ export const BarbershopProfileScalarFieldEnum = {
   phone: 'phone',
   logoUrl: 'logoUrl',
   coverUrl: 'coverUrl',
+  inviteCode: 'inviteCode',
   isActive: 'isActive',
+  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2469,6 +2472,10 @@ export const BookingScalarFieldEnum = {
   serviceSnapshot: 'serviceSnapshot',
   boletaFolio: 'boletaFolio',
   boletaPdfUrl: 'boletaPdfUrl',
+  boletaEstado: 'boletaEstado',
+  boletaEmitidaAt: 'boletaEmitidaAt',
+  boletaAnuladaAt: 'boletaAnuladaAt',
+  boletaAnulMotivo: 'boletaAnulMotivo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

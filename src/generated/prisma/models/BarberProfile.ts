@@ -55,6 +55,7 @@ export type BarberProfileMinAggregateOutputType = {
   employmentType: $Enums.BarberEmploymentType | null
   barbershopId: string | null
   rutTributario: string | null
+  tipoClaveSii: string | null
   claveTributaria: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -73,6 +74,7 @@ export type BarberProfileMaxAggregateOutputType = {
   employmentType: $Enums.BarberEmploymentType | null
   barbershopId: string | null
   rutTributario: string | null
+  tipoClaveSii: string | null
   claveTributaria: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -91,6 +93,7 @@ export type BarberProfileCountAggregateOutputType = {
   employmentType: number
   barbershopId: number
   rutTributario: number
+  tipoClaveSii: number
   claveTributaria: number
   createdAt: number
   updatedAt: number
@@ -127,6 +130,7 @@ export type BarberProfileMinAggregateInputType = {
   employmentType?: true
   barbershopId?: true
   rutTributario?: true
+  tipoClaveSii?: true
   claveTributaria?: true
   createdAt?: true
   updatedAt?: true
@@ -145,6 +149,7 @@ export type BarberProfileMaxAggregateInputType = {
   employmentType?: true
   barbershopId?: true
   rutTributario?: true
+  tipoClaveSii?: true
   claveTributaria?: true
   createdAt?: true
   updatedAt?: true
@@ -163,6 +168,7 @@ export type BarberProfileCountAggregateInputType = {
   employmentType?: true
   barbershopId?: true
   rutTributario?: true
+  tipoClaveSii?: true
   claveTributaria?: true
   createdAt?: true
   updatedAt?: true
@@ -268,6 +274,7 @@ export type BarberProfileGroupByOutputType = {
   employmentType: $Enums.BarberEmploymentType
   barbershopId: string | null
   rutTributario: string | null
+  tipoClaveSii: string | null
   claveTributaria: string | null
   createdAt: Date
   updatedAt: Date
@@ -309,6 +316,7 @@ export type BarberProfileWhereInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFilter<"BarberProfile"> | $Enums.BarberEmploymentType
   barbershopId?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
   rutTributario?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
+  tipoClaveSii?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
   claveTributaria?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"BarberProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarberProfile"> | Date | string
@@ -339,6 +347,7 @@ export type BarberProfileOrderByWithRelationInput = {
   employmentType?: Prisma.SortOrder
   barbershopId?: Prisma.SortOrderInput | Prisma.SortOrder
   rutTributario?: Prisma.SortOrderInput | Prisma.SortOrder
+  tipoClaveSii?: Prisma.SortOrderInput | Prisma.SortOrder
   claveTributaria?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -372,6 +381,7 @@ export type BarberProfileWhereUniqueInput = Prisma.AtLeast<{
   employmentType?: Prisma.EnumBarberEmploymentTypeFilter<"BarberProfile"> | $Enums.BarberEmploymentType
   barbershopId?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
   rutTributario?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
+  tipoClaveSii?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
   claveTributaria?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"BarberProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarberProfile"> | Date | string
@@ -402,6 +412,7 @@ export type BarberProfileOrderByWithAggregationInput = {
   employmentType?: Prisma.SortOrder
   barbershopId?: Prisma.SortOrderInput | Prisma.SortOrder
   rutTributario?: Prisma.SortOrderInput | Prisma.SortOrder
+  tipoClaveSii?: Prisma.SortOrderInput | Prisma.SortOrder
   claveTributaria?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -428,6 +439,7 @@ export type BarberProfileScalarWhereWithAggregatesInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeWithAggregatesFilter<"BarberProfile"> | $Enums.BarberEmploymentType
   barbershopId?: Prisma.StringNullableWithAggregatesFilter<"BarberProfile"> | string | null
   rutTributario?: Prisma.StringNullableWithAggregatesFilter<"BarberProfile"> | string | null
+  tipoClaveSii?: Prisma.StringNullableWithAggregatesFilter<"BarberProfile"> | string | null
   claveTributaria?: Prisma.StringNullableWithAggregatesFilter<"BarberProfile"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"BarberProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BarberProfile"> | Date | string
@@ -444,6 +456,7 @@ export type BarberProfileCreateInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -474,6 +487,7 @@ export type BarberProfileUncheckedCreateInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -500,6 +514,7 @@ export type BarberProfileUpdateInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -530,6 +545,7 @@ export type BarberProfileUncheckedUpdateInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -558,6 +574,7 @@ export type BarberProfileCreateManyInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -574,6 +591,7 @@ export type BarberProfileUpdateManyMutationInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -592,6 +610,7 @@ export type BarberProfileUncheckedUpdateManyInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -615,6 +634,7 @@ export type BarberProfileCountOrderByAggregateInput = {
   employmentType?: Prisma.SortOrder
   barbershopId?: Prisma.SortOrder
   rutTributario?: Prisma.SortOrder
+  tipoClaveSii?: Prisma.SortOrder
   claveTributaria?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -641,6 +661,7 @@ export type BarberProfileMaxOrderByAggregateInput = {
   employmentType?: Prisma.SortOrder
   barbershopId?: Prisma.SortOrder
   rutTributario?: Prisma.SortOrder
+  tipoClaveSii?: Prisma.SortOrder
   claveTributaria?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -659,6 +680,7 @@ export type BarberProfileMinOrderByAggregateInput = {
   employmentType?: Prisma.SortOrder
   barbershopId?: Prisma.SortOrder
   rutTributario?: Prisma.SortOrder
+  tipoClaveSii?: Prisma.SortOrder
   claveTributaria?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -932,6 +954,7 @@ export type BarberProfileCreateWithoutUserInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -960,6 +983,7 @@ export type BarberProfileUncheckedCreateWithoutUserInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1002,6 +1026,7 @@ export type BarberProfileUpdateWithoutUserInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1030,6 +1055,7 @@ export type BarberProfileUncheckedUpdateWithoutUserInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1056,6 +1082,7 @@ export type BarberProfileCreateWithoutBarbershopInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1084,6 +1111,7 @@ export type BarberProfileUncheckedCreateWithoutBarbershopInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1141,6 +1169,7 @@ export type BarberProfileScalarWhereInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFilter<"BarberProfile"> | $Enums.BarberEmploymentType
   barbershopId?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
   rutTributario?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
+  tipoClaveSii?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
   claveTributaria?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"BarberProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarberProfile"> | Date | string
@@ -1157,6 +1186,7 @@ export type BarberProfileCreateWithoutStaffMembershipsInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1186,6 +1216,7 @@ export type BarberProfileUncheckedCreateWithoutStaffMembershipsInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1227,6 +1258,7 @@ export type BarberProfileUpdateWithoutStaffMembershipsInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1256,6 +1288,7 @@ export type BarberProfileUncheckedUpdateWithoutStaffMembershipsInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1281,6 +1314,7 @@ export type BarberProfileCreateWithoutServicesInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1310,6 +1344,7 @@ export type BarberProfileUncheckedCreateWithoutServicesInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1351,6 +1386,7 @@ export type BarberProfileUpdateWithoutServicesInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1380,6 +1416,7 @@ export type BarberProfileUncheckedUpdateWithoutServicesInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1405,6 +1442,7 @@ export type BarberProfileCreateWithoutAvailabilitiesInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1434,6 +1472,7 @@ export type BarberProfileUncheckedCreateWithoutAvailabilitiesInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1475,6 +1514,7 @@ export type BarberProfileUpdateWithoutAvailabilitiesInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1504,6 +1544,7 @@ export type BarberProfileUncheckedUpdateWithoutAvailabilitiesInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1529,6 +1570,7 @@ export type BarberProfileCreateWithoutBlocksInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1558,6 +1600,7 @@ export type BarberProfileUncheckedCreateWithoutBlocksInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1599,6 +1642,7 @@ export type BarberProfileUpdateWithoutBlocksInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1628,6 +1672,7 @@ export type BarberProfileUncheckedUpdateWithoutBlocksInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1653,6 +1698,7 @@ export type BarberProfileCreateWithoutBookingsInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1682,6 +1728,7 @@ export type BarberProfileUncheckedCreateWithoutBookingsInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1723,6 +1770,7 @@ export type BarberProfileUpdateWithoutBookingsInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1752,6 +1800,7 @@ export type BarberProfileUncheckedUpdateWithoutBookingsInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1777,6 +1826,7 @@ export type BarberProfileCreateWithoutReviewsInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1806,6 +1856,7 @@ export type BarberProfileUncheckedCreateWithoutReviewsInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1847,6 +1898,7 @@ export type BarberProfileUpdateWithoutReviewsInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1876,6 +1928,7 @@ export type BarberProfileUncheckedUpdateWithoutReviewsInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1901,6 +1954,7 @@ export type BarberProfileCreateWithoutPortfolioInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1930,6 +1984,7 @@ export type BarberProfileUncheckedCreateWithoutPortfolioInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1971,6 +2026,7 @@ export type BarberProfileUpdateWithoutPortfolioInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2000,6 +2056,7 @@ export type BarberProfileUncheckedUpdateWithoutPortfolioInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2025,6 +2082,7 @@ export type BarberProfileCreateWithoutEarningsInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2054,6 +2112,7 @@ export type BarberProfileUncheckedCreateWithoutEarningsInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2095,6 +2154,7 @@ export type BarberProfileUpdateWithoutEarningsInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2124,6 +2184,7 @@ export type BarberProfileUncheckedUpdateWithoutEarningsInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2149,6 +2210,7 @@ export type BarberProfileCreateWithoutExpensesInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2178,6 +2240,7 @@ export type BarberProfileUncheckedCreateWithoutExpensesInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2219,6 +2282,7 @@ export type BarberProfileUpdateWithoutExpensesInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2248,6 +2312,7 @@ export type BarberProfileUncheckedUpdateWithoutExpensesInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2273,6 +2338,7 @@ export type BarberProfileCreateWithoutLedgerEntriesInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2302,6 +2368,7 @@ export type BarberProfileUncheckedCreateWithoutLedgerEntriesInput = {
   employmentType?: $Enums.BarberEmploymentType
   barbershopId?: string | null
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2343,6 +2410,7 @@ export type BarberProfileUpdateWithoutLedgerEntriesInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2372,6 +2440,7 @@ export type BarberProfileUncheckedUpdateWithoutLedgerEntriesInput = {
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2398,6 +2467,7 @@ export type BarberProfileCreateManyBarbershopInput = {
   commissionRate?: number
   employmentType?: $Enums.BarberEmploymentType
   rutTributario?: string | null
+  tipoClaveSii?: string | null
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2414,6 +2484,7 @@ export type BarberProfileUpdateWithoutBarbershopInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2442,6 +2513,7 @@ export type BarberProfileUncheckedUpdateWithoutBarbershopInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2469,6 +2541,7 @@ export type BarberProfileUncheckedUpdateManyWithoutBarbershopInput = {
   commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
   employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
   rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2599,6 +2672,7 @@ export type BarberProfileSelect<ExtArgs extends runtime.Types.Extensions.Interna
   employmentType?: boolean
   barbershopId?: boolean
   rutTributario?: boolean
+  tipoClaveSii?: boolean
   claveTributaria?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -2630,6 +2704,7 @@ export type BarberProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   employmentType?: boolean
   barbershopId?: boolean
   rutTributario?: boolean
+  tipoClaveSii?: boolean
   claveTributaria?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -2650,6 +2725,7 @@ export type BarberProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   employmentType?: boolean
   barbershopId?: boolean
   rutTributario?: boolean
+  tipoClaveSii?: boolean
   claveTributaria?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -2670,12 +2746,13 @@ export type BarberProfileSelectScalar = {
   employmentType?: boolean
   barbershopId?: boolean
   rutTributario?: boolean
+  tipoClaveSii?: boolean
   claveTributaria?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BarberProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "bio" | "lat" | "lng" | "rating" | "totalReviews" | "isActive" | "commissionRate" | "employmentType" | "barbershopId" | "rutTributario" | "claveTributaria" | "createdAt" | "updatedAt", ExtArgs["result"]["barberProfile"]>
+export type BarberProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "bio" | "lat" | "lng" | "rating" | "totalReviews" | "isActive" | "commissionRate" | "employmentType" | "barbershopId" | "rutTributario" | "tipoClaveSii" | "claveTributaria" | "createdAt" | "updatedAt", ExtArgs["result"]["barberProfile"]>
 export type BarberProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barbershop?: boolean | Prisma.BarberProfile$barbershopArgs<ExtArgs>
@@ -2729,6 +2806,7 @@ export type $BarberProfilePayload<ExtArgs extends runtime.Types.Extensions.Inter
     employmentType: $Enums.BarberEmploymentType
     barbershopId: string | null
     rutTributario: string | null
+    tipoClaveSii: string | null
     claveTributaria: string | null
     createdAt: Date
     updatedAt: Date
@@ -3179,6 +3257,7 @@ export interface BarberProfileFieldRefs {
   readonly employmentType: Prisma.FieldRef<"BarberProfile", 'BarberEmploymentType'>
   readonly barbershopId: Prisma.FieldRef<"BarberProfile", 'String'>
   readonly rutTributario: Prisma.FieldRef<"BarberProfile", 'String'>
+  readonly tipoClaveSii: Prisma.FieldRef<"BarberProfile", 'String'>
   readonly claveTributaria: Prisma.FieldRef<"BarberProfile", 'String'>
   readonly createdAt: Prisma.FieldRef<"BarberProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"BarberProfile", 'DateTime'>

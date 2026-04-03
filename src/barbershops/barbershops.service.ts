@@ -155,6 +155,34 @@ export class BarbershopsService {
     return { message: 'Staff member removed' };
   }
 
+  // ── Invite code ──
+
+  async getOrCreateInviteCode(userId: string) {
+    const shop = await this.assertOwner(userId);
+
+    if (shop.inviteCode) {
+      return { inviteCode: shop.inviteCode };
+    }
+
+    // Generate a unique 8-char alphanumeric code
+    const code = this.generateCode();
+    await this.prisma.client.barbershopProfile.update({
+      where: { id: shop.id },
+      data: { inviteCode: code },
+    });
+
+    return { inviteCode: code };
+  }
+
+  private generateCode(): string {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = '';
+    for (let i = 0; i < 8; i++) {
+      code += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return code;
+  }
+
   // ── Helpers ──
 
   private async assertOwner(userId: string) {

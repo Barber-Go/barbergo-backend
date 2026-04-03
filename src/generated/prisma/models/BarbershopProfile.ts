@@ -47,7 +47,9 @@ export type BarbershopProfileMinAggregateOutputType = {
   phone: string | null
   logoUrl: string | null
   coverUrl: string | null
+  inviteCode: string | null
   isActive: boolean | null
+  status: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -63,7 +65,9 @@ export type BarbershopProfileMaxAggregateOutputType = {
   phone: string | null
   logoUrl: string | null
   coverUrl: string | null
+  inviteCode: string | null
   isActive: boolean | null
+  status: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -79,7 +83,9 @@ export type BarbershopProfileCountAggregateOutputType = {
   phone: number
   logoUrl: number
   coverUrl: number
+  inviteCode: number
   isActive: number
+  status: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -107,7 +113,9 @@ export type BarbershopProfileMinAggregateInputType = {
   phone?: true
   logoUrl?: true
   coverUrl?: true
+  inviteCode?: true
   isActive?: true
+  status?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -123,7 +131,9 @@ export type BarbershopProfileMaxAggregateInputType = {
   phone?: true
   logoUrl?: true
   coverUrl?: true
+  inviteCode?: true
   isActive?: true
+  status?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -139,7 +149,9 @@ export type BarbershopProfileCountAggregateInputType = {
   phone?: true
   logoUrl?: true
   coverUrl?: true
+  inviteCode?: true
   isActive?: true
+  status?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -242,7 +254,9 @@ export type BarbershopProfileGroupByOutputType = {
   phone: string | null
   logoUrl: string | null
   coverUrl: string | null
+  inviteCode: string | null
   isActive: boolean
+  status: string
   createdAt: Date
   updatedAt: Date
   _count: BarbershopProfileCountAggregateOutputType | null
@@ -281,7 +295,9 @@ export type BarbershopProfileWhereInput = {
   phone?: Prisma.StringNullableFilter<"BarbershopProfile"> | string | null
   logoUrl?: Prisma.StringNullableFilter<"BarbershopProfile"> | string | null
   coverUrl?: Prisma.StringNullableFilter<"BarbershopProfile"> | string | null
+  inviteCode?: Prisma.StringNullableFilter<"BarbershopProfile"> | string | null
   isActive?: Prisma.BoolFilter<"BarbershopProfile"> | boolean
+  status?: Prisma.StringFilter<"BarbershopProfile"> | string
   createdAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -300,7 +316,9 @@ export type BarbershopProfileOrderByWithRelationInput = {
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   coverUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  inviteCode?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
@@ -311,6 +329,7 @@ export type BarbershopProfileOrderByWithRelationInput = {
 export type BarbershopProfileWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   userId?: string
+  inviteCode?: string
   AND?: Prisma.BarbershopProfileWhereInput | Prisma.BarbershopProfileWhereInput[]
   OR?: Prisma.BarbershopProfileWhereInput[]
   NOT?: Prisma.BarbershopProfileWhereInput | Prisma.BarbershopProfileWhereInput[]
@@ -323,12 +342,13 @@ export type BarbershopProfileWhereUniqueInput = Prisma.AtLeast<{
   logoUrl?: Prisma.StringNullableFilter<"BarbershopProfile"> | string | null
   coverUrl?: Prisma.StringNullableFilter<"BarbershopProfile"> | string | null
   isActive?: Prisma.BoolFilter<"BarbershopProfile"> | boolean
+  status?: Prisma.StringFilter<"BarbershopProfile"> | string
   createdAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   staff?: Prisma.BarbershopStaffMembershipListRelationFilter
   barbers?: Prisma.BarberProfileListRelationFilter
-}, "id" | "userId">
+}, "id" | "userId" | "inviteCode">
 
 export type BarbershopProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -341,7 +361,9 @@ export type BarbershopProfileOrderByWithAggregationInput = {
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   coverUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  inviteCode?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.BarbershopProfileCountOrderByAggregateInput
@@ -365,7 +387,9 @@ export type BarbershopProfileScalarWhereWithAggregatesInput = {
   phone?: Prisma.StringNullableWithAggregatesFilter<"BarbershopProfile"> | string | null
   logoUrl?: Prisma.StringNullableWithAggregatesFilter<"BarbershopProfile"> | string | null
   coverUrl?: Prisma.StringNullableWithAggregatesFilter<"BarbershopProfile"> | string | null
+  inviteCode?: Prisma.StringNullableWithAggregatesFilter<"BarbershopProfile"> | string | null
   isActive?: Prisma.BoolWithAggregatesFilter<"BarbershopProfile"> | boolean
+  status?: Prisma.StringWithAggregatesFilter<"BarbershopProfile"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"BarbershopProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BarbershopProfile"> | Date | string
 }
@@ -380,7 +404,9 @@ export type BarbershopProfileCreateInput = {
   phone?: string | null
   logoUrl?: string | null
   coverUrl?: string | null
+  inviteCode?: string | null
   isActive?: boolean
+  status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfileInput
@@ -399,7 +425,9 @@ export type BarbershopProfileUncheckedCreateInput = {
   phone?: string | null
   logoUrl?: string | null
   coverUrl?: string | null
+  inviteCode?: string | null
   isActive?: boolean
+  status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
@@ -416,7 +444,9 @@ export type BarbershopProfileUpdateInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inviteCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfileNestedInput
@@ -435,7 +465,9 @@ export type BarbershopProfileUncheckedUpdateInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inviteCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -453,7 +485,9 @@ export type BarbershopProfileCreateManyInput = {
   phone?: string | null
   logoUrl?: string | null
   coverUrl?: string | null
+  inviteCode?: string | null
   isActive?: boolean
+  status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -468,7 +502,9 @@ export type BarbershopProfileUpdateManyMutationInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inviteCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -484,7 +520,9 @@ export type BarbershopProfileUncheckedUpdateManyInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inviteCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -505,7 +543,9 @@ export type BarbershopProfileCountOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrder
   coverUrl?: Prisma.SortOrder
+  inviteCode?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -526,7 +566,9 @@ export type BarbershopProfileMaxOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrder
   coverUrl?: Prisma.SortOrder
+  inviteCode?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -542,7 +584,9 @@ export type BarbershopProfileMinOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrder
   coverUrl?: Prisma.SortOrder
+  inviteCode?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -629,7 +673,9 @@ export type BarbershopProfileCreateWithoutUserInput = {
   phone?: string | null
   logoUrl?: string | null
   coverUrl?: string | null
+  inviteCode?: string | null
   isActive?: boolean
+  status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   staff?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarbershopInput
@@ -646,7 +692,9 @@ export type BarbershopProfileUncheckedCreateWithoutUserInput = {
   phone?: string | null
   logoUrl?: string | null
   coverUrl?: string | null
+  inviteCode?: string | null
   isActive?: boolean
+  status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
@@ -679,7 +727,9 @@ export type BarbershopProfileUpdateWithoutUserInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inviteCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   staff?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarbershopNestedInput
@@ -696,7 +746,9 @@ export type BarbershopProfileUncheckedUpdateWithoutUserInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inviteCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -713,7 +765,9 @@ export type BarbershopProfileCreateWithoutBarbersInput = {
   phone?: string | null
   logoUrl?: string | null
   coverUrl?: string | null
+  inviteCode?: string | null
   isActive?: boolean
+  status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfileInput
@@ -731,7 +785,9 @@ export type BarbershopProfileUncheckedCreateWithoutBarbersInput = {
   phone?: string | null
   logoUrl?: string | null
   coverUrl?: string | null
+  inviteCode?: string | null
   isActive?: boolean
+  status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
@@ -763,7 +819,9 @@ export type BarbershopProfileUpdateWithoutBarbersInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inviteCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfileNestedInput
@@ -781,7 +839,9 @@ export type BarbershopProfileUncheckedUpdateWithoutBarbersInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inviteCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -797,7 +857,9 @@ export type BarbershopProfileCreateWithoutStaffInput = {
   phone?: string | null
   logoUrl?: string | null
   coverUrl?: string | null
+  inviteCode?: string | null
   isActive?: boolean
+  status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfileInput
@@ -815,7 +877,9 @@ export type BarbershopProfileUncheckedCreateWithoutStaffInput = {
   phone?: string | null
   logoUrl?: string | null
   coverUrl?: string | null
+  inviteCode?: string | null
   isActive?: boolean
+  status?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   barbers?: Prisma.BarberProfileUncheckedCreateNestedManyWithoutBarbershopInput
@@ -847,7 +911,9 @@ export type BarbershopProfileUpdateWithoutStaffInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inviteCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfileNestedInput
@@ -865,7 +931,9 @@ export type BarbershopProfileUncheckedUpdateWithoutStaffInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inviteCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   barbers?: Prisma.BarberProfileUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -922,7 +990,9 @@ export type BarbershopProfileSelect<ExtArgs extends runtime.Types.Extensions.Int
   phone?: boolean
   logoUrl?: boolean
   coverUrl?: boolean
+  inviteCode?: boolean
   isActive?: boolean
+  status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -942,7 +1012,9 @@ export type BarbershopProfileSelectCreateManyAndReturn<ExtArgs extends runtime.T
   phone?: boolean
   logoUrl?: boolean
   coverUrl?: boolean
+  inviteCode?: boolean
   isActive?: boolean
+  status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -959,7 +1031,9 @@ export type BarbershopProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   phone?: boolean
   logoUrl?: boolean
   coverUrl?: boolean
+  inviteCode?: boolean
   isActive?: boolean
+  status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -976,12 +1050,14 @@ export type BarbershopProfileSelectScalar = {
   phone?: boolean
   logoUrl?: boolean
   coverUrl?: boolean
+  inviteCode?: boolean
   isActive?: boolean
+  status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BarbershopProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "name" | "description" | "address" | "lat" | "lng" | "phone" | "logoUrl" | "coverUrl" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["barbershopProfile"]>
+export type BarbershopProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "name" | "description" | "address" | "lat" | "lng" | "phone" | "logoUrl" | "coverUrl" | "inviteCode" | "isActive" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["barbershopProfile"]>
 export type BarbershopProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   staff?: boolean | Prisma.BarbershopProfile$staffArgs<ExtArgs>
@@ -1013,7 +1089,9 @@ export type $BarbershopProfilePayload<ExtArgs extends runtime.Types.Extensions.I
     phone: string | null
     logoUrl: string | null
     coverUrl: string | null
+    inviteCode: string | null
     isActive: boolean
+    status: string
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["barbershopProfile"]>
@@ -1452,7 +1530,9 @@ export interface BarbershopProfileFieldRefs {
   readonly phone: Prisma.FieldRef<"BarbershopProfile", 'String'>
   readonly logoUrl: Prisma.FieldRef<"BarbershopProfile", 'String'>
   readonly coverUrl: Prisma.FieldRef<"BarbershopProfile", 'String'>
+  readonly inviteCode: Prisma.FieldRef<"BarbershopProfile", 'String'>
   readonly isActive: Prisma.FieldRef<"BarbershopProfile", 'Boolean'>
+  readonly status: Prisma.FieldRef<"BarbershopProfile", 'String'>
   readonly createdAt: Prisma.FieldRef<"BarbershopProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"BarbershopProfile", 'DateTime'>
 }
