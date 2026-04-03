@@ -16,7 +16,12 @@ export class NotificationsService {
     });
 
     // Fire-and-forget push notification
-    this.push.sendPushNotification(userId, title, body, { type }).catch(() => {});
+    this.push
+      .sendPushNotification(userId, title, body, {
+        type,
+        notificationId: notification.id,
+      })
+      .catch(() => {});
 
     return notification;
   }

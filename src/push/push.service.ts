@@ -41,9 +41,12 @@ export class PushService {
     };
 
     try {
-      await this.expo.sendPushNotificationsAsync([message]);
-    } catch {
-      // Silent fail — push is best-effort
+      const [ticket] = await this.expo.sendPushNotificationsAsync([message]);
+      if (ticket.status === 'error') {
+        console.warn('[Push] Error:', ticket.message);
+      }
+    } catch (err) {
+      console.warn('[Push] Failed:', err);
     }
   }
 }
