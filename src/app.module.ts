@@ -20,6 +20,7 @@ import { StorageModule } from './storage/storage.module';
 import { SiiModule } from './sii/sii.module';
 import { PushModule } from './push/push.module';
 import { ChatModule } from './chat/chat.module';
+import { AiStyleModule } from './ai-style/ai-style.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -49,6 +50,7 @@ import { AppService } from './app.service';
     PaymentsModule,
     SiiModule,
     ChatModule,
+    AiStyleModule,
   ],
   controllers: [AppController],
   providers: [AppService],

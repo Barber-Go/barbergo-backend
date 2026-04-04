@@ -411,7 +411,10 @@ export const ModelName = {
   CommunityMembership: 'CommunityMembership',
   CommunityPost: 'CommunityPost',
   CommunityTopicTag: 'CommunityTopicTag',
-  UserSettings: 'UserSettings'
+  UserSettings: 'UserSettings',
+  AiFaceAnalysis: 'AiFaceAnalysis',
+  AiHairstyleRecommendation: 'AiHairstyleRecommendation',
+  AiHairstylePreview: 'AiHairstylePreview'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -427,7 +430,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings"
+    modelProps: "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2503,6 +2506,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    AiFaceAnalysis: {
+      payload: Prisma.$AiFaceAnalysisPayload<ExtArgs>
+      fields: Prisma.AiFaceAnalysisFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AiFaceAnalysisFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiFaceAnalysisPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AiFaceAnalysisFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiFaceAnalysisPayload>
+        }
+        findFirst: {
+          args: Prisma.AiFaceAnalysisFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiFaceAnalysisPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AiFaceAnalysisFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiFaceAnalysisPayload>
+        }
+        findMany: {
+          args: Prisma.AiFaceAnalysisFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiFaceAnalysisPayload>[]
+        }
+        create: {
+          args: Prisma.AiFaceAnalysisCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiFaceAnalysisPayload>
+        }
+        createMany: {
+          args: Prisma.AiFaceAnalysisCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AiFaceAnalysisCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiFaceAnalysisPayload>[]
+        }
+        delete: {
+          args: Prisma.AiFaceAnalysisDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiFaceAnalysisPayload>
+        }
+        update: {
+          args: Prisma.AiFaceAnalysisUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiFaceAnalysisPayload>
+        }
+        deleteMany: {
+          args: Prisma.AiFaceAnalysisDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AiFaceAnalysisUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AiFaceAnalysisUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiFaceAnalysisPayload>[]
+        }
+        upsert: {
+          args: Prisma.AiFaceAnalysisUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiFaceAnalysisPayload>
+        }
+        aggregate: {
+          args: Prisma.AiFaceAnalysisAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAiFaceAnalysis>
+        }
+        groupBy: {
+          args: Prisma.AiFaceAnalysisGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiFaceAnalysisGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AiFaceAnalysisCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiFaceAnalysisCountAggregateOutputType> | number
+        }
+      }
+    }
+    AiHairstyleRecommendation: {
+      payload: Prisma.$AiHairstyleRecommendationPayload<ExtArgs>
+      fields: Prisma.AiHairstyleRecommendationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AiHairstyleRecommendationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstyleRecommendationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AiHairstyleRecommendationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstyleRecommendationPayload>
+        }
+        findFirst: {
+          args: Prisma.AiHairstyleRecommendationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstyleRecommendationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AiHairstyleRecommendationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstyleRecommendationPayload>
+        }
+        findMany: {
+          args: Prisma.AiHairstyleRecommendationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstyleRecommendationPayload>[]
+        }
+        create: {
+          args: Prisma.AiHairstyleRecommendationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstyleRecommendationPayload>
+        }
+        createMany: {
+          args: Prisma.AiHairstyleRecommendationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AiHairstyleRecommendationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstyleRecommendationPayload>[]
+        }
+        delete: {
+          args: Prisma.AiHairstyleRecommendationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstyleRecommendationPayload>
+        }
+        update: {
+          args: Prisma.AiHairstyleRecommendationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstyleRecommendationPayload>
+        }
+        deleteMany: {
+          args: Prisma.AiHairstyleRecommendationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AiHairstyleRecommendationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AiHairstyleRecommendationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstyleRecommendationPayload>[]
+        }
+        upsert: {
+          args: Prisma.AiHairstyleRecommendationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstyleRecommendationPayload>
+        }
+        aggregate: {
+          args: Prisma.AiHairstyleRecommendationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAiHairstyleRecommendation>
+        }
+        groupBy: {
+          args: Prisma.AiHairstyleRecommendationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiHairstyleRecommendationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AiHairstyleRecommendationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiHairstyleRecommendationCountAggregateOutputType> | number
+        }
+      }
+    }
+    AiHairstylePreview: {
+      payload: Prisma.$AiHairstylePreviewPayload<ExtArgs>
+      fields: Prisma.AiHairstylePreviewFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AiHairstylePreviewFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstylePreviewPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AiHairstylePreviewFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstylePreviewPayload>
+        }
+        findFirst: {
+          args: Prisma.AiHairstylePreviewFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstylePreviewPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AiHairstylePreviewFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstylePreviewPayload>
+        }
+        findMany: {
+          args: Prisma.AiHairstylePreviewFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstylePreviewPayload>[]
+        }
+        create: {
+          args: Prisma.AiHairstylePreviewCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstylePreviewPayload>
+        }
+        createMany: {
+          args: Prisma.AiHairstylePreviewCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AiHairstylePreviewCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstylePreviewPayload>[]
+        }
+        delete: {
+          args: Prisma.AiHairstylePreviewDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstylePreviewPayload>
+        }
+        update: {
+          args: Prisma.AiHairstylePreviewUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstylePreviewPayload>
+        }
+        deleteMany: {
+          args: Prisma.AiHairstylePreviewDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AiHairstylePreviewUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AiHairstylePreviewUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstylePreviewPayload>[]
+        }
+        upsert: {
+          args: Prisma.AiHairstylePreviewUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiHairstylePreviewPayload>
+        }
+        aggregate: {
+          args: Prisma.AiHairstylePreviewAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAiHairstylePreview>
+        }
+        groupBy: {
+          args: Prisma.AiHairstylePreviewGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiHairstylePreviewGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AiHairstylePreviewCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiHairstylePreviewCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2935,6 +3160,43 @@ export const UserSettingsScalarFieldEnum = {
 export type UserSettingsScalarFieldEnum = (typeof UserSettingsScalarFieldEnum)[keyof typeof UserSettingsScalarFieldEnum]
 
 
+export const AiFaceAnalysisScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  sourceImageUrl: 'sourceImageUrl',
+  faceShape: 'faceShape',
+  confidence: 'confidence',
+  attributesJson: 'attributesJson',
+  createdAt: 'createdAt'
+} as const
+
+export type AiFaceAnalysisScalarFieldEnum = (typeof AiFaceAnalysisScalarFieldEnum)[keyof typeof AiFaceAnalysisScalarFieldEnum]
+
+
+export const AiHairstyleRecommendationScalarFieldEnum = {
+  id: 'id',
+  analysisId: 'analysisId',
+  haircutName: 'haircutName',
+  rationale: 'rationale',
+  score: 'score',
+  tags: 'tags',
+  createdAt: 'createdAt'
+} as const
+
+export type AiHairstyleRecommendationScalarFieldEnum = (typeof AiHairstyleRecommendationScalarFieldEnum)[keyof typeof AiHairstyleRecommendationScalarFieldEnum]
+
+
+export const AiHairstylePreviewScalarFieldEnum = {
+  id: 'id',
+  recommendationId: 'recommendationId',
+  previewImageUrl: 'previewImageUrl',
+  generationStatus: 'generationStatus',
+  createdAt: 'createdAt'
+} as const
+
+export type AiHairstylePreviewScalarFieldEnum = (typeof AiHairstylePreviewScalarFieldEnum)[keyof typeof AiHairstylePreviewScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -3349,6 +3611,9 @@ export type GlobalOmitConfig = {
   communityPost?: Prisma.CommunityPostOmit
   communityTopicTag?: Prisma.CommunityTopicTagOmit
   userSettings?: Prisma.UserSettingsOmit
+  aiFaceAnalysis?: Prisma.AiFaceAnalysisOmit
+  aiHairstyleRecommendation?: Prisma.AiHairstyleRecommendationOmit
+  aiHairstylePreview?: Prisma.AiHairstylePreviewOmit
 }
 
 /* Types for Logging */

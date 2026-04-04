@@ -243,6 +243,7 @@ export type UserWhereInput = {
   communityPosts?: Prisma.CommunityPostListRelationFilter
   chatParticipants?: Prisma.ChatParticipantListRelationFilter
   chatMessages?: Prisma.ChatMessageListRelationFilter
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -270,6 +271,7 @@ export type UserOrderByWithRelationInput = {
   communityPosts?: Prisma.CommunityPostOrderByRelationAggregateInput
   chatParticipants?: Prisma.ChatParticipantOrderByRelationAggregateInput
   chatMessages?: Prisma.ChatMessageOrderByRelationAggregateInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -300,6 +302,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   communityPosts?: Prisma.CommunityPostListRelationFilter
   chatParticipants?: Prisma.ChatParticipantListRelationFilter
   chatMessages?: Prisma.ChatMessageListRelationFilter
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisListRelationFilter
 }, "id" | "email" | "phone">
 
 export type UserOrderByWithAggregationInput = {
@@ -361,6 +364,7 @@ export type UserCreateInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -388,6 +392,7 @@ export type UserUncheckedCreateInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -415,6 +420,7 @@ export type UserUpdateInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -442,6 +448,7 @@ export type UserUncheckedUpdateInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -735,6 +742,20 @@ export type UserUpdateOneRequiredWithoutSettingsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSettingsInput, Prisma.UserUpdateWithoutSettingsInput>, Prisma.UserUncheckedUpdateWithoutSettingsInput>
 }
 
+export type UserCreateNestedOneWithoutAiFaceAnalysesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAiFaceAnalysesInput, Prisma.UserUncheckedCreateWithoutAiFaceAnalysesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAiFaceAnalysesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAiFaceAnalysesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAiFaceAnalysesInput, Prisma.UserUncheckedCreateWithoutAiFaceAnalysesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAiFaceAnalysesInput
+  upsert?: Prisma.UserUpsertWithoutAiFaceAnalysesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAiFaceAnalysesInput, Prisma.UserUpdateWithoutAiFaceAnalysesInput>, Prisma.UserUncheckedUpdateWithoutAiFaceAnalysesInput>
+}
+
 export type UserCreateWithoutClientProfileInput = {
   id?: string
   email: string
@@ -759,6 +780,7 @@ export type UserCreateWithoutClientProfileInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutClientProfileInput = {
@@ -785,6 +807,7 @@ export type UserUncheckedCreateWithoutClientProfileInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutClientProfileInput = {
@@ -827,6 +850,7 @@ export type UserUpdateWithoutClientProfileInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutClientProfileInput = {
@@ -853,6 +877,7 @@ export type UserUncheckedUpdateWithoutClientProfileInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBarberProfileInput = {
@@ -879,6 +904,7 @@ export type UserCreateWithoutBarberProfileInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBarberProfileInput = {
@@ -905,6 +931,7 @@ export type UserUncheckedCreateWithoutBarberProfileInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBarberProfileInput = {
@@ -947,6 +974,7 @@ export type UserUpdateWithoutBarberProfileInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBarberProfileInput = {
@@ -973,6 +1001,7 @@ export type UserUncheckedUpdateWithoutBarberProfileInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBarbershopProfileInput = {
@@ -999,6 +1028,7 @@ export type UserCreateWithoutBarbershopProfileInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBarbershopProfileInput = {
@@ -1025,6 +1055,7 @@ export type UserUncheckedCreateWithoutBarbershopProfileInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBarbershopProfileInput = {
@@ -1067,6 +1098,7 @@ export type UserUpdateWithoutBarbershopProfileInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBarbershopProfileInput = {
@@ -1093,6 +1125,7 @@ export type UserUncheckedUpdateWithoutBarbershopProfileInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBookingsInput = {
@@ -1119,6 +1152,7 @@ export type UserCreateWithoutBookingsInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBookingsInput = {
@@ -1145,6 +1179,7 @@ export type UserUncheckedCreateWithoutBookingsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBookingsInput = {
@@ -1187,6 +1222,7 @@ export type UserUpdateWithoutBookingsInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBookingsInput = {
@@ -1213,6 +1249,7 @@ export type UserUncheckedUpdateWithoutBookingsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChatParticipantsInput = {
@@ -1239,6 +1276,7 @@ export type UserCreateWithoutChatParticipantsInput = {
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChatParticipantsInput = {
@@ -1265,6 +1303,7 @@ export type UserUncheckedCreateWithoutChatParticipantsInput = {
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChatParticipantsInput = {
@@ -1307,6 +1346,7 @@ export type UserUpdateWithoutChatParticipantsInput = {
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChatParticipantsInput = {
@@ -1333,6 +1373,7 @@ export type UserUncheckedUpdateWithoutChatParticipantsInput = {
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChatMessagesInput = {
@@ -1359,6 +1400,7 @@ export type UserCreateWithoutChatMessagesInput = {
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChatMessagesInput = {
@@ -1385,6 +1427,7 @@ export type UserUncheckedCreateWithoutChatMessagesInput = {
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChatMessagesInput = {
@@ -1427,6 +1470,7 @@ export type UserUpdateWithoutChatMessagesInput = {
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChatMessagesInput = {
@@ -1453,6 +1497,7 @@ export type UserUncheckedUpdateWithoutChatMessagesInput = {
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReviewsInput = {
@@ -1479,6 +1524,7 @@ export type UserCreateWithoutReviewsInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReviewsInput = {
@@ -1505,6 +1551,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReviewsInput = {
@@ -1547,6 +1594,7 @@ export type UserUpdateWithoutReviewsInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewsInput = {
@@ -1573,6 +1621,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -1599,6 +1648,7 @@ export type UserCreateWithoutNotificationsInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -1625,6 +1675,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -1667,6 +1718,7 @@ export type UserUpdateWithoutNotificationsInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -1693,6 +1745,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutFollowsInput = {
@@ -1719,6 +1772,7 @@ export type UserCreateWithoutFollowsInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowsInput = {
@@ -1745,6 +1799,7 @@ export type UserUncheckedCreateWithoutFollowsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowsInput = {
@@ -1787,6 +1842,7 @@ export type UserUpdateWithoutFollowsInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowsInput = {
@@ -1813,6 +1869,7 @@ export type UserUncheckedUpdateWithoutFollowsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPointsWalletInput = {
@@ -1839,6 +1896,7 @@ export type UserCreateWithoutPointsWalletInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPointsWalletInput = {
@@ -1865,6 +1923,7 @@ export type UserUncheckedCreateWithoutPointsWalletInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPointsWalletInput = {
@@ -1907,6 +1966,7 @@ export type UserUpdateWithoutPointsWalletInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPointsWalletInput = {
@@ -1933,6 +1993,7 @@ export type UserUncheckedUpdateWithoutPointsWalletInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommunityMembershipsInput = {
@@ -1959,6 +2020,7 @@ export type UserCreateWithoutCommunityMembershipsInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
@@ -1985,6 +2047,7 @@ export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommunityMembershipsInput = {
@@ -2027,6 +2090,7 @@ export type UserUpdateWithoutCommunityMembershipsInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
@@ -2053,6 +2117,7 @@ export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommunityPostsInput = {
@@ -2079,6 +2144,7 @@ export type UserCreateWithoutCommunityPostsInput = {
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommunityPostsInput = {
@@ -2105,6 +2171,7 @@ export type UserUncheckedCreateWithoutCommunityPostsInput = {
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommunityPostsInput = {
@@ -2147,6 +2214,7 @@ export type UserUpdateWithoutCommunityPostsInput = {
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommunityPostsInput = {
@@ -2173,6 +2241,7 @@ export type UserUncheckedUpdateWithoutCommunityPostsInput = {
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSettingsInput = {
@@ -2199,6 +2268,7 @@ export type UserCreateWithoutSettingsInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSettingsInput = {
@@ -2225,6 +2295,7 @@ export type UserUncheckedCreateWithoutSettingsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSettingsInput = {
@@ -2267,6 +2338,7 @@ export type UserUpdateWithoutSettingsInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSettingsInput = {
@@ -2293,6 +2365,131 @@ export type UserUncheckedUpdateWithoutSettingsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutAiFaceAnalysesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+}
+
+export type UserUncheckedCreateWithoutAiFaceAnalysesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+}
+
+export type UserCreateOrConnectWithoutAiFaceAnalysesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAiFaceAnalysesInput, Prisma.UserUncheckedCreateWithoutAiFaceAnalysesInput>
+}
+
+export type UserUpsertWithoutAiFaceAnalysesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAiFaceAnalysesInput, Prisma.UserUncheckedUpdateWithoutAiFaceAnalysesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAiFaceAnalysesInput, Prisma.UserUncheckedCreateWithoutAiFaceAnalysesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAiFaceAnalysesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAiFaceAnalysesInput, Prisma.UserUncheckedUpdateWithoutAiFaceAnalysesInput>
+}
+
+export type UserUpdateWithoutAiFaceAnalysesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAiFaceAnalysesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 
@@ -2309,6 +2506,7 @@ export type UserCountOutputType = {
   communityPosts: number
   chatParticipants: number
   chatMessages: number
+  aiFaceAnalyses: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2320,6 +2518,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   communityPosts?: boolean | UserCountOutputTypeCountCommunityPostsArgs
   chatParticipants?: boolean | UserCountOutputTypeCountChatParticipantsArgs
   chatMessages?: boolean | UserCountOutputTypeCountChatMessagesArgs
+  aiFaceAnalyses?: boolean | UserCountOutputTypeCountAiFaceAnalysesArgs
 }
 
 /**
@@ -2388,6 +2587,13 @@ export type UserCountOutputTypeCountChatMessagesArgs<ExtArgs extends runtime.Typ
   where?: Prisma.ChatMessageWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAiFaceAnalysesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiFaceAnalysisWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2414,6 +2620,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   communityPosts?: boolean | Prisma.User$communityPostsArgs<ExtArgs>
   chatParticipants?: boolean | Prisma.User$chatParticipantsArgs<ExtArgs>
   chatMessages?: boolean | Prisma.User$chatMessagesArgs<ExtArgs>
+  aiFaceAnalyses?: boolean | Prisma.User$aiFaceAnalysesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2474,6 +2681,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   communityPosts?: boolean | Prisma.User$communityPostsArgs<ExtArgs>
   chatParticipants?: boolean | Prisma.User$chatParticipantsArgs<ExtArgs>
   chatMessages?: boolean | Prisma.User$chatMessagesArgs<ExtArgs>
+  aiFaceAnalyses?: boolean | Prisma.User$aiFaceAnalysesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2495,6 +2703,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     communityPosts: Prisma.$CommunityPostPayload<ExtArgs>[]
     chatParticipants: Prisma.$ChatParticipantPayload<ExtArgs>[]
     chatMessages: Prisma.$ChatMessagePayload<ExtArgs>[]
+    aiFaceAnalyses: Prisma.$AiFaceAnalysisPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2915,6 +3124,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   communityPosts<T extends Prisma.User$communityPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$communityPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   chatParticipants<T extends Prisma.User$chatParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$chatParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   chatMessages<T extends Prisma.User$chatMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$chatMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  aiFaceAnalyses<T extends Prisma.User$aiFaceAnalysesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$aiFaceAnalysesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiFaceAnalysisPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3632,6 +3842,30 @@ export type User$chatMessagesArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.ChatMessageScalarFieldEnum | Prisma.ChatMessageScalarFieldEnum[]
+}
+
+/**
+ * User.aiFaceAnalyses
+ */
+export type User$aiFaceAnalysesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiFaceAnalysis
+   */
+  select?: Prisma.AiFaceAnalysisSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiFaceAnalysis
+   */
+  omit?: Prisma.AiFaceAnalysisOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiFaceAnalysisInclude<ExtArgs> | null
+  where?: Prisma.AiFaceAnalysisWhereInput
+  orderBy?: Prisma.AiFaceAnalysisOrderByWithRelationInput | Prisma.AiFaceAnalysisOrderByWithRelationInput[]
+  cursor?: Prisma.AiFaceAnalysisWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiFaceAnalysisScalarFieldEnum | Prisma.AiFaceAnalysisScalarFieldEnum[]
 }
 
 /**

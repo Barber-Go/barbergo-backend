@@ -136,6 +136,7 @@ model User {
   // Chat
   chatParticipants ChatParticipant[]
   chatMessages     ChatMessage[]
+  aiFaceAnalyses   AiFaceAnalysis[]
 
   @@map("users")
 }
@@ -629,4 +630,50 @@ model UserSettings {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("user_settings")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// AI Style
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model AiFaceAnalysis {
+  id              String   @id @default(cuid())
+  userId          String
+  sourceImageUrl  String
+  faceShape       String   // oval | redondo | cuadrado | alargado | diamante | corazon
+  confidence      Float
+  attributesJson  Json?
+  createdAt       DateTime @default(now())
+
+  user            User                       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recommendations AiHairstyleRecommendation[]
+
+  @@map("ai_face_analyses")
+}
+
+model AiHairstyleRecommendation {
+  id          String   @id @default(cuid())
+  analysisId  String
+  haircutName String
+  rationale   String
+  score       Float
+  tags        String[]
+  createdAt   DateTime @default(now())
+
+  analysis AiFaceAnalysis       @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  previews AiHairstylePreview[]
+
+  @@map("ai_hairstyle_recommendations")
+}
+
+model AiHairstylePreview {
+  id               String   @id @default(cuid())
+  recommendationId String
+  previewImageUrl  String?
+  generationStatus String   @default("PENDING") // PENDING | COMPLETED | FAILED
+  createdAt        DateTime @default(now())
+
+  recommendation AiHairstyleRecommendation @relation(fields: [recommendationId], references: [id], onDelete: Cascade)
+
+  @@map("ai_hairstyle_previews")
 }

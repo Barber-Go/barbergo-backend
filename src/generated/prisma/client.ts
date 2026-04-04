@@ -179,3 +179,18 @@ export type CommunityTopicTag = Prisma.CommunityTopicTagModel
  * 
  */
 export type UserSettings = Prisma.UserSettingsModel
+/**
+ * Model AiFaceAnalysis
+ * 
+ */
+export type AiFaceAnalysis = Prisma.AiFaceAnalysisModel
+/**
+ * Model AiHairstyleRecommendation
+ * 
+ */
+export type AiHairstyleRecommendation = Prisma.AiHairstyleRecommendationModel
+/**
+ * Model AiHairstylePreview
+ * 
+ */
+export type AiHairstylePreview = Prisma.AiHairstylePreviewModel

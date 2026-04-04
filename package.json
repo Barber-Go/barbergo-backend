@@ -16,6 +16,7 @@
     "prisma:seed": "ts-node --project tsconfig.json -e \"require('dotenv/config')\" prisma/seed.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.82.0",
     "@nestjs/common": "^11.1.17",
     "@nestjs/config": "^4.0.3",
     "@nestjs/core": "^11.1.17",

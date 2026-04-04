@@ -78,7 +78,10 @@ export const ModelName = {
   CommunityMembership: 'CommunityMembership',
   CommunityPost: 'CommunityPost',
   CommunityTopicTag: 'CommunityTopicTag',
-  UserSettings: 'UserSettings'
+  UserSettings: 'UserSettings',
+  AiFaceAnalysis: 'AiFaceAnalysis',
+  AiHairstyleRecommendation: 'AiHairstyleRecommendation',
+  AiHairstylePreview: 'AiHairstylePreview'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -488,6 +491,43 @@ export const UserSettingsScalarFieldEnum = {
 } as const
 
 export type UserSettingsScalarFieldEnum = (typeof UserSettingsScalarFieldEnum)[keyof typeof UserSettingsScalarFieldEnum]
+
+
+export const AiFaceAnalysisScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  sourceImageUrl: 'sourceImageUrl',
+  faceShape: 'faceShape',
+  confidence: 'confidence',
+  attributesJson: 'attributesJson',
+  createdAt: 'createdAt'
+} as const
+
+export type AiFaceAnalysisScalarFieldEnum = (typeof AiFaceAnalysisScalarFieldEnum)[keyof typeof AiFaceAnalysisScalarFieldEnum]
+
+
+export const AiHairstyleRecommendationScalarFieldEnum = {
+  id: 'id',
+  analysisId: 'analysisId',
+  haircutName: 'haircutName',
+  rationale: 'rationale',
+  score: 'score',
+  tags: 'tags',
+  createdAt: 'createdAt'
+} as const
+
+export type AiHairstyleRecommendationScalarFieldEnum = (typeof AiHairstyleRecommendationScalarFieldEnum)[keyof typeof AiHairstyleRecommendationScalarFieldEnum]
+
+
+export const AiHairstylePreviewScalarFieldEnum = {
+  id: 'id',
+  recommendationId: 'recommendationId',
+  previewImageUrl: 'previewImageUrl',
+  generationStatus: 'generationStatus',
+  createdAt: 'createdAt'
+} as const
+
+export type AiHairstylePreviewScalarFieldEnum = (typeof AiHairstylePreviewScalarFieldEnum)[keyof typeof AiHairstylePreviewScalarFieldEnum]
 
 
 export const SortOrder = {
