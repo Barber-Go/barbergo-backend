@@ -447,6 +447,8 @@ model BarberPortfolioItem {
   barberId    String
   title       String?
   description String?
+  isFeatured  Boolean  @default(false)
+  visibility  String   @default("PUBLIC") // PUBLIC | PRIVATE | UNLISTED
   createdAt   DateTime @default(now())
 
   barber BarberProfile        @relation(fields: [barberId], references: [id], onDelete: Cascade)

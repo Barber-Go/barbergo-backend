@@ -343,6 +343,8 @@ export const BarberPortfolioItemScalarFieldEnum = {
   barberId: 'barberId',
   title: 'title',
   description: 'description',
+  isFeatured: 'isFeatured',
+  visibility: 'visibility',
   createdAt: 'createdAt'
 } as const
 

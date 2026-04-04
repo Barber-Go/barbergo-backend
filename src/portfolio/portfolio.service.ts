@@ -11,11 +11,25 @@ export class PortfolioService {
     private readonly media: MediaStorageService,
   ) {}
 
+  // ── Public: get portfolio for a barber (only PUBLIC, featured first) ─────
+
   async findByBarberId(barberId: string) {
     const items = await this.prisma.client.barberPortfolioItem.findMany({
-      where: { barberId },
+      where: { barberId, visibility: 'PUBLIC' },
       include: { media: { orderBy: { sortOrder: 'asc' } } },
-      orderBy: { createdAt: 'desc' },
+      orderBy: [{ isFeatured: 'desc' }, { createdAt: 'desc' }],
+    });
+    return items.map((i) => this.formatItem(i));
+  }
+
+  // ── Owner: get all own items (any visibility) ────────────────────────────
+
+  async findOwn(userId: string) {
+    const profile = await this.getProfile(userId);
+    const items = await this.prisma.client.barberPortfolioItem.findMany({
+      where: { barberId: profile.id },
+      include: { media: { orderBy: { sortOrder: 'asc' } } },
+      orderBy: [{ isFeatured: 'desc' }, { createdAt: 'desc' }],
     });
     return items.map((i) => this.formatItem(i));
   }
@@ -46,6 +60,33 @@ export class PortfolioService {
       include: { media: { orderBy: { sortOrder: 'asc' } } },
     });
     return this.formatItem(item);
+  }
+
+  // ── Toggle featured ──────────────────────────────────────────────────────
+
+  async toggleFeatured(userId: string, itemId: string) {
+    await this.assertOwnership(userId, itemId);
+    const item = await this.prisma.client.barberPortfolioItem.findUnique({ where: { id: itemId } });
+    if (!item) throw new NotFoundException('Portfolio item not found');
+
+    const updated = await this.prisma.client.barberPortfolioItem.update({
+      where: { id: itemId },
+      data: { isFeatured: !item.isFeatured },
+      include: { media: { orderBy: { sortOrder: 'asc' } } },
+    });
+    return this.formatItem(updated);
+  }
+
+  // ── Change visibility ────────────────────────────────────────────────────
+
+  async setVisibility(userId: string, itemId: string, visibility: string) {
+    await this.assertOwnership(userId, itemId);
+    const updated = await this.prisma.client.barberPortfolioItem.update({
+      where: { id: itemId },
+      data: { visibility },
+      include: { media: { orderBy: { sortOrder: 'asc' } } },
+    });
+    return this.formatItem(updated);
   }
 
   async addMedia(userId: string, itemId: string, dto: AddMediaDto) {
@@ -95,6 +136,8 @@ export class PortfolioService {
       id: item.id,
       title: item.title,
       description: item.description,
+      isFeatured: item.isFeatured,
+      visibility: item.visibility,
       createdAt: item.createdAt.toISOString(),
       media: item.media.map((m: any) => ({
         id: m.id,
