@@ -241,6 +241,8 @@ export type UserWhereInput = {
   pointsWallet?: Prisma.XOR<Prisma.PointsWalletNullableScalarRelationFilter, Prisma.PointsWalletWhereInput> | null
   communityMemberships?: Prisma.CommunityMembershipListRelationFilter
   communityPosts?: Prisma.CommunityPostListRelationFilter
+  chatParticipants?: Prisma.ChatParticipantListRelationFilter
+  chatMessages?: Prisma.ChatMessageListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -266,6 +268,8 @@ export type UserOrderByWithRelationInput = {
   pointsWallet?: Prisma.PointsWalletOrderByWithRelationInput
   communityMemberships?: Prisma.CommunityMembershipOrderByRelationAggregateInput
   communityPosts?: Prisma.CommunityPostOrderByRelationAggregateInput
+  chatParticipants?: Prisma.ChatParticipantOrderByRelationAggregateInput
+  chatMessages?: Prisma.ChatMessageOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -294,6 +298,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   pointsWallet?: Prisma.XOR<Prisma.PointsWalletNullableScalarRelationFilter, Prisma.PointsWalletWhereInput> | null
   communityMemberships?: Prisma.CommunityMembershipListRelationFilter
   communityPosts?: Prisma.CommunityPostListRelationFilter
+  chatParticipants?: Prisma.ChatParticipantListRelationFilter
+  chatMessages?: Prisma.ChatMessageListRelationFilter
 }, "id" | "email" | "phone">
 
 export type UserOrderByWithAggregationInput = {
@@ -353,6 +359,8 @@ export type UserCreateInput = {
   pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -378,6 +386,8 @@ export type UserUncheckedCreateInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserUpdateInput = {
@@ -403,6 +413,8 @@ export type UserUpdateInput = {
   pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -428,6 +440,8 @@ export type UserUncheckedUpdateInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -595,6 +609,34 @@ export type UserUpdateOneRequiredWithoutBookingsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBookingsInput, Prisma.UserUpdateWithoutBookingsInput>, Prisma.UserUncheckedUpdateWithoutBookingsInput>
 }
 
+export type UserCreateNestedOneWithoutChatParticipantsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutChatParticipantsInput, Prisma.UserUncheckedCreateWithoutChatParticipantsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChatParticipantsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutChatParticipantsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutChatParticipantsInput, Prisma.UserUncheckedCreateWithoutChatParticipantsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChatParticipantsInput
+  upsert?: Prisma.UserUpsertWithoutChatParticipantsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutChatParticipantsInput, Prisma.UserUpdateWithoutChatParticipantsInput>, Prisma.UserUncheckedUpdateWithoutChatParticipantsInput>
+}
+
+export type UserCreateNestedOneWithoutChatMessagesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutChatMessagesInput, Prisma.UserUncheckedCreateWithoutChatMessagesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChatMessagesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutChatMessagesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutChatMessagesInput, Prisma.UserUncheckedCreateWithoutChatMessagesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChatMessagesInput
+  upsert?: Prisma.UserUpsertWithoutChatMessagesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutChatMessagesInput, Prisma.UserUpdateWithoutChatMessagesInput>, Prisma.UserUncheckedUpdateWithoutChatMessagesInput>
+}
+
 export type UserCreateNestedOneWithoutReviewsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutReviewsInput, Prisma.UserUncheckedCreateWithoutReviewsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutReviewsInput
@@ -715,6 +757,8 @@ export type UserCreateWithoutClientProfileInput = {
   pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutClientProfileInput = {
@@ -739,6 +783,8 @@ export type UserUncheckedCreateWithoutClientProfileInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutClientProfileInput = {
@@ -779,6 +825,8 @@ export type UserUpdateWithoutClientProfileInput = {
   pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutClientProfileInput = {
@@ -803,6 +851,8 @@ export type UserUncheckedUpdateWithoutClientProfileInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutBarberProfileInput = {
@@ -827,6 +877,8 @@ export type UserCreateWithoutBarberProfileInput = {
   pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutBarberProfileInput = {
@@ -851,6 +903,8 @@ export type UserUncheckedCreateWithoutBarberProfileInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutBarberProfileInput = {
@@ -891,6 +945,8 @@ export type UserUpdateWithoutBarberProfileInput = {
   pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBarberProfileInput = {
@@ -915,6 +971,8 @@ export type UserUncheckedUpdateWithoutBarberProfileInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutBarbershopProfileInput = {
@@ -939,6 +997,8 @@ export type UserCreateWithoutBarbershopProfileInput = {
   pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutBarbershopProfileInput = {
@@ -963,6 +1023,8 @@ export type UserUncheckedCreateWithoutBarbershopProfileInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutBarbershopProfileInput = {
@@ -1003,6 +1065,8 @@ export type UserUpdateWithoutBarbershopProfileInput = {
   pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBarbershopProfileInput = {
@@ -1027,6 +1091,8 @@ export type UserUncheckedUpdateWithoutBarbershopProfileInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutBookingsInput = {
@@ -1051,6 +1117,8 @@ export type UserCreateWithoutBookingsInput = {
   pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutBookingsInput = {
@@ -1075,6 +1143,8 @@ export type UserUncheckedCreateWithoutBookingsInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutBookingsInput = {
@@ -1115,6 +1185,8 @@ export type UserUpdateWithoutBookingsInput = {
   pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBookingsInput = {
@@ -1139,6 +1211,248 @@ export type UserUncheckedUpdateWithoutBookingsInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+}
+
+export type UserCreateWithoutChatParticipantsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+}
+
+export type UserUncheckedCreateWithoutChatParticipantsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+}
+
+export type UserCreateOrConnectWithoutChatParticipantsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutChatParticipantsInput, Prisma.UserUncheckedCreateWithoutChatParticipantsInput>
+}
+
+export type UserUpsertWithoutChatParticipantsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutChatParticipantsInput, Prisma.UserUncheckedUpdateWithoutChatParticipantsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutChatParticipantsInput, Prisma.UserUncheckedCreateWithoutChatParticipantsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutChatParticipantsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutChatParticipantsInput, Prisma.UserUncheckedUpdateWithoutChatParticipantsInput>
+}
+
+export type UserUpdateWithoutChatParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+}
+
+export type UserUncheckedUpdateWithoutChatParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+}
+
+export type UserCreateWithoutChatMessagesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutChatMessagesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutChatMessagesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutChatMessagesInput, Prisma.UserUncheckedCreateWithoutChatMessagesInput>
+}
+
+export type UserUpsertWithoutChatMessagesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutChatMessagesInput, Prisma.UserUncheckedUpdateWithoutChatMessagesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutChatMessagesInput, Prisma.UserUncheckedCreateWithoutChatMessagesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutChatMessagesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutChatMessagesInput, Prisma.UserUncheckedUpdateWithoutChatMessagesInput>
+}
+
+export type UserUpdateWithoutChatMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutChatMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReviewsInput = {
@@ -1163,6 +1477,8 @@ export type UserCreateWithoutReviewsInput = {
   pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutReviewsInput = {
@@ -1187,6 +1503,8 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutReviewsInput = {
@@ -1227,6 +1545,8 @@ export type UserUpdateWithoutReviewsInput = {
   pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewsInput = {
@@ -1251,6 +1571,8 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -1275,6 +1597,8 @@ export type UserCreateWithoutNotificationsInput = {
   pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -1299,6 +1623,8 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -1339,6 +1665,8 @@ export type UserUpdateWithoutNotificationsInput = {
   pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -1363,6 +1691,8 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutFollowsInput = {
@@ -1387,6 +1717,8 @@ export type UserCreateWithoutFollowsInput = {
   pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutFollowsInput = {
@@ -1411,6 +1743,8 @@ export type UserUncheckedCreateWithoutFollowsInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutFollowsInput = {
@@ -1451,6 +1785,8 @@ export type UserUpdateWithoutFollowsInput = {
   pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowsInput = {
@@ -1475,6 +1811,8 @@ export type UserUncheckedUpdateWithoutFollowsInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutPointsWalletInput = {
@@ -1499,6 +1837,8 @@ export type UserCreateWithoutPointsWalletInput = {
   follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutPointsWalletInput = {
@@ -1523,6 +1863,8 @@ export type UserUncheckedCreateWithoutPointsWalletInput = {
   follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutPointsWalletInput = {
@@ -1563,6 +1905,8 @@ export type UserUpdateWithoutPointsWalletInput = {
   follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPointsWalletInput = {
@@ -1587,6 +1931,8 @@ export type UserUncheckedUpdateWithoutPointsWalletInput = {
   follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutCommunityMembershipsInput = {
@@ -1611,6 +1957,8 @@ export type UserCreateWithoutCommunityMembershipsInput = {
   follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
   pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
@@ -1635,6 +1983,8 @@ export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
   follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
   pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutCommunityMembershipsInput = {
@@ -1675,6 +2025,8 @@ export type UserUpdateWithoutCommunityMembershipsInput = {
   follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
   pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
@@ -1699,6 +2051,8 @@ export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
   follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
   pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutCommunityPostsInput = {
@@ -1723,6 +2077,8 @@ export type UserCreateWithoutCommunityPostsInput = {
   follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
   pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutCommunityPostsInput = {
@@ -1747,6 +2103,8 @@ export type UserUncheckedCreateWithoutCommunityPostsInput = {
   follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
   pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutCommunityPostsInput = {
@@ -1787,6 +2145,8 @@ export type UserUpdateWithoutCommunityPostsInput = {
   follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
   pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommunityPostsInput = {
@@ -1811,6 +2171,8 @@ export type UserUncheckedUpdateWithoutCommunityPostsInput = {
   follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
   pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 export type UserCreateWithoutSettingsInput = {
@@ -1835,6 +2197,8 @@ export type UserCreateWithoutSettingsInput = {
   pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
 }
 
 export type UserUncheckedCreateWithoutSettingsInput = {
@@ -1859,6 +2223,8 @@ export type UserUncheckedCreateWithoutSettingsInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
 }
 
 export type UserCreateOrConnectWithoutSettingsInput = {
@@ -1899,6 +2265,8 @@ export type UserUpdateWithoutSettingsInput = {
   pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSettingsInput = {
@@ -1923,6 +2291,8 @@ export type UserUncheckedUpdateWithoutSettingsInput = {
   pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
   communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
 }
 
 
@@ -1937,6 +2307,8 @@ export type UserCountOutputType = {
   follows: number
   communityMemberships: number
   communityPosts: number
+  chatParticipants: number
+  chatMessages: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1946,6 +2318,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   follows?: boolean | UserCountOutputTypeCountFollowsArgs
   communityMemberships?: boolean | UserCountOutputTypeCountCommunityMembershipsArgs
   communityPosts?: boolean | UserCountOutputTypeCountCommunityPostsArgs
+  chatParticipants?: boolean | UserCountOutputTypeCountChatParticipantsArgs
+  chatMessages?: boolean | UserCountOutputTypeCountChatMessagesArgs
 }
 
 /**
@@ -2000,6 +2374,20 @@ export type UserCountOutputTypeCountCommunityPostsArgs<ExtArgs extends runtime.T
   where?: Prisma.CommunityPostWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountChatParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChatParticipantWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountChatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChatMessageWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2024,6 +2412,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   pointsWallet?: boolean | Prisma.User$pointsWalletArgs<ExtArgs>
   communityMemberships?: boolean | Prisma.User$communityMembershipsArgs<ExtArgs>
   communityPosts?: boolean | Prisma.User$communityPostsArgs<ExtArgs>
+  chatParticipants?: boolean | Prisma.User$chatParticipantsArgs<ExtArgs>
+  chatMessages?: boolean | Prisma.User$chatMessagesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2082,6 +2472,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   pointsWallet?: boolean | Prisma.User$pointsWalletArgs<ExtArgs>
   communityMemberships?: boolean | Prisma.User$communityMembershipsArgs<ExtArgs>
   communityPosts?: boolean | Prisma.User$communityPostsArgs<ExtArgs>
+  chatParticipants?: boolean | Prisma.User$chatParticipantsArgs<ExtArgs>
+  chatMessages?: boolean | Prisma.User$chatMessagesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2101,6 +2493,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     pointsWallet: Prisma.$PointsWalletPayload<ExtArgs> | null
     communityMemberships: Prisma.$CommunityMembershipPayload<ExtArgs>[]
     communityPosts: Prisma.$CommunityPostPayload<ExtArgs>[]
+    chatParticipants: Prisma.$ChatParticipantPayload<ExtArgs>[]
+    chatMessages: Prisma.$ChatMessagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2519,6 +2913,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   pointsWallet<T extends Prisma.User$pointsWalletArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$pointsWalletArgs<ExtArgs>>): Prisma.Prisma__PointsWalletClient<runtime.Types.Result.GetResult<Prisma.$PointsWalletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   communityMemberships<T extends Prisma.User$communityMembershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$communityMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityMembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   communityPosts<T extends Prisma.User$communityPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$communityPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  chatParticipants<T extends Prisma.User$chatParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$chatParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  chatMessages<T extends Prisma.User$chatMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$chatMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3188,6 +3584,54 @@ export type User$communityPostsArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.CommunityPostScalarFieldEnum | Prisma.CommunityPostScalarFieldEnum[]
+}
+
+/**
+ * User.chatParticipants
+ */
+export type User$chatParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ChatParticipant
+   */
+  select?: Prisma.ChatParticipantSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ChatParticipant
+   */
+  omit?: Prisma.ChatParticipantOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChatParticipantInclude<ExtArgs> | null
+  where?: Prisma.ChatParticipantWhereInput
+  orderBy?: Prisma.ChatParticipantOrderByWithRelationInput | Prisma.ChatParticipantOrderByWithRelationInput[]
+  cursor?: Prisma.ChatParticipantWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ChatParticipantScalarFieldEnum | Prisma.ChatParticipantScalarFieldEnum[]
+}
+
+/**
+ * User.chatMessages
+ */
+export type User$chatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ChatMessage
+   */
+  select?: Prisma.ChatMessageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ChatMessage
+   */
+  omit?: Prisma.ChatMessageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChatMessageInclude<ExtArgs> | null
+  where?: Prisma.ChatMessageWhereInput
+  orderBy?: Prisma.ChatMessageOrderByWithRelationInput | Prisma.ChatMessageOrderByWithRelationInput[]
+  cursor?: Prisma.ChatMessageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ChatMessageScalarFieldEnum | Prisma.ChatMessageScalarFieldEnum[]
 }
 
 /**

@@ -68,6 +68,21 @@ export type AvailabilityBlock = Prisma.AvailabilityBlockModel
  */
 export type Booking = Prisma.BookingModel
 /**
+ * Model ChatThread
+ * 
+ */
+export type ChatThread = Prisma.ChatThreadModel
+/**
+ * Model ChatParticipant
+ * 
+ */
+export type ChatParticipant = Prisma.ChatParticipantModel
+/**
+ * Model ChatMessage
+ * 
+ */
+export type ChatMessage = Prisma.ChatMessageModel
+/**
  * Model Payment
  * 
  */

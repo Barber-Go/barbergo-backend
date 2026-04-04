@@ -1,4 +1,4 @@
-import { IsString, Matches } from 'class-validator';
+import { IsString, IsIn, Matches } from 'class-validator';
 
 export class UpdateSiiCredentialsDto {
   @IsString()
@@ -6,6 +6,10 @@ export class UpdateSiiCredentialsDto {
     message: 'RUT debe tener formato XX.XXX.XXX-X',
   })
   rut: string;
+
+  @IsString()
+  @IsIn(['tributaria', 'clave_unica'])
+  tipoClave: 'tributaria' | 'clave_unica';
 
   @IsString()
   clave: string;

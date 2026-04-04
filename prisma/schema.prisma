@@ -133,6 +133,10 @@ model User {
   communityMemberships CommunityMembership[]
   communityPosts       CommunityPost[]
 
+  // Chat
+  chatParticipants ChatParticipant[]
+  chatMessages     ChatMessage[]
+
   @@map("users")
 }
 
@@ -328,8 +332,58 @@ model Booking {
   payment Payment?
   review  Review?
   earning Earning?
+  chatThread ChatThread?
 
   @@map("bookings")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Chat
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model ChatThread {
+  id         String   @id @default(cuid())
+  bookingId  String?  @unique
+  threadType String   @default("BOOKING_DIRECT") // BOOKING_DIRECT | BOOKING_BARBERSHOP | SUPPORT
+  status     String   @default("OPEN")           // OPEN | CLOSED | ARCHIVED
+  createdAt  DateTime @default(now())
+
+  booking      Booking?          @relation(fields: [bookingId], references: [id])
+  participants ChatParticipant[]
+  messages     ChatMessage[]
+
+  @@map("chat_threads")
+}
+
+model ChatParticipant {
+  id           String    @id @default(cuid())
+  threadId     String
+  userId       String
+  roleInThread String    // CLIENT | BARBER | OWNER | SUPPORT
+  lastReadAt   DateTime  @default(now())
+
+  thread ChatThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  user   User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([threadId, userId])
+  @@map("chat_participants")
+}
+
+model ChatMessage {
+  id           String    @id @default(cuid())
+  threadId     String
+  senderId     String
+  messageType  String    @default("TEXT") // TEXT | IMAGE | SYSTEM
+  body         String
+  metadataJson Json?
+  createdAt    DateTime  @default(now())
+  deletedAt    DateTime?
+
+  thread ChatThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  sender User       @relation(fields: [senderId], references: [id])
+
+  @@index([threadId, createdAt])
+  @@map("chat_messages")
 }
 
 model Payment {

@@ -7,6 +7,7 @@ import {
 import { PrismaService } from '../prisma/prisma.service';
 import { NotificationsService } from '../notifications/notifications.service';
 import { CommissionsService } from '../commissions/commissions.service';
+import { ChatService } from '../chat/chat.service';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { UpdateBookingStatusDto } from './dto/update-booking-status.dto';
 import { BookingStatus, NotificationType, Role } from '../generated/prisma/enums';
@@ -41,6 +42,7 @@ export class BookingsService {
     private readonly prisma: PrismaService,
     private readonly notifications: NotificationsService,
     private readonly commissions: CommissionsService,
+    private readonly chat: ChatService,
   ) {}
 
   // ── CLIENT: create booking ─────────────────────────────────────────────────
@@ -249,14 +251,21 @@ export class BookingsService {
       this.notifications
         .create(booking.clientId, NotificationType.BOOKING_CONFIRMED, 'Reserva confirmada', `Tu reserva de ${serviceName} fue confirmada`)
         .catch(() => {});
+      // Auto-create chat thread
+      const barberUserId = await this.getBarberUserId(booking.barberId);
+      this.chat
+        .createThreadForBooking(booking.id, booking.clientId, barberUserId, serviceName)
+        .catch(() => {});
     } else if (dto.status === BookingStatus.CANCELLED) {
       this.notifications
         .create(booking.clientId, NotificationType.BOOKING_CANCELLED, 'Reserva cancelada', `Tu reserva de ${serviceName} fue cancelada`)
         .catch(() => {});
+      this.chat.sendSystemMessage(booking.id, 'Reserva cancelada').catch(() => {});
     } else if (dto.status === BookingStatus.COMPLETED) {
       this.notifications
         .create(booking.clientId, NotificationType.BOOKING_COMPLETED, '¿Cómo fue tu experiencia?', `Califica tu cita de ${serviceName} con ${barberName}`)
         .catch(() => {});
+      this.chat.sendSystemMessage(booking.id, 'Reserva completada').catch(() => {});
     }
 
     return this.formatBooking(updated);

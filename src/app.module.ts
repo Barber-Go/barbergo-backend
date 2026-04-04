@@ -19,6 +19,7 @@ import { PaymentsModule } from './payments/payments.module';
 import { StorageModule } from './storage/storage.module';
 import { SiiModule } from './sii/sii.module';
 import { PushModule } from './push/push.module';
+import { ChatModule } from './chat/chat.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -47,6 +48,7 @@ import { AppService } from './app.service';
     SettingsModule,
     PaymentsModule,
     SiiModule,
+    ChatModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -61,6 +61,9 @@ export const ModelName = {
   WeeklyAvailability: 'WeeklyAvailability',
   AvailabilityBlock: 'AvailabilityBlock',
   Booking: 'Booking',
+  ChatThread: 'ChatThread',
+  ChatParticipant: 'ChatParticipant',
+  ChatMessage: 'ChatMessage',
   Payment: 'Payment',
   Review: 'Review',
   Notification: 'Notification',
@@ -258,6 +261,42 @@ export const BookingScalarFieldEnum = {
 } as const
 
 export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
+
+
+export const ChatThreadScalarFieldEnum = {
+  id: 'id',
+  bookingId: 'bookingId',
+  threadType: 'threadType',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type ChatThreadScalarFieldEnum = (typeof ChatThreadScalarFieldEnum)[keyof typeof ChatThreadScalarFieldEnum]
+
+
+export const ChatParticipantScalarFieldEnum = {
+  id: 'id',
+  threadId: 'threadId',
+  userId: 'userId',
+  roleInThread: 'roleInThread',
+  lastReadAt: 'lastReadAt'
+} as const
+
+export type ChatParticipantScalarFieldEnum = (typeof ChatParticipantScalarFieldEnum)[keyof typeof ChatParticipantScalarFieldEnum]
+
+
+export const ChatMessageScalarFieldEnum = {
+  id: 'id',
+  threadId: 'threadId',
+  senderId: 'senderId',
+  messageType: 'messageType',
+  body: 'body',
+  metadataJson: 'metadataJson',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ChatMessageScalarFieldEnum = (typeof ChatMessageScalarFieldEnum)[keyof typeof ChatMessageScalarFieldEnum]
 
 
 export const PaymentScalarFieldEnum = {

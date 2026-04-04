@@ -233,6 +233,7 @@ export class BarbersService {
       where: { userId },
       data: {
         rutTributario: dto.rut,
+        tipoClaveSii: dto.tipoClave,
         claveTributaria: encrypt(dto.clave),
       },
     });
@@ -265,6 +266,7 @@ export class BarbersService {
       totalReviews: profile.totalReviews,
       isActive: profile.isActive,
       rutTributario: profile.rutTributario ?? null,
+      tipoClaveSii: profile.tipoClaveSii ?? null,
       hasSiiCredentials: !!(profile.rutTributario && profile.claveTributaria),
       services: profile.services.map((s: any) => ({
         id: s.id,
