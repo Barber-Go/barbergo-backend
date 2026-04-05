@@ -414,7 +414,10 @@ export const ModelName = {
   UserSettings: 'UserSettings',
   AiFaceAnalysis: 'AiFaceAnalysis',
   AiHairstyleRecommendation: 'AiHairstyleRecommendation',
-  AiHairstylePreview: 'AiHairstylePreview'
+  AiHairstylePreview: 'AiHairstylePreview',
+  TaxProfile: 'TaxProfile',
+  TaxObligation: 'TaxObligation',
+  TaxDeclarationLog: 'TaxDeclarationLog'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -430,7 +433,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview"
+    modelProps: "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview" | "taxProfile" | "taxObligation" | "taxDeclarationLog"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2728,6 +2731,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    TaxProfile: {
+      payload: Prisma.$TaxProfilePayload<ExtArgs>
+      fields: Prisma.TaxProfileFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TaxProfileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxProfilePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TaxProfileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxProfilePayload>
+        }
+        findFirst: {
+          args: Prisma.TaxProfileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxProfilePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TaxProfileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxProfilePayload>
+        }
+        findMany: {
+          args: Prisma.TaxProfileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxProfilePayload>[]
+        }
+        create: {
+          args: Prisma.TaxProfileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxProfilePayload>
+        }
+        createMany: {
+          args: Prisma.TaxProfileCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TaxProfileCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxProfilePayload>[]
+        }
+        delete: {
+          args: Prisma.TaxProfileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxProfilePayload>
+        }
+        update: {
+          args: Prisma.TaxProfileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxProfilePayload>
+        }
+        deleteMany: {
+          args: Prisma.TaxProfileDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TaxProfileUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TaxProfileUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxProfilePayload>[]
+        }
+        upsert: {
+          args: Prisma.TaxProfileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxProfilePayload>
+        }
+        aggregate: {
+          args: Prisma.TaxProfileAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTaxProfile>
+        }
+        groupBy: {
+          args: Prisma.TaxProfileGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TaxProfileGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TaxProfileCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TaxProfileCountAggregateOutputType> | number
+        }
+      }
+    }
+    TaxObligation: {
+      payload: Prisma.$TaxObligationPayload<ExtArgs>
+      fields: Prisma.TaxObligationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TaxObligationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxObligationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TaxObligationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxObligationPayload>
+        }
+        findFirst: {
+          args: Prisma.TaxObligationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxObligationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TaxObligationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxObligationPayload>
+        }
+        findMany: {
+          args: Prisma.TaxObligationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxObligationPayload>[]
+        }
+        create: {
+          args: Prisma.TaxObligationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxObligationPayload>
+        }
+        createMany: {
+          args: Prisma.TaxObligationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TaxObligationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxObligationPayload>[]
+        }
+        delete: {
+          args: Prisma.TaxObligationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxObligationPayload>
+        }
+        update: {
+          args: Prisma.TaxObligationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxObligationPayload>
+        }
+        deleteMany: {
+          args: Prisma.TaxObligationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TaxObligationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TaxObligationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxObligationPayload>[]
+        }
+        upsert: {
+          args: Prisma.TaxObligationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxObligationPayload>
+        }
+        aggregate: {
+          args: Prisma.TaxObligationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTaxObligation>
+        }
+        groupBy: {
+          args: Prisma.TaxObligationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TaxObligationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TaxObligationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TaxObligationCountAggregateOutputType> | number
+        }
+      }
+    }
+    TaxDeclarationLog: {
+      payload: Prisma.$TaxDeclarationLogPayload<ExtArgs>
+      fields: Prisma.TaxDeclarationLogFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TaxDeclarationLogFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxDeclarationLogPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TaxDeclarationLogFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxDeclarationLogPayload>
+        }
+        findFirst: {
+          args: Prisma.TaxDeclarationLogFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxDeclarationLogPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TaxDeclarationLogFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxDeclarationLogPayload>
+        }
+        findMany: {
+          args: Prisma.TaxDeclarationLogFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxDeclarationLogPayload>[]
+        }
+        create: {
+          args: Prisma.TaxDeclarationLogCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxDeclarationLogPayload>
+        }
+        createMany: {
+          args: Prisma.TaxDeclarationLogCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TaxDeclarationLogCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxDeclarationLogPayload>[]
+        }
+        delete: {
+          args: Prisma.TaxDeclarationLogDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxDeclarationLogPayload>
+        }
+        update: {
+          args: Prisma.TaxDeclarationLogUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxDeclarationLogPayload>
+        }
+        deleteMany: {
+          args: Prisma.TaxDeclarationLogDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TaxDeclarationLogUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TaxDeclarationLogUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxDeclarationLogPayload>[]
+        }
+        upsert: {
+          args: Prisma.TaxDeclarationLogUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaxDeclarationLogPayload>
+        }
+        aggregate: {
+          args: Prisma.TaxDeclarationLogAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTaxDeclarationLog>
+        }
+        groupBy: {
+          args: Prisma.TaxDeclarationLogGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TaxDeclarationLogGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TaxDeclarationLogCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TaxDeclarationLogCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -3197,6 +3422,59 @@ export const AiHairstylePreviewScalarFieldEnum = {
 export type AiHairstylePreviewScalarFieldEnum = (typeof AiHairstylePreviewScalarFieldEnum)[keyof typeof AiHairstylePreviewScalarFieldEnum]
 
 
+export const TaxProfileScalarFieldEnum = {
+  id: 'id',
+  barbershopId: 'barbershopId',
+  rut: 'rut',
+  razonSocial: 'razonSocial',
+  giro: 'giro',
+  regimenTributario: 'regimenTributario',
+  vatAffectation: 'vatAffectation',
+  issuesDte: 'issuesDte',
+  hasEmployees: 'hasEmployees',
+  withholdsHonorarios: 'withholdsHonorarios',
+  monthlyRevenue: 'monthlyRevenue',
+  siiClaveType: 'siiClaveType',
+  siiClaveEncrypted: 'siiClaveEncrypted',
+  wizardCompletedAt: 'wizardCompletedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TaxProfileScalarFieldEnum = (typeof TaxProfileScalarFieldEnum)[keyof typeof TaxProfileScalarFieldEnum]
+
+
+export const TaxObligationScalarFieldEnum = {
+  id: 'id',
+  taxProfileId: 'taxProfileId',
+  type: 'type',
+  name: 'name',
+  description: 'description',
+  dueDate: 'dueDate',
+  period: 'period',
+  status: 'status',
+  completedAt: 'completedAt',
+  siiFormUrl: 'siiFormUrl',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TaxObligationScalarFieldEnum = (typeof TaxObligationScalarFieldEnum)[keyof typeof TaxObligationScalarFieldEnum]
+
+
+export const TaxDeclarationLogScalarFieldEnum = {
+  id: 'id',
+  obligationId: 'obligationId',
+  action: 'action',
+  performedBy: 'performedBy',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+} as const
+
+export type TaxDeclarationLogScalarFieldEnum = (typeof TaxDeclarationLogScalarFieldEnum)[keyof typeof TaxDeclarationLogScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -3614,6 +3892,9 @@ export type GlobalOmitConfig = {
   aiFaceAnalysis?: Prisma.AiFaceAnalysisOmit
   aiHairstyleRecommendation?: Prisma.AiHairstyleRecommendationOmit
   aiHairstylePreview?: Prisma.AiHairstylePreviewOmit
+  taxProfile?: Prisma.TaxProfileOmit
+  taxObligation?: Prisma.TaxObligationOmit
+  taxDeclarationLog?: Prisma.TaxDeclarationLogOmit
 }
 
 /* Types for Logging */

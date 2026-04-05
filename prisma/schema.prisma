@@ -207,6 +207,7 @@ model BarbershopProfile {
   user    User                        @relation(fields: [userId], references: [id], onDelete: Cascade)
   staff   BarbershopStaffMembership[]
   barbers BarberProfile[]             @relation("BarbershopBarbers")
+  taxProfile TaxProfile?
 
   @@map("barbershop_profiles")
 }
@@ -676,4 +677,67 @@ model AiHairstylePreview {
   recommendation AiHairstyleRecommendation @relation(fields: [recommendationId], references: [id], onDelete: Cascade)
 
   @@map("ai_hairstyle_previews")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Tax Compliance
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model TaxProfile {
+  id                   String    @id @default(cuid())
+  barbershopId         String    @unique
+  rut                  String
+  razonSocial          String
+  giro                 String?
+  regimenTributario    String    @default("14D3") // 14A | 14D3 | 14D8
+  vatAffectation       Boolean   @default(true)
+  issuesDte            Boolean   @default(false)
+  hasEmployees         Boolean   @default(false)
+  withholdsHonorarios  Boolean   @default(false)
+  monthlyRevenue       String?
+  siiClaveType         String?
+  siiClaveEncrypted    String?
+  wizardCompletedAt    DateTime?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  barbershop  BarbershopProfile @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+  obligations TaxObligation[]
+
+  @@map("tax_profiles")
+}
+
+model TaxObligation {
+  id            String    @id @default(cuid())
+  taxProfileId  String
+  type          String    // F29 | RCV | COTIZACIONES | RETENCIONES_BHE | F22
+  name          String
+  description   String?
+  dueDate       DateTime
+  period        String    // "2026-01" o "2026"
+  status        String    @default("PENDING") // PENDING | COMPLETED | OVERDUE | SKIPPED
+  completedAt   DateTime?
+  siiFormUrl    String?
+  notes         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  taxProfile TaxProfile          @relation(fields: [taxProfileId], references: [id], onDelete: Cascade)
+  logs       TaxDeclarationLog[]
+
+  @@unique([taxProfileId, type, period])
+  @@map("tax_obligations")
+}
+
+model TaxDeclarationLog {
+  id           String   @id @default(cuid())
+  obligationId String
+  action       String   // MARKED_COMPLETED | MARKED_PENDING | AUTO_GENERATED | REMINDER_SENT
+  performedBy  String?
+  metadata     Json?
+  createdAt    DateTime @default(now())
+
+  obligation TaxObligation @relation(fields: [obligationId], references: [id], onDelete: Cascade)
+
+  @@map("tax_declaration_logs")
 }

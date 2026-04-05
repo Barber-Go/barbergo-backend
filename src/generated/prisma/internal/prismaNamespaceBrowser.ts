@@ -81,7 +81,10 @@ export const ModelName = {
   UserSettings: 'UserSettings',
   AiFaceAnalysis: 'AiFaceAnalysis',
   AiHairstyleRecommendation: 'AiHairstyleRecommendation',
-  AiHairstylePreview: 'AiHairstylePreview'
+  AiHairstylePreview: 'AiHairstylePreview',
+  TaxProfile: 'TaxProfile',
+  TaxObligation: 'TaxObligation',
+  TaxDeclarationLog: 'TaxDeclarationLog'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -528,6 +531,59 @@ export const AiHairstylePreviewScalarFieldEnum = {
 } as const
 
 export type AiHairstylePreviewScalarFieldEnum = (typeof AiHairstylePreviewScalarFieldEnum)[keyof typeof AiHairstylePreviewScalarFieldEnum]
+
+
+export const TaxProfileScalarFieldEnum = {
+  id: 'id',
+  barbershopId: 'barbershopId',
+  rut: 'rut',
+  razonSocial: 'razonSocial',
+  giro: 'giro',
+  regimenTributario: 'regimenTributario',
+  vatAffectation: 'vatAffectation',
+  issuesDte: 'issuesDte',
+  hasEmployees: 'hasEmployees',
+  withholdsHonorarios: 'withholdsHonorarios',
+  monthlyRevenue: 'monthlyRevenue',
+  siiClaveType: 'siiClaveType',
+  siiClaveEncrypted: 'siiClaveEncrypted',
+  wizardCompletedAt: 'wizardCompletedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TaxProfileScalarFieldEnum = (typeof TaxProfileScalarFieldEnum)[keyof typeof TaxProfileScalarFieldEnum]
+
+
+export const TaxObligationScalarFieldEnum = {
+  id: 'id',
+  taxProfileId: 'taxProfileId',
+  type: 'type',
+  name: 'name',
+  description: 'description',
+  dueDate: 'dueDate',
+  period: 'period',
+  status: 'status',
+  completedAt: 'completedAt',
+  siiFormUrl: 'siiFormUrl',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TaxObligationScalarFieldEnum = (typeof TaxObligationScalarFieldEnum)[keyof typeof TaxObligationScalarFieldEnum]
+
+
+export const TaxDeclarationLogScalarFieldEnum = {
+  id: 'id',
+  obligationId: 'obligationId',
+  action: 'action',
+  performedBy: 'performedBy',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+} as const
+
+export type TaxDeclarationLogScalarFieldEnum = (typeof TaxDeclarationLogScalarFieldEnum)[keyof typeof TaxDeclarationLogScalarFieldEnum]
 
 
 export const SortOrder = {

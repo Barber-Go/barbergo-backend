@@ -21,6 +21,7 @@ import { SiiModule } from './sii/sii.module';
 import { PushModule } from './push/push.module';
 import { ChatModule } from './chat/chat.module';
 import { AiStyleModule } from './ai-style/ai-style.module';
+import { TaxComplianceModule } from './tax-compliance/tax-compliance.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -51,6 +52,7 @@ import { AppService } from './app.service';
     SiiModule,
     ChatModule,
     AiStyleModule,
+    TaxComplianceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

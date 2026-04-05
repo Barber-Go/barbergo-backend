@@ -172,3 +172,18 @@ export type AiHairstyleRecommendation = Prisma.AiHairstyleRecommendationModel
  * 
  */
 export type AiHairstylePreview = Prisma.AiHairstylePreviewModel
+/**
+ * Model TaxProfile
+ * 
+ */
+export type TaxProfile = Prisma.TaxProfileModel
+/**
+ * Model TaxObligation
+ * 
+ */
+export type TaxObligation = Prisma.TaxObligationModel
+/**
+ * Model TaxDeclarationLog
+ * 
+ */
+export type TaxDeclarationLog = Prisma.TaxDeclarationLogModel
