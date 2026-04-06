@@ -15,17 +15,22 @@ export class FinancesController {
   constructor(private readonly financesService: FinancesService) {}
 
   @Get('monthly-summary')
-  getMonthlySummary(@Request() req: any, @Query() q: MonthlySummaryQueryDto) {
+  getMonthlySummary(@Request() req: { user: { id: string } }, @Query() q: MonthlySummaryQueryDto) {
     return this.financesService.getMonthlySummary(req.user.id, q.year, q.month);
   }
 
+  @Get('monthly/breakdown')
+  getBreakdown(@Request() req: { user: { id: string } }, @Query() q: MonthlySummaryQueryDto) {
+    return this.financesService.getBarberBreakdown(req.user.id, q.year, q.month);
+  }
+
   @Get('daily-ledger')
-  getDailyLedger(@Request() req: any, @Query() q: DailyLedgerQueryDto) {
+  getDailyLedger(@Request() req: { user: { id: string } }, @Query() q: DailyLedgerQueryDto) {
     return this.financesService.getDailyLedger(req.user.id, q.date);
   }
 
   @Post('expenses')
-  createExpense(@Request() req: any, @Body() dto: CreateExpenseDto) {
+  createExpense(@Request() req: { user: { id: string } }, @Body() dto: CreateExpenseDto) {
     return this.financesService.createExpense(req.user.id, dto);
   }
 }

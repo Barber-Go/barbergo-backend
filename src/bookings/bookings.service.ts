@@ -10,7 +10,7 @@ import { CommissionsService } from '../commissions/commissions.service';
 import { ChatService } from '../chat/chat.service';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { UpdateBookingStatusDto } from './dto/update-booking-status.dto';
-import { BookingStatus, NotificationType, Role } from '../generated/prisma/enums';
+import { BookingStatus, LedgerEntryType, NotificationType, Role } from '../generated/prisma/enums';
 
 // Status transitions allowed per role
 const CLIENT_ALLOWED_TRANSITIONS: Partial<Record<BookingStatus, BookingStatus[]>> = {
@@ -240,6 +240,17 @@ export class BookingsService {
           paymentMethod: booking.paymentMethod,
         },
         update: {},
+      });
+
+      // Create ledger entry for automatic accounting
+      await this.prisma.client.dailyLedgerEntry.create({
+        data: {
+          barberId: booking.barberId,
+          date: new Date(),
+          type: LedgerEntryType.INCOME,
+          label: `Servicio: ${updated.service.name}`,
+          amount: Number(booking.totalAmount),
+        },
       });
     }
 

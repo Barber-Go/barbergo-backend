@@ -105,6 +105,52 @@ export class FinancesService {
     };
   }
 
+  async getBarberBreakdown(userId: string, year: number, month: number) {
+    const barberIds = await this.getShopBarberIds(userId);
+    const startOfMonth = new Date(year, month - 1, 1);
+    const endOfMonth = new Date(year, month, 0, 23, 59, 59, 999);
+
+    const earnings = await this.prisma.client.earning.findMany({
+      where: {
+        barberId: { in: barberIds },
+        date: { gte: startOfMonth, lte: endOfMonth },
+      },
+      include: {
+        barber: { select: { user: { select: { name: true } } } },
+      },
+    });
+
+    const byBarber = new Map<
+      string,
+      { name: string; gross: number; fees: number; net: number; count: number }
+    >();
+
+    for (const e of earnings) {
+      const key = e.barberId;
+      const existing = byBarber.get(key) ?? {
+        name: e.barber.user.name,
+        gross: 0,
+        fees: 0,
+        net: 0,
+        count: 0,
+      };
+      existing.gross += Number(e.grossAmount);
+      existing.fees += Number(e.platformFee);
+      existing.net += Number(e.netAmount);
+      existing.count++;
+      byBarber.set(key, existing);
+    }
+
+    return Array.from(byBarber.entries()).map(([barberId, data]) => ({
+      barberId,
+      name: data.name,
+      gross: round2(data.gross),
+      fees: round2(data.fees),
+      net: round2(data.net),
+      count: data.count,
+    }));
+  }
+
   // ── Helpers ──
 
   private async getShopBarberIds(userId: string): Promise<string[]> {
