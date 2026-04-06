@@ -73,6 +73,7 @@ export type BookingMinAggregateOutputType = {
   boletaEmitidaAt: Date | null
   boletaAnuladaAt: Date | null
   boletaAnulMotivo: string | null
+  boletaTipo: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -100,6 +101,7 @@ export type BookingMaxAggregateOutputType = {
   boletaEmitidaAt: Date | null
   boletaAnuladaAt: Date | null
   boletaAnulMotivo: string | null
+  boletaTipo: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -128,6 +130,7 @@ export type BookingCountAggregateOutputType = {
   boletaEmitidaAt: number
   boletaAnuladaAt: number
   boletaAnulMotivo: number
+  boletaTipo: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -181,6 +184,7 @@ export type BookingMinAggregateInputType = {
   boletaEmitidaAt?: true
   boletaAnuladaAt?: true
   boletaAnulMotivo?: true
+  boletaTipo?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -208,6 +212,7 @@ export type BookingMaxAggregateInputType = {
   boletaEmitidaAt?: true
   boletaAnuladaAt?: true
   boletaAnulMotivo?: true
+  boletaTipo?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -236,6 +241,7 @@ export type BookingCountAggregateInputType = {
   boletaEmitidaAt?: true
   boletaAnuladaAt?: true
   boletaAnulMotivo?: true
+  boletaTipo?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -351,6 +357,7 @@ export type BookingGroupByOutputType = {
   boletaEmitidaAt: Date | null
   boletaAnuladaAt: Date | null
   boletaAnulMotivo: string | null
+  boletaTipo: string | null
   createdAt: Date
   updatedAt: Date
   _count: BookingCountAggregateOutputType | null
@@ -402,6 +409,7 @@ export type BookingWhereInput = {
   boletaEmitidaAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   boletaAnuladaAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   boletaAnulMotivo?: Prisma.StringNullableFilter<"Booking"> | string | null
+  boletaTipo?: Prisma.StringNullableFilter<"Booking"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   client?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -437,6 +445,7 @@ export type BookingOrderByWithRelationInput = {
   boletaEmitidaAt?: Prisma.SortOrderInput | Prisma.SortOrder
   boletaAnuladaAt?: Prisma.SortOrderInput | Prisma.SortOrder
   boletaAnulMotivo?: Prisma.SortOrderInput | Prisma.SortOrder
+  boletaTipo?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   client?: Prisma.UserOrderByWithRelationInput
@@ -475,6 +484,7 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   boletaEmitidaAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   boletaAnuladaAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   boletaAnulMotivo?: Prisma.StringNullableFilter<"Booking"> | string | null
+  boletaTipo?: Prisma.StringNullableFilter<"Booking"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   client?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -510,6 +520,7 @@ export type BookingOrderByWithAggregationInput = {
   boletaEmitidaAt?: Prisma.SortOrderInput | Prisma.SortOrder
   boletaAnuladaAt?: Prisma.SortOrderInput | Prisma.SortOrder
   boletaAnulMotivo?: Prisma.SortOrderInput | Prisma.SortOrder
+  boletaTipo?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.BookingCountOrderByAggregateInput
@@ -546,6 +557,7 @@ export type BookingScalarWhereWithAggregatesInput = {
   boletaEmitidaAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
   boletaAnuladaAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
   boletaAnulMotivo?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  boletaTipo?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
 }
@@ -571,6 +583,7 @@ export type BookingCreateInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
@@ -606,6 +619,7 @@ export type BookingUncheckedCreateInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -635,6 +649,7 @@ export type BookingUpdateInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
@@ -670,6 +685,7 @@ export type BookingUncheckedUpdateInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -702,6 +718,7 @@ export type BookingCreateManyInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -727,6 +744,7 @@ export type BookingUpdateManyMutationInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -755,6 +773,7 @@ export type BookingUncheckedUpdateManyInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -793,6 +812,7 @@ export type BookingCountOrderByAggregateInput = {
   boletaEmitidaAt?: Prisma.SortOrder
   boletaAnuladaAt?: Prisma.SortOrder
   boletaAnulMotivo?: Prisma.SortOrder
+  boletaTipo?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -832,6 +852,7 @@ export type BookingMaxOrderByAggregateInput = {
   boletaEmitidaAt?: Prisma.SortOrder
   boletaAnuladaAt?: Prisma.SortOrder
   boletaAnulMotivo?: Prisma.SortOrder
+  boletaTipo?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -859,6 +880,7 @@ export type BookingMinOrderByAggregateInput = {
   boletaEmitidaAt?: Prisma.SortOrder
   boletaAnuladaAt?: Prisma.SortOrder
   boletaAnulMotivo?: Prisma.SortOrder
+  boletaTipo?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1102,6 +1124,7 @@ export type BookingCreateWithoutClientInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
@@ -1135,6 +1158,7 @@ export type BookingUncheckedCreateWithoutClientInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -1196,6 +1220,7 @@ export type BookingScalarWhereInput = {
   boletaEmitidaAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   boletaAnuladaAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   boletaAnulMotivo?: Prisma.StringNullableFilter<"Booking"> | string | null
+  boletaTipo?: Prisma.StringNullableFilter<"Booking"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
 }
@@ -1221,6 +1246,7 @@ export type BookingCreateWithoutBarberInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
@@ -1254,6 +1280,7 @@ export type BookingUncheckedCreateWithoutBarberInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -1309,6 +1336,7 @@ export type BookingCreateWithoutServiceInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
@@ -1342,6 +1370,7 @@ export type BookingUncheckedCreateWithoutServiceInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -1397,6 +1426,7 @@ export type BookingCreateWithoutChatThreadInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
@@ -1431,6 +1461,7 @@ export type BookingUncheckedCreateWithoutChatThreadInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -1475,6 +1506,7 @@ export type BookingUpdateWithoutChatThreadInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
@@ -1509,6 +1541,7 @@ export type BookingUncheckedUpdateWithoutChatThreadInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -1537,6 +1570,7 @@ export type BookingCreateWithoutPaymentInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
@@ -1571,6 +1605,7 @@ export type BookingUncheckedCreateWithoutPaymentInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
@@ -1615,6 +1650,7 @@ export type BookingUpdateWithoutPaymentInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
@@ -1649,6 +1685,7 @@ export type BookingUncheckedUpdateWithoutPaymentInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
@@ -1677,6 +1714,7 @@ export type BookingCreateWithoutReviewInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
@@ -1711,6 +1749,7 @@ export type BookingUncheckedCreateWithoutReviewInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -1755,6 +1794,7 @@ export type BookingUpdateWithoutReviewInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
@@ -1789,6 +1829,7 @@ export type BookingUncheckedUpdateWithoutReviewInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -1817,6 +1858,7 @@ export type BookingCreateWithoutEarningInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
@@ -1851,6 +1893,7 @@ export type BookingUncheckedCreateWithoutEarningInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
@@ -1895,6 +1938,7 @@ export type BookingUpdateWithoutEarningInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
@@ -1929,6 +1973,7 @@ export type BookingUncheckedUpdateWithoutEarningInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -1959,6 +2004,7 @@ export type BookingCreateManyClientInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1984,6 +2030,7 @@ export type BookingUpdateWithoutClientInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
@@ -2017,6 +2064,7 @@ export type BookingUncheckedUpdateWithoutClientInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -2048,6 +2096,7 @@ export type BookingUncheckedUpdateManyWithoutClientInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -2075,6 +2124,7 @@ export type BookingCreateManyBarberInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -2100,6 +2150,7 @@ export type BookingUpdateWithoutBarberInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
@@ -2133,6 +2184,7 @@ export type BookingUncheckedUpdateWithoutBarberInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -2164,6 +2216,7 @@ export type BookingUncheckedUpdateManyWithoutBarberInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -2191,6 +2244,7 @@ export type BookingCreateManyServiceInput = {
   boletaEmitidaAt?: Date | string | null
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -2216,6 +2270,7 @@ export type BookingUpdateWithoutServiceInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
@@ -2249,6 +2304,7 @@ export type BookingUncheckedUpdateWithoutServiceInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
@@ -2280,6 +2336,7 @@ export type BookingUncheckedUpdateManyWithoutServiceInput = {
   boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -2310,6 +2367,7 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   boletaEmitidaAt?: boolean
   boletaAnuladaAt?: boolean
   boletaAnulMotivo?: boolean
+  boletaTipo?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -2345,6 +2403,7 @@ export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   boletaEmitidaAt?: boolean
   boletaAnuladaAt?: boolean
   boletaAnulMotivo?: boolean
+  boletaTipo?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -2376,6 +2435,7 @@ export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   boletaEmitidaAt?: boolean
   boletaAnuladaAt?: boolean
   boletaAnulMotivo?: boolean
+  boletaTipo?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -2407,11 +2467,12 @@ export type BookingSelectScalar = {
   boletaEmitidaAt?: boolean
   boletaAnuladaAt?: boolean
   boletaAnulMotivo?: boolean
+  boletaTipo?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "barberId" | "serviceId" | "scheduledAt" | "status" | "paymentMethod" | "totalAmount" | "platformFee" | "barberNet" | "grossAmount" | "platformFeePercent" | "distributableAmount" | "barberAmount" | "shopAmount" | "netPayoutToBarber" | "serviceSnapshot" | "boletaFolio" | "boletaPdfUrl" | "boletaEstado" | "boletaEmitidaAt" | "boletaAnuladaAt" | "boletaAnulMotivo" | "createdAt" | "updatedAt", ExtArgs["result"]["booking"]>
+export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "barberId" | "serviceId" | "scheduledAt" | "status" | "paymentMethod" | "totalAmount" | "platformFee" | "barberNet" | "grossAmount" | "platformFeePercent" | "distributableAmount" | "barberAmount" | "shopAmount" | "netPayoutToBarber" | "serviceSnapshot" | "boletaFolio" | "boletaPdfUrl" | "boletaEstado" | "boletaEmitidaAt" | "boletaAnuladaAt" | "boletaAnulMotivo" | "boletaTipo" | "createdAt" | "updatedAt", ExtArgs["result"]["booking"]>
 export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
@@ -2467,6 +2528,7 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     boletaEmitidaAt: Date | null
     boletaAnuladaAt: Date | null
     boletaAnulMotivo: string | null
+    boletaTipo: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["booking"]>
@@ -2922,6 +2984,7 @@ export interface BookingFieldRefs {
   readonly boletaEmitidaAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly boletaAnuladaAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly boletaAnulMotivo: Prisma.FieldRef<"Booking", 'String'>
+  readonly boletaTipo: Prisma.FieldRef<"Booking", 'String'>
   readonly createdAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Booking", 'DateTime'>
 }

@@ -3,6 +3,8 @@ import { PrismaService } from '../prisma/prisma.service';
 import { TaxObligationEngineService } from './tax-obligation-engine.service';
 import { CreateTaxProfileDto } from './dto/create-tax-profile.dto';
 import { UpdateTaxProfileDto } from './dto/update-tax-profile.dto';
+import { SaveCredentialsDto } from './dto/save-credentials.dto';
+import { encrypt } from '../shared/crypto.utils';
 
 @Injectable()
 export class TaxComplianceService {
@@ -35,7 +37,7 @@ export class TaxComplianceService {
       withholdsHonorarios: dto.withholdsHonorarios,
       monthlyRevenue: dto.monthlyRevenue,
       pfxCertificateBase64: dto.pfxCertificateBase64,
-      pfxPassword: dto.pfxPassword,
+      pfxPassword: dto.pfxPassword ? encrypt(dto.pfxPassword) : undefined,
       siiResolucionNumero: dto.siiResolucionNumero,
       siiResolucionFecha: dto.siiResolucionFecha ? new Date(dto.siiResolucionFecha) : undefined,
       comunaSii: dto.comunaSii,
@@ -219,6 +221,68 @@ export class TaxComplianceService {
       orderBy: { createdAt: 'desc' },
       take: 50,
     });
+  }
+
+  // ── Credentials ───────────────────────────────────────────────────────────
+
+  async saveCredentials(userId: string, dto: SaveCredentialsDto) {
+    const shop = await this.assertOwner(userId);
+
+    const siiClaveEncrypted = dto.siiClave ? encrypt(dto.siiClave) : undefined;
+    const pfxPasswordEncrypted = dto.pfxPassword ? encrypt(dto.pfxPassword) : undefined;
+
+    const fields = {
+      rut: dto.rut,
+      tipoContribuyente: dto.tipoContribuyente,
+      siiClaveType: dto.siiClaveType ?? undefined,
+      siiClaveEncrypted,
+      pfxCertificateBase64: dto.pfxCertificateBase64 ?? undefined,
+      pfxPassword: pfxPasswordEncrypted,
+    };
+
+    await this.prisma.client.taxProfile.upsert({
+      where: { barbershopId: shop.id },
+      create: {
+        barbershop: { connect: { id: shop.id } },
+        razonSocial: '',
+        ...fields,
+      },
+      update: fields,
+    });
+
+    return { saved: true, type: dto.tipoContribuyente };
+  }
+
+  async getCredentials(userId: string) {
+    const shop = await this.assertOwner(userId);
+    const profile = await this.prisma.client.taxProfile.findUnique({
+      where: { barbershopId: shop.id },
+      select: {
+        rut: true,
+        tipoContribuyente: true,
+        dteEnabled: true,
+        siiClaveEncrypted: true,
+        pfxCertificateBase64: true,
+      },
+    });
+
+    if (!profile) {
+      return {
+        hasCredentials: false,
+        tipoContribuyente: null,
+        rut: null,
+        dteEnabled: false,
+      };
+    }
+
+    const hasCredentials = !!(profile.siiClaveEncrypted || profile.pfxCertificateBase64);
+
+    return {
+      hasCredentials,
+      tipoContribuyente: profile.tipoContribuyente,
+      rut: profile.rut,
+      dteEnabled: profile.dteEnabled,
+    };
   }
 
   // ── Helpers ───────────────────────────────────────────────────────────────

@@ -207,7 +207,8 @@ model BarbershopProfile {
   user    User                        @relation(fields: [userId], references: [id], onDelete: Cascade)
   staff   BarbershopStaffMembership[]
   barbers BarberProfile[]             @relation("BarbershopBarbers")
-  taxProfile TaxProfile?
+  taxProfile     TaxProfile?
+  billingRecords BillingRecord[]
 
   @@map("barbershop_profiles")
 }
@@ -324,6 +325,7 @@ model Booking {
   boletaEmitidaAt   DateTime?
   boletaAnuladaAt   DateTime?
   boletaAnulMotivo  String?
+  boletaTipo        String?    // BHE | BVS_39 | FACTURA_33
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -704,6 +706,8 @@ model TaxProfile {
   comunaSii            String?   // comuna para documentos SII
   direccionSii         String?   // dirección para documentos SII
   actividadEconomica   Int?      // código actividad económica SII
+  tipoContribuyente    String?   // PERSONA_NATURAL | SOCIEDAD_SPA | SOCIEDAD_EIRL
+  dteEnabled           Boolean   @default(false)
   wizardCompletedAt    DateTime?
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @updatedAt
@@ -747,4 +751,22 @@ model TaxDeclarationLog {
   obligation TaxObligation @relation(fields: [obligationId], references: [id], onDelete: Cascade)
 
   @@map("tax_declaration_logs")
+}
+
+model BillingRecord {
+  id              String   @id @default(cuid())
+  barbershopId    String
+  period          String   // "2026-04" (YYYY-MM)
+  apiCreditsUsed  Int      @default(0)
+  bheEmitted      Int      @default(0)
+  dteEmitted      Int      @default(0)
+  totalCostClp    Int      @default(0)
+  invoiceUrl      String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  barbershop BarbershopProfile @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+
+  @@unique([barbershopId, period])
+  @@map("billing_records")
 }

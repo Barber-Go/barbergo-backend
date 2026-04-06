@@ -57,6 +57,8 @@ export type TaxProfileMinAggregateOutputType = {
   comunaSii: string | null
   direccionSii: string | null
   actividadEconomica: number | null
+  tipoContribuyente: string | null
+  dteEnabled: boolean | null
   wizardCompletedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -83,6 +85,8 @@ export type TaxProfileMaxAggregateOutputType = {
   comunaSii: string | null
   direccionSii: string | null
   actividadEconomica: number | null
+  tipoContribuyente: string | null
+  dteEnabled: boolean | null
   wizardCompletedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -109,6 +113,8 @@ export type TaxProfileCountAggregateOutputType = {
   comunaSii: number
   direccionSii: number
   actividadEconomica: number
+  tipoContribuyente: number
+  dteEnabled: number
   wizardCompletedAt: number
   createdAt: number
   updatedAt: number
@@ -147,6 +153,8 @@ export type TaxProfileMinAggregateInputType = {
   comunaSii?: true
   direccionSii?: true
   actividadEconomica?: true
+  tipoContribuyente?: true
+  dteEnabled?: true
   wizardCompletedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -173,6 +181,8 @@ export type TaxProfileMaxAggregateInputType = {
   comunaSii?: true
   direccionSii?: true
   actividadEconomica?: true
+  tipoContribuyente?: true
+  dteEnabled?: true
   wizardCompletedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -199,6 +209,8 @@ export type TaxProfileCountAggregateInputType = {
   comunaSii?: true
   direccionSii?: true
   actividadEconomica?: true
+  tipoContribuyente?: true
+  dteEnabled?: true
   wizardCompletedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -312,6 +324,8 @@ export type TaxProfileGroupByOutputType = {
   comunaSii: string | null
   direccionSii: string | null
   actividadEconomica: number | null
+  tipoContribuyente: string | null
+  dteEnabled: boolean
   wizardCompletedAt: Date | null
   createdAt: Date
   updatedAt: Date
@@ -361,6 +375,8 @@ export type TaxProfileWhereInput = {
   comunaSii?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
   direccionSii?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
   actividadEconomica?: Prisma.IntNullableFilter<"TaxProfile"> | number | null
+  tipoContribuyente?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
+  dteEnabled?: Prisma.BoolFilter<"TaxProfile"> | boolean
   wizardCompletedAt?: Prisma.DateTimeNullableFilter<"TaxProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"TaxProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TaxProfile"> | Date | string
@@ -389,6 +405,8 @@ export type TaxProfileOrderByWithRelationInput = {
   comunaSii?: Prisma.SortOrderInput | Prisma.SortOrder
   direccionSii?: Prisma.SortOrderInput | Prisma.SortOrder
   actividadEconomica?: Prisma.SortOrderInput | Prisma.SortOrder
+  tipoContribuyente?: Prisma.SortOrderInput | Prisma.SortOrder
+  dteEnabled?: Prisma.SortOrder
   wizardCompletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -420,6 +438,8 @@ export type TaxProfileWhereUniqueInput = Prisma.AtLeast<{
   comunaSii?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
   direccionSii?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
   actividadEconomica?: Prisma.IntNullableFilter<"TaxProfile"> | number | null
+  tipoContribuyente?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
+  dteEnabled?: Prisma.BoolFilter<"TaxProfile"> | boolean
   wizardCompletedAt?: Prisma.DateTimeNullableFilter<"TaxProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"TaxProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TaxProfile"> | Date | string
@@ -448,6 +468,8 @@ export type TaxProfileOrderByWithAggregationInput = {
   comunaSii?: Prisma.SortOrderInput | Prisma.SortOrder
   direccionSii?: Prisma.SortOrderInput | Prisma.SortOrder
   actividadEconomica?: Prisma.SortOrderInput | Prisma.SortOrder
+  tipoContribuyente?: Prisma.SortOrderInput | Prisma.SortOrder
+  dteEnabled?: Prisma.SortOrder
   wizardCompletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -482,6 +504,8 @@ export type TaxProfileScalarWhereWithAggregatesInput = {
   comunaSii?: Prisma.StringNullableWithAggregatesFilter<"TaxProfile"> | string | null
   direccionSii?: Prisma.StringNullableWithAggregatesFilter<"TaxProfile"> | string | null
   actividadEconomica?: Prisma.IntNullableWithAggregatesFilter<"TaxProfile"> | number | null
+  tipoContribuyente?: Prisma.StringNullableWithAggregatesFilter<"TaxProfile"> | string | null
+  dteEnabled?: Prisma.BoolWithAggregatesFilter<"TaxProfile"> | boolean
   wizardCompletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"TaxProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TaxProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TaxProfile"> | Date | string
@@ -507,6 +531,8 @@ export type TaxProfileCreateInput = {
   comunaSii?: string | null
   direccionSii?: string | null
   actividadEconomica?: number | null
+  tipoContribuyente?: string | null
+  dteEnabled?: boolean
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -535,6 +561,8 @@ export type TaxProfileUncheckedCreateInput = {
   comunaSii?: string | null
   direccionSii?: string | null
   actividadEconomica?: number | null
+  tipoContribuyente?: string | null
+  dteEnabled?: boolean
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -561,6 +589,8 @@ export type TaxProfileUpdateInput = {
   comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipoContribuyente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dteEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -589,6 +619,8 @@ export type TaxProfileUncheckedUpdateInput = {
   comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipoContribuyente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dteEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -616,6 +648,8 @@ export type TaxProfileCreateManyInput = {
   comunaSii?: string | null
   direccionSii?: string | null
   actividadEconomica?: number | null
+  tipoContribuyente?: string | null
+  dteEnabled?: boolean
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -641,6 +675,8 @@ export type TaxProfileUpdateManyMutationInput = {
   comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipoContribuyente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dteEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -667,6 +703,8 @@ export type TaxProfileUncheckedUpdateManyInput = {
   comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipoContribuyente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dteEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -698,6 +736,8 @@ export type TaxProfileCountOrderByAggregateInput = {
   comunaSii?: Prisma.SortOrder
   direccionSii?: Prisma.SortOrder
   actividadEconomica?: Prisma.SortOrder
+  tipoContribuyente?: Prisma.SortOrder
+  dteEnabled?: Prisma.SortOrder
   wizardCompletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -729,6 +769,8 @@ export type TaxProfileMaxOrderByAggregateInput = {
   comunaSii?: Prisma.SortOrder
   direccionSii?: Prisma.SortOrder
   actividadEconomica?: Prisma.SortOrder
+  tipoContribuyente?: Prisma.SortOrder
+  dteEnabled?: Prisma.SortOrder
   wizardCompletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -755,6 +797,8 @@ export type TaxProfileMinOrderByAggregateInput = {
   comunaSii?: Prisma.SortOrder
   direccionSii?: Prisma.SortOrder
   actividadEconomica?: Prisma.SortOrder
+  tipoContribuyente?: Prisma.SortOrder
+  dteEnabled?: Prisma.SortOrder
   wizardCompletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -844,6 +888,8 @@ export type TaxProfileCreateWithoutBarbershopInput = {
   comunaSii?: string | null
   direccionSii?: string | null
   actividadEconomica?: number | null
+  tipoContribuyente?: string | null
+  dteEnabled?: boolean
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -870,6 +916,8 @@ export type TaxProfileUncheckedCreateWithoutBarbershopInput = {
   comunaSii?: string | null
   direccionSii?: string | null
   actividadEconomica?: number | null
+  tipoContribuyente?: string | null
+  dteEnabled?: boolean
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -912,6 +960,8 @@ export type TaxProfileUpdateWithoutBarbershopInput = {
   comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipoContribuyente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dteEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -938,6 +988,8 @@ export type TaxProfileUncheckedUpdateWithoutBarbershopInput = {
   comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipoContribuyente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dteEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -964,6 +1016,8 @@ export type TaxProfileCreateWithoutObligationsInput = {
   comunaSii?: string | null
   direccionSii?: string | null
   actividadEconomica?: number | null
+  tipoContribuyente?: string | null
+  dteEnabled?: boolean
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -991,6 +1045,8 @@ export type TaxProfileUncheckedCreateWithoutObligationsInput = {
   comunaSii?: string | null
   direccionSii?: string | null
   actividadEconomica?: number | null
+  tipoContribuyente?: string | null
+  dteEnabled?: boolean
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1032,6 +1088,8 @@ export type TaxProfileUpdateWithoutObligationsInput = {
   comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipoContribuyente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dteEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1059,6 +1117,8 @@ export type TaxProfileUncheckedUpdateWithoutObligationsInput = {
   comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipoContribuyente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dteEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1116,6 +1176,8 @@ export type TaxProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   comunaSii?: boolean
   direccionSii?: boolean
   actividadEconomica?: boolean
+  tipoContribuyente?: boolean
+  dteEnabled?: boolean
   wizardCompletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1145,6 +1207,8 @@ export type TaxProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   comunaSii?: boolean
   direccionSii?: boolean
   actividadEconomica?: boolean
+  tipoContribuyente?: boolean
+  dteEnabled?: boolean
   wizardCompletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1172,6 +1236,8 @@ export type TaxProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   comunaSii?: boolean
   direccionSii?: boolean
   actividadEconomica?: boolean
+  tipoContribuyente?: boolean
+  dteEnabled?: boolean
   wizardCompletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1199,12 +1265,14 @@ export type TaxProfileSelectScalar = {
   comunaSii?: boolean
   direccionSii?: boolean
   actividadEconomica?: boolean
+  tipoContribuyente?: boolean
+  dteEnabled?: boolean
   wizardCompletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type TaxProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barbershopId" | "rut" | "razonSocial" | "giro" | "regimenTributario" | "vatAffectation" | "issuesDte" | "hasEmployees" | "withholdsHonorarios" | "monthlyRevenue" | "siiClaveType" | "siiClaveEncrypted" | "pfxCertificateBase64" | "pfxPassword" | "siiResolucionNumero" | "siiResolucionFecha" | "comunaSii" | "direccionSii" | "actividadEconomica" | "wizardCompletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["taxProfile"]>
+export type TaxProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barbershopId" | "rut" | "razonSocial" | "giro" | "regimenTributario" | "vatAffectation" | "issuesDte" | "hasEmployees" | "withholdsHonorarios" | "monthlyRevenue" | "siiClaveType" | "siiClaveEncrypted" | "pfxCertificateBase64" | "pfxPassword" | "siiResolucionNumero" | "siiResolucionFecha" | "comunaSii" | "direccionSii" | "actividadEconomica" | "tipoContribuyente" | "dteEnabled" | "wizardCompletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["taxProfile"]>
 export type TaxProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barbershop?: boolean | Prisma.BarbershopProfileDefaultArgs<ExtArgs>
   obligations?: boolean | Prisma.TaxProfile$obligationsArgs<ExtArgs>
@@ -1244,6 +1312,8 @@ export type $TaxProfilePayload<ExtArgs extends runtime.Types.Extensions.Internal
     comunaSii: string | null
     direccionSii: string | null
     actividadEconomica: number | null
+    tipoContribuyente: string | null
+    dteEnabled: boolean
     wizardCompletedAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -1692,6 +1762,8 @@ export interface TaxProfileFieldRefs {
   readonly comunaSii: Prisma.FieldRef<"TaxProfile", 'String'>
   readonly direccionSii: Prisma.FieldRef<"TaxProfile", 'String'>
   readonly actividadEconomica: Prisma.FieldRef<"TaxProfile", 'Int'>
+  readonly tipoContribuyente: Prisma.FieldRef<"TaxProfile", 'String'>
+  readonly dteEnabled: Prisma.FieldRef<"TaxProfile", 'Boolean'>
   readonly wizardCompletedAt: Prisma.FieldRef<"TaxProfile", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"TaxProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"TaxProfile", 'DateTime'>

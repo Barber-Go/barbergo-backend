@@ -12,6 +12,7 @@ import {
 import { TaxComplianceService } from './tax-compliance.service';
 import { CreateTaxProfileDto } from './dto/create-tax-profile.dto';
 import { UpdateTaxProfileDto } from './dto/update-tax-profile.dto';
+import { SaveCredentialsDto } from './dto/save-credentials.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decorator';
@@ -22,6 +23,23 @@ import { Role } from '../generated/prisma/enums';
 @Roles(Role.BARBERSHOP_OWNER)
 export class TaxComplianceController {
   constructor(private readonly taxService: TaxComplianceService) {}
+
+  // ── Credentials ─────────────────────────────────────────────────────────
+
+  @Post('credentials/me')
+  saveCredentials(
+    @Request() req: { user: { id: string } },
+    @Body() dto: SaveCredentialsDto,
+  ) {
+    return this.taxService.saveCredentials(req.user.id, dto);
+  }
+
+  @Get('credentials/me')
+  getCredentials(@Request() req: { user: { id: string } }) {
+    return this.taxService.getCredentials(req.user.id);
+  }
+
+  // ── Profile ────────────────────────────────────────────────────────────
 
   @Get('profile/me')
   getProfile(@Request() req: { user: { id: string } }) {

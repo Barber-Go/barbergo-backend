@@ -84,7 +84,8 @@ export const ModelName = {
   AiHairstylePreview: 'AiHairstylePreview',
   TaxProfile: 'TaxProfile',
   TaxObligation: 'TaxObligation',
-  TaxDeclarationLog: 'TaxDeclarationLog'
+  TaxDeclarationLog: 'TaxDeclarationLog',
+  BillingRecord: 'BillingRecord'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -262,6 +263,7 @@ export const BookingScalarFieldEnum = {
   boletaEmitidaAt: 'boletaEmitidaAt',
   boletaAnuladaAt: 'boletaAnuladaAt',
   boletaAnulMotivo: 'boletaAnulMotivo',
+  boletaTipo: 'boletaTipo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -554,6 +556,8 @@ export const TaxProfileScalarFieldEnum = {
   comunaSii: 'comunaSii',
   direccionSii: 'direccionSii',
   actividadEconomica: 'actividadEconomica',
+  tipoContribuyente: 'tipoContribuyente',
+  dteEnabled: 'dteEnabled',
   wizardCompletedAt: 'wizardCompletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -591,6 +595,22 @@ export const TaxDeclarationLogScalarFieldEnum = {
 } as const
 
 export type TaxDeclarationLogScalarFieldEnum = (typeof TaxDeclarationLogScalarFieldEnum)[keyof typeof TaxDeclarationLogScalarFieldEnum]
+
+
+export const BillingRecordScalarFieldEnum = {
+  id: 'id',
+  barbershopId: 'barbershopId',
+  period: 'period',
+  apiCreditsUsed: 'apiCreditsUsed',
+  bheEmitted: 'bheEmitted',
+  dteEmitted: 'dteEmitted',
+  totalCostClp: 'totalCostClp',
+  invoiceUrl: 'invoiceUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BillingRecordScalarFieldEnum = (typeof BillingRecordScalarFieldEnum)[keyof typeof BillingRecordScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -417,7 +417,8 @@ export const ModelName = {
   AiHairstylePreview: 'AiHairstylePreview',
   TaxProfile: 'TaxProfile',
   TaxObligation: 'TaxObligation',
-  TaxDeclarationLog: 'TaxDeclarationLog'
+  TaxDeclarationLog: 'TaxDeclarationLog',
+  BillingRecord: 'BillingRecord'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -433,7 +434,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview" | "taxProfile" | "taxObligation" | "taxDeclarationLog"
+    modelProps: "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview" | "taxProfile" | "taxObligation" | "taxDeclarationLog" | "billingRecord"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2953,6 +2954,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    BillingRecord: {
+      payload: Prisma.$BillingRecordPayload<ExtArgs>
+      fields: Prisma.BillingRecordFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BillingRecordFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingRecordPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BillingRecordFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingRecordPayload>
+        }
+        findFirst: {
+          args: Prisma.BillingRecordFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingRecordPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BillingRecordFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingRecordPayload>
+        }
+        findMany: {
+          args: Prisma.BillingRecordFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingRecordPayload>[]
+        }
+        create: {
+          args: Prisma.BillingRecordCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingRecordPayload>
+        }
+        createMany: {
+          args: Prisma.BillingRecordCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BillingRecordCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingRecordPayload>[]
+        }
+        delete: {
+          args: Prisma.BillingRecordDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingRecordPayload>
+        }
+        update: {
+          args: Prisma.BillingRecordUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingRecordPayload>
+        }
+        deleteMany: {
+          args: Prisma.BillingRecordDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BillingRecordUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BillingRecordUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingRecordPayload>[]
+        }
+        upsert: {
+          args: Prisma.BillingRecordUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingRecordPayload>
+        }
+        aggregate: {
+          args: Prisma.BillingRecordAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBillingRecord>
+        }
+        groupBy: {
+          args: Prisma.BillingRecordGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BillingRecordGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BillingRecordCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BillingRecordCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -3151,6 +3226,7 @@ export const BookingScalarFieldEnum = {
   boletaEmitidaAt: 'boletaEmitidaAt',
   boletaAnuladaAt: 'boletaAnuladaAt',
   boletaAnulMotivo: 'boletaAnulMotivo',
+  boletaTipo: 'boletaTipo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -3443,6 +3519,8 @@ export const TaxProfileScalarFieldEnum = {
   comunaSii: 'comunaSii',
   direccionSii: 'direccionSii',
   actividadEconomica: 'actividadEconomica',
+  tipoContribuyente: 'tipoContribuyente',
+  dteEnabled: 'dteEnabled',
   wizardCompletedAt: 'wizardCompletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -3480,6 +3558,22 @@ export const TaxDeclarationLogScalarFieldEnum = {
 } as const
 
 export type TaxDeclarationLogScalarFieldEnum = (typeof TaxDeclarationLogScalarFieldEnum)[keyof typeof TaxDeclarationLogScalarFieldEnum]
+
+
+export const BillingRecordScalarFieldEnum = {
+  id: 'id',
+  barbershopId: 'barbershopId',
+  period: 'period',
+  apiCreditsUsed: 'apiCreditsUsed',
+  bheEmitted: 'bheEmitted',
+  dteEmitted: 'dteEmitted',
+  totalCostClp: 'totalCostClp',
+  invoiceUrl: 'invoiceUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BillingRecordScalarFieldEnum = (typeof BillingRecordScalarFieldEnum)[keyof typeof BillingRecordScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -3902,6 +3996,7 @@ export type GlobalOmitConfig = {
   taxProfile?: Prisma.TaxProfileOmit
   taxObligation?: Prisma.TaxObligationOmit
   taxDeclarationLog?: Prisma.TaxDeclarationLogOmit
+  billingRecord?: Prisma.BillingRecordOmit
 }
 
 /* Types for Logging */

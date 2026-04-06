@@ -22,6 +22,7 @@ import { PushModule } from './push/push.module';
 import { ChatModule } from './chat/chat.module';
 import { AiStyleModule } from './ai-style/ai-style.module';
 import { TaxComplianceModule } from './tax-compliance/tax-compliance.module';
+import { BillingModule } from './billing/billing.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -53,6 +54,7 @@ import { AppService } from './app.service';
     ChatModule,
     AiStyleModule,
     TaxComplianceModule,
+    BillingModule,
   ],
   controllers: [AppController],
   providers: [AppService],
