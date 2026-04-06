@@ -38,8 +38,9 @@ export class AiStyleController {
     return this.aiStyleService.deleteAnalysis(req.user.id, id);
   }
 
-  @Post(':analysisId/preview')
-  generatePreview(@Request() req: any, @Param('analysisId') analysisId: string) {
-    return this.aiStyleService.generatePreview(req.user.id, analysisId);
-  }
+  // Preview generation disabled — Google AI credits conservation
+  // @Post(':analysisId/preview')
+  // generatePreview(@Request() req, @Param('analysisId') analysisId: string) {
+  //   return this.aiStyleService.generatePreview(req.user.id, analysisId);
+  // }
 }

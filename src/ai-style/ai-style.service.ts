@@ -235,7 +235,7 @@ Responde SOLO con JSON válido, sin markdown:
       });
 
       try {
-        const prompt = this.buildImagePrompt(rec.haircutName, analysis.faceShape);
+        const prompt = this.buildImagePrompt(rec.haircutName, analysis.faceShape, analysis.attributesJson as Record<string, string> | null);
         const base64Image = await this.callGoogleImagen(prompt);
 
         // Upload to Cloudinary
@@ -263,10 +263,24 @@ Responde SOLO con JSON válido, sin markdown:
 
   // ── Google Imagen 3 ───────────────────────────────────────────────────────
 
-  private buildImagePrompt(haircutName: string, faceShape: string): string {
-    return `Portrait photo of a young Latino man with ${haircutName} haircut, ` +
-      `face shape ${faceShape}, professional barbershop photo, realistic, front view, ` +
-      `neutral dark background, studio lighting, high quality`;
+  private buildImagePrompt(haircutName: string, faceShape: string, attributes: Record<string, string> | null): string {
+    const parts: string[] = [];
+    parts.push(`Professional barbershop portrait photo of a young Latino man with ${haircutName} haircut.`);
+    parts.push(`Face characteristics: ${faceShape} face shape.`);
+
+    if (attributes) {
+      if (attributes.jawline) parts.push(`Jawline: ${attributes.jawline}.`);
+      if (attributes.forehead) parts.push(`Forehead: ${attributes.forehead}.`);
+      if (attributes.cheekbones) parts.push(`Cheekbones: ${attributes.cheekbones}.`);
+      if (attributes.skinTone) parts.push(`Skin tone: ${attributes.skinTone}.`);
+      if (attributes.eyeColor) parts.push(`Eye color: ${attributes.eyeColor}.`);
+    }
+
+    parts.push('Keep the same facial features, only change the hairstyle.');
+    parts.push('Photorealistic, studio lighting, neutral dark background, front view, high quality, 4K.');
+    parts.push('The person should look Latino, young adult, similar facial structure to the original photo.');
+
+    return parts.join(' ');
   }
 
   private async callGoogleImagen(prompt: string): Promise<string> {
