@@ -547,6 +547,13 @@ export const TaxProfileScalarFieldEnum = {
   monthlyRevenue: 'monthlyRevenue',
   siiClaveType: 'siiClaveType',
   siiClaveEncrypted: 'siiClaveEncrypted',
+  pfxCertificateBase64: 'pfxCertificateBase64',
+  pfxPassword: 'pfxPassword',
+  siiResolucionNumero: 'siiResolucionNumero',
+  siiResolucionFecha: 'siiResolucionFecha',
+  comunaSii: 'comunaSii',
+  direccionSii: 'direccionSii',
+  actividadEconomica: 'actividadEconomica',
   wizardCompletedAt: 'wizardCompletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

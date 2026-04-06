@@ -24,20 +24,30 @@ export class TaxComplianceService {
   async createProfile(userId: string, dto: CreateTaxProfileDto) {
     const shop = await this.assertOwner(userId);
 
-    const profile = await this.prisma.client.taxProfile.create({
-      data: {
-        barbershopId: shop.id,
-        rut: dto.rut,
-        razonSocial: dto.razonSocial,
-        giro: dto.giro,
-        regimenTributario: dto.regimenTributario,
-        vatAffectation: dto.vatAffectation,
-        issuesDte: dto.issuesDte,
-        hasEmployees: dto.hasEmployees,
-        withholdsHonorarios: dto.withholdsHonorarios,
-        monthlyRevenue: dto.monthlyRevenue,
-        wizardCompletedAt: new Date(),
-      },
+    const profileData = {
+      rut: dto.rut,
+      razonSocial: dto.razonSocial,
+      giro: dto.giro,
+      regimenTributario: dto.regimenTributario,
+      vatAffectation: dto.vatAffectation,
+      issuesDte: dto.issuesDte,
+      hasEmployees: dto.hasEmployees,
+      withholdsHonorarios: dto.withholdsHonorarios,
+      monthlyRevenue: dto.monthlyRevenue,
+      pfxCertificateBase64: dto.pfxCertificateBase64,
+      pfxPassword: dto.pfxPassword,
+      siiResolucionNumero: dto.siiResolucionNumero,
+      siiResolucionFecha: dto.siiResolucionFecha ? new Date(dto.siiResolucionFecha) : undefined,
+      comunaSii: dto.comunaSii,
+      direccionSii: dto.direccionSii,
+      actividadEconomica: dto.actividadEconomica,
+      wizardCompletedAt: new Date(),
+    };
+
+    const profile = await this.prisma.client.taxProfile.upsert({
+      where: { barbershopId: shop.id },
+      create: { barbershopId: shop.id, ...profileData },
+      update: profileData,
     });
 
     // Generate obligations for current year
@@ -60,9 +70,16 @@ export class TaxComplianceService {
     });
     if (!existing) throw new NotFoundException('Perfil tributario no encontrado');
 
+    const { siiResolucionFecha, ...rest } = dto;
     const profile = await this.prisma.client.taxProfile.update({
       where: { id: existing.id },
-      data: { ...dto, updatedAt: new Date() },
+      data: {
+        ...rest,
+        ...(siiResolucionFecha !== undefined && {
+          siiResolucionFecha: new Date(siiResolucionFecha),
+        }),
+        updatedAt: new Date(),
+      },
     });
 
     return profile;

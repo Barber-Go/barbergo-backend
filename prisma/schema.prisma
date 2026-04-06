@@ -697,6 +697,13 @@ model TaxProfile {
   monthlyRevenue       String?
   siiClaveType         String?
   siiClaveEncrypted    String?
+  pfxCertificateBase64 String?   // certificado .pfx codificado en base64
+  pfxPassword          String?   // contraseña del .pfx cifrada con AES-256-GCM
+  siiResolucionNumero  Int?      // número de resolución SII emisor electrónico
+  siiResolucionFecha   DateTime? // fecha de resolución SII
+  comunaSii            String?   // comuna para documentos SII
+  direccionSii         String?   // dirección para documentos SII
+  actividadEconomica   Int?      // código actividad económica SII
   wizardCompletedAt    DateTime?
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @updatedAt

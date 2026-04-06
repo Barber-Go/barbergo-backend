@@ -1,4 +1,4 @@
-import { IsBoolean, IsEnum, IsOptional, IsString, Matches } from 'class-validator';
+import { IsBoolean, IsDateString, IsEnum, IsInt, IsOptional, IsString, Matches } from 'class-validator';
 
 export class UpdateTaxProfileDto {
   @IsOptional()
@@ -37,4 +37,32 @@ export class UpdateTaxProfileDto {
   @IsOptional()
   @IsString()
   monthlyRevenue?: string;
+
+  @IsOptional()
+  @IsString()
+  pfxCertificateBase64?: string;
+
+  @IsOptional()
+  @IsString()
+  pfxPassword?: string;
+
+  @IsOptional()
+  @IsInt()
+  siiResolucionNumero?: number;
+
+  @IsOptional()
+  @IsDateString()
+  siiResolucionFecha?: string;
+
+  @IsOptional()
+  @IsString()
+  comunaSii?: string;
+
+  @IsOptional()
+  @IsString()
+  direccionSii?: string;
+
+  @IsOptional()
+  @IsInt()
+  actividadEconomica?: number;
 }

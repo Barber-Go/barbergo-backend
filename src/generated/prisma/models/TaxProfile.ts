@@ -20,8 +20,20 @@ export type TaxProfileModel = runtime.Types.Result.DefaultSelection<Prisma.$TaxP
 
 export type AggregateTaxProfile = {
   _count: TaxProfileCountAggregateOutputType | null
+  _avg: TaxProfileAvgAggregateOutputType | null
+  _sum: TaxProfileSumAggregateOutputType | null
   _min: TaxProfileMinAggregateOutputType | null
   _max: TaxProfileMaxAggregateOutputType | null
+}
+
+export type TaxProfileAvgAggregateOutputType = {
+  siiResolucionNumero: number | null
+  actividadEconomica: number | null
+}
+
+export type TaxProfileSumAggregateOutputType = {
+  siiResolucionNumero: number | null
+  actividadEconomica: number | null
 }
 
 export type TaxProfileMinAggregateOutputType = {
@@ -38,6 +50,13 @@ export type TaxProfileMinAggregateOutputType = {
   monthlyRevenue: string | null
   siiClaveType: string | null
   siiClaveEncrypted: string | null
+  pfxCertificateBase64: string | null
+  pfxPassword: string | null
+  siiResolucionNumero: number | null
+  siiResolucionFecha: Date | null
+  comunaSii: string | null
+  direccionSii: string | null
+  actividadEconomica: number | null
   wizardCompletedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -57,6 +76,13 @@ export type TaxProfileMaxAggregateOutputType = {
   monthlyRevenue: string | null
   siiClaveType: string | null
   siiClaveEncrypted: string | null
+  pfxCertificateBase64: string | null
+  pfxPassword: string | null
+  siiResolucionNumero: number | null
+  siiResolucionFecha: Date | null
+  comunaSii: string | null
+  direccionSii: string | null
+  actividadEconomica: number | null
   wizardCompletedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -76,12 +102,29 @@ export type TaxProfileCountAggregateOutputType = {
   monthlyRevenue: number
   siiClaveType: number
   siiClaveEncrypted: number
+  pfxCertificateBase64: number
+  pfxPassword: number
+  siiResolucionNumero: number
+  siiResolucionFecha: number
+  comunaSii: number
+  direccionSii: number
+  actividadEconomica: number
   wizardCompletedAt: number
   createdAt: number
   updatedAt: number
   _all: number
 }
 
+
+export type TaxProfileAvgAggregateInputType = {
+  siiResolucionNumero?: true
+  actividadEconomica?: true
+}
+
+export type TaxProfileSumAggregateInputType = {
+  siiResolucionNumero?: true
+  actividadEconomica?: true
+}
 
 export type TaxProfileMinAggregateInputType = {
   id?: true
@@ -97,6 +140,13 @@ export type TaxProfileMinAggregateInputType = {
   monthlyRevenue?: true
   siiClaveType?: true
   siiClaveEncrypted?: true
+  pfxCertificateBase64?: true
+  pfxPassword?: true
+  siiResolucionNumero?: true
+  siiResolucionFecha?: true
+  comunaSii?: true
+  direccionSii?: true
+  actividadEconomica?: true
   wizardCompletedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -116,6 +166,13 @@ export type TaxProfileMaxAggregateInputType = {
   monthlyRevenue?: true
   siiClaveType?: true
   siiClaveEncrypted?: true
+  pfxCertificateBase64?: true
+  pfxPassword?: true
+  siiResolucionNumero?: true
+  siiResolucionFecha?: true
+  comunaSii?: true
+  direccionSii?: true
+  actividadEconomica?: true
   wizardCompletedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -135,6 +192,13 @@ export type TaxProfileCountAggregateInputType = {
   monthlyRevenue?: true
   siiClaveType?: true
   siiClaveEncrypted?: true
+  pfxCertificateBase64?: true
+  pfxPassword?: true
+  siiResolucionNumero?: true
+  siiResolucionFecha?: true
+  comunaSii?: true
+  direccionSii?: true
+  actividadEconomica?: true
   wizardCompletedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -179,6 +243,18 @@ export type TaxProfileAggregateArgs<ExtArgs extends runtime.Types.Extensions.Int
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: TaxProfileAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: TaxProfileSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: TaxProfileMinAggregateInputType
@@ -209,6 +285,8 @@ export type TaxProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   _count?: TaxProfileCountAggregateInputType | true
+  _avg?: TaxProfileAvgAggregateInputType
+  _sum?: TaxProfileSumAggregateInputType
   _min?: TaxProfileMinAggregateInputType
   _max?: TaxProfileMaxAggregateInputType
 }
@@ -227,10 +305,19 @@ export type TaxProfileGroupByOutputType = {
   monthlyRevenue: string | null
   siiClaveType: string | null
   siiClaveEncrypted: string | null
+  pfxCertificateBase64: string | null
+  pfxPassword: string | null
+  siiResolucionNumero: number | null
+  siiResolucionFecha: Date | null
+  comunaSii: string | null
+  direccionSii: string | null
+  actividadEconomica: number | null
   wizardCompletedAt: Date | null
   createdAt: Date
   updatedAt: Date
   _count: TaxProfileCountAggregateOutputType | null
+  _avg: TaxProfileAvgAggregateOutputType | null
+  _sum: TaxProfileSumAggregateOutputType | null
   _min: TaxProfileMinAggregateOutputType | null
   _max: TaxProfileMaxAggregateOutputType | null
 }
@@ -267,6 +354,13 @@ export type TaxProfileWhereInput = {
   monthlyRevenue?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
   siiClaveType?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
   siiClaveEncrypted?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
+  pfxCertificateBase64?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
+  pfxPassword?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
+  siiResolucionNumero?: Prisma.IntNullableFilter<"TaxProfile"> | number | null
+  siiResolucionFecha?: Prisma.DateTimeNullableFilter<"TaxProfile"> | Date | string | null
+  comunaSii?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
+  direccionSii?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
+  actividadEconomica?: Prisma.IntNullableFilter<"TaxProfile"> | number | null
   wizardCompletedAt?: Prisma.DateTimeNullableFilter<"TaxProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"TaxProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TaxProfile"> | Date | string
@@ -288,6 +382,13 @@ export type TaxProfileOrderByWithRelationInput = {
   monthlyRevenue?: Prisma.SortOrderInput | Prisma.SortOrder
   siiClaveType?: Prisma.SortOrderInput | Prisma.SortOrder
   siiClaveEncrypted?: Prisma.SortOrderInput | Prisma.SortOrder
+  pfxCertificateBase64?: Prisma.SortOrderInput | Prisma.SortOrder
+  pfxPassword?: Prisma.SortOrderInput | Prisma.SortOrder
+  siiResolucionNumero?: Prisma.SortOrderInput | Prisma.SortOrder
+  siiResolucionFecha?: Prisma.SortOrderInput | Prisma.SortOrder
+  comunaSii?: Prisma.SortOrderInput | Prisma.SortOrder
+  direccionSii?: Prisma.SortOrderInput | Prisma.SortOrder
+  actividadEconomica?: Prisma.SortOrderInput | Prisma.SortOrder
   wizardCompletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -312,6 +413,13 @@ export type TaxProfileWhereUniqueInput = Prisma.AtLeast<{
   monthlyRevenue?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
   siiClaveType?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
   siiClaveEncrypted?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
+  pfxCertificateBase64?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
+  pfxPassword?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
+  siiResolucionNumero?: Prisma.IntNullableFilter<"TaxProfile"> | number | null
+  siiResolucionFecha?: Prisma.DateTimeNullableFilter<"TaxProfile"> | Date | string | null
+  comunaSii?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
+  direccionSii?: Prisma.StringNullableFilter<"TaxProfile"> | string | null
+  actividadEconomica?: Prisma.IntNullableFilter<"TaxProfile"> | number | null
   wizardCompletedAt?: Prisma.DateTimeNullableFilter<"TaxProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"TaxProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TaxProfile"> | Date | string
@@ -333,12 +441,21 @@ export type TaxProfileOrderByWithAggregationInput = {
   monthlyRevenue?: Prisma.SortOrderInput | Prisma.SortOrder
   siiClaveType?: Prisma.SortOrderInput | Prisma.SortOrder
   siiClaveEncrypted?: Prisma.SortOrderInput | Prisma.SortOrder
+  pfxCertificateBase64?: Prisma.SortOrderInput | Prisma.SortOrder
+  pfxPassword?: Prisma.SortOrderInput | Prisma.SortOrder
+  siiResolucionNumero?: Prisma.SortOrderInput | Prisma.SortOrder
+  siiResolucionFecha?: Prisma.SortOrderInput | Prisma.SortOrder
+  comunaSii?: Prisma.SortOrderInput | Prisma.SortOrder
+  direccionSii?: Prisma.SortOrderInput | Prisma.SortOrder
+  actividadEconomica?: Prisma.SortOrderInput | Prisma.SortOrder
   wizardCompletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.TaxProfileCountOrderByAggregateInput
+  _avg?: Prisma.TaxProfileAvgOrderByAggregateInput
   _max?: Prisma.TaxProfileMaxOrderByAggregateInput
   _min?: Prisma.TaxProfileMinOrderByAggregateInput
+  _sum?: Prisma.TaxProfileSumOrderByAggregateInput
 }
 
 export type TaxProfileScalarWhereWithAggregatesInput = {
@@ -358,6 +475,13 @@ export type TaxProfileScalarWhereWithAggregatesInput = {
   monthlyRevenue?: Prisma.StringNullableWithAggregatesFilter<"TaxProfile"> | string | null
   siiClaveType?: Prisma.StringNullableWithAggregatesFilter<"TaxProfile"> | string | null
   siiClaveEncrypted?: Prisma.StringNullableWithAggregatesFilter<"TaxProfile"> | string | null
+  pfxCertificateBase64?: Prisma.StringNullableWithAggregatesFilter<"TaxProfile"> | string | null
+  pfxPassword?: Prisma.StringNullableWithAggregatesFilter<"TaxProfile"> | string | null
+  siiResolucionNumero?: Prisma.IntNullableWithAggregatesFilter<"TaxProfile"> | number | null
+  siiResolucionFecha?: Prisma.DateTimeNullableWithAggregatesFilter<"TaxProfile"> | Date | string | null
+  comunaSii?: Prisma.StringNullableWithAggregatesFilter<"TaxProfile"> | string | null
+  direccionSii?: Prisma.StringNullableWithAggregatesFilter<"TaxProfile"> | string | null
+  actividadEconomica?: Prisma.IntNullableWithAggregatesFilter<"TaxProfile"> | number | null
   wizardCompletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"TaxProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TaxProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TaxProfile"> | Date | string
@@ -376,6 +500,13 @@ export type TaxProfileCreateInput = {
   monthlyRevenue?: string | null
   siiClaveType?: string | null
   siiClaveEncrypted?: string | null
+  pfxCertificateBase64?: string | null
+  pfxPassword?: string | null
+  siiResolucionNumero?: number | null
+  siiResolucionFecha?: Date | string | null
+  comunaSii?: string | null
+  direccionSii?: string | null
+  actividadEconomica?: number | null
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -397,6 +528,13 @@ export type TaxProfileUncheckedCreateInput = {
   monthlyRevenue?: string | null
   siiClaveType?: string | null
   siiClaveEncrypted?: string | null
+  pfxCertificateBase64?: string | null
+  pfxPassword?: string | null
+  siiResolucionNumero?: number | null
+  siiResolucionFecha?: Date | string | null
+  comunaSii?: string | null
+  direccionSii?: string | null
+  actividadEconomica?: number | null
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -416,6 +554,13 @@ export type TaxProfileUpdateInput = {
   monthlyRevenue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveEncrypted?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxCertificateBase64?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  siiResolucionNumero?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  siiResolucionFecha?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -437,6 +582,13 @@ export type TaxProfileUncheckedUpdateInput = {
   monthlyRevenue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveEncrypted?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxCertificateBase64?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  siiResolucionNumero?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  siiResolucionFecha?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -457,6 +609,13 @@ export type TaxProfileCreateManyInput = {
   monthlyRevenue?: string | null
   siiClaveType?: string | null
   siiClaveEncrypted?: string | null
+  pfxCertificateBase64?: string | null
+  pfxPassword?: string | null
+  siiResolucionNumero?: number | null
+  siiResolucionFecha?: Date | string | null
+  comunaSii?: string | null
+  direccionSii?: string | null
+  actividadEconomica?: number | null
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -475,6 +634,13 @@ export type TaxProfileUpdateManyMutationInput = {
   monthlyRevenue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveEncrypted?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxCertificateBase64?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  siiResolucionNumero?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  siiResolucionFecha?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -494,6 +660,13 @@ export type TaxProfileUncheckedUpdateManyInput = {
   monthlyRevenue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveEncrypted?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxCertificateBase64?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  siiResolucionNumero?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  siiResolucionFecha?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -518,9 +691,21 @@ export type TaxProfileCountOrderByAggregateInput = {
   monthlyRevenue?: Prisma.SortOrder
   siiClaveType?: Prisma.SortOrder
   siiClaveEncrypted?: Prisma.SortOrder
+  pfxCertificateBase64?: Prisma.SortOrder
+  pfxPassword?: Prisma.SortOrder
+  siiResolucionNumero?: Prisma.SortOrder
+  siiResolucionFecha?: Prisma.SortOrder
+  comunaSii?: Prisma.SortOrder
+  direccionSii?: Prisma.SortOrder
+  actividadEconomica?: Prisma.SortOrder
   wizardCompletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type TaxProfileAvgOrderByAggregateInput = {
+  siiResolucionNumero?: Prisma.SortOrder
+  actividadEconomica?: Prisma.SortOrder
 }
 
 export type TaxProfileMaxOrderByAggregateInput = {
@@ -537,6 +722,13 @@ export type TaxProfileMaxOrderByAggregateInput = {
   monthlyRevenue?: Prisma.SortOrder
   siiClaveType?: Prisma.SortOrder
   siiClaveEncrypted?: Prisma.SortOrder
+  pfxCertificateBase64?: Prisma.SortOrder
+  pfxPassword?: Prisma.SortOrder
+  siiResolucionNumero?: Prisma.SortOrder
+  siiResolucionFecha?: Prisma.SortOrder
+  comunaSii?: Prisma.SortOrder
+  direccionSii?: Prisma.SortOrder
+  actividadEconomica?: Prisma.SortOrder
   wizardCompletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -556,9 +748,21 @@ export type TaxProfileMinOrderByAggregateInput = {
   monthlyRevenue?: Prisma.SortOrder
   siiClaveType?: Prisma.SortOrder
   siiClaveEncrypted?: Prisma.SortOrder
+  pfxCertificateBase64?: Prisma.SortOrder
+  pfxPassword?: Prisma.SortOrder
+  siiResolucionNumero?: Prisma.SortOrder
+  siiResolucionFecha?: Prisma.SortOrder
+  comunaSii?: Prisma.SortOrder
+  direccionSii?: Prisma.SortOrder
+  actividadEconomica?: Prisma.SortOrder
   wizardCompletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type TaxProfileSumOrderByAggregateInput = {
+  siiResolucionNumero?: Prisma.SortOrder
+  actividadEconomica?: Prisma.SortOrder
 }
 
 export type TaxProfileScalarRelationFilter = {
@@ -598,6 +802,14 @@ export type TaxProfileUncheckedUpdateOneWithoutBarbershopNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.TaxProfileUpdateToOneWithWhereWithoutBarbershopInput, Prisma.TaxProfileUpdateWithoutBarbershopInput>, Prisma.TaxProfileUncheckedUpdateWithoutBarbershopInput>
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type TaxProfileCreateNestedOneWithoutObligationsInput = {
   create?: Prisma.XOR<Prisma.TaxProfileCreateWithoutObligationsInput, Prisma.TaxProfileUncheckedCreateWithoutObligationsInput>
   connectOrCreate?: Prisma.TaxProfileCreateOrConnectWithoutObligationsInput
@@ -625,6 +837,13 @@ export type TaxProfileCreateWithoutBarbershopInput = {
   monthlyRevenue?: string | null
   siiClaveType?: string | null
   siiClaveEncrypted?: string | null
+  pfxCertificateBase64?: string | null
+  pfxPassword?: string | null
+  siiResolucionNumero?: number | null
+  siiResolucionFecha?: Date | string | null
+  comunaSii?: string | null
+  direccionSii?: string | null
+  actividadEconomica?: number | null
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -644,6 +863,13 @@ export type TaxProfileUncheckedCreateWithoutBarbershopInput = {
   monthlyRevenue?: string | null
   siiClaveType?: string | null
   siiClaveEncrypted?: string | null
+  pfxCertificateBase64?: string | null
+  pfxPassword?: string | null
+  siiResolucionNumero?: number | null
+  siiResolucionFecha?: Date | string | null
+  comunaSii?: string | null
+  direccionSii?: string | null
+  actividadEconomica?: number | null
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -679,6 +905,13 @@ export type TaxProfileUpdateWithoutBarbershopInput = {
   monthlyRevenue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveEncrypted?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxCertificateBase64?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  siiResolucionNumero?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  siiResolucionFecha?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -698,6 +931,13 @@ export type TaxProfileUncheckedUpdateWithoutBarbershopInput = {
   monthlyRevenue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveEncrypted?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxCertificateBase64?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  siiResolucionNumero?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  siiResolucionFecha?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -717,6 +957,13 @@ export type TaxProfileCreateWithoutObligationsInput = {
   monthlyRevenue?: string | null
   siiClaveType?: string | null
   siiClaveEncrypted?: string | null
+  pfxCertificateBase64?: string | null
+  pfxPassword?: string | null
+  siiResolucionNumero?: number | null
+  siiResolucionFecha?: Date | string | null
+  comunaSii?: string | null
+  direccionSii?: string | null
+  actividadEconomica?: number | null
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -737,6 +984,13 @@ export type TaxProfileUncheckedCreateWithoutObligationsInput = {
   monthlyRevenue?: string | null
   siiClaveType?: string | null
   siiClaveEncrypted?: string | null
+  pfxCertificateBase64?: string | null
+  pfxPassword?: string | null
+  siiResolucionNumero?: number | null
+  siiResolucionFecha?: Date | string | null
+  comunaSii?: string | null
+  direccionSii?: string | null
+  actividadEconomica?: number | null
   wizardCompletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -771,6 +1025,13 @@ export type TaxProfileUpdateWithoutObligationsInput = {
   monthlyRevenue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveEncrypted?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxCertificateBase64?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  siiResolucionNumero?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  siiResolucionFecha?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -791,6 +1052,13 @@ export type TaxProfileUncheckedUpdateWithoutObligationsInput = {
   monthlyRevenue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   siiClaveEncrypted?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxCertificateBase64?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pfxPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  siiResolucionNumero?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  siiResolucionFecha?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comunaSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccionSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  actividadEconomica?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   wizardCompletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -841,6 +1109,13 @@ export type TaxProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   monthlyRevenue?: boolean
   siiClaveType?: boolean
   siiClaveEncrypted?: boolean
+  pfxCertificateBase64?: boolean
+  pfxPassword?: boolean
+  siiResolucionNumero?: boolean
+  siiResolucionFecha?: boolean
+  comunaSii?: boolean
+  direccionSii?: boolean
+  actividadEconomica?: boolean
   wizardCompletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -863,6 +1138,13 @@ export type TaxProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   monthlyRevenue?: boolean
   siiClaveType?: boolean
   siiClaveEncrypted?: boolean
+  pfxCertificateBase64?: boolean
+  pfxPassword?: boolean
+  siiResolucionNumero?: boolean
+  siiResolucionFecha?: boolean
+  comunaSii?: boolean
+  direccionSii?: boolean
+  actividadEconomica?: boolean
   wizardCompletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -883,6 +1165,13 @@ export type TaxProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   monthlyRevenue?: boolean
   siiClaveType?: boolean
   siiClaveEncrypted?: boolean
+  pfxCertificateBase64?: boolean
+  pfxPassword?: boolean
+  siiResolucionNumero?: boolean
+  siiResolucionFecha?: boolean
+  comunaSii?: boolean
+  direccionSii?: boolean
+  actividadEconomica?: boolean
   wizardCompletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -903,12 +1192,19 @@ export type TaxProfileSelectScalar = {
   monthlyRevenue?: boolean
   siiClaveType?: boolean
   siiClaveEncrypted?: boolean
+  pfxCertificateBase64?: boolean
+  pfxPassword?: boolean
+  siiResolucionNumero?: boolean
+  siiResolucionFecha?: boolean
+  comunaSii?: boolean
+  direccionSii?: boolean
+  actividadEconomica?: boolean
   wizardCompletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type TaxProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barbershopId" | "rut" | "razonSocial" | "giro" | "regimenTributario" | "vatAffectation" | "issuesDte" | "hasEmployees" | "withholdsHonorarios" | "monthlyRevenue" | "siiClaveType" | "siiClaveEncrypted" | "wizardCompletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["taxProfile"]>
+export type TaxProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barbershopId" | "rut" | "razonSocial" | "giro" | "regimenTributario" | "vatAffectation" | "issuesDte" | "hasEmployees" | "withholdsHonorarios" | "monthlyRevenue" | "siiClaveType" | "siiClaveEncrypted" | "pfxCertificateBase64" | "pfxPassword" | "siiResolucionNumero" | "siiResolucionFecha" | "comunaSii" | "direccionSii" | "actividadEconomica" | "wizardCompletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["taxProfile"]>
 export type TaxProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barbershop?: boolean | Prisma.BarbershopProfileDefaultArgs<ExtArgs>
   obligations?: boolean | Prisma.TaxProfile$obligationsArgs<ExtArgs>
@@ -941,6 +1237,13 @@ export type $TaxProfilePayload<ExtArgs extends runtime.Types.Extensions.Internal
     monthlyRevenue: string | null
     siiClaveType: string | null
     siiClaveEncrypted: string | null
+    pfxCertificateBase64: string | null
+    pfxPassword: string | null
+    siiResolucionNumero: number | null
+    siiResolucionFecha: Date | null
+    comunaSii: string | null
+    direccionSii: string | null
+    actividadEconomica: number | null
     wizardCompletedAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -1382,6 +1685,13 @@ export interface TaxProfileFieldRefs {
   readonly monthlyRevenue: Prisma.FieldRef<"TaxProfile", 'String'>
   readonly siiClaveType: Prisma.FieldRef<"TaxProfile", 'String'>
   readonly siiClaveEncrypted: Prisma.FieldRef<"TaxProfile", 'String'>
+  readonly pfxCertificateBase64: Prisma.FieldRef<"TaxProfile", 'String'>
+  readonly pfxPassword: Prisma.FieldRef<"TaxProfile", 'String'>
+  readonly siiResolucionNumero: Prisma.FieldRef<"TaxProfile", 'Int'>
+  readonly siiResolucionFecha: Prisma.FieldRef<"TaxProfile", 'DateTime'>
+  readonly comunaSii: Prisma.FieldRef<"TaxProfile", 'String'>
+  readonly direccionSii: Prisma.FieldRef<"TaxProfile", 'String'>
+  readonly actividadEconomica: Prisma.FieldRef<"TaxProfile", 'Int'>
   readonly wizardCompletedAt: Prisma.FieldRef<"TaxProfile", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"TaxProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"TaxProfile", 'DateTime'>
