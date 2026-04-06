@@ -213,7 +213,7 @@ Responde SOLO con JSON válido, sin markdown:
     return { message: 'Análisis eliminado' };
   }
 
-  // ── Preview stub ──────────────────────────────────────────────────────────
+  // ── Preview generation with Google Imagen 3 ────────────────────────────────
 
   async generatePreview(userId: string, analysisId: string) {
     const analysis = await this.prisma.client.aiFaceAnalysis.findUnique({
@@ -223,25 +223,97 @@ Responde SOLO con JSON válido, sin markdown:
     if (!analysis) throw new NotFoundException('Análisis no encontrado');
     if (analysis.userId !== userId) throw new ForbiddenException();
 
-    // Create preview stubs for all recommendations
-    const previews = await Promise.all(
-      analysis.recommendations.map((rec) =>
-        this.prisma.client.aiHairstylePreview.create({
-          data: {
-            recommendationId: rec.id,
-            generationStatus: 'PENDING',
-          },
-        }),
-      ),
-    );
+    const results: { id: string; recommendationId: string; status: string; previewImageUrl: string | null }[] = [];
 
-    return {
-      message: 'Generación de previews en cola',
-      previews: previews.map((p) => ({
-        id: p.id,
-        recommendationId: p.recommendationId,
-        status: p.generationStatus,
-      })),
-    };
+    for (const rec of analysis.recommendations) {
+      // Create preview record
+      const preview = await this.prisma.client.aiHairstylePreview.create({
+        data: {
+          recommendationId: rec.id,
+          generationStatus: 'PENDING',
+        },
+      });
+
+      try {
+        const prompt = this.buildImagePrompt(rec.haircutName, analysis.faceShape);
+        const base64Image = await this.callGoogleImagen(prompt);
+
+        // Upload to Cloudinary
+        const imageUrl = await this.uploadBase64ToCloudinary(base64Image, `preview-${preview.id}`);
+
+        // Update preview with URL
+        await this.prisma.client.aiHairstylePreview.update({
+          where: { id: preview.id },
+          data: { previewImageUrl: imageUrl, generationStatus: 'COMPLETED' },
+        });
+
+        results.push({ id: preview.id, recommendationId: rec.id, status: 'COMPLETED', previewImageUrl: imageUrl });
+      } catch (err) {
+        console.error(`[AI Preview] Failed for recommendation ${rec.id}:`, err);
+        await this.prisma.client.aiHairstylePreview.update({
+          where: { id: preview.id },
+          data: { generationStatus: 'FAILED' },
+        });
+        results.push({ id: preview.id, recommendationId: rec.id, status: 'FAILED', previewImageUrl: null });
+      }
+    }
+
+    return { message: 'Previews generados', previews: results };
+  }
+
+  // ── Google Imagen 3 ───────────────────────────────────────────────────────
+
+  private buildImagePrompt(haircutName: string, faceShape: string): string {
+    return `Portrait photo of a young Latino man with ${haircutName} haircut, ` +
+      `face shape ${faceShape}, professional barbershop photo, realistic, front view, ` +
+      `neutral dark background, studio lighting, high quality`;
+  }
+
+  private async callGoogleImagen(prompt: string): Promise<string> {
+    const apiKey = this.config.get<string>('GOOGLE_AI_API_KEY');
+    if (!apiKey) throw new Error('GOOGLE_AI_API_KEY not configured');
+
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${apiKey}`;
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: `Generate an image: ${prompt}` }] }],
+        generationConfig: { responseModalities: ['IMAGE', 'TEXT'] },
+      }),
+    });
+
+    if (!response.ok) {
+      const errorBody = await response.text();
+      throw new Error(`Google Gemini Image API error ${response.status}: ${errorBody}`);
+    }
+
+    interface GeminiPart { inlineData?: { mimeType: string; data: string }; text?: string }
+    interface GeminiResponse { candidates?: { content?: { parts?: GeminiPart[] } }[] }
+
+    const data = await response.json() as GeminiResponse;
+    const parts = data.candidates?.[0]?.content?.parts ?? [];
+    const imagePart = parts.find((p) => p.inlineData?.data);
+    if (!imagePart?.inlineData?.data) throw new Error('No image data in Gemini response');
+
+    return imagePart.inlineData.data;
+  }
+
+  private async uploadBase64ToCloudinary(base64Data: string, publicId: string): Promise<string> {
+    const dataUri = `data:image/png;base64,${base64Data}`;
+    const result = await new Promise<{ secure_url: string }>((resolve, reject) => {
+      // Dynamic import to avoid circular deps
+      const cloudinary = require('cloudinary').v2;
+      cloudinary.uploader.upload(
+        dataUri,
+        { folder: 'barbergo/ai-previews', public_id: publicId, resource_type: 'image' },
+        (error: Error | null, result: { secure_url: string } | undefined) => {
+          if (error || !result) return reject(error ?? new Error('Upload failed'));
+          resolve(result);
+        },
+      );
+    });
+    return result.secure_url;
   }
 }
