@@ -108,6 +108,13 @@ export class BarbersController {
 
   // ── SII credentials ──
 
+  @Get('me/sii-credentials')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBER, Role.BARBER_INDEPENDENT, Role.BARBER_EMPLOYEE)
+  getSiiCredentials(@Request() req: any) {
+    return this.barbersService.getSiiCredentials(req.user.id);
+  }
+
   @Patch('me/credenciales-sii')
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.BARBER, Role.BARBER_INDEPENDENT)

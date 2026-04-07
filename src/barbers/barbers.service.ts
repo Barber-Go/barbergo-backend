@@ -1,6 +1,6 @@
 import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { haversineKm } from '../shared/geo.utils';
-import { encrypt } from '../shared/crypto.utils';
+import { encrypt, decrypt } from '../shared/crypto.utils';
 import { PrismaService } from '../prisma/prisma.service';
 import { StorageService } from '../storage/storage.service';
 import { UpdateBarberProfileDto } from './dto/update-barber-profile.dto';
@@ -224,6 +224,20 @@ export class BarbersService {
   }
 
   // ── SII credentials ────────────────────────────────────────────────────────
+
+  async getSiiCredentials(userId: string) {
+    const profile = await this.prisma.client.barberProfile.findUnique({ where: { userId } });
+    if (!profile) throw new NotFoundException('Barber profile not found');
+    if (!profile.rutTributario || !profile.claveTributaria) {
+      throw new NotFoundException('No SII credentials configured');
+    }
+
+    return {
+      rut: profile.rutTributario,
+      tipoClave: profile.tipoClaveSii ?? 'tributaria',
+      clave: decrypt(profile.claveTributaria),
+    };
+  }
 
   async updateSiiCredentials(userId: string, dto: UpdateSiiCredentialsDto) {
     const profile = await this.prisma.client.barberProfile.findUnique({ where: { userId } });
