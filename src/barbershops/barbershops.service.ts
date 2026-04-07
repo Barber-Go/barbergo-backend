@@ -17,9 +17,33 @@ export class BarbershopsService {
   }
 
   async findMe(userId: string) {
-    const shop = await this.prisma.client.barbershopProfile.findUnique({ where: { userId } });
+    const shop = await this.prisma.client.barbershopProfile.findUnique({
+      where: { userId },
+      include: {
+        staff: {
+          where: { isActive: true },
+          include: {
+            barberProfile: {
+              include: { user: { select: { name: true, avatarUrl: true } } },
+            },
+            compensationRules: { where: { isActive: true }, take: 1 },
+          },
+        },
+      },
+    });
     if (!shop) throw new NotFoundException('Barbershop profile not found');
-    return this.formatShop(shop);
+
+    return {
+      ...this.formatShop(shop),
+      staff: shop.staff.map((s) => ({
+        id: s.id,
+        name: s.barberProfile.user.name,
+        avatarUrl: s.barberProfile.user.avatarUrl,
+        barberProfileId: s.barberProfileId,
+        role: s.role,
+        barberPercent: s.compensationRules[0]?.percentage ?? 60,
+      })),
+    };
   }
 
   async update(userId: string, dto: UpdateBarbershopDto) {
