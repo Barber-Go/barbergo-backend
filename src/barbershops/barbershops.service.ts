@@ -111,6 +111,27 @@ export class BarbershopsService {
 
   // ── Staff management ──
 
+  async searchBarberByEmail(email: string) {
+    if (!email?.trim()) throw new BadRequestException('Email is required');
+
+    const user = await this.prisma.client.user.findUnique({
+      where: { email: email.trim().toLowerCase() },
+      include: { barberProfile: true },
+    });
+
+    if (!user || !user.barberProfile) {
+      throw new NotFoundException('No se encontro ningun barbero con ese email');
+    }
+
+    return {
+      barberProfileId: user.barberProfile.id,
+      name: user.name,
+      email: user.email,
+      rating: user.barberProfile.rating,
+      employmentType: user.barberProfile.employmentType,
+    };
+  }
+
   async addStaff(userId: string, dto: AddStaffDto) {
     const shop = await this.assertOwner(userId);
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query, Request, UseGuards } from '@nestjs/common';
 import { BarbershopsService } from './barbershops.service';
 import { CreateBarbershopDto } from './dto/create-barbershop.dto';
 import { UpdateBarbershopDto } from './dto/update-barbershop.dto';
@@ -41,6 +41,13 @@ export class BarbershopsController {
   @Roles(Role.BARBERSHOP_OWNER)
   getInviteCode(@Request() req: any) {
     return this.barbershopsService.getOrCreateInviteCode(req.user.id);
+  }
+
+  @Get('me/search-barber')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  searchBarberByEmail(@Query('email') email: string) {
+    return this.barbershopsService.searchBarberByEmail(email);
   }
 
   @Post('me/staff')
