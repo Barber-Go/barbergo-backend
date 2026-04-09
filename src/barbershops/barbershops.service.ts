@@ -135,21 +135,63 @@ export class BarbershopsService {
   async addStaff(userId: string, dto: AddStaffDto) {
     const shop = await this.assertOwner(userId);
 
+    let barberProfileId = dto.barberProfileId;
+
+    // If no barberProfileId, create user + barber profile from name/rut
+    if (!barberProfileId) {
+      if (!dto.name?.trim()) throw new BadRequestException('name is required');
+      if (!dto.rut?.trim()) throw new BadRequestException('rut is required');
+
+      const placeholderEmail = `${dto.rut.replace(/[^0-9kK]/g, '')}@placeholder.barbergo.cl`;
+
+      const user = await this.prisma.client.user.create({
+        data: {
+          name: dto.name.trim(),
+          email: placeholderEmail,
+          passwordHash: 'PENDING_REGISTRATION',
+          role: 'BARBER_EMPLOYEE',
+        },
+      });
+
+      const barberProfile = await this.prisma.client.barberProfile.create({
+        data: {
+          userId: user.id,
+          barbershopId: shop.id,
+          employmentType: 'EMPLOYEE',
+          rutTributario: dto.rut.trim(),
+        },
+      });
+
+      barberProfileId = barberProfile.id;
+    } else {
+      // Link existing barber profile to this shop
+      await this.prisma.client.barberProfile.update({
+        where: { id: barberProfileId },
+        data: { barbershopId: shop.id, employmentType: 'EMPLOYEE' },
+      });
+    }
+
     const membership = await this.prisma.client.barbershopStaffMembership.create({
       data: {
         barbershopId: shop.id,
-        barberProfileId: dto.barberProfileId,
+        barberProfileId: barberProfileId!,
         role: dto.role ?? 'BARBER',
       },
     });
 
-    // Link barber profile to this shop
-    await this.prisma.client.barberProfile.update({
-      where: { id: dto.barberProfileId },
-      data: { barbershopId: shop.id, employmentType: 'EMPLOYEE' },
-    });
+    // Set compensation if barberPercent provided
+    if (dto.barberPercent != null) {
+      await this.prisma.client.compensationRule.create({
+        data: {
+          membershipId: membership.id,
+          barberPercent: dto.barberPercent,
+          shopPercent: 100 - dto.barberPercent,
+          isActive: true,
+        },
+      });
+    }
 
-    return { membershipId: membership.id, barberProfileId: membership.barberProfileId, role: membership.role };
+    return { membershipId: membership.id, barberProfileId, role: membership.role, name: dto.name };
   }
 
   async updateStaff(userId: string, memberId: string, dto: UpdateStaffDto) {
