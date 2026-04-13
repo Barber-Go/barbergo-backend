@@ -13,6 +13,8 @@ import { Response } from 'express';
 import { ConfigService } from '@nestjs/config';
 import { PaymentsService } from './payments.service';
 import { CreateWebpayPaymentDto } from './dto/create-payment.dto';
+import { CreateMpPreferenceDto } from './dto/create-mp-preference.dto';
+import { MercadoPagoService } from './mercadopago.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 @Controller('v1/payments')
@@ -21,6 +23,7 @@ export class PaymentsController {
 
   constructor(
     private readonly paymentsService: PaymentsService,
+    private readonly mercadoPagoService: MercadoPagoService,
     private readonly config: ConfigService,
   ) {
     this.frontendUrl = this.config.get<string>('FRONTEND_URL') ?? 'http://localhost:8081';
@@ -80,6 +83,17 @@ export class PaymentsController {
     const status = result.status === 'APPROVED' ? 'success' : 'rejected';
     return res.redirect(
       `${this.frontendUrl}/(client)?payment=${status}&bookingId=${result.bookingId}`,
+    );
+  }
+
+  @Post('mp/create-preference')
+  @UseGuards(JwtAuthGuard)
+  createMpPreference(@Body() dto: CreateMpPreferenceDto) {
+    return this.mercadoPagoService.createPreference(
+      dto.bookingId,
+      dto.amount,
+      dto.description,
+      dto.backUrl,
     );
   }
 
