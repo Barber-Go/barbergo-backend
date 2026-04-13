@@ -162,6 +162,7 @@ export class AuthService {
       data: {
         ...(dto.name !== undefined && { name: dto.name }),
         ...(dto.email !== undefined && { email: dto.email }),
+        ...(dto.avatarUrl !== undefined && { avatarUrl: dto.avatarUrl }),
       },
     });
 
