@@ -5,13 +5,18 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { NotificationsService } from '../notifications/notifications.service';
+import { NotificationType } from '../generated/prisma/enums';
 
 const MESSAGES_PER_PAGE = 50;
 const CHAT_LOCK_HOURS = 24;
 
 @Injectable()
 export class ChatService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly notifications: NotificationsService,
+  ) {}
 
   // ── List threads for user ─────────────────────────────────────────────────
 
@@ -178,6 +183,18 @@ export class ChatService {
       where: { threadId_userId: { threadId, userId } },
       data: { lastReadAt: new Date() },
     });
+
+    // Notify other participants
+    const participants = await this.prisma.client.chatParticipant.findMany({
+      where: { threadId, userId: { not: userId } },
+    });
+    const senderName = message.sender.name;
+    const preview = body.length > 50 ? body.substring(0, 50) + '...' : body;
+    for (const p of participants) {
+      this.notifications
+        .create(p.userId, NotificationType.NEW_MESSAGE, 'Nuevo mensaje', `${senderName}: ${preview}`)
+        .catch(() => {});
+    }
 
     return message;
   }
