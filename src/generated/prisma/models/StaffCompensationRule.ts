@@ -199,7 +199,7 @@ export type StaffCompensationRuleGroupByOutputType = {
   _max: StaffCompensationRuleMaxAggregateOutputType | null
 }
 
-type GetStaffCompensationRuleGroupByPayload<T extends StaffCompensationRuleGroupByArgs> = Prisma.PrismaPromise<
+export type GetStaffCompensationRuleGroupByPayload<T extends StaffCompensationRuleGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<StaffCompensationRuleGroupByOutputType, T['by']> &
       {

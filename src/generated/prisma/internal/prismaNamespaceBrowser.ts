@@ -74,6 +74,7 @@ export const ModelName = {
   DailyLedgerEntry: 'DailyLedgerEntry',
   Follow: 'Follow',
   PointsWallet: 'PointsWallet',
+  RewardsCatalog: 'RewardsCatalog',
   Community: 'Community',
   CommunityMembership: 'CommunityMembership',
   CommunityPost: 'CommunityPost',
@@ -430,11 +431,24 @@ export const PointsWalletScalarFieldEnum = {
   userId: 'userId',
   balance: 'balance',
   lifetime: 'lifetime',
+  lastActivityAt: 'lastActivityAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type PointsWalletScalarFieldEnum = (typeof PointsWalletScalarFieldEnum)[keyof typeof PointsWalletScalarFieldEnum]
+
+
+export const RewardsCatalogScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  pointsCost: 'pointsCost',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+} as const
+
+export type RewardsCatalogScalarFieldEnum = (typeof RewardsCatalogScalarFieldEnum)[keyof typeof RewardsCatalogScalarFieldEnum]
 
 
 export const CommunityScalarFieldEnum = {

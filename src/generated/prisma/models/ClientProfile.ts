@@ -192,7 +192,7 @@ export type ClientProfileGroupByOutputType = {
   _max: ClientProfileMaxAggregateOutputType | null
 }
 
-type GetClientProfileGroupByPayload<T extends ClientProfileGroupByArgs> = Prisma.PrismaPromise<
+export type GetClientProfileGroupByPayload<T extends ClientProfileGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ClientProfileGroupByOutputType, T['by']> &
       {

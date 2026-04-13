@@ -543,16 +543,28 @@ model Follow {
 }
 
 model PointsWallet {
-  id        String   @id @default(cuid())
-  userId    String   @unique
-  balance   Int      @default(0)
-  lifetime  Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  balance        Int      @default(0)
+  lifetime       Int      @default(0)
+  lastActivityAt DateTime @default(now())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("points_wallets")
+}
+
+model RewardsCatalog {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  pointsCost  Int
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@map("rewards_catalog")
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════

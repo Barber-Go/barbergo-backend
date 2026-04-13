@@ -228,7 +228,7 @@ export type EarningGroupByOutputType = {
   _max: EarningMaxAggregateOutputType | null
 }
 
-type GetEarningGroupByPayload<T extends EarningGroupByArgs> = Prisma.PrismaPromise<
+export type GetEarningGroupByPayload<T extends EarningGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<EarningGroupByOutputType, T['by']> &
       {

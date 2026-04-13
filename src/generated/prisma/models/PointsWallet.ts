@@ -41,6 +41,7 @@ export type PointsWalletMinAggregateOutputType = {
   userId: string | null
   balance: number | null
   lifetime: number | null
+  lastActivityAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -50,6 +51,7 @@ export type PointsWalletMaxAggregateOutputType = {
   userId: string | null
   balance: number | null
   lifetime: number | null
+  lastActivityAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -59,6 +61,7 @@ export type PointsWalletCountAggregateOutputType = {
   userId: number
   balance: number
   lifetime: number
+  lastActivityAt: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -80,6 +83,7 @@ export type PointsWalletMinAggregateInputType = {
   userId?: true
   balance?: true
   lifetime?: true
+  lastActivityAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -89,6 +93,7 @@ export type PointsWalletMaxAggregateInputType = {
   userId?: true
   balance?: true
   lifetime?: true
+  lastActivityAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -98,6 +103,7 @@ export type PointsWalletCountAggregateInputType = {
   userId?: true
   balance?: true
   lifetime?: true
+  lastActivityAt?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -194,6 +200,7 @@ export type PointsWalletGroupByOutputType = {
   userId: string
   balance: number
   lifetime: number
+  lastActivityAt: Date
   createdAt: Date
   updatedAt: Date
   _count: PointsWalletCountAggregateOutputType | null
@@ -203,7 +210,7 @@ export type PointsWalletGroupByOutputType = {
   _max: PointsWalletMaxAggregateOutputType | null
 }
 
-type GetPointsWalletGroupByPayload<T extends PointsWalletGroupByArgs> = Prisma.PrismaPromise<
+export type GetPointsWalletGroupByPayload<T extends PointsWalletGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<PointsWalletGroupByOutputType, T['by']> &
       {
@@ -226,6 +233,7 @@ export type PointsWalletWhereInput = {
   userId?: Prisma.StringFilter<"PointsWallet"> | string
   balance?: Prisma.IntFilter<"PointsWallet"> | number
   lifetime?: Prisma.IntFilter<"PointsWallet"> | number
+  lastActivityAt?: Prisma.DateTimeFilter<"PointsWallet"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"PointsWallet"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PointsWallet"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -236,6 +244,7 @@ export type PointsWalletOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   balance?: Prisma.SortOrder
   lifetime?: Prisma.SortOrder
+  lastActivityAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
@@ -249,6 +258,7 @@ export type PointsWalletWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.PointsWalletWhereInput | Prisma.PointsWalletWhereInput[]
   balance?: Prisma.IntFilter<"PointsWallet"> | number
   lifetime?: Prisma.IntFilter<"PointsWallet"> | number
+  lastActivityAt?: Prisma.DateTimeFilter<"PointsWallet"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"PointsWallet"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PointsWallet"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -259,6 +269,7 @@ export type PointsWalletOrderByWithAggregationInput = {
   userId?: Prisma.SortOrder
   balance?: Prisma.SortOrder
   lifetime?: Prisma.SortOrder
+  lastActivityAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.PointsWalletCountOrderByAggregateInput
@@ -276,6 +287,7 @@ export type PointsWalletScalarWhereWithAggregatesInput = {
   userId?: Prisma.StringWithAggregatesFilter<"PointsWallet"> | string
   balance?: Prisma.IntWithAggregatesFilter<"PointsWallet"> | number
   lifetime?: Prisma.IntWithAggregatesFilter<"PointsWallet"> | number
+  lastActivityAt?: Prisma.DateTimeWithAggregatesFilter<"PointsWallet"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PointsWallet"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"PointsWallet"> | Date | string
 }
@@ -284,6 +296,7 @@ export type PointsWalletCreateInput = {
   id?: string
   balance?: number
   lifetime?: number
+  lastActivityAt?: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPointsWalletInput
@@ -294,6 +307,7 @@ export type PointsWalletUncheckedCreateInput = {
   userId: string
   balance?: number
   lifetime?: number
+  lastActivityAt?: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -302,6 +316,7 @@ export type PointsWalletUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.IntFieldUpdateOperationsInput | number
   lifetime?: Prisma.IntFieldUpdateOperationsInput | number
+  lastActivityAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPointsWalletNestedInput
@@ -312,6 +327,7 @@ export type PointsWalletUncheckedUpdateInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.IntFieldUpdateOperationsInput | number
   lifetime?: Prisma.IntFieldUpdateOperationsInput | number
+  lastActivityAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -321,6 +337,7 @@ export type PointsWalletCreateManyInput = {
   userId: string
   balance?: number
   lifetime?: number
+  lastActivityAt?: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -329,6 +346,7 @@ export type PointsWalletUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.IntFieldUpdateOperationsInput | number
   lifetime?: Prisma.IntFieldUpdateOperationsInput | number
+  lastActivityAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -338,6 +356,7 @@ export type PointsWalletUncheckedUpdateManyInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.IntFieldUpdateOperationsInput | number
   lifetime?: Prisma.IntFieldUpdateOperationsInput | number
+  lastActivityAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -352,6 +371,7 @@ export type PointsWalletCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   balance?: Prisma.SortOrder
   lifetime?: Prisma.SortOrder
+  lastActivityAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -366,6 +386,7 @@ export type PointsWalletMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   balance?: Prisma.SortOrder
   lifetime?: Prisma.SortOrder
+  lastActivityAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -375,6 +396,7 @@ export type PointsWalletMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   balance?: Prisma.SortOrder
   lifetime?: Prisma.SortOrder
+  lastActivityAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -420,6 +442,7 @@ export type PointsWalletCreateWithoutUserInput = {
   id?: string
   balance?: number
   lifetime?: number
+  lastActivityAt?: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -428,6 +451,7 @@ export type PointsWalletUncheckedCreateWithoutUserInput = {
   id?: string
   balance?: number
   lifetime?: number
+  lastActivityAt?: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -452,6 +476,7 @@ export type PointsWalletUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.IntFieldUpdateOperationsInput | number
   lifetime?: Prisma.IntFieldUpdateOperationsInput | number
+  lastActivityAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -460,6 +485,7 @@ export type PointsWalletUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.IntFieldUpdateOperationsInput | number
   lifetime?: Prisma.IntFieldUpdateOperationsInput | number
+  lastActivityAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -471,6 +497,7 @@ export type PointsWalletSelect<ExtArgs extends runtime.Types.Extensions.Internal
   userId?: boolean
   balance?: boolean
   lifetime?: boolean
+  lastActivityAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -481,6 +508,7 @@ export type PointsWalletSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   userId?: boolean
   balance?: boolean
   lifetime?: boolean
+  lastActivityAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -491,6 +519,7 @@ export type PointsWalletSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   userId?: boolean
   balance?: boolean
   lifetime?: boolean
+  lastActivityAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -501,11 +530,12 @@ export type PointsWalletSelectScalar = {
   userId?: boolean
   balance?: boolean
   lifetime?: boolean
+  lastActivityAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type PointsWalletOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "balance" | "lifetime" | "createdAt" | "updatedAt", ExtArgs["result"]["pointsWallet"]>
+export type PointsWalletOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "balance" | "lifetime" | "lastActivityAt" | "createdAt" | "updatedAt", ExtArgs["result"]["pointsWallet"]>
 export type PointsWalletInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -526,6 +556,7 @@ export type $PointsWalletPayload<ExtArgs extends runtime.Types.Extensions.Intern
     userId: string
     balance: number
     lifetime: number
+    lastActivityAt: Date
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["pointsWallet"]>
@@ -956,6 +987,7 @@ export interface PointsWalletFieldRefs {
   readonly userId: Prisma.FieldRef<"PointsWallet", 'String'>
   readonly balance: Prisma.FieldRef<"PointsWallet", 'Int'>
   readonly lifetime: Prisma.FieldRef<"PointsWallet", 'Int'>
+  readonly lastActivityAt: Prisma.FieldRef<"PointsWallet", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"PointsWallet", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"PointsWallet", 'DateTime'>
 }

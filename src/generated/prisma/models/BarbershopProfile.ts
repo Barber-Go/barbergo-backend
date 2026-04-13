@@ -266,7 +266,7 @@ export type BarbershopProfileGroupByOutputType = {
   _max: BarbershopProfileMaxAggregateOutputType | null
 }
 
-type GetBarbershopProfileGroupByPayload<T extends BarbershopProfileGroupByArgs> = Prisma.PrismaPromise<
+export type GetBarbershopProfileGroupByPayload<T extends BarbershopProfileGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<BarbershopProfileGroupByOutputType, T['by']> &
       {

@@ -214,7 +214,7 @@ export type TaxObligationGroupByOutputType = {
   _max: TaxObligationMaxAggregateOutputType | null
 }
 
-type GetTaxObligationGroupByPayload<T extends TaxObligationGroupByArgs> = Prisma.PrismaPromise<
+export type GetTaxObligationGroupByPayload<T extends TaxObligationGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<TaxObligationGroupByOutputType, T['by']> &
       {

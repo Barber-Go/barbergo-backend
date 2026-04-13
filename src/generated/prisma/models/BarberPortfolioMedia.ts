@@ -206,7 +206,7 @@ export type BarberPortfolioMediaGroupByOutputType = {
   _max: BarberPortfolioMediaMaxAggregateOutputType | null
 }
 
-type GetBarberPortfolioMediaGroupByPayload<T extends BarberPortfolioMediaGroupByArgs> = Prisma.PrismaPromise<
+export type GetBarberPortfolioMediaGroupByPayload<T extends BarberPortfolioMediaGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<BarberPortfolioMediaGroupByOutputType, T['by']> &
       {

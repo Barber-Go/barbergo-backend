@@ -133,6 +133,11 @@ export type Follow = Prisma.FollowModel
  */
 export type PointsWallet = Prisma.PointsWalletModel
 /**
+ * Model RewardsCatalog
+ * 
+ */
+export type RewardsCatalog = Prisma.RewardsCatalogModel
+/**
  * Model Community
  * 
  */

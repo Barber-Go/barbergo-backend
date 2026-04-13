@@ -158,7 +158,7 @@ export type AiHairstylePreviewGroupByOutputType = {
   _max: AiHairstylePreviewMaxAggregateOutputType | null
 }
 
-type GetAiHairstylePreviewGroupByPayload<T extends AiHairstylePreviewGroupByArgs> = Prisma.PrismaPromise<
+export type GetAiHairstylePreviewGroupByPayload<T extends AiHairstylePreviewGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<AiHairstylePreviewGroupByOutputType, T['by']> &
       {

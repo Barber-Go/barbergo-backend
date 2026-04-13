@@ -165,7 +165,7 @@ export type BarbershopStaffMembershipGroupByOutputType = {
   _max: BarbershopStaffMembershipMaxAggregateOutputType | null
 }
 
-type GetBarbershopStaffMembershipGroupByPayload<T extends BarbershopStaffMembershipGroupByArgs> = Prisma.PrismaPromise<
+export type GetBarbershopStaffMembershipGroupByPayload<T extends BarbershopStaffMembershipGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<BarbershopStaffMembershipGroupByOutputType, T['by']> &
       {

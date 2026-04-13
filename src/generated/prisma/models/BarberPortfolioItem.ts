@@ -172,7 +172,7 @@ export type BarberPortfolioItemGroupByOutputType = {
   _max: BarberPortfolioItemMaxAggregateOutputType | null
 }
 
-type GetBarberPortfolioItemGroupByPayload<T extends BarberPortfolioItemGroupByArgs> = Prisma.PrismaPromise<
+export type GetBarberPortfolioItemGroupByPayload<T extends BarberPortfolioItemGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<BarberPortfolioItemGroupByOutputType, T['by']> &
       {

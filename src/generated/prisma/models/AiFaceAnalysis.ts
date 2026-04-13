@@ -202,7 +202,7 @@ export type AiFaceAnalysisGroupByOutputType = {
   _max: AiFaceAnalysisMaxAggregateOutputType | null
 }
 
-type GetAiFaceAnalysisGroupByPayload<T extends AiFaceAnalysisGroupByArgs> = Prisma.PrismaPromise<
+export type GetAiFaceAnalysisGroupByPayload<T extends AiFaceAnalysisGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<AiFaceAnalysisGroupByOutputType, T['by']> &
       {

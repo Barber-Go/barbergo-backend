@@ -206,7 +206,7 @@ export type DailyLedgerEntryGroupByOutputType = {
   _max: DailyLedgerEntryMaxAggregateOutputType | null
 }
 
-type GetDailyLedgerEntryGroupByPayload<T extends DailyLedgerEntryGroupByArgs> = Prisma.PrismaPromise<
+export type GetDailyLedgerEntryGroupByPayload<T extends DailyLedgerEntryGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<DailyLedgerEntryGroupByOutputType, T['by']> &
       {

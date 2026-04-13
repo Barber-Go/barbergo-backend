@@ -80,12 +80,12 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 7.5.0
- * Query Engine version: 280c870be64f457428992c43c1f6d557fab6e29e
+ * Prisma Client JS version: 7.7.0
+ * Query Engine version: 75cbdc1eb7150937890ad5465d861175c6624711
  */
 export const prismaVersion: PrismaVersion = {
-  client: "7.5.0",
-  engine: "280c870be64f457428992c43c1f6d557fab6e29e"
+  client: "7.7.0",
+  engine: "75cbdc1eb7150937890ad5465d861175c6624711"
 }
 
 /**
@@ -407,6 +407,7 @@ export const ModelName = {
   DailyLedgerEntry: 'DailyLedgerEntry',
   Follow: 'Follow',
   PointsWallet: 'PointsWallet',
+  RewardsCatalog: 'RewardsCatalog',
   Community: 'Community',
   CommunityMembership: 'CommunityMembership',
   CommunityPost: 'CommunityPost',
@@ -434,7 +435,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview" | "taxProfile" | "taxObligation" | "taxDeclarationLog" | "billingRecord"
+    modelProps: "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "rewardsCatalog" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview" | "taxProfile" | "taxObligation" | "taxDeclarationLog" | "billingRecord"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2140,6 +2141,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    RewardsCatalog: {
+      payload: Prisma.$RewardsCatalogPayload<ExtArgs>
+      fields: Prisma.RewardsCatalogFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RewardsCatalogFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RewardsCatalogPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RewardsCatalogFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RewardsCatalogPayload>
+        }
+        findFirst: {
+          args: Prisma.RewardsCatalogFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RewardsCatalogPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RewardsCatalogFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RewardsCatalogPayload>
+        }
+        findMany: {
+          args: Prisma.RewardsCatalogFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RewardsCatalogPayload>[]
+        }
+        create: {
+          args: Prisma.RewardsCatalogCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RewardsCatalogPayload>
+        }
+        createMany: {
+          args: Prisma.RewardsCatalogCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RewardsCatalogCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RewardsCatalogPayload>[]
+        }
+        delete: {
+          args: Prisma.RewardsCatalogDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RewardsCatalogPayload>
+        }
+        update: {
+          args: Prisma.RewardsCatalogUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RewardsCatalogPayload>
+        }
+        deleteMany: {
+          args: Prisma.RewardsCatalogDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RewardsCatalogUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RewardsCatalogUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RewardsCatalogPayload>[]
+        }
+        upsert: {
+          args: Prisma.RewardsCatalogUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RewardsCatalogPayload>
+        }
+        aggregate: {
+          args: Prisma.RewardsCatalogAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRewardsCatalog>
+        }
+        groupBy: {
+          args: Prisma.RewardsCatalogGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RewardsCatalogGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RewardsCatalogCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RewardsCatalogCountAggregateOutputType> | number
+        }
+      }
+    }
     Community: {
       payload: Prisma.$CommunityPayload<ExtArgs>
       fields: Prisma.CommunityFieldRefs
@@ -3393,11 +3468,24 @@ export const PointsWalletScalarFieldEnum = {
   userId: 'userId',
   balance: 'balance',
   lifetime: 'lifetime',
+  lastActivityAt: 'lastActivityAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type PointsWalletScalarFieldEnum = (typeof PointsWalletScalarFieldEnum)[keyof typeof PointsWalletScalarFieldEnum]
+
+
+export const RewardsCatalogScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  pointsCost: 'pointsCost',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+} as const
+
+export type RewardsCatalogScalarFieldEnum = (typeof RewardsCatalogScalarFieldEnum)[keyof typeof RewardsCatalogScalarFieldEnum]
 
 
 export const CommunityScalarFieldEnum = {
@@ -3985,6 +4073,7 @@ export type GlobalOmitConfig = {
   dailyLedgerEntry?: Prisma.DailyLedgerEntryOmit
   follow?: Prisma.FollowOmit
   pointsWallet?: Prisma.PointsWalletOmit
+  rewardsCatalog?: Prisma.RewardsCatalogOmit
   community?: Prisma.CommunityOmit
   communityMembership?: Prisma.CommunityMembershipOmit
   communityPost?: Prisma.CommunityPostOmit

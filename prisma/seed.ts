@@ -75,6 +75,21 @@ async function main() {
   ]);
   console.log(`✅ Services created: "${corteClasico.name}", "${corteBarba.name}"`);
 
+  // ── Rewards catalog ────────────────────────────────────────────────
+  await prisma.rewardsCatalog.deleteMany({});
+  const rewards = await Promise.all([
+    prisma.rewardsCatalog.create({
+      data: { title: '10% descuento en tu proximo corte', description: 'Aplica un 10% de descuento en tu siguiente reserva pagada con la app.', pointsCost: 500 },
+    }),
+    prisma.rewardsCatalog.create({
+      data: { title: 'Producto capilar gratis', description: 'Canjea por un producto capilar de cortesia en tu proxima visita.', pointsCost: 1500 },
+    }),
+    prisma.rewardsCatalog.create({
+      data: { title: '50% descuento en un corte', description: 'Obtén un 50% de descuento en cualquier servicio de corte.', pointsCost: 3000 },
+    }),
+  ]);
+  console.log(`✅ Rewards catalog created: ${rewards.length} items`);
+
   console.log('\n🎉 Seed completed successfully!');
   console.log('\nTest credentials:');
   console.log('  Cliente  → cliente@test.com  / 12345678');

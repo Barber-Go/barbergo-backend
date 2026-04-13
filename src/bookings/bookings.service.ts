@@ -8,9 +8,10 @@ import { PrismaService } from '../prisma/prisma.service';
 import { NotificationsService } from '../notifications/notifications.service';
 import { CommissionsService } from '../commissions/commissions.service';
 import { ChatService } from '../chat/chat.service';
+import { PointsService } from '../points/points.service';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { UpdateBookingStatusDto } from './dto/update-booking-status.dto';
-import { BookingStatus, LedgerEntryType, NotificationType, Role } from '../generated/prisma/enums';
+import { BookingStatus, LedgerEntryType, NotificationType, PaymentMethod, Role } from '../generated/prisma/enums';
 
 // Status transitions allowed per role
 const CLIENT_ALLOWED_TRANSITIONS: Partial<Record<BookingStatus, BookingStatus[]>> = {
@@ -43,6 +44,7 @@ export class BookingsService {
     private readonly notifications: NotificationsService,
     private readonly commissions: CommissionsService,
     private readonly chat: ChatService,
+    private readonly points: PointsService,
   ) {}
 
   // ── CLIENT: create booking ─────────────────────────────────────────────────
@@ -252,6 +254,13 @@ export class BookingsService {
           amount: Number(booking.totalAmount),
         },
       });
+
+      // Accrue points for IN_APP payments
+      if (booking.paymentMethod === PaymentMethod.IN_APP) {
+        this.points
+          .accruePoints(booking.clientId, Number(booking.totalAmount))
+          .catch(() => {});
+      }
     }
 
     // Send notification to client based on new status
