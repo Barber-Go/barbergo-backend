@@ -4,6 +4,7 @@ import { CreateBarbershopDto } from './dto/create-barbershop.dto';
 import { UpdateBarbershopDto } from './dto/update-barbershop.dto';
 import { AddStaffDto } from './dto/add-staff.dto';
 import { UpdateStaffDto } from './dto/update-staff.dto';
+import { Role } from '../generated/prisma/enums';
 
 @Injectable()
 export class BarbershopsService {
@@ -148,8 +149,8 @@ export class BarbershopsService {
         data: {
           name: dto.name.trim(),
           email: placeholderEmail,
-          passwordHash: 'PENDING_REGISTRATION',
-          role: 'BARBER_EMPLOYEE',
+          password: 'PENDING_REGISTRATION',
+          role: Role.BARBER_EMPLOYEE,
         },
       });
 
@@ -181,11 +182,11 @@ export class BarbershopsService {
 
     // Set compensation if barberPercent provided
     if (dto.barberPercent != null) {
-      await this.prisma.client.compensationRule.create({
+      await this.prisma.client.staffCompensationRule.create({
         data: {
           membershipId: membership.id,
-          barberPercent: dto.barberPercent,
-          shopPercent: 100 - dto.barberPercent,
+          label: 'Comision barbero',
+          percentage: dto.barberPercent,
           isActive: true,
         },
       });
