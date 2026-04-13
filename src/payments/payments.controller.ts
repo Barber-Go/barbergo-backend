@@ -87,33 +87,37 @@ export class PaymentsController {
   }
 
   @Get('mp/success')
-  mpSuccess(@Query() query: Record<string, string>) {
-    return { message: 'Pago exitoso', data: query };
+  mpSuccess(@Query() query: Record<string, string>, @Res() res: Response) {
+    const bookingId = query.external_reference;
+    return res.redirect(`${this.frontendUrl}/(client)/my-bookings?payment=success&bookingId=${bookingId}`);
   }
 
   @Get('mp/failure')
-  mpFailure(@Query() query: Record<string, string>) {
-    return { message: 'Pago fallido', data: query };
+  mpFailure(@Query() query: Record<string, string>, @Res() res: Response) {
+    return res.redirect(`${this.frontendUrl}/(client)/booking?payment=cancelled`);
   }
 
   @Get('mp/pending')
-  mpPending(@Query() query: Record<string, string>) {
-    return { message: 'Pago pendiente', data: query };
+  mpPending(@Query() query: Record<string, string>, @Res() res: Response) {
+    const bookingId = query.external_reference;
+    return res.redirect(`${this.frontendUrl}/(client)/my-bookings?payment=pending&bookingId=${bookingId}`);
   }
 
   @Get('success')
-  mpSuccessAlt(@Query() query: Record<string, string>) {
-    return { message: 'Pago exitoso', data: query };
+  mpSuccessAlt(@Query() query: Record<string, string>, @Res() res: Response) {
+    const bookingId = query.external_reference;
+    return res.redirect(`${this.frontendUrl}/(client)/my-bookings?payment=success&bookingId=${bookingId}`);
   }
 
   @Get('failure')
-  mpFailureAlt(@Query() query: Record<string, string>) {
-    return { message: 'Pago fallido o cancelado', data: query };
+  mpFailureAlt(@Query() query: Record<string, string>, @Res() res: Response) {
+    return res.redirect(`${this.frontendUrl}/(client)/booking?payment=cancelled`);
   }
 
   @Get('pending')
-  mpPendingAlt(@Query() query: Record<string, string>) {
-    return { message: 'Pago pendiente', data: query };
+  mpPendingAlt(@Query() query: Record<string, string>, @Res() res: Response) {
+    const bookingId = query.external_reference;
+    return res.redirect(`${this.frontendUrl}/(client)/my-bookings?payment=pending&bookingId=${bookingId}`);
   }
 
   @Post('mp/create-preference')
