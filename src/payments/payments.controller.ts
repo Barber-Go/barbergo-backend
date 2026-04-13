@@ -101,6 +101,21 @@ export class PaymentsController {
     return { message: 'Pago pendiente', data: query };
   }
 
+  @Get('success')
+  mpSuccessAlt(@Query() query: Record<string, string>) {
+    return { message: 'Pago exitoso', data: query };
+  }
+
+  @Get('failure')
+  mpFailureAlt(@Query() query: Record<string, string>) {
+    return { message: 'Pago fallido o cancelado', data: query };
+  }
+
+  @Get('pending')
+  mpPendingAlt(@Query() query: Record<string, string>) {
+    return { message: 'Pago pendiente', data: query };
+  }
+
   @Post('mp/create-preference')
   @UseGuards(JwtAuthGuard)
   createMpPreference(@Body() dto: CreateMpPreferenceDto) {
