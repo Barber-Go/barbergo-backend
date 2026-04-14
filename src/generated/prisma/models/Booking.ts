@@ -1041,10 +1041,6 @@ export type EnumPaymentMethodFieldUpdateOperationsInput = {
   set?: $Enums.PaymentMethod
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
 export type BookingCreateNestedOneWithoutChatThreadInput = {
   create?: Prisma.XOR<Prisma.BookingCreateWithoutChatThreadInput, Prisma.BookingUncheckedCreateWithoutChatThreadInput>
   connectOrCreate?: Prisma.BookingCreateOrConnectWithoutChatThreadInput

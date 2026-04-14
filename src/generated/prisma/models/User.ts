@@ -36,6 +36,8 @@ export type UserMinAggregateOutputType = {
   isVerified: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  taxModuleEnabled: boolean | null
+  taxModuleActivatedAt: Date | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -50,6 +52,8 @@ export type UserMaxAggregateOutputType = {
   isVerified: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  taxModuleEnabled: boolean | null
+  taxModuleActivatedAt: Date | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -64,6 +68,8 @@ export type UserCountAggregateOutputType = {
   isVerified: number
   createdAt: number
   updatedAt: number
+  taxModuleEnabled: number
+  taxModuleActivatedAt: number
   _all: number
 }
 
@@ -80,6 +86,8 @@ export type UserMinAggregateInputType = {
   isVerified?: true
   createdAt?: true
   updatedAt?: true
+  taxModuleEnabled?: true
+  taxModuleActivatedAt?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -94,6 +102,8 @@ export type UserMaxAggregateInputType = {
   isVerified?: true
   createdAt?: true
   updatedAt?: true
+  taxModuleEnabled?: true
+  taxModuleActivatedAt?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -108,6 +118,8 @@ export type UserCountAggregateInputType = {
   isVerified?: true
   createdAt?: true
   updatedAt?: true
+  taxModuleEnabled?: true
+  taxModuleActivatedAt?: true
   _all?: true
 }
 
@@ -195,6 +207,8 @@ export type UserGroupByOutputType = {
   isVerified: boolean
   createdAt: Date
   updatedAt: Date
+  taxModuleEnabled: boolean
+  taxModuleActivatedAt: Date | null
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -230,6 +244,8 @@ export type UserWhereInput = {
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  taxModuleEnabled?: Prisma.BoolFilter<"User"> | boolean
+  taxModuleActivatedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   clientProfile?: Prisma.XOR<Prisma.ClientProfileNullableScalarRelationFilter, Prisma.ClientProfileWhereInput> | null
   barberProfile?: Prisma.XOR<Prisma.BarberProfileNullableScalarRelationFilter, Prisma.BarberProfileWhereInput> | null
   barbershopProfile?: Prisma.XOR<Prisma.BarbershopProfileNullableScalarRelationFilter, Prisma.BarbershopProfileWhereInput> | null
@@ -258,6 +274,8 @@ export type UserOrderByWithRelationInput = {
   isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  taxModuleEnabled?: Prisma.SortOrder
+  taxModuleActivatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   clientProfile?: Prisma.ClientProfileOrderByWithRelationInput
   barberProfile?: Prisma.BarberProfileOrderByWithRelationInput
   barbershopProfile?: Prisma.BarbershopProfileOrderByWithRelationInput
@@ -289,6 +307,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  taxModuleEnabled?: Prisma.BoolFilter<"User"> | boolean
+  taxModuleActivatedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   clientProfile?: Prisma.XOR<Prisma.ClientProfileNullableScalarRelationFilter, Prisma.ClientProfileWhereInput> | null
   barberProfile?: Prisma.XOR<Prisma.BarberProfileNullableScalarRelationFilter, Prisma.BarberProfileWhereInput> | null
   barbershopProfile?: Prisma.XOR<Prisma.BarbershopProfileNullableScalarRelationFilter, Prisma.BarbershopProfileWhereInput> | null
@@ -317,6 +337,8 @@ export type UserOrderByWithAggregationInput = {
   isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  taxModuleEnabled?: Prisma.SortOrder
+  taxModuleActivatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -337,6 +359,8 @@ export type UserScalarWhereWithAggregatesInput = {
   isVerified?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  taxModuleEnabled?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  taxModuleActivatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
 }
 
 export type UserCreateInput = {
@@ -351,6 +375,8 @@ export type UserCreateInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
@@ -379,6 +405,8 @@ export type UserUncheckedCreateInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
@@ -407,6 +435,8 @@ export type UserUpdateInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
@@ -435,6 +465,8 @@ export type UserUncheckedUpdateInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -463,6 +495,8 @@ export type UserCreateManyInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
 }
 
 export type UserUpdateManyMutationInput = {
@@ -477,6 +511,8 @@ export type UserUpdateManyMutationInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -491,6 +527,8 @@ export type UserUncheckedUpdateManyInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -505,6 +543,8 @@ export type UserCountOrderByAggregateInput = {
   isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  taxModuleEnabled?: Prisma.SortOrder
+  taxModuleActivatedAt?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -519,6 +559,8 @@ export type UserMaxOrderByAggregateInput = {
   isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  taxModuleEnabled?: Prisma.SortOrder
+  taxModuleActivatedAt?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -533,6 +575,8 @@ export type UserMinOrderByAggregateInput = {
   isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  taxModuleEnabled?: Prisma.SortOrder
+  taxModuleActivatedAt?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -558,6 +602,10 @@ export type BoolFieldUpdateOperationsInput = {
 
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
 }
 
 export type UserCreateNestedOneWithoutClientProfileInput = {
@@ -768,6 +816,8 @@ export type UserCreateWithoutClientProfileInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
@@ -795,6 +845,8 @@ export type UserUncheckedCreateWithoutClientProfileInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
@@ -838,6 +890,8 @@ export type UserUpdateWithoutClientProfileInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
@@ -865,6 +919,8 @@ export type UserUncheckedUpdateWithoutClientProfileInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
@@ -892,6 +948,8 @@ export type UserCreateWithoutBarberProfileInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
@@ -919,6 +977,8 @@ export type UserUncheckedCreateWithoutBarberProfileInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
@@ -962,6 +1022,8 @@ export type UserUpdateWithoutBarberProfileInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
@@ -989,6 +1051,8 @@ export type UserUncheckedUpdateWithoutBarberProfileInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
@@ -1016,6 +1080,8 @@ export type UserCreateWithoutBarbershopProfileInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
@@ -1043,6 +1109,8 @@ export type UserUncheckedCreateWithoutBarbershopProfileInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
@@ -1086,6 +1154,8 @@ export type UserUpdateWithoutBarbershopProfileInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
@@ -1113,6 +1183,8 @@ export type UserUncheckedUpdateWithoutBarbershopProfileInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
@@ -1140,6 +1212,8 @@ export type UserCreateWithoutBookingsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
@@ -1167,6 +1241,8 @@ export type UserUncheckedCreateWithoutBookingsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
@@ -1210,6 +1286,8 @@ export type UserUpdateWithoutBookingsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
@@ -1237,6 +1315,8 @@ export type UserUncheckedUpdateWithoutBookingsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -1264,6 +1344,8 @@ export type UserCreateWithoutChatParticipantsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
@@ -1291,6 +1373,8 @@ export type UserUncheckedCreateWithoutChatParticipantsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
@@ -1334,6 +1418,8 @@ export type UserUpdateWithoutChatParticipantsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
@@ -1361,6 +1447,8 @@ export type UserUncheckedUpdateWithoutChatParticipantsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -1388,6 +1476,8 @@ export type UserCreateWithoutChatMessagesInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
@@ -1415,6 +1505,8 @@ export type UserUncheckedCreateWithoutChatMessagesInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
@@ -1458,6 +1550,8 @@ export type UserUpdateWithoutChatMessagesInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
@@ -1485,6 +1579,8 @@ export type UserUncheckedUpdateWithoutChatMessagesInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -1512,6 +1608,8 @@ export type UserCreateWithoutReviewsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
@@ -1539,6 +1637,8 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
@@ -1582,6 +1682,8 @@ export type UserUpdateWithoutReviewsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
@@ -1609,6 +1711,8 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -1636,6 +1740,8 @@ export type UserCreateWithoutNotificationsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
@@ -1663,6 +1769,8 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
@@ -1706,6 +1814,8 @@ export type UserUpdateWithoutNotificationsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
@@ -1733,6 +1843,8 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -1760,6 +1872,8 @@ export type UserCreateWithoutFollowsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
@@ -1787,6 +1901,8 @@ export type UserUncheckedCreateWithoutFollowsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
@@ -1830,6 +1946,8 @@ export type UserUpdateWithoutFollowsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
@@ -1857,6 +1975,8 @@ export type UserUncheckedUpdateWithoutFollowsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -1884,6 +2004,8 @@ export type UserCreateWithoutPointsWalletInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
@@ -1911,6 +2033,8 @@ export type UserUncheckedCreateWithoutPointsWalletInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
@@ -1954,6 +2078,8 @@ export type UserUpdateWithoutPointsWalletInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
@@ -1981,6 +2107,8 @@ export type UserUncheckedUpdateWithoutPointsWalletInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -2008,6 +2136,8 @@ export type UserCreateWithoutCommunityMembershipsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
@@ -2035,6 +2165,8 @@ export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
@@ -2078,6 +2210,8 @@ export type UserUpdateWithoutCommunityMembershipsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
@@ -2105,6 +2239,8 @@ export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -2132,6 +2268,8 @@ export type UserCreateWithoutCommunityPostsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
@@ -2159,6 +2297,8 @@ export type UserUncheckedCreateWithoutCommunityPostsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
@@ -2202,6 +2342,8 @@ export type UserUpdateWithoutCommunityPostsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
@@ -2229,6 +2371,8 @@ export type UserUncheckedUpdateWithoutCommunityPostsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -2256,6 +2400,8 @@ export type UserCreateWithoutSettingsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
@@ -2283,6 +2429,8 @@ export type UserUncheckedCreateWithoutSettingsInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
@@ -2326,6 +2474,8 @@ export type UserUpdateWithoutSettingsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
@@ -2353,6 +2503,8 @@ export type UserUncheckedUpdateWithoutSettingsInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -2380,6 +2532,8 @@ export type UserCreateWithoutAiFaceAnalysesInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileCreateNestedOneWithoutUserInput
@@ -2407,6 +2561,8 @@ export type UserUncheckedCreateWithoutAiFaceAnalysesInput = {
   isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
   barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedCreateNestedOneWithoutUserInput
@@ -2450,6 +2606,8 @@ export type UserUpdateWithoutAiFaceAnalysesInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUpdateOneWithoutUserNestedInput
@@ -2477,6 +2635,8 @@ export type UserUncheckedUpdateWithoutAiFaceAnalysesInput = {
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
   barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
   barbershopProfile?: Prisma.BarbershopProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -2607,6 +2767,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: boolean
   clientProfile?: boolean | Prisma.User$clientProfileArgs<ExtArgs>
   barberProfile?: boolean | Prisma.User$barberProfileArgs<ExtArgs>
   barbershopProfile?: boolean | Prisma.User$barbershopProfileArgs<ExtArgs>
@@ -2636,6 +2798,8 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -2650,6 +2814,8 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -2664,9 +2830,11 @@ export type UserSelectScalar = {
   isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "password" | "name" | "avatarUrl" | "pushToken" | "role" | "isVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "password" | "name" | "avatarUrl" | "pushToken" | "role" | "isVerified" | "createdAt" | "updatedAt" | "taxModuleEnabled" | "taxModuleActivatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   clientProfile?: boolean | Prisma.User$clientProfileArgs<ExtArgs>
   barberProfile?: boolean | Prisma.User$barberProfileArgs<ExtArgs>
@@ -2717,6 +2885,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     isVerified: boolean
     createdAt: Date
     updatedAt: Date
+    taxModuleEnabled: boolean
+    taxModuleActivatedAt: Date | null
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -3165,6 +3335,8 @@ export interface UserFieldRefs {
   readonly isVerified: Prisma.FieldRef<"User", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly taxModuleEnabled: Prisma.FieldRef<"User", 'Boolean'>
+  readonly taxModuleActivatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }
     
 

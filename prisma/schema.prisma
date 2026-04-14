@@ -139,6 +139,10 @@ model User {
   chatMessages     ChatMessage[]
   aiFaceAnalyses   AiFaceAnalysis[]
 
+  // Tax module
+  taxModuleEnabled    Boolean   @default(false)
+  taxModuleActivatedAt DateTime?
+
   @@map("users")
 }
 

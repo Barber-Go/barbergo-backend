@@ -169,6 +169,29 @@ export class AuthService {
     return this.sanitize(user);
   }
 
+  async getTaxStatus(userId: string) {
+    const user = await this.prisma.client.user.findUnique({
+      where: { id: userId },
+      select: { taxModuleEnabled: true, taxModuleActivatedAt: true, barberProfile: { select: { rutTributario: true } } },
+    });
+    return {
+      enabled: user?.taxModuleEnabled ?? false,
+      activatedAt: user?.taxModuleActivatedAt?.toISOString() ?? null,
+      hasCredentials: !!user?.barberProfile?.rutTributario,
+    };
+  }
+
+  async toggleTaxModule(userId: string, enabled: boolean) {
+    const user = await this.prisma.client.user.update({
+      where: { id: userId },
+      data: {
+        taxModuleEnabled: enabled,
+        ...(enabled && { taxModuleActivatedAt: new Date() }),
+      },
+    });
+    return { enabled: user.taxModuleEnabled, activatedAt: user.taxModuleActivatedAt?.toISOString() ?? null };
+  }
+
   private signToken(user: { id: string; email: string; role: Role }): string {
     const payload: JwtPayload = {
       sub: user.id,

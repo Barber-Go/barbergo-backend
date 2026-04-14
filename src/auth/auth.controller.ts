@@ -41,4 +41,16 @@ export class AuthController {
   updateMe(@Request() req: any, @Body() dto: UpdateProfileDto) {
     return this.authService.updateMe(req.user.id, dto);
   }
+
+  @Get('me/tax-status')
+  @UseGuards(JwtAuthGuard)
+  getTaxStatus(@Request() req: { user: { id: string } }) {
+    return this.authService.getTaxStatus(req.user.id);
+  }
+
+  @Patch('me/tax-module')
+  @UseGuards(JwtAuthGuard)
+  toggleTaxModule(@Request() req: { user: { id: string } }, @Body() body: { enabled: boolean }) {
+    return this.authService.toggleTaxModule(req.user.id, body.enabled);
+  }
 }
