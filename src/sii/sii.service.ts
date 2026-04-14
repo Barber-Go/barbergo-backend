@@ -26,9 +26,9 @@ export class SiiService {
     private readonly prisma: PrismaService,
     private readonly config: ConfigService,
   ) {
-    this.baseUrl = this.config.get<string>('SII_API_BASE_URL');
-    this.token = this.config.get<string>('SII_API_TOKEN');
-    this.emisorRut = this.config.get<string>('SII_EMISOR_RUT');
+    this.baseUrl = this.config.get<string>('SII_API_BASE_URL') ?? 'https://app.apigateway.cl/api/v2';
+    this.token = this.config.get<string>('SII_API_TOKEN') ?? '';
+    this.emisorRut = this.config.get<string>('SII_EMISOR_RUT') ?? '';
   }
 
   async emitirBoleta(
