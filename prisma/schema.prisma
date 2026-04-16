@@ -207,6 +207,7 @@ model BarbershopProfile {
   inviteCode  String?  @unique
   isActive    Boolean  @default(true)
   status      String   @default("DRAFT")
+  scheduleJson String? // JSON: { "0": [{start,end}], "1": [...], ... } keyed by dayOfWeek
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 

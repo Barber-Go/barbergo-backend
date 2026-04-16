@@ -109,10 +109,31 @@ export class ManualBookingsService {
     const date = new Date(dateStr);
     const dayOfWeek = date.getDay();
 
-    // 1. Weekly template
-    const weekly = await this.prisma.client.weeklyAvailability.findFirst({
+    // 1. Weekly template (individual or barbershop fallback)
+    let weekly = await this.prisma.client.weeklyAvailability.findFirst({
       where: { barberId, dayOfWeek, isActive: true },
     });
+
+    // Fallback to barbershop schedule if barber has no individual availability
+    if (!weekly) {
+      const barber = await this.prisma.client.barberProfile.findUnique({
+        where: { id: barberId },
+        select: { barbershopId: true },
+      });
+      if (barber?.barbershopId) {
+        const shop = await this.prisma.client.barbershopProfile.findUnique({
+          where: { id: barber.barbershopId },
+          select: { scheduleJson: true },
+        });
+        if (shop?.scheduleJson) {
+          const schedule = JSON.parse(shop.scheduleJson) as Record<string, { start: string; end: string }[]>;
+          const dayBlocks = schedule[String(dayOfWeek)];
+          if (dayBlocks?.[0]) {
+            weekly = { id: 'shop-fallback', barberId, dayOfWeek, startTime: dayBlocks[0].start, endTime: dayBlocks[0].end, isActive: true } as typeof weekly;
+          }
+        }
+      }
+    }
 
     if (!weekly) return { date: dateStr, slots: [] };
 

@@ -3283,6 +3283,7 @@ export const BarbershopProfileScalarFieldEnum = {
   inviteCode: 'inviteCode',
   isActive: 'isActive',
   status: 'status',
+  scheduleJson: 'scheduleJson',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

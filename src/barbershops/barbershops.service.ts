@@ -293,4 +293,47 @@ export class BarbershopsService {
       isActive: shop.isActive,
     };
   }
+
+  // ── Schedule ──────────────────────────────────────────────────────────────
+
+  async getSchedule(userId: string) {
+    const shop = await this.prisma.client.barbershopProfile.findUnique({ where: { userId } });
+    if (!shop) throw new NotFoundException('Barbershop not found');
+    return { schedule: shop.scheduleJson ? JSON.parse(shop.scheduleJson) : {} };
+  }
+
+  async updateSchedule(userId: string, schedule: Record<string, { start: string; end: string }[]>) {
+    const shop = await this.prisma.client.barbershopProfile.findUnique({ where: { userId } });
+    if (!shop) throw new NotFoundException('Barbershop not found');
+    await this.prisma.client.barbershopProfile.update({
+      where: { id: shop.id },
+      data: { scheduleJson: JSON.stringify(schedule) },
+    });
+    return { schedule };
+  }
+
+  async updateStaffAvailability(
+    userId: string,
+    barberId: string,
+    slots: { dayOfWeek: number; startTime: string; endTime: string; isActive: boolean }[],
+  ) {
+    const shop = await this.prisma.client.barbershopProfile.findUnique({ where: { userId } });
+    if (!shop) throw new NotFoundException('Barbershop not found');
+
+    // Verify barber belongs to this shop
+    const membership = await this.prisma.client.barbershopStaffMembership.findFirst({
+      where: { barbershopId: shop.id, barberProfileId: barberId },
+    });
+    if (!membership) throw new NotFoundException('Barber not in this barbershop');
+
+    for (const slot of slots) {
+      await this.prisma.client.weeklyAvailability.upsert({
+        where: { barberId_dayOfWeek: { barberId, dayOfWeek: slot.dayOfWeek } },
+        create: { barberId, dayOfWeek: slot.dayOfWeek, startTime: slot.startTime, endTime: slot.endTime, isActive: slot.isActive },
+        update: { startTime: slot.startTime, endTime: slot.endTime, isActive: slot.isActive },
+      });
+    }
+
+    return { success: true };
+  }
 }

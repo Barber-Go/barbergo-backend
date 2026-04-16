@@ -71,6 +71,31 @@ export class BarbershopsController {
     return this.barbershopsService.removeStaff(req.user.id, memberId);
   }
 
+  @Get('me/schedule')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  getSchedule(@Request() req: { user: { id: string } }) {
+    return this.barbershopsService.getSchedule(req.user.id);
+  }
+
+  @Patch('me/schedule')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  updateSchedule(@Request() req: { user: { id: string } }, @Body() body: { schedule: Record<string, { start: string; end: string }[]> }) {
+    return this.barbershopsService.updateSchedule(req.user.id, body.schedule);
+  }
+
+  @Patch('staff/:barberId/availability')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  updateStaffAvailability(
+    @Request() req: { user: { id: string } },
+    @Param('barberId') barberId: string,
+    @Body() body: { slots: { dayOfWeek: number; startTime: string; endTime: string; isActive: boolean }[] },
+  ) {
+    return this.barbershopsService.updateStaffAvailability(req.user.id, barberId, body.slots);
+  }
+
   // ── Public ──
 
   @Get(':id')
