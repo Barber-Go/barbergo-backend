@@ -127,7 +127,9 @@ export class ManualBookingsService {
         });
         if (shop?.scheduleJson) {
           const schedule = JSON.parse(shop.scheduleJson) as Record<string, { start: string; end: string }[]>;
-          const dayBlocks = schedule[String(dayOfWeek)];
+          // Support both numeric keys ("0"-"6") and name keys ("mon"-"sun")
+          const dayNameMap: Record<number, string> = { 0: 'sun', 1: 'mon', 2: 'tue', 3: 'wed', 4: 'thu', 5: 'fri', 6: 'sat' };
+          const dayBlocks = schedule[String(dayOfWeek)] ?? schedule[dayNameMap[dayOfWeek]];
           if (dayBlocks?.[0]) {
             weekly = { id: 'shop-fallback', barberId, dayOfWeek, startTime: dayBlocks[0].start, endTime: dayBlocks[0].end, isActive: true } as typeof weekly;
           }
