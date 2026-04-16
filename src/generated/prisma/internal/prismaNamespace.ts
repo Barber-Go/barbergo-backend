@@ -393,6 +393,7 @@ export const ModelName = {
   ServiceItem: 'ServiceItem',
   WeeklyAvailability: 'WeeklyAvailability',
   AvailabilityBlock: 'AvailabilityBlock',
+  ManualBooking: 'ManualBooking',
   Booking: 'Booking',
   ChatThread: 'ChatThread',
   ChatParticipant: 'ChatParticipant',
@@ -435,7 +436,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "rewardsCatalog" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview" | "taxProfile" | "taxObligation" | "taxDeclarationLog" | "billingRecord"
+    modelProps: "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "manualBooking" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "rewardsCatalog" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview" | "taxProfile" | "taxObligation" | "taxDeclarationLog" | "billingRecord"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1102,6 +1103,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.AvailabilityBlockCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AvailabilityBlockCountAggregateOutputType> | number
+        }
+      }
+    }
+    ManualBooking: {
+      payload: Prisma.$ManualBookingPayload<ExtArgs>
+      fields: Prisma.ManualBookingFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ManualBookingFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ManualBookingPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ManualBookingFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ManualBookingPayload>
+        }
+        findFirst: {
+          args: Prisma.ManualBookingFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ManualBookingPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ManualBookingFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ManualBookingPayload>
+        }
+        findMany: {
+          args: Prisma.ManualBookingFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ManualBookingPayload>[]
+        }
+        create: {
+          args: Prisma.ManualBookingCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ManualBookingPayload>
+        }
+        createMany: {
+          args: Prisma.ManualBookingCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ManualBookingCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ManualBookingPayload>[]
+        }
+        delete: {
+          args: Prisma.ManualBookingDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ManualBookingPayload>
+        }
+        update: {
+          args: Prisma.ManualBookingUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ManualBookingPayload>
+        }
+        deleteMany: {
+          args: Prisma.ManualBookingDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ManualBookingUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ManualBookingUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ManualBookingPayload>[]
+        }
+        upsert: {
+          args: Prisma.ManualBookingUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ManualBookingPayload>
+        }
+        aggregate: {
+          args: Prisma.ManualBookingAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateManualBooking>
+        }
+        groupBy: {
+          args: Prisma.ManualBookingGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ManualBookingGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ManualBookingCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ManualBookingCountAggregateOutputType> | number
         }
       }
     }
@@ -3279,6 +3354,23 @@ export const AvailabilityBlockScalarFieldEnum = {
 export type AvailabilityBlockScalarFieldEnum = (typeof AvailabilityBlockScalarFieldEnum)[keyof typeof AvailabilityBlockScalarFieldEnum]
 
 
+export const ManualBookingScalarFieldEnum = {
+  id: 'id',
+  barberId: 'barberId',
+  clientName: 'clientName',
+  serviceName: 'serviceName',
+  date: 'date',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  note: 'note',
+  paymentMethod: 'paymentMethod',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ManualBookingScalarFieldEnum = (typeof ManualBookingScalarFieldEnum)[keyof typeof ManualBookingScalarFieldEnum]
+
+
 export const BookingScalarFieldEnum = {
   id: 'id',
   clientId: 'clientId',
@@ -4061,6 +4153,7 @@ export type GlobalOmitConfig = {
   serviceItem?: Prisma.ServiceItemOmit
   weeklyAvailability?: Prisma.WeeklyAvailabilityOmit
   availabilityBlock?: Prisma.AvailabilityBlockOmit
+  manualBooking?: Prisma.ManualBookingOmit
   booking?: Prisma.BookingOmit
   chatThread?: Prisma.ChatThreadOmit
   chatParticipant?: Prisma.ChatParticipantOmit

@@ -85,6 +85,11 @@ export type WeeklyAvailability = Prisma.WeeklyAvailabilityModel
  */
 export type AvailabilityBlock = Prisma.AvailabilityBlockModel
 /**
+ * Model ManualBooking
+ * 
+ */
+export type ManualBooking = Prisma.ManualBookingModel
+/**
  * Model Booking
  * 
  */

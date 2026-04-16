@@ -332,6 +332,7 @@ export type BarberProfileWhereInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipListRelationFilter
   expenses?: Prisma.ExpenseListRelationFilter
   ledgerEntries?: Prisma.DailyLedgerEntryListRelationFilter
+  manualBookings?: Prisma.ManualBookingListRelationFilter
 }
 
 export type BarberProfileOrderByWithRelationInput = {
@@ -363,6 +364,7 @@ export type BarberProfileOrderByWithRelationInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipOrderByRelationAggregateInput
   expenses?: Prisma.ExpenseOrderByRelationAggregateInput
   ledgerEntries?: Prisma.DailyLedgerEntryOrderByRelationAggregateInput
+  manualBookings?: Prisma.ManualBookingOrderByRelationAggregateInput
 }
 
 export type BarberProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -397,6 +399,7 @@ export type BarberProfileWhereUniqueInput = Prisma.AtLeast<{
   staffMemberships?: Prisma.BarbershopStaffMembershipListRelationFilter
   expenses?: Prisma.ExpenseListRelationFilter
   ledgerEntries?: Prisma.DailyLedgerEntryListRelationFilter
+  manualBookings?: Prisma.ManualBookingListRelationFilter
 }, "id" | "userId">
 
 export type BarberProfileOrderByWithAggregationInput = {
@@ -472,6 +475,7 @@ export type BarberProfileCreateInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateInput = {
@@ -501,6 +505,7 @@ export type BarberProfileUncheckedCreateInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUpdateInput = {
@@ -530,6 +535,7 @@ export type BarberProfileUpdateInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateInput = {
@@ -559,6 +565,7 @@ export type BarberProfileUncheckedUpdateInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileCreateManyInput = {
@@ -859,6 +866,20 @@ export type BarberProfileUpdateOneRequiredWithoutBlocksNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BarberProfileUpdateToOneWithWhereWithoutBlocksInput, Prisma.BarberProfileUpdateWithoutBlocksInput>, Prisma.BarberProfileUncheckedUpdateWithoutBlocksInput>
 }
 
+export type BarberProfileCreateNestedOneWithoutManualBookingsInput = {
+  create?: Prisma.XOR<Prisma.BarberProfileCreateWithoutManualBookingsInput, Prisma.BarberProfileUncheckedCreateWithoutManualBookingsInput>
+  connectOrCreate?: Prisma.BarberProfileCreateOrConnectWithoutManualBookingsInput
+  connect?: Prisma.BarberProfileWhereUniqueInput
+}
+
+export type BarberProfileUpdateOneRequiredWithoutManualBookingsNestedInput = {
+  create?: Prisma.XOR<Prisma.BarberProfileCreateWithoutManualBookingsInput, Prisma.BarberProfileUncheckedCreateWithoutManualBookingsInput>
+  connectOrCreate?: Prisma.BarberProfileCreateOrConnectWithoutManualBookingsInput
+  upsert?: Prisma.BarberProfileUpsertWithoutManualBookingsInput
+  connect?: Prisma.BarberProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BarberProfileUpdateToOneWithWhereWithoutManualBookingsInput, Prisma.BarberProfileUpdateWithoutManualBookingsInput>, Prisma.BarberProfileUncheckedUpdateWithoutManualBookingsInput>
+}
+
 export type BarberProfileCreateNestedOneWithoutBookingsInput = {
   create?: Prisma.XOR<Prisma.BarberProfileCreateWithoutBookingsInput, Prisma.BarberProfileUncheckedCreateWithoutBookingsInput>
   connectOrCreate?: Prisma.BarberProfileCreateOrConnectWithoutBookingsInput
@@ -969,6 +990,7 @@ export type BarberProfileCreateWithoutUserInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateWithoutUserInput = {
@@ -997,6 +1019,7 @@ export type BarberProfileUncheckedCreateWithoutUserInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileCreateOrConnectWithoutUserInput = {
@@ -1041,6 +1064,7 @@ export type BarberProfileUpdateWithoutUserInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateWithoutUserInput = {
@@ -1069,6 +1093,7 @@ export type BarberProfileUncheckedUpdateWithoutUserInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileCreateWithoutBarbershopInput = {
@@ -1097,6 +1122,7 @@ export type BarberProfileCreateWithoutBarbershopInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateWithoutBarbershopInput = {
@@ -1125,6 +1151,7 @@ export type BarberProfileUncheckedCreateWithoutBarbershopInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileCreateOrConnectWithoutBarbershopInput = {
@@ -1201,6 +1228,7 @@ export type BarberProfileCreateWithoutStaffMembershipsInput = {
   portfolio?: Prisma.BarberPortfolioItemCreateNestedManyWithoutBarberInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateWithoutStaffMembershipsInput = {
@@ -1229,6 +1257,7 @@ export type BarberProfileUncheckedCreateWithoutStaffMembershipsInput = {
   portfolio?: Prisma.BarberPortfolioItemUncheckedCreateNestedManyWithoutBarberInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileCreateOrConnectWithoutStaffMembershipsInput = {
@@ -1273,6 +1302,7 @@ export type BarberProfileUpdateWithoutStaffMembershipsInput = {
   portfolio?: Prisma.BarberPortfolioItemUpdateManyWithoutBarberNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateWithoutStaffMembershipsInput = {
@@ -1301,6 +1331,7 @@ export type BarberProfileUncheckedUpdateWithoutStaffMembershipsInput = {
   portfolio?: Prisma.BarberPortfolioItemUncheckedUpdateManyWithoutBarberNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileCreateWithoutServicesInput = {
@@ -1329,6 +1360,7 @@ export type BarberProfileCreateWithoutServicesInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateWithoutServicesInput = {
@@ -1357,6 +1389,7 @@ export type BarberProfileUncheckedCreateWithoutServicesInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileCreateOrConnectWithoutServicesInput = {
@@ -1401,6 +1434,7 @@ export type BarberProfileUpdateWithoutServicesInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateWithoutServicesInput = {
@@ -1429,6 +1463,7 @@ export type BarberProfileUncheckedUpdateWithoutServicesInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileCreateWithoutAvailabilitiesInput = {
@@ -1457,6 +1492,7 @@ export type BarberProfileCreateWithoutAvailabilitiesInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateWithoutAvailabilitiesInput = {
@@ -1485,6 +1521,7 @@ export type BarberProfileUncheckedCreateWithoutAvailabilitiesInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileCreateOrConnectWithoutAvailabilitiesInput = {
@@ -1529,6 +1566,7 @@ export type BarberProfileUpdateWithoutAvailabilitiesInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateWithoutAvailabilitiesInput = {
@@ -1557,6 +1595,7 @@ export type BarberProfileUncheckedUpdateWithoutAvailabilitiesInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileCreateWithoutBlocksInput = {
@@ -1585,6 +1624,7 @@ export type BarberProfileCreateWithoutBlocksInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateWithoutBlocksInput = {
@@ -1613,6 +1653,7 @@ export type BarberProfileUncheckedCreateWithoutBlocksInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileCreateOrConnectWithoutBlocksInput = {
@@ -1657,6 +1698,7 @@ export type BarberProfileUpdateWithoutBlocksInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateWithoutBlocksInput = {
@@ -1681,6 +1723,139 @@ export type BarberProfileUncheckedUpdateWithoutBlocksInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutBarberNestedInput
   availabilities?: Prisma.WeeklyAvailabilityUncheckedUpdateManyWithoutBarberNestedInput
+  portfolio?: Prisma.BarberPortfolioItemUncheckedUpdateManyWithoutBarberNestedInput
+  staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
+  expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
+  ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
+}
+
+export type BarberProfileCreateWithoutManualBookingsInput = {
+  id?: string
+  bio?: string | null
+  lat?: number | null
+  lng?: number | null
+  rating?: number
+  totalReviews?: number
+  isActive?: boolean
+  commissionRate?: number
+  employmentType?: $Enums.BarberEmploymentType
+  rutTributario?: string | null
+  tipoClaveSii?: string | null
+  claveTributaria?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
+  services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutBarberInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutBarberInput
+  earnings?: Prisma.EarningCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.WeeklyAvailabilityCreateNestedManyWithoutBarberInput
+  blocks?: Prisma.AvailabilityBlockCreateNestedManyWithoutBarberInput
+  portfolio?: Prisma.BarberPortfolioItemCreateNestedManyWithoutBarberInput
+  staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
+  expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
+  ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+}
+
+export type BarberProfileUncheckedCreateWithoutManualBookingsInput = {
+  id?: string
+  userId: string
+  bio?: string | null
+  lat?: number | null
+  lng?: number | null
+  rating?: number
+  totalReviews?: number
+  isActive?: boolean
+  commissionRate?: number
+  employmentType?: $Enums.BarberEmploymentType
+  barbershopId?: string | null
+  rutTributario?: string | null
+  tipoClaveSii?: string | null
+  claveTributaria?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
+  earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutBarberInput
+  availabilities?: Prisma.WeeklyAvailabilityUncheckedCreateNestedManyWithoutBarberInput
+  blocks?: Prisma.AvailabilityBlockUncheckedCreateNestedManyWithoutBarberInput
+  portfolio?: Prisma.BarberPortfolioItemUncheckedCreateNestedManyWithoutBarberInput
+  staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
+  expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
+  ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+}
+
+export type BarberProfileCreateOrConnectWithoutManualBookingsInput = {
+  where: Prisma.BarberProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.BarberProfileCreateWithoutManualBookingsInput, Prisma.BarberProfileUncheckedCreateWithoutManualBookingsInput>
+}
+
+export type BarberProfileUpsertWithoutManualBookingsInput = {
+  update: Prisma.XOR<Prisma.BarberProfileUpdateWithoutManualBookingsInput, Prisma.BarberProfileUncheckedUpdateWithoutManualBookingsInput>
+  create: Prisma.XOR<Prisma.BarberProfileCreateWithoutManualBookingsInput, Prisma.BarberProfileUncheckedCreateWithoutManualBookingsInput>
+  where?: Prisma.BarberProfileWhereInput
+}
+
+export type BarberProfileUpdateToOneWithWhereWithoutManualBookingsInput = {
+  where?: Prisma.BarberProfileWhereInput
+  data: Prisma.XOR<Prisma.BarberProfileUpdateWithoutManualBookingsInput, Prisma.BarberProfileUncheckedUpdateWithoutManualBookingsInput>
+}
+
+export type BarberProfileUpdateWithoutManualBookingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalReviews?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
+  employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
+  rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
+  services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutBarberNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutBarberNestedInput
+  earnings?: Prisma.EarningUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.WeeklyAvailabilityUpdateManyWithoutBarberNestedInput
+  blocks?: Prisma.AvailabilityBlockUpdateManyWithoutBarberNestedInput
+  portfolio?: Prisma.BarberPortfolioItemUpdateManyWithoutBarberNestedInput
+  staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
+  expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
+  ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+}
+
+export type BarberProfileUncheckedUpdateWithoutManualBookingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  rating?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalReviews?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  commissionRate?: Prisma.FloatFieldUpdateOperationsInput | number
+  employmentType?: Prisma.EnumBarberEmploymentTypeFieldUpdateOperationsInput | $Enums.BarberEmploymentType
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rutTributario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipoClaveSii?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
+  earnings?: Prisma.EarningUncheckedUpdateManyWithoutBarberNestedInput
+  availabilities?: Prisma.WeeklyAvailabilityUncheckedUpdateManyWithoutBarberNestedInput
+  blocks?: Prisma.AvailabilityBlockUncheckedUpdateManyWithoutBarberNestedInput
   portfolio?: Prisma.BarberPortfolioItemUncheckedUpdateManyWithoutBarberNestedInput
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
@@ -1713,6 +1888,7 @@ export type BarberProfileCreateWithoutBookingsInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateWithoutBookingsInput = {
@@ -1741,6 +1917,7 @@ export type BarberProfileUncheckedCreateWithoutBookingsInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileCreateOrConnectWithoutBookingsInput = {
@@ -1785,6 +1962,7 @@ export type BarberProfileUpdateWithoutBookingsInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateWithoutBookingsInput = {
@@ -1813,6 +1991,7 @@ export type BarberProfileUncheckedUpdateWithoutBookingsInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileCreateWithoutReviewsInput = {
@@ -1841,6 +2020,7 @@ export type BarberProfileCreateWithoutReviewsInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateWithoutReviewsInput = {
@@ -1869,6 +2049,7 @@ export type BarberProfileUncheckedCreateWithoutReviewsInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileCreateOrConnectWithoutReviewsInput = {
@@ -1913,6 +2094,7 @@ export type BarberProfileUpdateWithoutReviewsInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateWithoutReviewsInput = {
@@ -1941,6 +2123,7 @@ export type BarberProfileUncheckedUpdateWithoutReviewsInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileCreateWithoutPortfolioInput = {
@@ -1969,6 +2152,7 @@ export type BarberProfileCreateWithoutPortfolioInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateWithoutPortfolioInput = {
@@ -1997,6 +2181,7 @@ export type BarberProfileUncheckedCreateWithoutPortfolioInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileCreateOrConnectWithoutPortfolioInput = {
@@ -2041,6 +2226,7 @@ export type BarberProfileUpdateWithoutPortfolioInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateWithoutPortfolioInput = {
@@ -2069,6 +2255,7 @@ export type BarberProfileUncheckedUpdateWithoutPortfolioInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileCreateWithoutEarningsInput = {
@@ -2097,6 +2284,7 @@ export type BarberProfileCreateWithoutEarningsInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateWithoutEarningsInput = {
@@ -2125,6 +2313,7 @@ export type BarberProfileUncheckedCreateWithoutEarningsInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileCreateOrConnectWithoutEarningsInput = {
@@ -2169,6 +2358,7 @@ export type BarberProfileUpdateWithoutEarningsInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateWithoutEarningsInput = {
@@ -2197,6 +2387,7 @@ export type BarberProfileUncheckedUpdateWithoutEarningsInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileCreateWithoutExpensesInput = {
@@ -2225,6 +2416,7 @@ export type BarberProfileCreateWithoutExpensesInput = {
   portfolio?: Prisma.BarberPortfolioItemCreateNestedManyWithoutBarberInput
   staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateWithoutExpensesInput = {
@@ -2253,6 +2445,7 @@ export type BarberProfileUncheckedCreateWithoutExpensesInput = {
   portfolio?: Prisma.BarberPortfolioItemUncheckedCreateNestedManyWithoutBarberInput
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileCreateOrConnectWithoutExpensesInput = {
@@ -2297,6 +2490,7 @@ export type BarberProfileUpdateWithoutExpensesInput = {
   portfolio?: Prisma.BarberPortfolioItemUpdateManyWithoutBarberNestedInput
   staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateWithoutExpensesInput = {
@@ -2325,6 +2519,7 @@ export type BarberProfileUncheckedUpdateWithoutExpensesInput = {
   portfolio?: Prisma.BarberPortfolioItemUncheckedUpdateManyWithoutBarberNestedInput
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileCreateWithoutLedgerEntriesInput = {
@@ -2353,6 +2548,7 @@ export type BarberProfileCreateWithoutLedgerEntriesInput = {
   portfolio?: Prisma.BarberPortfolioItemCreateNestedManyWithoutBarberInput
   staffMemberships?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileUncheckedCreateWithoutLedgerEntriesInput = {
@@ -2381,6 +2577,7 @@ export type BarberProfileUncheckedCreateWithoutLedgerEntriesInput = {
   portfolio?: Prisma.BarberPortfolioItemUncheckedCreateNestedManyWithoutBarberInput
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarberProfileInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarberInput
+  manualBookings?: Prisma.ManualBookingUncheckedCreateNestedManyWithoutBarberInput
 }
 
 export type BarberProfileCreateOrConnectWithoutLedgerEntriesInput = {
@@ -2425,6 +2622,7 @@ export type BarberProfileUpdateWithoutLedgerEntriesInput = {
   portfolio?: Prisma.BarberPortfolioItemUpdateManyWithoutBarberNestedInput
   staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateWithoutLedgerEntriesInput = {
@@ -2453,6 +2651,7 @@ export type BarberProfileUncheckedUpdateWithoutLedgerEntriesInput = {
   portfolio?: Prisma.BarberPortfolioItemUncheckedUpdateManyWithoutBarberNestedInput
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileCreateManyBarbershopInput = {
@@ -2499,6 +2698,7 @@ export type BarberProfileUpdateWithoutBarbershopInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateWithoutBarbershopInput = {
@@ -2527,6 +2727,7 @@ export type BarberProfileUncheckedUpdateWithoutBarbershopInput = {
   staffMemberships?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarberNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput
+  manualBookings?: Prisma.ManualBookingUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type BarberProfileUncheckedUpdateManyWithoutBarbershopInput = {
@@ -2563,6 +2764,7 @@ export type BarberProfileCountOutputType = {
   staffMemberships: number
   expenses: number
   ledgerEntries: number
+  manualBookings: number
 }
 
 export type BarberProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2576,6 +2778,7 @@ export type BarberProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Ext
   staffMemberships?: boolean | BarberProfileCountOutputTypeCountStaffMembershipsArgs
   expenses?: boolean | BarberProfileCountOutputTypeCountExpensesArgs
   ledgerEntries?: boolean | BarberProfileCountOutputTypeCountLedgerEntriesArgs
+  manualBookings?: boolean | BarberProfileCountOutputTypeCountManualBookingsArgs
 }
 
 /**
@@ -2658,6 +2861,13 @@ export type BarberProfileCountOutputTypeCountLedgerEntriesArgs<ExtArgs extends r
   where?: Prisma.DailyLedgerEntryWhereInput
 }
 
+/**
+ * BarberProfileCountOutputType without action
+ */
+export type BarberProfileCountOutputTypeCountManualBookingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ManualBookingWhereInput
+}
+
 
 export type BarberProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2688,6 +2898,7 @@ export type BarberProfileSelect<ExtArgs extends runtime.Types.Extensions.Interna
   staffMemberships?: boolean | Prisma.BarberProfile$staffMembershipsArgs<ExtArgs>
   expenses?: boolean | Prisma.BarberProfile$expensesArgs<ExtArgs>
   ledgerEntries?: boolean | Prisma.BarberProfile$ledgerEntriesArgs<ExtArgs>
+  manualBookings?: boolean | Prisma.BarberProfile$manualBookingsArgs<ExtArgs>
   _count?: boolean | Prisma.BarberProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["barberProfile"]>
 
@@ -2766,6 +2977,7 @@ export type BarberProfileInclude<ExtArgs extends runtime.Types.Extensions.Intern
   staffMemberships?: boolean | Prisma.BarberProfile$staffMembershipsArgs<ExtArgs>
   expenses?: boolean | Prisma.BarberProfile$expensesArgs<ExtArgs>
   ledgerEntries?: boolean | Prisma.BarberProfile$ledgerEntriesArgs<ExtArgs>
+  manualBookings?: boolean | Prisma.BarberProfile$manualBookingsArgs<ExtArgs>
   _count?: boolean | Prisma.BarberProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BarberProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2792,6 +3004,7 @@ export type $BarberProfilePayload<ExtArgs extends runtime.Types.Extensions.Inter
     staffMemberships: Prisma.$BarbershopStaffMembershipPayload<ExtArgs>[]
     expenses: Prisma.$ExpensePayload<ExtArgs>[]
     ledgerEntries: Prisma.$DailyLedgerEntryPayload<ExtArgs>[]
+    manualBookings: Prisma.$ManualBookingPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3216,6 +3429,7 @@ export interface Prisma__BarberProfileClient<T, Null = never, ExtArgs extends ru
   staffMemberships<T extends Prisma.BarberProfile$staffMembershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberProfile$staffMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BarbershopStaffMembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   expenses<T extends Prisma.BarberProfile$expensesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberProfile$expensesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExpensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   ledgerEntries<T extends Prisma.BarberProfile$ledgerEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberProfile$ledgerEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DailyLedgerEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  manualBookings<T extends Prisma.BarberProfile$manualBookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberProfile$manualBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ManualBookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3918,6 +4132,30 @@ export type BarberProfile$ledgerEntriesArgs<ExtArgs extends runtime.Types.Extens
   take?: number
   skip?: number
   distinct?: Prisma.DailyLedgerEntryScalarFieldEnum | Prisma.DailyLedgerEntryScalarFieldEnum[]
+}
+
+/**
+ * BarberProfile.manualBookings
+ */
+export type BarberProfile$manualBookingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ManualBooking
+   */
+  select?: Prisma.ManualBookingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ManualBooking
+   */
+  omit?: Prisma.ManualBookingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ManualBookingInclude<ExtArgs> | null
+  where?: Prisma.ManualBookingWhereInput
+  orderBy?: Prisma.ManualBookingOrderByWithRelationInput | Prisma.ManualBookingOrderByWithRelationInput[]
+  cursor?: Prisma.ManualBookingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ManualBookingScalarFieldEnum | Prisma.ManualBookingScalarFieldEnum[]
 }
 
 /**

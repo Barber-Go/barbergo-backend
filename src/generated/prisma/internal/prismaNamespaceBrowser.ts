@@ -60,6 +60,7 @@ export const ModelName = {
   ServiceItem: 'ServiceItem',
   WeeklyAvailability: 'WeeklyAvailability',
   AvailabilityBlock: 'AvailabilityBlock',
+  ManualBooking: 'ManualBooking',
   Booking: 'Booking',
   ChatThread: 'ChatThread',
   ChatParticipant: 'ChatParticipant',
@@ -240,6 +241,23 @@ export const AvailabilityBlockScalarFieldEnum = {
 } as const
 
 export type AvailabilityBlockScalarFieldEnum = (typeof AvailabilityBlockScalarFieldEnum)[keyof typeof AvailabilityBlockScalarFieldEnum]
+
+
+export const ManualBookingScalarFieldEnum = {
+  id: 'id',
+  barberId: 'barberId',
+  clientName: 'clientName',
+  serviceName: 'serviceName',
+  date: 'date',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  note: 'note',
+  paymentMethod: 'paymentMethod',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ManualBookingScalarFieldEnum = (typeof ManualBookingScalarFieldEnum)[keyof typeof ManualBookingScalarFieldEnum]
 
 
 export const BookingScalarFieldEnum = {

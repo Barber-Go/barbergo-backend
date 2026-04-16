@@ -188,6 +188,7 @@ model BarberProfile {
   staffMemberships BarbershopStaffMembership[]
   expenses         Expense[]
   ledgerEntries    DailyLedgerEntry[]
+  manualBookings   ManualBooking[]
 
   @@map("barbers")
 }
@@ -294,6 +295,24 @@ model AvailabilityBlock {
   barber BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
 
   @@map("availability_blocks")
+}
+
+model ManualBooking {
+  id            String   @id @default(cuid())
+  barberId      String
+  clientName    String?
+  serviceName   String?
+  date          DateTime
+  startTime     String
+  endTime       String
+  note          String?
+  paymentMethod String   @default("EXTERNAL")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  barber BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
+
+  @@map("manual_bookings")
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
