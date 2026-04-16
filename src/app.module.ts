@@ -24,6 +24,7 @@ import { AiStyleModule } from './ai-style/ai-style.module';
 import { TaxComplianceModule } from './tax-compliance/tax-compliance.module';
 import { BillingModule } from './billing/billing.module';
 import { PointsModule } from './points/points.module';
+import { ManualBookingsModule } from './manual-bookings/manual-bookings.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -57,6 +58,7 @@ import { AppService } from './app.service';
     TaxComplianceModule,
     BillingModule,
     PointsModule,
+    ManualBookingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
