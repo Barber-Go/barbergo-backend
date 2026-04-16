@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd ~/Desktop/barbergo-backend && npm run build 2>&1\",\"timeout\":120000,\"description\":\"Build backend\"}",
+  "error": "Exit code 1\n\n> @barbergo/backend@1.0.0 build\n> nest build\n\n\u001b[96msrc/barbershops/barbershops.service.ts\u001b[0m:\u001b[93m325\u001b[0m:\u001b[93m39\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2353: \u001b[0mObject literal may only specify known properties, and 'barberId' does not exist in type 'BarbershopStaffMembershipWhereInput'.\n\n\u001b[7m325\u001b[0m       where: { barbershopId: shop.id, barberId },\n\u001b[7m   \u001b[0m \u001b[91m                                      ~~~~~~~~\u001b[0m\n\n  \u001b[96msrc/generated/prisma/models/BarbershopStaffMembership.ts\u001b[0m:\u001b[93m12...",
+  "timestamp": "2026-04-16T17:00:34.735Z",
+  "retry_count": 1
+}
