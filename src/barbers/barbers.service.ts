@@ -340,6 +340,16 @@ export class BarbersService {
       },
     });
 
+    // Booking source distribution (app vs direct/manual)
+    const manualCount = await this.prisma.client.manualBooking.count({
+      where: { barberId: profile.id, date: { gte: rangeFrom, lte: rangeTo } },
+    });
+
+    const sourceDist = {
+      APP: { count: bookings.length, amount: Math.round(totalGross) },
+      DIRECT: { count: manualCount, amount: 0 },
+    };
+
     return {
       data: {
         period: {
@@ -355,6 +365,7 @@ export class BarbersService {
         },
         incomeByDay,
         paymentMethodDistribution: dist,
+        bookingSourceDistribution: sourceDist,
         upcomingBookings: upcoming.map((b) => ({
           id: b.id,
           clientName: b.client.name,
