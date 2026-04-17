@@ -41,32 +41,39 @@ export class ManualBookingsService {
       if (!barber) throw new NotFoundException('Barber profile not found');
     }
 
-    const date = new Date(dto.date);
+    const date = new Date(dto.date + 'T00:00:00.000Z');
 
     // Check overlap with existing manual bookings
-    const existing = await this.prisma.client.manualBooking.findMany({
-      where: { barberId: barber.id, date },
+    const overlappingManual = await this.prisma.client.manualBooking.findFirst({
+      where: {
+        barberId: barber.id,
+        date,
+        startTime: { lt: dto.endTime },
+        endTime: { gt: dto.startTime },
+      },
     });
-    for (const mb of existing) {
-      if (dto.startTime < mb.endTime && dto.endTime > mb.startTime) {
-        throw new BadRequestException('Horario se solapa con otra cita manual');
-      }
+    if (overlappingManual) {
+      throw new BadRequestException('Ya tienes otra cita en ese horario');
     }
 
     // Check overlap with app bookings
-    const dayStart = new Date(date); dayStart.setHours(0, 0, 0, 0);
-    const dayEnd = new Date(date); dayEnd.setHours(23, 59, 59, 999);
+    const dayStart = new Date(dto.date + 'T00:00:00.000Z');
+    const dayEnd = new Date(dto.date + 'T23:59:59.999Z');
     const bookings = await this.prisma.client.booking.findMany({
       where: {
         barberId: barber.id,
         scheduledAt: { gte: dayStart, lte: dayEnd },
         status: { in: [BookingStatus.PENDING, BookingStatus.CONFIRMED] },
       },
+      include: { service: { select: { durationMin: true } } },
     });
     for (const b of bookings) {
-      const bTime = `${String(b.scheduledAt.getHours()).padStart(2, '0')}:${String(b.scheduledAt.getMinutes()).padStart(2, '0')}`;
-      if (dto.startTime <= bTime && dto.endTime > bTime) {
-        throw new BadRequestException('Horario se solapa con una reserva existente');
+      const bStart = b.scheduledAt;
+      const bStartTime = `${String(bStart.getUTCHours()).padStart(2, '0')}:${String(bStart.getUTCMinutes()).padStart(2, '0')}`;
+      const bEndMin = bStart.getUTCHours() * 60 + bStart.getUTCMinutes() + b.service.durationMin;
+      const bEndTime = `${String(Math.floor(bEndMin / 60)).padStart(2, '0')}:${String(bEndMin % 60).padStart(2, '0')}`;
+      if (dto.startTime < bEndTime && dto.endTime > bStartTime) {
+        throw new BadRequestException('Ya tienes otra cita en ese horario');
       }
     }
 
