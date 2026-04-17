@@ -1,0 +1,211 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776396453086,
+  "projectRoot": "/Users/renatocontreras/Desktop/barbergo-backend",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "@nestjs/core",
+        "version": "11.1.17",
+        "category": "backend"
+      },
+      {
+        "name": "jest",
+        "version": "30.3.0",
+        "category": "testing"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": "npm test",
+    "lintCommand": null,
+    "devCommand": "npm run start",
+    "scripts": {
+      "start": "node dist/src/main",
+      "start:dev": "nest start --watch",
+      "start:debug": "nest start --debug --watch",
+      "build": "nest build",
+      "test": "jest",
+      "test:watch": "jest --watch",
+      "test:cov": "jest --coverage",
+      "prisma:generate": "prisma generate",
+      "prisma:migrate": "prisma migrate dev",
+      "prisma:studio": "prisma studio",
+      "prisma:seed": "ts-node --project tsconfig.json -e \"require('dotenv/config')\" prisma/seed.ts"
+    }
+  },
+  "conventions": {
+    "namingStyle": "camelCase/PascalCase",
+    "importStyle": "ES modules",
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs",
+      "scripts",
+      "src"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "dist": {
+      "path": "dist",
+      "purpose": "Distribution/build output",
+      "fileCount": 4,
+      "lastAccessed": 1776396453081,
+      "keyFiles": [
+        "prisma.config.d.ts",
+        "prisma.config.js",
+        "prisma.config.js.map",
+        "tsconfig.build.tsbuildinfo"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 7,
+      "lastAccessed": 1776396453082,
+      "keyFiles": [
+        "agenda-architecture.md",
+        "barbershop-agenda-architecture.md",
+        "full-audit.md",
+        "investor-demo-flow.md",
+        "investor-ready-checklist.md"
+      ]
+    },
+    "prisma": {
+      "path": "prisma",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1776396453082,
+      "keyFiles": [
+        "schema.prisma",
+        "seed-coords.ts",
+        "seed.ts"
+      ]
+    },
+    "proxy": {
+      "path": "proxy",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1776396453082,
+      "keyFiles": [
+        "Dockerfile",
+        "railway.json",
+        "squid.conf"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 0,
+      "lastAccessed": 1776396453082,
+      "keyFiles": []
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 4,
+      "lastAccessed": 1776396453083,
+      "keyFiles": [
+        "app.controller.ts",
+        "app.module.ts",
+        "app.service.ts",
+        "main.ts"
+      ]
+    },
+    "dist/src": {
+      "path": "dist/src",
+      "purpose": "Source code",
+      "fileCount": 12,
+      "lastAccessed": 1776396453083,
+      "keyFiles": [
+        "app.controller.d.ts",
+        "app.controller.js",
+        "app.controller.js.map"
+      ]
+    },
+    "prisma/migrations": {
+      "path": "prisma/migrations",
+      "purpose": "Database migrations",
+      "fileCount": 1,
+      "lastAccessed": 1776396453083,
+      "keyFiles": [
+        "migration_lock.toml"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "src",
+      "accessCount": 1,
+      "lastAccessed": 1776396945065,
+      "type": "directory"
+    },
+    {
+      "path": "src/app.module.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776396946052,
+      "type": "directory"
+    },
+    {
+      "path": "src/sii/sii.controller.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776396949451,
+      "type": "file"
+    },
+    {
+      "path": "src/sii/sii.service.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776396950196,
+      "type": "file"
+    },
+    {
+      "path": "src/sii/sii.module.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776396950245,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 1,
+      "lastAccessed": 1776396951575,
+      "type": "directory"
+    },
+    {
+      "path": "src/sii",
+      "accessCount": 1,
+      "lastAccessed": 1776396951768,
+      "type": "directory"
+    }
+  ],
+  "userDirectives": []
+}

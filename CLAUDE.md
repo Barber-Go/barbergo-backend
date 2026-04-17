@@ -1,30 +1,43 @@
-# BarberGo Backend — Reglas del proyecto
-
-## Uso obligatorio de agentes
-
-SIEMPRE usar el agente especializado correspondiente para cada tarea:
-- Cambios en schema Prisma o seeds → db-agent
-- Módulos NestJS, endpoints, servicios → backend-agent
-- Integración SII, boletas, tax compliance → sii-agent
-- Tests y validaciones → qa-agent
-- Arquitectura de nuevos bloques → architect
-
-NUNCA hacer cambios directamente sin invocar el agente correspondiente.
-El orden siempre es: architect → db-agent → backend-agent → qa-agent
+# BarberGo — Backend
 
 ## Stack
-- NestJS + TypeScript + Prisma v7 + PostgreSQL
-- Railway: barbergo-backend-production.up.railway.app/api/v1
-- Puerto local: 3000
+NestJS + TypeScript + Prisma v7 + PostgreSQL
+Host: Railway — barbergo-backend-production.up.railway.app/api/v1
+Path: ~/Desktop/barbergo-backend
+
+## Deploy
+cd ~/Desktop/barbergo-backend && railway up
+Para ver logs: railway logs --tail 40
+Shutdown al cerrar sesión: railway down -y
+
+## Integraciones
+SII BHE vía apigateway.cl
+Token actual: dcdbd58d8932ae1f7afe67ef9e369c09a73dd99d
+Proxy Railway: http://interchange.proxy.rlwy.net:44770
+Formato body BHE: PascalCase SII (Encabezado, IdDoc, Emisor, Receptor, Detalle)
+RUT sin puntos: 21387505-1 (NO 21.387.505-1)
+TipoRetencion: 1 como integer
+
+## 5 roles (enum UserRole)
+CLIENT, BARBER_INDEPENDENT, BARBER_EMPLOYEE, BARBERSHOP_OWNER, ADMIN
+
+## Reglas de comisiones
+Independiente + IN_APP = 15% / Independiente + CASH = 0%
+Barbería + IN_APP = 10% / Barbería + CASH = 0%
+Snapshot financiero inmutable una vez creado
+
+## Retención honorarios 2026
+15.25% sobre monto bruto (vigente desde enero 2026)
 
 ## Reglas absolutas
 - NUNCA any en TypeScript
-- NUNCA hardcodear credenciales
-- NUNCA endpoints sin guard (excepto auth/)
+- NUNCA endpoints sin guard (excepto auth/*)
 - SIEMPRE validar DTOs con class-validator
-- SIEMPRE formato respuesta: { data, message, statusCode }
-- SIEMPRE guards de rol en endpoints protegidos
+- Formato respuesta: { data, message, statusCode }
+- Cliente solo accede a SUS datos: where: { clientId: req.user.id }
+- Credenciales SII cifradas con AES-256 antes de persistir
 
-## Agentes disponibles
-Los agentes están en ~/Desktop/barbergo-mobile/.claude/agents/
-Leer el agente correspondiente antes de cada tarea.
+## Módulos activos
+auth, barbers, barbershops, bookings, availability, portfolio,
+commissions, finances, discovery, communities, follows,
+notifications, reviews, settings, payments, sii, chat, ai-hairstyle
