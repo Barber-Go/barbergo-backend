@@ -4,6 +4,7 @@ import { CreateBarbershopDto } from './dto/create-barbershop.dto';
 import { UpdateBarbershopDto } from './dto/update-barbershop.dto';
 import { AddStaffDto } from './dto/add-staff.dto';
 import { UpdateStaffDto } from './dto/update-staff.dto';
+import { DashboardQueryDto } from './dto/dashboard-query.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decorator';
@@ -94,6 +95,15 @@ export class BarbershopsController {
     @Body() body: { slots: { dayOfWeek: number; startTime: string; endTime: string; isActive: boolean }[] },
   ) {
     return this.barbershopsService.updateStaffAvailability(req.user.id, barberId, body.slots);
+  }
+
+  // ── Dashboard ──
+
+  @Get('dashboard')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  getDashboard(@Request() req: { user: { id: string } }, @Query() query: DashboardQueryDto) {
+    return this.barbershopsService.getDashboard(req.user.id, query.scope, query.period);
   }
 
   // ── Public ──
