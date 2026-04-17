@@ -26,6 +26,7 @@ import { UpdateBarberProfileDto } from './dto/update-barber-profile.dto';
 import { UpdateSiiCredentialsDto } from './dto/update-sii-credentials.dto';
 import { CreateServiceDto } from './dto/create-service.dto';
 import { UpdateServiceDto } from './dto/update-service.dto';
+import { DashboardQueryDto } from './dto/dashboard-query.dto';
 
 class FindBarbersQuery {
   @IsOptional()
@@ -71,6 +72,13 @@ export class BarbersController {
   @Roles(Role.BARBER)
   updateMe(@Request() req: any, @Body() dto: UpdateBarberProfileDto) {
     return this.barbersService.updateMe(req.user.id, dto);
+  }
+
+  @Get('me/dashboard')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBER)
+  getDashboard(@Request() req: { user: { id: string } }, @Query() query: DashboardQueryDto) {
+    return this.barbersService.getDashboard(req.user.id, query.period, query.from, query.to);
   }
 
   @Post('me/avatar')
