@@ -41,6 +41,7 @@ export type RewardsCatalogMinAggregateOutputType = {
   pointsCost: number | null
   isActive: boolean | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type RewardsCatalogMaxAggregateOutputType = {
@@ -50,6 +51,7 @@ export type RewardsCatalogMaxAggregateOutputType = {
   pointsCost: number | null
   isActive: boolean | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type RewardsCatalogCountAggregateOutputType = {
@@ -59,6 +61,7 @@ export type RewardsCatalogCountAggregateOutputType = {
   pointsCost: number
   isActive: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -78,6 +81,7 @@ export type RewardsCatalogMinAggregateInputType = {
   pointsCost?: true
   isActive?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type RewardsCatalogMaxAggregateInputType = {
@@ -87,6 +91,7 @@ export type RewardsCatalogMaxAggregateInputType = {
   pointsCost?: true
   isActive?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type RewardsCatalogCountAggregateInputType = {
@@ -96,6 +101,7 @@ export type RewardsCatalogCountAggregateInputType = {
   pointsCost?: true
   isActive?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -192,6 +198,7 @@ export type RewardsCatalogGroupByOutputType = {
   pointsCost: number
   isActive: boolean
   createdAt: Date
+  updatedAt: Date
   _count: RewardsCatalogCountAggregateOutputType | null
   _avg: RewardsCatalogAvgAggregateOutputType | null
   _sum: RewardsCatalogSumAggregateOutputType | null
@@ -224,6 +231,7 @@ export type RewardsCatalogWhereInput = {
   pointsCost?: Prisma.IntFilter<"RewardsCatalog"> | number
   isActive?: Prisma.BoolFilter<"RewardsCatalog"> | boolean
   createdAt?: Prisma.DateTimeFilter<"RewardsCatalog"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"RewardsCatalog"> | Date | string
 }
 
 export type RewardsCatalogOrderByWithRelationInput = {
@@ -233,6 +241,7 @@ export type RewardsCatalogOrderByWithRelationInput = {
   pointsCost?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type RewardsCatalogWhereUniqueInput = Prisma.AtLeast<{
@@ -245,6 +254,7 @@ export type RewardsCatalogWhereUniqueInput = Prisma.AtLeast<{
   pointsCost?: Prisma.IntFilter<"RewardsCatalog"> | number
   isActive?: Prisma.BoolFilter<"RewardsCatalog"> | boolean
   createdAt?: Prisma.DateTimeFilter<"RewardsCatalog"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"RewardsCatalog"> | Date | string
 }, "id">
 
 export type RewardsCatalogOrderByWithAggregationInput = {
@@ -254,6 +264,7 @@ export type RewardsCatalogOrderByWithAggregationInput = {
   pointsCost?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.RewardsCatalogCountOrderByAggregateInput
   _avg?: Prisma.RewardsCatalogAvgOrderByAggregateInput
   _max?: Prisma.RewardsCatalogMaxOrderByAggregateInput
@@ -271,6 +282,7 @@ export type RewardsCatalogScalarWhereWithAggregatesInput = {
   pointsCost?: Prisma.IntWithAggregatesFilter<"RewardsCatalog"> | number
   isActive?: Prisma.BoolWithAggregatesFilter<"RewardsCatalog"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"RewardsCatalog"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"RewardsCatalog"> | Date | string
 }
 
 export type RewardsCatalogCreateInput = {
@@ -280,6 +292,7 @@ export type RewardsCatalogCreateInput = {
   pointsCost: number
   isActive?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type RewardsCatalogUncheckedCreateInput = {
@@ -289,6 +302,7 @@ export type RewardsCatalogUncheckedCreateInput = {
   pointsCost: number
   isActive?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type RewardsCatalogUpdateInput = {
@@ -298,6 +312,7 @@ export type RewardsCatalogUpdateInput = {
   pointsCost?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RewardsCatalogUncheckedUpdateInput = {
@@ -307,6 +322,7 @@ export type RewardsCatalogUncheckedUpdateInput = {
   pointsCost?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RewardsCatalogCreateManyInput = {
@@ -316,6 +332,7 @@ export type RewardsCatalogCreateManyInput = {
   pointsCost: number
   isActive?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type RewardsCatalogUpdateManyMutationInput = {
@@ -325,6 +342,7 @@ export type RewardsCatalogUpdateManyMutationInput = {
   pointsCost?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RewardsCatalogUncheckedUpdateManyInput = {
@@ -334,6 +352,7 @@ export type RewardsCatalogUncheckedUpdateManyInput = {
   pointsCost?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RewardsCatalogCountOrderByAggregateInput = {
@@ -343,6 +362,7 @@ export type RewardsCatalogCountOrderByAggregateInput = {
   pointsCost?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type RewardsCatalogAvgOrderByAggregateInput = {
@@ -356,6 +376,7 @@ export type RewardsCatalogMaxOrderByAggregateInput = {
   pointsCost?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type RewardsCatalogMinOrderByAggregateInput = {
@@ -365,6 +386,7 @@ export type RewardsCatalogMinOrderByAggregateInput = {
   pointsCost?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type RewardsCatalogSumOrderByAggregateInput = {
@@ -380,6 +402,7 @@ export type RewardsCatalogSelect<ExtArgs extends runtime.Types.Extensions.Intern
   pointsCost?: boolean
   isActive?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["rewardsCatalog"]>
 
 export type RewardsCatalogSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -389,6 +412,7 @@ export type RewardsCatalogSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   pointsCost?: boolean
   isActive?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["rewardsCatalog"]>
 
 export type RewardsCatalogSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -398,6 +422,7 @@ export type RewardsCatalogSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   pointsCost?: boolean
   isActive?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["rewardsCatalog"]>
 
 export type RewardsCatalogSelectScalar = {
@@ -407,9 +432,10 @@ export type RewardsCatalogSelectScalar = {
   pointsCost?: boolean
   isActive?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type RewardsCatalogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "pointsCost" | "isActive" | "createdAt", ExtArgs["result"]["rewardsCatalog"]>
+export type RewardsCatalogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "pointsCost" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["rewardsCatalog"]>
 
 export type $RewardsCatalogPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "RewardsCatalog"
@@ -421,6 +447,7 @@ export type $RewardsCatalogPayload<ExtArgs extends runtime.Types.Extensions.Inte
     pointsCost: number
     isActive: boolean
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["rewardsCatalog"]>
   composites: {}
 }
@@ -850,6 +877,7 @@ export interface RewardsCatalogFieldRefs {
   readonly pointsCost: Prisma.FieldRef<"RewardsCatalog", 'Int'>
   readonly isActive: Prisma.FieldRef<"RewardsCatalog", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"RewardsCatalog", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"RewardsCatalog", 'DateTime'>
 }
     
 

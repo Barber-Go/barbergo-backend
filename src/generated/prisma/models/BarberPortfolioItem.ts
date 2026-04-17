@@ -32,6 +32,7 @@ export type BarberPortfolioItemMinAggregateOutputType = {
   isFeatured: boolean | null
   visibility: string | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type BarberPortfolioItemMaxAggregateOutputType = {
@@ -42,6 +43,7 @@ export type BarberPortfolioItemMaxAggregateOutputType = {
   isFeatured: boolean | null
   visibility: string | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type BarberPortfolioItemCountAggregateOutputType = {
@@ -52,6 +54,7 @@ export type BarberPortfolioItemCountAggregateOutputType = {
   isFeatured: number
   visibility: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -64,6 +67,7 @@ export type BarberPortfolioItemMinAggregateInputType = {
   isFeatured?: true
   visibility?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type BarberPortfolioItemMaxAggregateInputType = {
@@ -74,6 +78,7 @@ export type BarberPortfolioItemMaxAggregateInputType = {
   isFeatured?: true
   visibility?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type BarberPortfolioItemCountAggregateInputType = {
@@ -84,6 +89,7 @@ export type BarberPortfolioItemCountAggregateInputType = {
   isFeatured?: true
   visibility?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -167,6 +173,7 @@ export type BarberPortfolioItemGroupByOutputType = {
   isFeatured: boolean
   visibility: string
   createdAt: Date
+  updatedAt: Date
   _count: BarberPortfolioItemCountAggregateOutputType | null
   _min: BarberPortfolioItemMinAggregateOutputType | null
   _max: BarberPortfolioItemMaxAggregateOutputType | null
@@ -198,6 +205,7 @@ export type BarberPortfolioItemWhereInput = {
   isFeatured?: Prisma.BoolFilter<"BarberPortfolioItem"> | boolean
   visibility?: Prisma.StringFilter<"BarberPortfolioItem"> | string
   createdAt?: Prisma.DateTimeFilter<"BarberPortfolioItem"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BarberPortfolioItem"> | Date | string
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
   media?: Prisma.BarberPortfolioMediaListRelationFilter
 }
@@ -210,6 +218,7 @@ export type BarberPortfolioItemOrderByWithRelationInput = {
   isFeatured?: Prisma.SortOrder
   visibility?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   barber?: Prisma.BarberProfileOrderByWithRelationInput
   media?: Prisma.BarberPortfolioMediaOrderByRelationAggregateInput
 }
@@ -225,6 +234,7 @@ export type BarberPortfolioItemWhereUniqueInput = Prisma.AtLeast<{
   isFeatured?: Prisma.BoolFilter<"BarberPortfolioItem"> | boolean
   visibility?: Prisma.StringFilter<"BarberPortfolioItem"> | string
   createdAt?: Prisma.DateTimeFilter<"BarberPortfolioItem"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BarberPortfolioItem"> | Date | string
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
   media?: Prisma.BarberPortfolioMediaListRelationFilter
 }, "id">
@@ -237,6 +247,7 @@ export type BarberPortfolioItemOrderByWithAggregationInput = {
   isFeatured?: Prisma.SortOrder
   visibility?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.BarberPortfolioItemCountOrderByAggregateInput
   _max?: Prisma.BarberPortfolioItemMaxOrderByAggregateInput
   _min?: Prisma.BarberPortfolioItemMinOrderByAggregateInput
@@ -253,6 +264,7 @@ export type BarberPortfolioItemScalarWhereWithAggregatesInput = {
   isFeatured?: Prisma.BoolWithAggregatesFilter<"BarberPortfolioItem"> | boolean
   visibility?: Prisma.StringWithAggregatesFilter<"BarberPortfolioItem"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"BarberPortfolioItem"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BarberPortfolioItem"> | Date | string
 }
 
 export type BarberPortfolioItemCreateInput = {
@@ -262,6 +274,7 @@ export type BarberPortfolioItemCreateInput = {
   isFeatured?: boolean
   visibility?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
   barber: Prisma.BarberProfileCreateNestedOneWithoutPortfolioInput
   media?: Prisma.BarberPortfolioMediaCreateNestedManyWithoutPortfolioItemInput
 }
@@ -274,6 +287,7 @@ export type BarberPortfolioItemUncheckedCreateInput = {
   isFeatured?: boolean
   visibility?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
   media?: Prisma.BarberPortfolioMediaUncheckedCreateNestedManyWithoutPortfolioItemInput
 }
 
@@ -284,6 +298,7 @@ export type BarberPortfolioItemUpdateInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   visibility?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutPortfolioNestedInput
   media?: Prisma.BarberPortfolioMediaUpdateManyWithoutPortfolioItemNestedInput
 }
@@ -296,6 +311,7 @@ export type BarberPortfolioItemUncheckedUpdateInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   visibility?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.BarberPortfolioMediaUncheckedUpdateManyWithoutPortfolioItemNestedInput
 }
 
@@ -307,6 +323,7 @@ export type BarberPortfolioItemCreateManyInput = {
   isFeatured?: boolean
   visibility?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BarberPortfolioItemUpdateManyMutationInput = {
@@ -316,6 +333,7 @@ export type BarberPortfolioItemUpdateManyMutationInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   visibility?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BarberPortfolioItemUncheckedUpdateManyInput = {
@@ -326,6 +344,7 @@ export type BarberPortfolioItemUncheckedUpdateManyInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   visibility?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BarberPortfolioItemListRelationFilter = {
@@ -346,6 +365,7 @@ export type BarberPortfolioItemCountOrderByAggregateInput = {
   isFeatured?: Prisma.SortOrder
   visibility?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type BarberPortfolioItemMaxOrderByAggregateInput = {
@@ -356,6 +376,7 @@ export type BarberPortfolioItemMaxOrderByAggregateInput = {
   isFeatured?: Prisma.SortOrder
   visibility?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type BarberPortfolioItemMinOrderByAggregateInput = {
@@ -366,6 +387,7 @@ export type BarberPortfolioItemMinOrderByAggregateInput = {
   isFeatured?: Prisma.SortOrder
   visibility?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type BarberPortfolioItemScalarRelationFilter = {
@@ -436,6 +458,7 @@ export type BarberPortfolioItemCreateWithoutBarberInput = {
   isFeatured?: boolean
   visibility?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
   media?: Prisma.BarberPortfolioMediaCreateNestedManyWithoutPortfolioItemInput
 }
 
@@ -446,6 +469,7 @@ export type BarberPortfolioItemUncheckedCreateWithoutBarberInput = {
   isFeatured?: boolean
   visibility?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
   media?: Prisma.BarberPortfolioMediaUncheckedCreateNestedManyWithoutPortfolioItemInput
 }
 
@@ -486,6 +510,7 @@ export type BarberPortfolioItemScalarWhereInput = {
   isFeatured?: Prisma.BoolFilter<"BarberPortfolioItem"> | boolean
   visibility?: Prisma.StringFilter<"BarberPortfolioItem"> | string
   createdAt?: Prisma.DateTimeFilter<"BarberPortfolioItem"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BarberPortfolioItem"> | Date | string
 }
 
 export type BarberPortfolioItemCreateWithoutMediaInput = {
@@ -495,6 +520,7 @@ export type BarberPortfolioItemCreateWithoutMediaInput = {
   isFeatured?: boolean
   visibility?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
   barber: Prisma.BarberProfileCreateNestedOneWithoutPortfolioInput
 }
 
@@ -506,6 +532,7 @@ export type BarberPortfolioItemUncheckedCreateWithoutMediaInput = {
   isFeatured?: boolean
   visibility?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BarberPortfolioItemCreateOrConnectWithoutMediaInput = {
@@ -531,6 +558,7 @@ export type BarberPortfolioItemUpdateWithoutMediaInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   visibility?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutPortfolioNestedInput
 }
 
@@ -542,6 +570,7 @@ export type BarberPortfolioItemUncheckedUpdateWithoutMediaInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   visibility?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BarberPortfolioItemCreateManyBarberInput = {
@@ -551,6 +580,7 @@ export type BarberPortfolioItemCreateManyBarberInput = {
   isFeatured?: boolean
   visibility?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BarberPortfolioItemUpdateWithoutBarberInput = {
@@ -560,6 +590,7 @@ export type BarberPortfolioItemUpdateWithoutBarberInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   visibility?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.BarberPortfolioMediaUpdateManyWithoutPortfolioItemNestedInput
 }
 
@@ -570,6 +601,7 @@ export type BarberPortfolioItemUncheckedUpdateWithoutBarberInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   visibility?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   media?: Prisma.BarberPortfolioMediaUncheckedUpdateManyWithoutPortfolioItemNestedInput
 }
 
@@ -580,6 +612,7 @@ export type BarberPortfolioItemUncheckedUpdateManyWithoutBarberInput = {
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   visibility?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -621,6 +654,7 @@ export type BarberPortfolioItemSelect<ExtArgs extends runtime.Types.Extensions.I
   isFeatured?: boolean
   visibility?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   media?: boolean | Prisma.BarberPortfolioItem$mediaArgs<ExtArgs>
   _count?: boolean | Prisma.BarberPortfolioItemCountOutputTypeDefaultArgs<ExtArgs>
@@ -634,6 +668,7 @@ export type BarberPortfolioItemSelectCreateManyAndReturn<ExtArgs extends runtime
   isFeatured?: boolean
   visibility?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["barberPortfolioItem"]>
 
@@ -645,6 +680,7 @@ export type BarberPortfolioItemSelectUpdateManyAndReturn<ExtArgs extends runtime
   isFeatured?: boolean
   visibility?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["barberPortfolioItem"]>
 
@@ -656,9 +692,10 @@ export type BarberPortfolioItemSelectScalar = {
   isFeatured?: boolean
   visibility?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type BarberPortfolioItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "title" | "description" | "isFeatured" | "visibility" | "createdAt", ExtArgs["result"]["barberPortfolioItem"]>
+export type BarberPortfolioItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "title" | "description" | "isFeatured" | "visibility" | "createdAt" | "updatedAt", ExtArgs["result"]["barberPortfolioItem"]>
 export type BarberPortfolioItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   media?: boolean | Prisma.BarberPortfolioItem$mediaArgs<ExtArgs>
@@ -685,6 +722,7 @@ export type $BarberPortfolioItemPayload<ExtArgs extends runtime.Types.Extensions
     isFeatured: boolean
     visibility: string
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["barberPortfolioItem"]>
   composites: {}
 }
@@ -1117,6 +1155,7 @@ export interface BarberPortfolioItemFieldRefs {
   readonly isFeatured: Prisma.FieldRef<"BarberPortfolioItem", 'Boolean'>
   readonly visibility: Prisma.FieldRef<"BarberPortfolioItem", 'String'>
   readonly createdAt: Prisma.FieldRef<"BarberPortfolioItem", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"BarberPortfolioItem", 'DateTime'>
 }
     
 

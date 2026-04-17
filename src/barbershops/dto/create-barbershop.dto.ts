@@ -1,9 +1,12 @@
-import { IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsNumber, IsOptional, IsString, MinLength, MaxLength } from 'class-validator';
 
 export class CreateBarbershopDto {
-  @IsString()                name: string;
+  @IsString() @MinLength(3) @MaxLength(100)
+  name: string;
+
   @IsOptional() @IsString()  description?: string;
   @IsOptional() @IsString()  address?: string;
+  @IsOptional() @IsString()  comuna?: string;
   @IsOptional() @IsNumber()  lat?: number;
   @IsOptional() @IsNumber()  lng?: number;
   @IsOptional() @IsString()  phone?: string;

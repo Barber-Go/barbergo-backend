@@ -154,7 +154,7 @@ export class FinancesService {
   // ── Helpers ──
 
   private async getShopBarberIds(userId: string): Promise<string[]> {
-    const shop = await this.prisma.client.barbershopProfile.findUnique({
+    const shop = await this.prisma.client.barbershopProfile.findFirst({
       where: { userId },
       include: { staff: { where: { isActive: true }, select: { barberProfileId: true } } },
     });

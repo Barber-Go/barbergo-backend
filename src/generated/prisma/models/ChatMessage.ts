@@ -31,6 +31,7 @@ export type ChatMessageMinAggregateOutputType = {
   messageType: string | null
   body: string | null
   createdAt: Date | null
+  updatedAt: Date | null
   deletedAt: Date | null
 }
 
@@ -41,6 +42,7 @@ export type ChatMessageMaxAggregateOutputType = {
   messageType: string | null
   body: string | null
   createdAt: Date | null
+  updatedAt: Date | null
   deletedAt: Date | null
 }
 
@@ -52,6 +54,7 @@ export type ChatMessageCountAggregateOutputType = {
   body: number
   metadataJson: number
   createdAt: number
+  updatedAt: number
   deletedAt: number
   _all: number
 }
@@ -64,6 +67,7 @@ export type ChatMessageMinAggregateInputType = {
   messageType?: true
   body?: true
   createdAt?: true
+  updatedAt?: true
   deletedAt?: true
 }
 
@@ -74,6 +78,7 @@ export type ChatMessageMaxAggregateInputType = {
   messageType?: true
   body?: true
   createdAt?: true
+  updatedAt?: true
   deletedAt?: true
 }
 
@@ -85,6 +90,7 @@ export type ChatMessageCountAggregateInputType = {
   body?: true
   metadataJson?: true
   createdAt?: true
+  updatedAt?: true
   deletedAt?: true
   _all?: true
 }
@@ -169,6 +175,7 @@ export type ChatMessageGroupByOutputType = {
   body: string
   metadataJson: runtime.JsonValue | null
   createdAt: Date
+  updatedAt: Date
   deletedAt: Date | null
   _count: ChatMessageCountAggregateOutputType | null
   _min: ChatMessageMinAggregateOutputType | null
@@ -201,6 +208,7 @@ export type ChatMessageWhereInput = {
   body?: Prisma.StringFilter<"ChatMessage"> | string
   metadataJson?: Prisma.JsonNullableFilter<"ChatMessage">
   createdAt?: Prisma.DateTimeFilter<"ChatMessage"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ChatMessage"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"ChatMessage"> | Date | string | null
   thread?: Prisma.XOR<Prisma.ChatThreadScalarRelationFilter, Prisma.ChatThreadWhereInput>
   sender?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -214,6 +222,7 @@ export type ChatMessageOrderByWithRelationInput = {
   body?: Prisma.SortOrder
   metadataJson?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   thread?: Prisma.ChatThreadOrderByWithRelationInput
   sender?: Prisma.UserOrderByWithRelationInput
@@ -230,6 +239,7 @@ export type ChatMessageWhereUniqueInput = Prisma.AtLeast<{
   body?: Prisma.StringFilter<"ChatMessage"> | string
   metadataJson?: Prisma.JsonNullableFilter<"ChatMessage">
   createdAt?: Prisma.DateTimeFilter<"ChatMessage"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ChatMessage"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"ChatMessage"> | Date | string | null
   thread?: Prisma.XOR<Prisma.ChatThreadScalarRelationFilter, Prisma.ChatThreadWhereInput>
   sender?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -243,6 +253,7 @@ export type ChatMessageOrderByWithAggregationInput = {
   body?: Prisma.SortOrder
   metadataJson?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ChatMessageCountOrderByAggregateInput
   _max?: Prisma.ChatMessageMaxOrderByAggregateInput
@@ -260,6 +271,7 @@ export type ChatMessageScalarWhereWithAggregatesInput = {
   body?: Prisma.StringWithAggregatesFilter<"ChatMessage"> | string
   metadataJson?: Prisma.JsonNullableWithAggregatesFilter<"ChatMessage">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ChatMessage"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ChatMessage"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ChatMessage"> | Date | string | null
 }
 
@@ -269,6 +281,7 @@ export type ChatMessageCreateInput = {
   body: string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   deletedAt?: Date | string | null
   thread: Prisma.ChatThreadCreateNestedOneWithoutMessagesInput
   sender: Prisma.UserCreateNestedOneWithoutChatMessagesInput
@@ -282,6 +295,7 @@ export type ChatMessageUncheckedCreateInput = {
   body: string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   deletedAt?: Date | string | null
 }
 
@@ -291,6 +305,7 @@ export type ChatMessageUpdateInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   thread?: Prisma.ChatThreadUpdateOneRequiredWithoutMessagesNestedInput
   sender?: Prisma.UserUpdateOneRequiredWithoutChatMessagesNestedInput
@@ -304,6 +319,7 @@ export type ChatMessageUncheckedUpdateInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -315,6 +331,7 @@ export type ChatMessageCreateManyInput = {
   body: string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   deletedAt?: Date | string | null
 }
 
@@ -324,6 +341,7 @@ export type ChatMessageUpdateManyMutationInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -335,6 +353,7 @@ export type ChatMessageUncheckedUpdateManyInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -356,6 +375,7 @@ export type ChatMessageCountOrderByAggregateInput = {
   body?: Prisma.SortOrder
   metadataJson?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
 }
 
@@ -366,6 +386,7 @@ export type ChatMessageMaxOrderByAggregateInput = {
   messageType?: Prisma.SortOrder
   body?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
 }
 
@@ -376,6 +397,7 @@ export type ChatMessageMinOrderByAggregateInput = {
   messageType?: Prisma.SortOrder
   body?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
 }
 
@@ -469,6 +491,7 @@ export type ChatMessageCreateWithoutSenderInput = {
   body: string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   deletedAt?: Date | string | null
   thread: Prisma.ChatThreadCreateNestedOneWithoutMessagesInput
 }
@@ -480,6 +503,7 @@ export type ChatMessageUncheckedCreateWithoutSenderInput = {
   body: string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   deletedAt?: Date | string | null
 }
 
@@ -520,6 +544,7 @@ export type ChatMessageScalarWhereInput = {
   body?: Prisma.StringFilter<"ChatMessage"> | string
   metadataJson?: Prisma.JsonNullableFilter<"ChatMessage">
   createdAt?: Prisma.DateTimeFilter<"ChatMessage"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ChatMessage"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"ChatMessage"> | Date | string | null
 }
 
@@ -529,6 +554,7 @@ export type ChatMessageCreateWithoutThreadInput = {
   body: string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   deletedAt?: Date | string | null
   sender: Prisma.UserCreateNestedOneWithoutChatMessagesInput
 }
@@ -540,6 +566,7 @@ export type ChatMessageUncheckedCreateWithoutThreadInput = {
   body: string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   deletedAt?: Date | string | null
 }
 
@@ -576,6 +603,7 @@ export type ChatMessageCreateManySenderInput = {
   body: string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   deletedAt?: Date | string | null
 }
 
@@ -585,6 +613,7 @@ export type ChatMessageUpdateWithoutSenderInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   thread?: Prisma.ChatThreadUpdateOneRequiredWithoutMessagesNestedInput
 }
@@ -596,6 +625,7 @@ export type ChatMessageUncheckedUpdateWithoutSenderInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -606,6 +636,7 @@ export type ChatMessageUncheckedUpdateManyWithoutSenderInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -616,6 +647,7 @@ export type ChatMessageCreateManyThreadInput = {
   body: string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   deletedAt?: Date | string | null
 }
 
@@ -625,6 +657,7 @@ export type ChatMessageUpdateWithoutThreadInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sender?: Prisma.UserUpdateOneRequiredWithoutChatMessagesNestedInput
 }
@@ -636,6 +669,7 @@ export type ChatMessageUncheckedUpdateWithoutThreadInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -646,6 +680,7 @@ export type ChatMessageUncheckedUpdateManyWithoutThreadInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -659,6 +694,7 @@ export type ChatMessageSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   body?: boolean
   metadataJson?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   deletedAt?: boolean
   thread?: boolean | Prisma.ChatThreadDefaultArgs<ExtArgs>
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -672,6 +708,7 @@ export type ChatMessageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   body?: boolean
   metadataJson?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   deletedAt?: boolean
   thread?: boolean | Prisma.ChatThreadDefaultArgs<ExtArgs>
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -685,6 +722,7 @@ export type ChatMessageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   body?: boolean
   metadataJson?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   deletedAt?: boolean
   thread?: boolean | Prisma.ChatThreadDefaultArgs<ExtArgs>
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -698,10 +736,11 @@ export type ChatMessageSelectScalar = {
   body?: boolean
   metadataJson?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type ChatMessageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "threadId" | "senderId" | "messageType" | "body" | "metadataJson" | "createdAt" | "deletedAt", ExtArgs["result"]["chatMessage"]>
+export type ChatMessageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "threadId" | "senderId" | "messageType" | "body" | "metadataJson" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["chatMessage"]>
 export type ChatMessageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   thread?: boolean | Prisma.ChatThreadDefaultArgs<ExtArgs>
   sender?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -729,6 +768,7 @@ export type $ChatMessagePayload<ExtArgs extends runtime.Types.Extensions.Interna
     body: string
     metadataJson: runtime.JsonValue | null
     createdAt: Date
+    updatedAt: Date
     deletedAt: Date | null
   }, ExtArgs["result"]["chatMessage"]>
   composites: {}
@@ -1162,6 +1202,7 @@ export interface ChatMessageFieldRefs {
   readonly body: Prisma.FieldRef<"ChatMessage", 'String'>
   readonly metadataJson: Prisma.FieldRef<"ChatMessage", 'Json'>
   readonly createdAt: Prisma.FieldRef<"ChatMessage", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"ChatMessage", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"ChatMessage", 'DateTime'>
 }
     

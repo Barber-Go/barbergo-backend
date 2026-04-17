@@ -41,6 +41,7 @@ export type StaffCompensationRuleMinAggregateOutputType = {
   percentage: number | null
   isActive: boolean | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type StaffCompensationRuleMaxAggregateOutputType = {
@@ -50,6 +51,7 @@ export type StaffCompensationRuleMaxAggregateOutputType = {
   percentage: number | null
   isActive: boolean | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type StaffCompensationRuleCountAggregateOutputType = {
@@ -59,6 +61,7 @@ export type StaffCompensationRuleCountAggregateOutputType = {
   percentage: number
   isActive: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -78,6 +81,7 @@ export type StaffCompensationRuleMinAggregateInputType = {
   percentage?: true
   isActive?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type StaffCompensationRuleMaxAggregateInputType = {
@@ -87,6 +91,7 @@ export type StaffCompensationRuleMaxAggregateInputType = {
   percentage?: true
   isActive?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type StaffCompensationRuleCountAggregateInputType = {
@@ -96,6 +101,7 @@ export type StaffCompensationRuleCountAggregateInputType = {
   percentage?: true
   isActive?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -192,6 +198,7 @@ export type StaffCompensationRuleGroupByOutputType = {
   percentage: number
   isActive: boolean
   createdAt: Date
+  updatedAt: Date
   _count: StaffCompensationRuleCountAggregateOutputType | null
   _avg: StaffCompensationRuleAvgAggregateOutputType | null
   _sum: StaffCompensationRuleSumAggregateOutputType | null
@@ -224,6 +231,7 @@ export type StaffCompensationRuleWhereInput = {
   percentage?: Prisma.FloatFilter<"StaffCompensationRule"> | number
   isActive?: Prisma.BoolFilter<"StaffCompensationRule"> | boolean
   createdAt?: Prisma.DateTimeFilter<"StaffCompensationRule"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"StaffCompensationRule"> | Date | string
   membership?: Prisma.XOR<Prisma.BarbershopStaffMembershipScalarRelationFilter, Prisma.BarbershopStaffMembershipWhereInput>
 }
 
@@ -234,6 +242,7 @@ export type StaffCompensationRuleOrderByWithRelationInput = {
   percentage?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   membership?: Prisma.BarbershopStaffMembershipOrderByWithRelationInput
 }
 
@@ -247,6 +256,7 @@ export type StaffCompensationRuleWhereUniqueInput = Prisma.AtLeast<{
   percentage?: Prisma.FloatFilter<"StaffCompensationRule"> | number
   isActive?: Prisma.BoolFilter<"StaffCompensationRule"> | boolean
   createdAt?: Prisma.DateTimeFilter<"StaffCompensationRule"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"StaffCompensationRule"> | Date | string
   membership?: Prisma.XOR<Prisma.BarbershopStaffMembershipScalarRelationFilter, Prisma.BarbershopStaffMembershipWhereInput>
 }, "id">
 
@@ -257,6 +267,7 @@ export type StaffCompensationRuleOrderByWithAggregationInput = {
   percentage?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.StaffCompensationRuleCountOrderByAggregateInput
   _avg?: Prisma.StaffCompensationRuleAvgOrderByAggregateInput
   _max?: Prisma.StaffCompensationRuleMaxOrderByAggregateInput
@@ -274,6 +285,7 @@ export type StaffCompensationRuleScalarWhereWithAggregatesInput = {
   percentage?: Prisma.FloatWithAggregatesFilter<"StaffCompensationRule"> | number
   isActive?: Prisma.BoolWithAggregatesFilter<"StaffCompensationRule"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"StaffCompensationRule"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"StaffCompensationRule"> | Date | string
 }
 
 export type StaffCompensationRuleCreateInput = {
@@ -282,6 +294,7 @@ export type StaffCompensationRuleCreateInput = {
   percentage: number
   isActive?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
   membership: Prisma.BarbershopStaffMembershipCreateNestedOneWithoutCompensationRulesInput
 }
 
@@ -292,6 +305,7 @@ export type StaffCompensationRuleUncheckedCreateInput = {
   percentage: number
   isActive?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type StaffCompensationRuleUpdateInput = {
@@ -300,6 +314,7 @@ export type StaffCompensationRuleUpdateInput = {
   percentage?: Prisma.FloatFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   membership?: Prisma.BarbershopStaffMembershipUpdateOneRequiredWithoutCompensationRulesNestedInput
 }
 
@@ -310,6 +325,7 @@ export type StaffCompensationRuleUncheckedUpdateInput = {
   percentage?: Prisma.FloatFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StaffCompensationRuleCreateManyInput = {
@@ -319,6 +335,7 @@ export type StaffCompensationRuleCreateManyInput = {
   percentage: number
   isActive?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type StaffCompensationRuleUpdateManyMutationInput = {
@@ -327,6 +344,7 @@ export type StaffCompensationRuleUpdateManyMutationInput = {
   percentage?: Prisma.FloatFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StaffCompensationRuleUncheckedUpdateManyInput = {
@@ -336,6 +354,7 @@ export type StaffCompensationRuleUncheckedUpdateManyInput = {
   percentage?: Prisma.FloatFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StaffCompensationRuleListRelationFilter = {
@@ -355,6 +374,7 @@ export type StaffCompensationRuleCountOrderByAggregateInput = {
   percentage?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type StaffCompensationRuleAvgOrderByAggregateInput = {
@@ -368,6 +388,7 @@ export type StaffCompensationRuleMaxOrderByAggregateInput = {
   percentage?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type StaffCompensationRuleMinOrderByAggregateInput = {
@@ -377,6 +398,7 @@ export type StaffCompensationRuleMinOrderByAggregateInput = {
   percentage?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type StaffCompensationRuleSumOrderByAggregateInput = {
@@ -431,6 +453,7 @@ export type StaffCompensationRuleCreateWithoutMembershipInput = {
   percentage: number
   isActive?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type StaffCompensationRuleUncheckedCreateWithoutMembershipInput = {
@@ -439,6 +462,7 @@ export type StaffCompensationRuleUncheckedCreateWithoutMembershipInput = {
   percentage: number
   isActive?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type StaffCompensationRuleCreateOrConnectWithoutMembershipInput = {
@@ -477,6 +501,7 @@ export type StaffCompensationRuleScalarWhereInput = {
   percentage?: Prisma.FloatFilter<"StaffCompensationRule"> | number
   isActive?: Prisma.BoolFilter<"StaffCompensationRule"> | boolean
   createdAt?: Prisma.DateTimeFilter<"StaffCompensationRule"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"StaffCompensationRule"> | Date | string
 }
 
 export type StaffCompensationRuleCreateManyMembershipInput = {
@@ -485,6 +510,7 @@ export type StaffCompensationRuleCreateManyMembershipInput = {
   percentage: number
   isActive?: boolean
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type StaffCompensationRuleUpdateWithoutMembershipInput = {
@@ -493,6 +519,7 @@ export type StaffCompensationRuleUpdateWithoutMembershipInput = {
   percentage?: Prisma.FloatFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StaffCompensationRuleUncheckedUpdateWithoutMembershipInput = {
@@ -501,6 +528,7 @@ export type StaffCompensationRuleUncheckedUpdateWithoutMembershipInput = {
   percentage?: Prisma.FloatFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StaffCompensationRuleUncheckedUpdateManyWithoutMembershipInput = {
@@ -509,6 +537,7 @@ export type StaffCompensationRuleUncheckedUpdateManyWithoutMembershipInput = {
   percentage?: Prisma.FloatFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -520,6 +549,7 @@ export type StaffCompensationRuleSelect<ExtArgs extends runtime.Types.Extensions
   percentage?: boolean
   isActive?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   membership?: boolean | Prisma.BarbershopStaffMembershipDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["staffCompensationRule"]>
 
@@ -530,6 +560,7 @@ export type StaffCompensationRuleSelectCreateManyAndReturn<ExtArgs extends runti
   percentage?: boolean
   isActive?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   membership?: boolean | Prisma.BarbershopStaffMembershipDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["staffCompensationRule"]>
 
@@ -540,6 +571,7 @@ export type StaffCompensationRuleSelectUpdateManyAndReturn<ExtArgs extends runti
   percentage?: boolean
   isActive?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   membership?: boolean | Prisma.BarbershopStaffMembershipDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["staffCompensationRule"]>
 
@@ -550,9 +582,10 @@ export type StaffCompensationRuleSelectScalar = {
   percentage?: boolean
   isActive?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type StaffCompensationRuleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "membershipId" | "label" | "percentage" | "isActive" | "createdAt", ExtArgs["result"]["staffCompensationRule"]>
+export type StaffCompensationRuleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "membershipId" | "label" | "percentage" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["staffCompensationRule"]>
 export type StaffCompensationRuleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   membership?: boolean | Prisma.BarbershopStaffMembershipDefaultArgs<ExtArgs>
 }
@@ -575,6 +608,7 @@ export type $StaffCompensationRulePayload<ExtArgs extends runtime.Types.Extensio
     percentage: number
     isActive: boolean
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["staffCompensationRule"]>
   composites: {}
 }
@@ -1005,6 +1039,7 @@ export interface StaffCompensationRuleFieldRefs {
   readonly percentage: Prisma.FieldRef<"StaffCompensationRule", 'Float'>
   readonly isActive: Prisma.FieldRef<"StaffCompensationRule", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"StaffCompensationRule", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"StaffCompensationRule", 'DateTime'>
 }
     
 

@@ -48,6 +48,7 @@ export type EarningMinAggregateOutputType = {
   netAmount: runtime.Decimal | null
   paymentMethod: $Enums.PaymentMethod | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type EarningMaxAggregateOutputType = {
@@ -60,6 +61,7 @@ export type EarningMaxAggregateOutputType = {
   netAmount: runtime.Decimal | null
   paymentMethod: $Enums.PaymentMethod | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type EarningCountAggregateOutputType = {
@@ -72,6 +74,7 @@ export type EarningCountAggregateOutputType = {
   netAmount: number
   paymentMethod: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -98,6 +101,7 @@ export type EarningMinAggregateInputType = {
   netAmount?: true
   paymentMethod?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type EarningMaxAggregateInputType = {
@@ -110,6 +114,7 @@ export type EarningMaxAggregateInputType = {
   netAmount?: true
   paymentMethod?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type EarningCountAggregateInputType = {
@@ -122,6 +127,7 @@ export type EarningCountAggregateInputType = {
   netAmount?: true
   paymentMethod?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -221,6 +227,7 @@ export type EarningGroupByOutputType = {
   netAmount: runtime.Decimal
   paymentMethod: $Enums.PaymentMethod
   createdAt: Date
+  updatedAt: Date
   _count: EarningCountAggregateOutputType | null
   _avg: EarningAvgAggregateOutputType | null
   _sum: EarningSumAggregateOutputType | null
@@ -256,6 +263,7 @@ export type EarningWhereInput = {
   netAmount?: Prisma.DecimalFilter<"Earning"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFilter<"Earning"> | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFilter<"Earning"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Earning"> | Date | string
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
   booking?: Prisma.XOR<Prisma.BookingScalarRelationFilter, Prisma.BookingWhereInput>
 }
@@ -270,6 +278,7 @@ export type EarningOrderByWithRelationInput = {
   netAmount?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   barber?: Prisma.BarberProfileOrderByWithRelationInput
   booking?: Prisma.BookingOrderByWithRelationInput
 }
@@ -287,6 +296,7 @@ export type EarningWhereUniqueInput = Prisma.AtLeast<{
   netAmount?: Prisma.DecimalFilter<"Earning"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFilter<"Earning"> | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFilter<"Earning"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Earning"> | Date | string
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
   booking?: Prisma.XOR<Prisma.BookingScalarRelationFilter, Prisma.BookingWhereInput>
 }, "id" | "bookingId">
@@ -301,6 +311,7 @@ export type EarningOrderByWithAggregationInput = {
   netAmount?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.EarningCountOrderByAggregateInput
   _avg?: Prisma.EarningAvgOrderByAggregateInput
   _max?: Prisma.EarningMaxOrderByAggregateInput
@@ -321,6 +332,7 @@ export type EarningScalarWhereWithAggregatesInput = {
   netAmount?: Prisma.DecimalWithAggregatesFilter<"Earning"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodWithAggregatesFilter<"Earning"> | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Earning"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Earning"> | Date | string
 }
 
 export type EarningCreateInput = {
@@ -331,6 +343,7 @@ export type EarningCreateInput = {
   netAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod: $Enums.PaymentMethod
   createdAt?: Date | string
+  updatedAt?: Date | string
   barber: Prisma.BarberProfileCreateNestedOneWithoutEarningsInput
   booking: Prisma.BookingCreateNestedOneWithoutEarningInput
 }
@@ -345,6 +358,7 @@ export type EarningUncheckedCreateInput = {
   netAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod: $Enums.PaymentMethod
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type EarningUpdateInput = {
@@ -355,6 +369,7 @@ export type EarningUpdateInput = {
   netAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutEarningsNestedInput
   booking?: Prisma.BookingUpdateOneRequiredWithoutEarningNestedInput
 }
@@ -369,6 +384,7 @@ export type EarningUncheckedUpdateInput = {
   netAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type EarningCreateManyInput = {
@@ -381,6 +397,7 @@ export type EarningCreateManyInput = {
   netAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod: $Enums.PaymentMethod
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type EarningUpdateManyMutationInput = {
@@ -391,6 +408,7 @@ export type EarningUpdateManyMutationInput = {
   netAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type EarningUncheckedUpdateManyInput = {
@@ -403,6 +421,7 @@ export type EarningUncheckedUpdateManyInput = {
   netAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type EarningListRelationFilter = {
@@ -430,6 +449,7 @@ export type EarningCountOrderByAggregateInput = {
   netAmount?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type EarningAvgOrderByAggregateInput = {
@@ -448,6 +468,7 @@ export type EarningMaxOrderByAggregateInput = {
   netAmount?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type EarningMinOrderByAggregateInput = {
@@ -460,6 +481,7 @@ export type EarningMinOrderByAggregateInput = {
   netAmount?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type EarningSumOrderByAggregateInput = {
@@ -550,6 +572,7 @@ export type EarningCreateWithoutBarberInput = {
   netAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod: $Enums.PaymentMethod
   createdAt?: Date | string
+  updatedAt?: Date | string
   booking: Prisma.BookingCreateNestedOneWithoutEarningInput
 }
 
@@ -562,6 +585,7 @@ export type EarningUncheckedCreateWithoutBarberInput = {
   netAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod: $Enums.PaymentMethod
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type EarningCreateOrConnectWithoutBarberInput = {
@@ -603,6 +627,7 @@ export type EarningScalarWhereInput = {
   netAmount?: Prisma.DecimalFilter<"Earning"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFilter<"Earning"> | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFilter<"Earning"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Earning"> | Date | string
 }
 
 export type EarningCreateWithoutBookingInput = {
@@ -613,6 +638,7 @@ export type EarningCreateWithoutBookingInput = {
   netAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod: $Enums.PaymentMethod
   createdAt?: Date | string
+  updatedAt?: Date | string
   barber: Prisma.BarberProfileCreateNestedOneWithoutEarningsInput
 }
 
@@ -625,6 +651,7 @@ export type EarningUncheckedCreateWithoutBookingInput = {
   netAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod: $Enums.PaymentMethod
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type EarningCreateOrConnectWithoutBookingInput = {
@@ -651,6 +678,7 @@ export type EarningUpdateWithoutBookingInput = {
   netAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutEarningsNestedInput
 }
 
@@ -663,6 +691,7 @@ export type EarningUncheckedUpdateWithoutBookingInput = {
   netAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type EarningCreateManyBarberInput = {
@@ -674,6 +703,7 @@ export type EarningCreateManyBarberInput = {
   netAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod: $Enums.PaymentMethod
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type EarningUpdateWithoutBarberInput = {
@@ -684,6 +714,7 @@ export type EarningUpdateWithoutBarberInput = {
   netAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   booking?: Prisma.BookingUpdateOneRequiredWithoutEarningNestedInput
 }
 
@@ -696,6 +727,7 @@ export type EarningUncheckedUpdateWithoutBarberInput = {
   netAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type EarningUncheckedUpdateManyWithoutBarberInput = {
@@ -707,6 +739,7 @@ export type EarningUncheckedUpdateManyWithoutBarberInput = {
   netAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -721,6 +754,7 @@ export type EarningSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   netAmount?: boolean
   paymentMethod?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["earning"]>
@@ -735,6 +769,7 @@ export type EarningSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   netAmount?: boolean
   paymentMethod?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["earning"]>
@@ -749,6 +784,7 @@ export type EarningSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   netAmount?: boolean
   paymentMethod?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["earning"]>
@@ -763,9 +799,10 @@ export type EarningSelectScalar = {
   netAmount?: boolean
   paymentMethod?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type EarningOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "bookingId" | "date" | "grossAmount" | "platformFee" | "netAmount" | "paymentMethod" | "createdAt", ExtArgs["result"]["earning"]>
+export type EarningOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "bookingId" | "date" | "grossAmount" | "platformFee" | "netAmount" | "paymentMethod" | "createdAt" | "updatedAt", ExtArgs["result"]["earning"]>
 export type EarningInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
@@ -795,6 +832,7 @@ export type $EarningPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     netAmount: runtime.Decimal
     paymentMethod: $Enums.PaymentMethod
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["earning"]>
   composites: {}
 }
@@ -1229,6 +1267,7 @@ export interface EarningFieldRefs {
   readonly netAmount: Prisma.FieldRef<"Earning", 'Decimal'>
   readonly paymentMethod: Prisma.FieldRef<"Earning", 'PaymentMethod'>
   readonly createdAt: Prisma.FieldRef<"Earning", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Earning", 'DateTime'>
 }
     
 

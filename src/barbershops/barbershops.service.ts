@@ -5,22 +5,32 @@ import { UpdateBarbershopDto } from './dto/update-barbershop.dto';
 import { AddStaffDto } from './dto/add-staff.dto';
 import { UpdateStaffDto } from './dto/update-staff.dto';
 import { DashboardPeriod } from './dto/dashboard-query.dto';
-import { Role, BookingStatus } from '../generated/prisma/enums';
+import { Role, BookingStatus, BarbershopStatus } from '../generated/prisma/enums';
 
 @Injectable()
 export class BarbershopsService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(userId: string, dto: CreateBarbershopDto) {
+    const { comuna, ...rest } = dto;
+    const address = comuna && rest.address
+      ? `${rest.address}, ${comuna}`
+      : rest.address ?? comuna ?? undefined;
+
     const shop = await this.prisma.client.barbershopProfile.create({
-      data: { userId, ...dto },
+      data: {
+        userId,
+        ...rest,
+        address,
+        status: BarbershopStatus.ACTIVE,
+      },
     });
     return this.formatShop(shop);
   }
 
   async findMe(userId: string) {
-    const shop = await this.prisma.client.barbershopProfile.findFirst({
-      where: { userId },
+    const shops = await this.prisma.client.barbershopProfile.findMany({
+      where: { userId, deletedAt: null },
       include: {
         staff: {
           where: { isActive: true },
@@ -32,10 +42,11 @@ export class BarbershopsService {
           },
         },
       },
+      orderBy: { createdAt: 'asc' },
     });
-    if (!shop) throw new NotFoundException('Barbershop profile not found');
+    if (!shops.length) throw new NotFoundException('No barbershop profiles found');
 
-    return {
+    return shops.map((shop) => ({
       ...this.formatShop(shop),
       staff: shop.staff.map((s) => ({
         id: s.id,
@@ -45,7 +56,7 @@ export class BarbershopsService {
         role: s.role,
         barberPercent: s.compensationRules[0]?.percentage ?? 60,
       })),
-    };
+    }));
   }
 
   async update(userId: string, dto: UpdateBarbershopDto) {
@@ -347,7 +358,7 @@ export class BarbershopsService {
 
   // ── Owner Dashboard ─────────────────────────────────────────────────────────
 
-  async getDashboard(userId: string, scope: string, period: DashboardPeriod) {
+  async getDashboard(userId: string, scope: string, period: DashboardPeriod, year?: number) {
     // 1. Resolve scope → barbershopIds
     const ownerShops = await this.prisma.client.barbershopProfile.findMany({
       where: { userId, deletedAt: null },
@@ -365,7 +376,7 @@ export class BarbershopsService {
     }
 
     // 2. Resolve period
-    const { rangeFrom, rangeTo } = this.resolveDateRange(period);
+    const { rangeFrom, rangeTo } = this.resolveDateRange(period, year);
 
     // 3. Query completed bookings in range
     const bookings = await this.prisma.client.booking.findMany({
@@ -411,7 +422,7 @@ export class BarbershopsService {
     const totalBookings = bookings.length;
 
     // 5. Comparison vs previous period
-    const prevRange = this.resolvePreviousRange(period);
+    const prevRange = this.resolvePreviousRange(period, year);
     const prevBookings = await this.prisma.client.booking.findMany({
       where: {
         barbershopId: { in: barbershopIds },
@@ -569,6 +580,43 @@ export class BarbershopsService {
         }
       : { cash: 0, inApp: 0 };
 
+    // 11. Revenue growth (month-by-month for the year)
+    const growthYear = year ?? new Date().getUTCFullYear();
+    const growthFrom = new Date(Date.UTC(growthYear, 0, 1));
+    const growthTo = new Date(Date.UTC(growthYear, 11, 31, 23, 59, 59, 999));
+    const growthBookings = await this.prisma.client.booking.findMany({
+      where: {
+        barbershopId: { in: barbershopIds },
+        status: BookingStatus.COMPLETED,
+        scheduledAt: { gte: growthFrom, lte: growthTo },
+        deletedAt: null,
+      },
+      select: { grossAmount: true, scheduledAt: true },
+    });
+
+    const MONTH_LABELS = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    const nowUtc = new Date();
+    const currentMonth = nowUtc.getUTCFullYear() === growthYear ? nowUtc.getUTCMonth() : 11;
+
+    const monthlyRevenue: number[] = Array(12).fill(0);
+    const monthlyBookings: number[] = Array(12).fill(0);
+    for (const b of growthBookings) {
+      const m = b.scheduledAt.getUTCMonth();
+      monthlyRevenue[m] += Number(b.grossAmount);
+      monthlyBookings[m] += 1;
+    }
+
+    const revenueGrowth = MONTH_LABELS.map((label, i) => {
+      const isFuture = i > currentMonth;
+      const revenue = isFuture ? 0 : Math.round(monthlyRevenue[i]);
+      const bkgs = isFuture ? 0 : monthlyBookings[i];
+      let growthPct: number | null = null;
+      if (!isFuture && i > 0 && monthlyRevenue[i - 1] > 0) {
+        growthPct = Math.round(((monthlyRevenue[i] - monthlyRevenue[i - 1]) / monthlyRevenue[i - 1]) * 1000) / 10;
+      }
+      return { month: label, monthNumber: i + 1, revenue, bookings: bkgs, growthPct };
+    });
+
     return {
       data: {
         scope,
@@ -598,6 +646,7 @@ export class BarbershopsService {
           avgTicket,
           cashVsInAppRatio,
         },
+        revenueGrowth,
       },
       message: 'OK',
       statusCode: 200,
@@ -606,8 +655,42 @@ export class BarbershopsService {
 
   // ── Date range helpers ──────────────────────────────────────────────────────
 
-  private resolveDateRange(period: DashboardPeriod) {
+  private resolveDateRange(period: DashboardPeriod, year?: number) {
     const now = new Date();
+    const isCurrentYear = !year || year === now.getUTCFullYear();
+
+    if (!isCurrentYear) {
+      // For past years, map periods relative to that year using current month context
+      const m = now.getUTCMonth();
+      switch (period) {
+        case DashboardPeriod.TODAY: {
+          // Same day in the past year
+          const rangeFrom = new Date(Date.UTC(year, m, now.getUTCDate()));
+          const rangeTo = new Date(Date.UTC(year, m, now.getUTCDate(), 23, 59, 59, 999));
+          return { rangeFrom, rangeTo };
+        }
+        case DashboardPeriod.WEEK: {
+          // Last 7 days of the same week context
+          const ref = new Date(Date.UTC(year, m, now.getUTCDate()));
+          const dayOfWeek = ref.getUTCDay();
+          const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+          const monday = new Date(Date.UTC(year, m, ref.getUTCDate() + mondayOffset));
+          const sunday = new Date(Date.UTC(year, m, ref.getUTCDate() + mondayOffset + 6, 23, 59, 59, 999));
+          return { rangeFrom: monday, rangeTo: sunday };
+        }
+        case DashboardPeriod.MONTH: {
+          const rangeFrom = new Date(Date.UTC(year, m, 1));
+          const rangeTo = new Date(Date.UTC(year, m + 1, 0, 23, 59, 59, 999));
+          return { rangeFrom, rangeTo };
+        }
+        case DashboardPeriod.LAST_MONTH: {
+          const rangeFrom = new Date(Date.UTC(year, m - 1, 1));
+          const rangeTo = new Date(Date.UTC(year, m, 0, 23, 59, 59, 999));
+          return { rangeFrom, rangeTo };
+        }
+      }
+    }
+
     switch (period) {
       case DashboardPeriod.TODAY: {
         const rangeFrom = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
@@ -634,8 +717,39 @@ export class BarbershopsService {
     }
   }
 
-  private resolvePreviousRange(period: DashboardPeriod) {
+  private resolvePreviousRange(period: DashboardPeriod, year?: number) {
     const now = new Date();
+    const isCurrentYear = !year || year === now.getUTCFullYear();
+    const refYear = year ?? now.getUTCFullYear();
+    const m = now.getUTCMonth();
+
+    if (!isCurrentYear) {
+      switch (period) {
+        case DashboardPeriod.TODAY: {
+          const d = new Date(Date.UTC(refYear, m, now.getUTCDate() - 1));
+          return { rangeFrom: d, rangeTo: new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), 23, 59, 59, 999)) };
+        }
+        case DashboardPeriod.WEEK: {
+          const ref = new Date(Date.UTC(refYear, m, now.getUTCDate()));
+          const dayOfWeek = ref.getUTCDay();
+          const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+          const prevMonday = new Date(Date.UTC(refYear, m, ref.getUTCDate() + mondayOffset - 7));
+          const prevSunday = new Date(Date.UTC(refYear, m, ref.getUTCDate() + mondayOffset - 1, 23, 59, 59, 999));
+          return { rangeFrom: prevMonday, rangeTo: prevSunday };
+        }
+        case DashboardPeriod.MONTH: {
+          const rangeFrom = new Date(Date.UTC(refYear, m - 1, 1));
+          const rangeTo = new Date(Date.UTC(refYear, m, 0, 23, 59, 59, 999));
+          return { rangeFrom, rangeTo };
+        }
+        case DashboardPeriod.LAST_MONTH: {
+          const rangeFrom = new Date(Date.UTC(refYear, m - 2, 1));
+          const rangeTo = new Date(Date.UTC(refYear, m - 1, 0, 23, 59, 59, 999));
+          return { rangeFrom, rangeTo };
+        }
+      }
+    }
+
     switch (period) {
       case DashboardPeriod.TODAY: {
         const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - 1));

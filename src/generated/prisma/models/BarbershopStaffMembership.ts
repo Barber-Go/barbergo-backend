@@ -31,6 +31,8 @@ export type BarbershopStaffMembershipMinAggregateOutputType = {
   role: string | null
   joinedAt: Date | null
   isActive: boolean | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type BarbershopStaffMembershipMaxAggregateOutputType = {
@@ -40,6 +42,8 @@ export type BarbershopStaffMembershipMaxAggregateOutputType = {
   role: string | null
   joinedAt: Date | null
   isActive: boolean | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type BarbershopStaffMembershipCountAggregateOutputType = {
@@ -49,6 +53,8 @@ export type BarbershopStaffMembershipCountAggregateOutputType = {
   role: number
   joinedAt: number
   isActive: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -60,6 +66,8 @@ export type BarbershopStaffMembershipMinAggregateInputType = {
   role?: true
   joinedAt?: true
   isActive?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type BarbershopStaffMembershipMaxAggregateInputType = {
@@ -69,6 +77,8 @@ export type BarbershopStaffMembershipMaxAggregateInputType = {
   role?: true
   joinedAt?: true
   isActive?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type BarbershopStaffMembershipCountAggregateInputType = {
@@ -78,6 +88,8 @@ export type BarbershopStaffMembershipCountAggregateInputType = {
   role?: true
   joinedAt?: true
   isActive?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -160,6 +172,8 @@ export type BarbershopStaffMembershipGroupByOutputType = {
   role: string
   joinedAt: Date
   isActive: boolean
+  createdAt: Date
+  updatedAt: Date
   _count: BarbershopStaffMembershipCountAggregateOutputType | null
   _min: BarbershopStaffMembershipMinAggregateOutputType | null
   _max: BarbershopStaffMembershipMaxAggregateOutputType | null
@@ -190,6 +204,8 @@ export type BarbershopStaffMembershipWhereInput = {
   role?: Prisma.StringFilter<"BarbershopStaffMembership"> | string
   joinedAt?: Prisma.DateTimeFilter<"BarbershopStaffMembership"> | Date | string
   isActive?: Prisma.BoolFilter<"BarbershopStaffMembership"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"BarbershopStaffMembership"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BarbershopStaffMembership"> | Date | string
   barbershop?: Prisma.XOR<Prisma.BarbershopProfileScalarRelationFilter, Prisma.BarbershopProfileWhereInput>
   barberProfile?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
   compensationRules?: Prisma.StaffCompensationRuleListRelationFilter
@@ -202,6 +218,8 @@ export type BarbershopStaffMembershipOrderByWithRelationInput = {
   role?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   barbershop?: Prisma.BarbershopProfileOrderByWithRelationInput
   barberProfile?: Prisma.BarberProfileOrderByWithRelationInput
   compensationRules?: Prisma.StaffCompensationRuleOrderByRelationAggregateInput
@@ -218,6 +236,8 @@ export type BarbershopStaffMembershipWhereUniqueInput = Prisma.AtLeast<{
   role?: Prisma.StringFilter<"BarbershopStaffMembership"> | string
   joinedAt?: Prisma.DateTimeFilter<"BarbershopStaffMembership"> | Date | string
   isActive?: Prisma.BoolFilter<"BarbershopStaffMembership"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"BarbershopStaffMembership"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BarbershopStaffMembership"> | Date | string
   barbershop?: Prisma.XOR<Prisma.BarbershopProfileScalarRelationFilter, Prisma.BarbershopProfileWhereInput>
   barberProfile?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
   compensationRules?: Prisma.StaffCompensationRuleListRelationFilter
@@ -230,6 +250,8 @@ export type BarbershopStaffMembershipOrderByWithAggregationInput = {
   role?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.BarbershopStaffMembershipCountOrderByAggregateInput
   _max?: Prisma.BarbershopStaffMembershipMaxOrderByAggregateInput
   _min?: Prisma.BarbershopStaffMembershipMinOrderByAggregateInput
@@ -245,6 +267,8 @@ export type BarbershopStaffMembershipScalarWhereWithAggregatesInput = {
   role?: Prisma.StringWithAggregatesFilter<"BarbershopStaffMembership"> | string
   joinedAt?: Prisma.DateTimeWithAggregatesFilter<"BarbershopStaffMembership"> | Date | string
   isActive?: Prisma.BoolWithAggregatesFilter<"BarbershopStaffMembership"> | boolean
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"BarbershopStaffMembership"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BarbershopStaffMembership"> | Date | string
 }
 
 export type BarbershopStaffMembershipCreateInput = {
@@ -252,6 +276,8 @@ export type BarbershopStaffMembershipCreateInput = {
   role?: string
   joinedAt?: Date | string
   isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   barbershop: Prisma.BarbershopProfileCreateNestedOneWithoutStaffInput
   barberProfile: Prisma.BarberProfileCreateNestedOneWithoutStaffMembershipsInput
   compensationRules?: Prisma.StaffCompensationRuleCreateNestedManyWithoutMembershipInput
@@ -264,6 +290,8 @@ export type BarbershopStaffMembershipUncheckedCreateInput = {
   role?: string
   joinedAt?: Date | string
   isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   compensationRules?: Prisma.StaffCompensationRuleUncheckedCreateNestedManyWithoutMembershipInput
 }
 
@@ -272,6 +300,8 @@ export type BarbershopStaffMembershipUpdateInput = {
   role?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   barbershop?: Prisma.BarbershopProfileUpdateOneRequiredWithoutStaffNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneRequiredWithoutStaffMembershipsNestedInput
   compensationRules?: Prisma.StaffCompensationRuleUpdateManyWithoutMembershipNestedInput
@@ -284,6 +314,8 @@ export type BarbershopStaffMembershipUncheckedUpdateInput = {
   role?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   compensationRules?: Prisma.StaffCompensationRuleUncheckedUpdateManyWithoutMembershipNestedInput
 }
 
@@ -294,6 +326,8 @@ export type BarbershopStaffMembershipCreateManyInput = {
   role?: string
   joinedAt?: Date | string
   isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BarbershopStaffMembershipUpdateManyMutationInput = {
@@ -301,6 +335,8 @@ export type BarbershopStaffMembershipUpdateManyMutationInput = {
   role?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BarbershopStaffMembershipUncheckedUpdateManyInput = {
@@ -310,6 +346,8 @@ export type BarbershopStaffMembershipUncheckedUpdateManyInput = {
   role?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BarbershopStaffMembershipListRelationFilter = {
@@ -334,6 +372,8 @@ export type BarbershopStaffMembershipCountOrderByAggregateInput = {
   role?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type BarbershopStaffMembershipMaxOrderByAggregateInput = {
@@ -343,6 +383,8 @@ export type BarbershopStaffMembershipMaxOrderByAggregateInput = {
   role?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type BarbershopStaffMembershipMinOrderByAggregateInput = {
@@ -352,6 +394,8 @@ export type BarbershopStaffMembershipMinOrderByAggregateInput = {
   role?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type BarbershopStaffMembershipScalarRelationFilter = {
@@ -462,6 +506,8 @@ export type BarbershopStaffMembershipCreateWithoutBarberProfileInput = {
   role?: string
   joinedAt?: Date | string
   isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   barbershop: Prisma.BarbershopProfileCreateNestedOneWithoutStaffInput
   compensationRules?: Prisma.StaffCompensationRuleCreateNestedManyWithoutMembershipInput
 }
@@ -472,6 +518,8 @@ export type BarbershopStaffMembershipUncheckedCreateWithoutBarberProfileInput = 
   role?: string
   joinedAt?: Date | string
   isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   compensationRules?: Prisma.StaffCompensationRuleUncheckedCreateNestedManyWithoutMembershipInput
 }
 
@@ -511,6 +559,8 @@ export type BarbershopStaffMembershipScalarWhereInput = {
   role?: Prisma.StringFilter<"BarbershopStaffMembership"> | string
   joinedAt?: Prisma.DateTimeFilter<"BarbershopStaffMembership"> | Date | string
   isActive?: Prisma.BoolFilter<"BarbershopStaffMembership"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"BarbershopStaffMembership"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BarbershopStaffMembership"> | Date | string
 }
 
 export type BarbershopStaffMembershipCreateWithoutBarbershopInput = {
@@ -518,6 +568,8 @@ export type BarbershopStaffMembershipCreateWithoutBarbershopInput = {
   role?: string
   joinedAt?: Date | string
   isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   barberProfile: Prisma.BarberProfileCreateNestedOneWithoutStaffMembershipsInput
   compensationRules?: Prisma.StaffCompensationRuleCreateNestedManyWithoutMembershipInput
 }
@@ -528,6 +580,8 @@ export type BarbershopStaffMembershipUncheckedCreateWithoutBarbershopInput = {
   role?: string
   joinedAt?: Date | string
   isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   compensationRules?: Prisma.StaffCompensationRuleUncheckedCreateNestedManyWithoutMembershipInput
 }
 
@@ -562,6 +616,8 @@ export type BarbershopStaffMembershipCreateWithoutCompensationRulesInput = {
   role?: string
   joinedAt?: Date | string
   isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
   barbershop: Prisma.BarbershopProfileCreateNestedOneWithoutStaffInput
   barberProfile: Prisma.BarberProfileCreateNestedOneWithoutStaffMembershipsInput
 }
@@ -573,6 +629,8 @@ export type BarbershopStaffMembershipUncheckedCreateWithoutCompensationRulesInpu
   role?: string
   joinedAt?: Date | string
   isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BarbershopStaffMembershipCreateOrConnectWithoutCompensationRulesInput = {
@@ -596,6 +654,8 @@ export type BarbershopStaffMembershipUpdateWithoutCompensationRulesInput = {
   role?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   barbershop?: Prisma.BarbershopProfileUpdateOneRequiredWithoutStaffNestedInput
   barberProfile?: Prisma.BarberProfileUpdateOneRequiredWithoutStaffMembershipsNestedInput
 }
@@ -607,6 +667,8 @@ export type BarbershopStaffMembershipUncheckedUpdateWithoutCompensationRulesInpu
   role?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BarbershopStaffMembershipCreateManyBarberProfileInput = {
@@ -615,6 +677,8 @@ export type BarbershopStaffMembershipCreateManyBarberProfileInput = {
   role?: string
   joinedAt?: Date | string
   isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BarbershopStaffMembershipUpdateWithoutBarberProfileInput = {
@@ -622,6 +686,8 @@ export type BarbershopStaffMembershipUpdateWithoutBarberProfileInput = {
   role?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   barbershop?: Prisma.BarbershopProfileUpdateOneRequiredWithoutStaffNestedInput
   compensationRules?: Prisma.StaffCompensationRuleUpdateManyWithoutMembershipNestedInput
 }
@@ -632,6 +698,8 @@ export type BarbershopStaffMembershipUncheckedUpdateWithoutBarberProfileInput = 
   role?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   compensationRules?: Prisma.StaffCompensationRuleUncheckedUpdateManyWithoutMembershipNestedInput
 }
 
@@ -641,6 +709,8 @@ export type BarbershopStaffMembershipUncheckedUpdateManyWithoutBarberProfileInpu
   role?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BarbershopStaffMembershipCreateManyBarbershopInput = {
@@ -649,6 +719,8 @@ export type BarbershopStaffMembershipCreateManyBarbershopInput = {
   role?: string
   joinedAt?: Date | string
   isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BarbershopStaffMembershipUpdateWithoutBarbershopInput = {
@@ -656,6 +728,8 @@ export type BarbershopStaffMembershipUpdateWithoutBarbershopInput = {
   role?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   barberProfile?: Prisma.BarberProfileUpdateOneRequiredWithoutStaffMembershipsNestedInput
   compensationRules?: Prisma.StaffCompensationRuleUpdateManyWithoutMembershipNestedInput
 }
@@ -666,6 +740,8 @@ export type BarbershopStaffMembershipUncheckedUpdateWithoutBarbershopInput = {
   role?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   compensationRules?: Prisma.StaffCompensationRuleUncheckedUpdateManyWithoutMembershipNestedInput
 }
 
@@ -675,6 +751,8 @@ export type BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopInput =
   role?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -715,6 +793,8 @@ export type BarbershopStaffMembershipSelect<ExtArgs extends runtime.Types.Extens
   role?: boolean
   joinedAt?: boolean
   isActive?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   barbershop?: boolean | Prisma.BarbershopProfileDefaultArgs<ExtArgs>
   barberProfile?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   compensationRules?: boolean | Prisma.BarbershopStaffMembership$compensationRulesArgs<ExtArgs>
@@ -728,6 +808,8 @@ export type BarbershopStaffMembershipSelectCreateManyAndReturn<ExtArgs extends r
   role?: boolean
   joinedAt?: boolean
   isActive?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   barbershop?: boolean | Prisma.BarbershopProfileDefaultArgs<ExtArgs>
   barberProfile?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["barbershopStaffMembership"]>
@@ -739,6 +821,8 @@ export type BarbershopStaffMembershipSelectUpdateManyAndReturn<ExtArgs extends r
   role?: boolean
   joinedAt?: boolean
   isActive?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   barbershop?: boolean | Prisma.BarbershopProfileDefaultArgs<ExtArgs>
   barberProfile?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["barbershopStaffMembership"]>
@@ -750,9 +834,11 @@ export type BarbershopStaffMembershipSelectScalar = {
   role?: boolean
   joinedAt?: boolean
   isActive?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type BarbershopStaffMembershipOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barbershopId" | "barberProfileId" | "role" | "joinedAt" | "isActive", ExtArgs["result"]["barbershopStaffMembership"]>
+export type BarbershopStaffMembershipOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barbershopId" | "barberProfileId" | "role" | "joinedAt" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["barbershopStaffMembership"]>
 export type BarbershopStaffMembershipInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barbershop?: boolean | Prisma.BarbershopProfileDefaultArgs<ExtArgs>
   barberProfile?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
@@ -782,6 +868,8 @@ export type $BarbershopStaffMembershipPayload<ExtArgs extends runtime.Types.Exte
     role: string
     joinedAt: Date
     isActive: boolean
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["barbershopStaffMembership"]>
   composites: {}
 }
@@ -1214,6 +1302,8 @@ export interface BarbershopStaffMembershipFieldRefs {
   readonly role: Prisma.FieldRef<"BarbershopStaffMembership", 'String'>
   readonly joinedAt: Prisma.FieldRef<"BarbershopStaffMembership", 'DateTime'>
   readonly isActive: Prisma.FieldRef<"BarbershopStaffMembership", 'Boolean'>
+  readonly createdAt: Prisma.FieldRef<"BarbershopStaffMembership", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"BarbershopStaffMembership", 'DateTime'>
 }
     
 

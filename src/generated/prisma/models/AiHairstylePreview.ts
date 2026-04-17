@@ -30,6 +30,7 @@ export type AiHairstylePreviewMinAggregateOutputType = {
   previewImageUrl: string | null
   generationStatus: string | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type AiHairstylePreviewMaxAggregateOutputType = {
@@ -38,6 +39,7 @@ export type AiHairstylePreviewMaxAggregateOutputType = {
   previewImageUrl: string | null
   generationStatus: string | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type AiHairstylePreviewCountAggregateOutputType = {
@@ -46,6 +48,7 @@ export type AiHairstylePreviewCountAggregateOutputType = {
   previewImageUrl: number
   generationStatus: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -56,6 +59,7 @@ export type AiHairstylePreviewMinAggregateInputType = {
   previewImageUrl?: true
   generationStatus?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type AiHairstylePreviewMaxAggregateInputType = {
@@ -64,6 +68,7 @@ export type AiHairstylePreviewMaxAggregateInputType = {
   previewImageUrl?: true
   generationStatus?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type AiHairstylePreviewCountAggregateInputType = {
@@ -72,6 +77,7 @@ export type AiHairstylePreviewCountAggregateInputType = {
   previewImageUrl?: true
   generationStatus?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -153,6 +159,7 @@ export type AiHairstylePreviewGroupByOutputType = {
   previewImageUrl: string | null
   generationStatus: string
   createdAt: Date
+  updatedAt: Date
   _count: AiHairstylePreviewCountAggregateOutputType | null
   _min: AiHairstylePreviewMinAggregateOutputType | null
   _max: AiHairstylePreviewMaxAggregateOutputType | null
@@ -182,6 +189,7 @@ export type AiHairstylePreviewWhereInput = {
   previewImageUrl?: Prisma.StringNullableFilter<"AiHairstylePreview"> | string | null
   generationStatus?: Prisma.StringFilter<"AiHairstylePreview"> | string
   createdAt?: Prisma.DateTimeFilter<"AiHairstylePreview"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AiHairstylePreview"> | Date | string
   recommendation?: Prisma.XOR<Prisma.AiHairstyleRecommendationScalarRelationFilter, Prisma.AiHairstyleRecommendationWhereInput>
 }
 
@@ -191,6 +199,7 @@ export type AiHairstylePreviewOrderByWithRelationInput = {
   previewImageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   generationStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   recommendation?: Prisma.AiHairstyleRecommendationOrderByWithRelationInput
 }
 
@@ -203,6 +212,7 @@ export type AiHairstylePreviewWhereUniqueInput = Prisma.AtLeast<{
   previewImageUrl?: Prisma.StringNullableFilter<"AiHairstylePreview"> | string | null
   generationStatus?: Prisma.StringFilter<"AiHairstylePreview"> | string
   createdAt?: Prisma.DateTimeFilter<"AiHairstylePreview"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AiHairstylePreview"> | Date | string
   recommendation?: Prisma.XOR<Prisma.AiHairstyleRecommendationScalarRelationFilter, Prisma.AiHairstyleRecommendationWhereInput>
 }, "id">
 
@@ -212,6 +222,7 @@ export type AiHairstylePreviewOrderByWithAggregationInput = {
   previewImageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   generationStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.AiHairstylePreviewCountOrderByAggregateInput
   _max?: Prisma.AiHairstylePreviewMaxOrderByAggregateInput
   _min?: Prisma.AiHairstylePreviewMinOrderByAggregateInput
@@ -226,6 +237,7 @@ export type AiHairstylePreviewScalarWhereWithAggregatesInput = {
   previewImageUrl?: Prisma.StringNullableWithAggregatesFilter<"AiHairstylePreview"> | string | null
   generationStatus?: Prisma.StringWithAggregatesFilter<"AiHairstylePreview"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AiHairstylePreview"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AiHairstylePreview"> | Date | string
 }
 
 export type AiHairstylePreviewCreateInput = {
@@ -233,6 +245,7 @@ export type AiHairstylePreviewCreateInput = {
   previewImageUrl?: string | null
   generationStatus?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
   recommendation: Prisma.AiHairstyleRecommendationCreateNestedOneWithoutPreviewsInput
 }
 
@@ -242,6 +255,7 @@ export type AiHairstylePreviewUncheckedCreateInput = {
   previewImageUrl?: string | null
   generationStatus?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AiHairstylePreviewUpdateInput = {
@@ -249,6 +263,7 @@ export type AiHairstylePreviewUpdateInput = {
   previewImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   generationStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recommendation?: Prisma.AiHairstyleRecommendationUpdateOneRequiredWithoutPreviewsNestedInput
 }
 
@@ -258,6 +273,7 @@ export type AiHairstylePreviewUncheckedUpdateInput = {
   previewImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   generationStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AiHairstylePreviewCreateManyInput = {
@@ -266,6 +282,7 @@ export type AiHairstylePreviewCreateManyInput = {
   previewImageUrl?: string | null
   generationStatus?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AiHairstylePreviewUpdateManyMutationInput = {
@@ -273,6 +290,7 @@ export type AiHairstylePreviewUpdateManyMutationInput = {
   previewImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   generationStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AiHairstylePreviewUncheckedUpdateManyInput = {
@@ -281,6 +299,7 @@ export type AiHairstylePreviewUncheckedUpdateManyInput = {
   previewImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   generationStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AiHairstylePreviewListRelationFilter = {
@@ -299,6 +318,7 @@ export type AiHairstylePreviewCountOrderByAggregateInput = {
   previewImageUrl?: Prisma.SortOrder
   generationStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type AiHairstylePreviewMaxOrderByAggregateInput = {
@@ -307,6 +327,7 @@ export type AiHairstylePreviewMaxOrderByAggregateInput = {
   previewImageUrl?: Prisma.SortOrder
   generationStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type AiHairstylePreviewMinOrderByAggregateInput = {
@@ -315,6 +336,7 @@ export type AiHairstylePreviewMinOrderByAggregateInput = {
   previewImageUrl?: Prisma.SortOrder
   generationStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type AiHairstylePreviewCreateNestedManyWithoutRecommendationInput = {
@@ -364,6 +386,7 @@ export type AiHairstylePreviewCreateWithoutRecommendationInput = {
   previewImageUrl?: string | null
   generationStatus?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AiHairstylePreviewUncheckedCreateWithoutRecommendationInput = {
@@ -371,6 +394,7 @@ export type AiHairstylePreviewUncheckedCreateWithoutRecommendationInput = {
   previewImageUrl?: string | null
   generationStatus?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AiHairstylePreviewCreateOrConnectWithoutRecommendationInput = {
@@ -408,6 +432,7 @@ export type AiHairstylePreviewScalarWhereInput = {
   previewImageUrl?: Prisma.StringNullableFilter<"AiHairstylePreview"> | string | null
   generationStatus?: Prisma.StringFilter<"AiHairstylePreview"> | string
   createdAt?: Prisma.DateTimeFilter<"AiHairstylePreview"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AiHairstylePreview"> | Date | string
 }
 
 export type AiHairstylePreviewCreateManyRecommendationInput = {
@@ -415,6 +440,7 @@ export type AiHairstylePreviewCreateManyRecommendationInput = {
   previewImageUrl?: string | null
   generationStatus?: string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AiHairstylePreviewUpdateWithoutRecommendationInput = {
@@ -422,6 +448,7 @@ export type AiHairstylePreviewUpdateWithoutRecommendationInput = {
   previewImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   generationStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AiHairstylePreviewUncheckedUpdateWithoutRecommendationInput = {
@@ -429,6 +456,7 @@ export type AiHairstylePreviewUncheckedUpdateWithoutRecommendationInput = {
   previewImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   generationStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AiHairstylePreviewUncheckedUpdateManyWithoutRecommendationInput = {
@@ -436,6 +464,7 @@ export type AiHairstylePreviewUncheckedUpdateManyWithoutRecommendationInput = {
   previewImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   generationStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -446,6 +475,7 @@ export type AiHairstylePreviewSelect<ExtArgs extends runtime.Types.Extensions.In
   previewImageUrl?: boolean
   generationStatus?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   recommendation?: boolean | Prisma.AiHairstyleRecommendationDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["aiHairstylePreview"]>
 
@@ -455,6 +485,7 @@ export type AiHairstylePreviewSelectCreateManyAndReturn<ExtArgs extends runtime.
   previewImageUrl?: boolean
   generationStatus?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   recommendation?: boolean | Prisma.AiHairstyleRecommendationDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["aiHairstylePreview"]>
 
@@ -464,6 +495,7 @@ export type AiHairstylePreviewSelectUpdateManyAndReturn<ExtArgs extends runtime.
   previewImageUrl?: boolean
   generationStatus?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   recommendation?: boolean | Prisma.AiHairstyleRecommendationDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["aiHairstylePreview"]>
 
@@ -473,9 +505,10 @@ export type AiHairstylePreviewSelectScalar = {
   previewImageUrl?: boolean
   generationStatus?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type AiHairstylePreviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "recommendationId" | "previewImageUrl" | "generationStatus" | "createdAt", ExtArgs["result"]["aiHairstylePreview"]>
+export type AiHairstylePreviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "recommendationId" | "previewImageUrl" | "generationStatus" | "createdAt" | "updatedAt", ExtArgs["result"]["aiHairstylePreview"]>
 export type AiHairstylePreviewInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   recommendation?: boolean | Prisma.AiHairstyleRecommendationDefaultArgs<ExtArgs>
 }
@@ -497,6 +530,7 @@ export type $AiHairstylePreviewPayload<ExtArgs extends runtime.Types.Extensions.
     previewImageUrl: string | null
     generationStatus: string
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["aiHairstylePreview"]>
   composites: {}
 }
@@ -926,6 +960,7 @@ export interface AiHairstylePreviewFieldRefs {
   readonly previewImageUrl: Prisma.FieldRef<"AiHairstylePreview", 'String'>
   readonly generationStatus: Prisma.FieldRef<"AiHairstylePreview", 'String'>
   readonly createdAt: Prisma.FieldRef<"AiHairstylePreview", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"AiHairstylePreview", 'DateTime'>
 }
     
 

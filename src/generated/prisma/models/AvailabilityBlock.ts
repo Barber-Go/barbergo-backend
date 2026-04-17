@@ -32,6 +32,7 @@ export type AvailabilityBlockMinAggregateOutputType = {
   startAt: Date | null
   endAt: Date | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type AvailabilityBlockMaxAggregateOutputType = {
@@ -42,6 +43,7 @@ export type AvailabilityBlockMaxAggregateOutputType = {
   startAt: Date | null
   endAt: Date | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type AvailabilityBlockCountAggregateOutputType = {
@@ -52,6 +54,7 @@ export type AvailabilityBlockCountAggregateOutputType = {
   startAt: number
   endAt: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -64,6 +67,7 @@ export type AvailabilityBlockMinAggregateInputType = {
   startAt?: true
   endAt?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type AvailabilityBlockMaxAggregateInputType = {
@@ -74,6 +78,7 @@ export type AvailabilityBlockMaxAggregateInputType = {
   startAt?: true
   endAt?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type AvailabilityBlockCountAggregateInputType = {
@@ -84,6 +89,7 @@ export type AvailabilityBlockCountAggregateInputType = {
   startAt?: true
   endAt?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -167,6 +173,7 @@ export type AvailabilityBlockGroupByOutputType = {
   startAt: Date
   endAt: Date
   createdAt: Date
+  updatedAt: Date
   _count: AvailabilityBlockCountAggregateOutputType | null
   _min: AvailabilityBlockMinAggregateOutputType | null
   _max: AvailabilityBlockMaxAggregateOutputType | null
@@ -198,6 +205,7 @@ export type AvailabilityBlockWhereInput = {
   startAt?: Prisma.DateTimeFilter<"AvailabilityBlock"> | Date | string
   endAt?: Prisma.DateTimeFilter<"AvailabilityBlock"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"AvailabilityBlock"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AvailabilityBlock"> | Date | string
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
 }
 
@@ -209,6 +217,7 @@ export type AvailabilityBlockOrderByWithRelationInput = {
   startAt?: Prisma.SortOrder
   endAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   barber?: Prisma.BarberProfileOrderByWithRelationInput
 }
 
@@ -223,6 +232,7 @@ export type AvailabilityBlockWhereUniqueInput = Prisma.AtLeast<{
   startAt?: Prisma.DateTimeFilter<"AvailabilityBlock"> | Date | string
   endAt?: Prisma.DateTimeFilter<"AvailabilityBlock"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"AvailabilityBlock"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AvailabilityBlock"> | Date | string
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
 }, "id">
 
@@ -234,6 +244,7 @@ export type AvailabilityBlockOrderByWithAggregationInput = {
   startAt?: Prisma.SortOrder
   endAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.AvailabilityBlockCountOrderByAggregateInput
   _max?: Prisma.AvailabilityBlockMaxOrderByAggregateInput
   _min?: Prisma.AvailabilityBlockMinOrderByAggregateInput
@@ -250,6 +261,7 @@ export type AvailabilityBlockScalarWhereWithAggregatesInput = {
   startAt?: Prisma.DateTimeWithAggregatesFilter<"AvailabilityBlock"> | Date | string
   endAt?: Prisma.DateTimeWithAggregatesFilter<"AvailabilityBlock"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AvailabilityBlock"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AvailabilityBlock"> | Date | string
 }
 
 export type AvailabilityBlockCreateInput = {
@@ -259,6 +271,7 @@ export type AvailabilityBlockCreateInput = {
   startAt: Date | string
   endAt: Date | string
   createdAt?: Date | string
+  updatedAt?: Date | string
   barber: Prisma.BarberProfileCreateNestedOneWithoutBlocksInput
 }
 
@@ -270,6 +283,7 @@ export type AvailabilityBlockUncheckedCreateInput = {
   startAt: Date | string
   endAt: Date | string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AvailabilityBlockUpdateInput = {
@@ -279,6 +293,7 @@ export type AvailabilityBlockUpdateInput = {
   startAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBlocksNestedInput
 }
 
@@ -290,6 +305,7 @@ export type AvailabilityBlockUncheckedUpdateInput = {
   startAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AvailabilityBlockCreateManyInput = {
@@ -300,6 +316,7 @@ export type AvailabilityBlockCreateManyInput = {
   startAt: Date | string
   endAt: Date | string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AvailabilityBlockUpdateManyMutationInput = {
@@ -309,6 +326,7 @@ export type AvailabilityBlockUpdateManyMutationInput = {
   startAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AvailabilityBlockUncheckedUpdateManyInput = {
@@ -319,6 +337,7 @@ export type AvailabilityBlockUncheckedUpdateManyInput = {
   startAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AvailabilityBlockListRelationFilter = {
@@ -339,6 +358,7 @@ export type AvailabilityBlockCountOrderByAggregateInput = {
   startAt?: Prisma.SortOrder
   endAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type AvailabilityBlockMaxOrderByAggregateInput = {
@@ -349,6 +369,7 @@ export type AvailabilityBlockMaxOrderByAggregateInput = {
   startAt?: Prisma.SortOrder
   endAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type AvailabilityBlockMinOrderByAggregateInput = {
@@ -359,6 +380,7 @@ export type AvailabilityBlockMinOrderByAggregateInput = {
   startAt?: Prisma.SortOrder
   endAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type AvailabilityBlockCreateNestedManyWithoutBarberInput = {
@@ -414,6 +436,7 @@ export type AvailabilityBlockCreateWithoutBarberInput = {
   startAt: Date | string
   endAt: Date | string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AvailabilityBlockUncheckedCreateWithoutBarberInput = {
@@ -423,6 +446,7 @@ export type AvailabilityBlockUncheckedCreateWithoutBarberInput = {
   startAt: Date | string
   endAt: Date | string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AvailabilityBlockCreateOrConnectWithoutBarberInput = {
@@ -462,6 +486,7 @@ export type AvailabilityBlockScalarWhereInput = {
   startAt?: Prisma.DateTimeFilter<"AvailabilityBlock"> | Date | string
   endAt?: Prisma.DateTimeFilter<"AvailabilityBlock"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"AvailabilityBlock"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AvailabilityBlock"> | Date | string
 }
 
 export type AvailabilityBlockCreateManyBarberInput = {
@@ -471,6 +496,7 @@ export type AvailabilityBlockCreateManyBarberInput = {
   startAt: Date | string
   endAt: Date | string
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AvailabilityBlockUpdateWithoutBarberInput = {
@@ -480,6 +506,7 @@ export type AvailabilityBlockUpdateWithoutBarberInput = {
   startAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AvailabilityBlockUncheckedUpdateWithoutBarberInput = {
@@ -489,6 +516,7 @@ export type AvailabilityBlockUncheckedUpdateWithoutBarberInput = {
   startAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AvailabilityBlockUncheckedUpdateManyWithoutBarberInput = {
@@ -498,6 +526,7 @@ export type AvailabilityBlockUncheckedUpdateManyWithoutBarberInput = {
   startAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -510,6 +539,7 @@ export type AvailabilityBlockSelect<ExtArgs extends runtime.Types.Extensions.Int
   startAt?: boolean
   endAt?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["availabilityBlock"]>
 
@@ -521,6 +551,7 @@ export type AvailabilityBlockSelectCreateManyAndReturn<ExtArgs extends runtime.T
   startAt?: boolean
   endAt?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["availabilityBlock"]>
 
@@ -532,6 +563,7 @@ export type AvailabilityBlockSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   startAt?: boolean
   endAt?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["availabilityBlock"]>
 
@@ -543,9 +575,10 @@ export type AvailabilityBlockSelectScalar = {
   startAt?: boolean
   endAt?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type AvailabilityBlockOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "type" | "label" | "startAt" | "endAt" | "createdAt", ExtArgs["result"]["availabilityBlock"]>
+export type AvailabilityBlockOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "type" | "label" | "startAt" | "endAt" | "createdAt" | "updatedAt", ExtArgs["result"]["availabilityBlock"]>
 export type AvailabilityBlockInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }
@@ -569,6 +602,7 @@ export type $AvailabilityBlockPayload<ExtArgs extends runtime.Types.Extensions.I
     startAt: Date
     endAt: Date
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["availabilityBlock"]>
   composites: {}
 }
@@ -1000,6 +1034,7 @@ export interface AvailabilityBlockFieldRefs {
   readonly startAt: Prisma.FieldRef<"AvailabilityBlock", 'DateTime'>
   readonly endAt: Prisma.FieldRef<"AvailabilityBlock", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"AvailabilityBlock", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"AvailabilityBlock", 'DateTime'>
 }
     
 

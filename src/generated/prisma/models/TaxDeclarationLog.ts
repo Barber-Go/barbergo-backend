@@ -30,6 +30,7 @@ export type TaxDeclarationLogMinAggregateOutputType = {
   action: string | null
   performedBy: string | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type TaxDeclarationLogMaxAggregateOutputType = {
@@ -38,6 +39,7 @@ export type TaxDeclarationLogMaxAggregateOutputType = {
   action: string | null
   performedBy: string | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type TaxDeclarationLogCountAggregateOutputType = {
@@ -47,6 +49,7 @@ export type TaxDeclarationLogCountAggregateOutputType = {
   performedBy: number
   metadata: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -57,6 +60,7 @@ export type TaxDeclarationLogMinAggregateInputType = {
   action?: true
   performedBy?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type TaxDeclarationLogMaxAggregateInputType = {
@@ -65,6 +69,7 @@ export type TaxDeclarationLogMaxAggregateInputType = {
   action?: true
   performedBy?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type TaxDeclarationLogCountAggregateInputType = {
@@ -74,6 +79,7 @@ export type TaxDeclarationLogCountAggregateInputType = {
   performedBy?: true
   metadata?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -156,6 +162,7 @@ export type TaxDeclarationLogGroupByOutputType = {
   performedBy: string | null
   metadata: runtime.JsonValue | null
   createdAt: Date
+  updatedAt: Date
   _count: TaxDeclarationLogCountAggregateOutputType | null
   _min: TaxDeclarationLogMinAggregateOutputType | null
   _max: TaxDeclarationLogMaxAggregateOutputType | null
@@ -186,6 +193,7 @@ export type TaxDeclarationLogWhereInput = {
   performedBy?: Prisma.StringNullableFilter<"TaxDeclarationLog"> | string | null
   metadata?: Prisma.JsonNullableFilter<"TaxDeclarationLog">
   createdAt?: Prisma.DateTimeFilter<"TaxDeclarationLog"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"TaxDeclarationLog"> | Date | string
   obligation?: Prisma.XOR<Prisma.TaxObligationScalarRelationFilter, Prisma.TaxObligationWhereInput>
 }
 
@@ -196,6 +204,7 @@ export type TaxDeclarationLogOrderByWithRelationInput = {
   performedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   metadata?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   obligation?: Prisma.TaxObligationOrderByWithRelationInput
 }
 
@@ -209,6 +218,7 @@ export type TaxDeclarationLogWhereUniqueInput = Prisma.AtLeast<{
   performedBy?: Prisma.StringNullableFilter<"TaxDeclarationLog"> | string | null
   metadata?: Prisma.JsonNullableFilter<"TaxDeclarationLog">
   createdAt?: Prisma.DateTimeFilter<"TaxDeclarationLog"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"TaxDeclarationLog"> | Date | string
   obligation?: Prisma.XOR<Prisma.TaxObligationScalarRelationFilter, Prisma.TaxObligationWhereInput>
 }, "id">
 
@@ -219,6 +229,7 @@ export type TaxDeclarationLogOrderByWithAggregationInput = {
   performedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   metadata?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.TaxDeclarationLogCountOrderByAggregateInput
   _max?: Prisma.TaxDeclarationLogMaxOrderByAggregateInput
   _min?: Prisma.TaxDeclarationLogMinOrderByAggregateInput
@@ -234,6 +245,7 @@ export type TaxDeclarationLogScalarWhereWithAggregatesInput = {
   performedBy?: Prisma.StringNullableWithAggregatesFilter<"TaxDeclarationLog"> | string | null
   metadata?: Prisma.JsonNullableWithAggregatesFilter<"TaxDeclarationLog">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TaxDeclarationLog"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TaxDeclarationLog"> | Date | string
 }
 
 export type TaxDeclarationLogCreateInput = {
@@ -242,6 +254,7 @@ export type TaxDeclarationLogCreateInput = {
   performedBy?: string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   obligation: Prisma.TaxObligationCreateNestedOneWithoutLogsInput
 }
 
@@ -252,6 +265,7 @@ export type TaxDeclarationLogUncheckedCreateInput = {
   performedBy?: string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TaxDeclarationLogUpdateInput = {
@@ -260,6 +274,7 @@ export type TaxDeclarationLogUpdateInput = {
   performedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   obligation?: Prisma.TaxObligationUpdateOneRequiredWithoutLogsNestedInput
 }
 
@@ -270,6 +285,7 @@ export type TaxDeclarationLogUncheckedUpdateInput = {
   performedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TaxDeclarationLogCreateManyInput = {
@@ -279,6 +295,7 @@ export type TaxDeclarationLogCreateManyInput = {
   performedBy?: string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TaxDeclarationLogUpdateManyMutationInput = {
@@ -287,6 +304,7 @@ export type TaxDeclarationLogUpdateManyMutationInput = {
   performedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TaxDeclarationLogUncheckedUpdateManyInput = {
@@ -296,6 +314,7 @@ export type TaxDeclarationLogUncheckedUpdateManyInput = {
   performedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TaxDeclarationLogListRelationFilter = {
@@ -315,6 +334,7 @@ export type TaxDeclarationLogCountOrderByAggregateInput = {
   performedBy?: Prisma.SortOrder
   metadata?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type TaxDeclarationLogMaxOrderByAggregateInput = {
@@ -323,6 +343,7 @@ export type TaxDeclarationLogMaxOrderByAggregateInput = {
   action?: Prisma.SortOrder
   performedBy?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type TaxDeclarationLogMinOrderByAggregateInput = {
@@ -331,6 +352,7 @@ export type TaxDeclarationLogMinOrderByAggregateInput = {
   action?: Prisma.SortOrder
   performedBy?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type TaxDeclarationLogCreateNestedManyWithoutObligationInput = {
@@ -381,6 +403,7 @@ export type TaxDeclarationLogCreateWithoutObligationInput = {
   performedBy?: string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TaxDeclarationLogUncheckedCreateWithoutObligationInput = {
@@ -389,6 +412,7 @@ export type TaxDeclarationLogUncheckedCreateWithoutObligationInput = {
   performedBy?: string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TaxDeclarationLogCreateOrConnectWithoutObligationInput = {
@@ -427,6 +451,7 @@ export type TaxDeclarationLogScalarWhereInput = {
   performedBy?: Prisma.StringNullableFilter<"TaxDeclarationLog"> | string | null
   metadata?: Prisma.JsonNullableFilter<"TaxDeclarationLog">
   createdAt?: Prisma.DateTimeFilter<"TaxDeclarationLog"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"TaxDeclarationLog"> | Date | string
 }
 
 export type TaxDeclarationLogCreateManyObligationInput = {
@@ -435,6 +460,7 @@ export type TaxDeclarationLogCreateManyObligationInput = {
   performedBy?: string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type TaxDeclarationLogUpdateWithoutObligationInput = {
@@ -443,6 +469,7 @@ export type TaxDeclarationLogUpdateWithoutObligationInput = {
   performedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TaxDeclarationLogUncheckedUpdateWithoutObligationInput = {
@@ -451,6 +478,7 @@ export type TaxDeclarationLogUncheckedUpdateWithoutObligationInput = {
   performedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TaxDeclarationLogUncheckedUpdateManyWithoutObligationInput = {
@@ -459,6 +487,7 @@ export type TaxDeclarationLogUncheckedUpdateManyWithoutObligationInput = {
   performedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -470,6 +499,7 @@ export type TaxDeclarationLogSelect<ExtArgs extends runtime.Types.Extensions.Int
   performedBy?: boolean
   metadata?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   obligation?: boolean | Prisma.TaxObligationDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["taxDeclarationLog"]>
 
@@ -480,6 +510,7 @@ export type TaxDeclarationLogSelectCreateManyAndReturn<ExtArgs extends runtime.T
   performedBy?: boolean
   metadata?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   obligation?: boolean | Prisma.TaxObligationDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["taxDeclarationLog"]>
 
@@ -490,6 +521,7 @@ export type TaxDeclarationLogSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   performedBy?: boolean
   metadata?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   obligation?: boolean | Prisma.TaxObligationDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["taxDeclarationLog"]>
 
@@ -500,9 +532,10 @@ export type TaxDeclarationLogSelectScalar = {
   performedBy?: boolean
   metadata?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type TaxDeclarationLogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "obligationId" | "action" | "performedBy" | "metadata" | "createdAt", ExtArgs["result"]["taxDeclarationLog"]>
+export type TaxDeclarationLogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "obligationId" | "action" | "performedBy" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["taxDeclarationLog"]>
 export type TaxDeclarationLogInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   obligation?: boolean | Prisma.TaxObligationDefaultArgs<ExtArgs>
 }
@@ -525,6 +558,7 @@ export type $TaxDeclarationLogPayload<ExtArgs extends runtime.Types.Extensions.I
     performedBy: string | null
     metadata: runtime.JsonValue | null
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["taxDeclarationLog"]>
   composites: {}
 }
@@ -955,6 +989,7 @@ export interface TaxDeclarationLogFieldRefs {
   readonly performedBy: Prisma.FieldRef<"TaxDeclarationLog", 'String'>
   readonly metadata: Prisma.FieldRef<"TaxDeclarationLog", 'Json'>
   readonly createdAt: Prisma.FieldRef<"TaxDeclarationLog", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"TaxDeclarationLog", 'DateTime'>
 }
     
 

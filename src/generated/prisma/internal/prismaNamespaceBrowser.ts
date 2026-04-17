@@ -51,6 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Tenant: 'Tenant',
   User: 'User',
   ClientProfile: 'ClientProfile',
   BarberProfile: 'BarberProfile',
@@ -106,6 +107,22 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const TenantScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  legalName: 'legalName',
+  country: 'country',
+  currency: 'currency',
+  status: 'status',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type TenantScalarFieldEnum = (typeof TenantScalarFieldEnum)[keyof typeof TenantScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
@@ -118,6 +135,8 @@ export const UserScalarFieldEnum = {
   isVerified: 'isVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt',
+  tenantId: 'tenantId',
   taxModuleEnabled: 'taxModuleEnabled',
   taxModuleActivatedAt: 'taxModuleActivatedAt'
 } as const
@@ -130,7 +149,8 @@ export const ClientProfileScalarFieldEnum = {
   userId: 'userId',
   preferredRadius: 'preferredRadius',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 } as const
 
 export type ClientProfileScalarFieldEnum = (typeof ClientProfileScalarFieldEnum)[keyof typeof ClientProfileScalarFieldEnum]
@@ -152,7 +172,8 @@ export const BarberProfileScalarFieldEnum = {
   tipoClaveSii: 'tipoClaveSii',
   claveTributaria: 'claveTributaria',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 } as const
 
 export type BarberProfileScalarFieldEnum = (typeof BarberProfileScalarFieldEnum)[keyof typeof BarberProfileScalarFieldEnum]
@@ -172,9 +193,14 @@ export const BarbershopProfileScalarFieldEnum = {
   inviteCode: 'inviteCode',
   isActive: 'isActive',
   status: 'status',
+  timezone: 'timezone',
+  currency: 'currency',
+  country: 'country',
   scheduleJson: 'scheduleJson',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt',
+  tenantId: 'tenantId'
 } as const
 
 export type BarbershopProfileScalarFieldEnum = (typeof BarbershopProfileScalarFieldEnum)[keyof typeof BarbershopProfileScalarFieldEnum]
@@ -186,7 +212,9 @@ export const BarbershopStaffMembershipScalarFieldEnum = {
   barberProfileId: 'barberProfileId',
   role: 'role',
   joinedAt: 'joinedAt',
-  isActive: 'isActive'
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type BarbershopStaffMembershipScalarFieldEnum = (typeof BarbershopStaffMembershipScalarFieldEnum)[keyof typeof BarbershopStaffMembershipScalarFieldEnum]
@@ -198,7 +226,8 @@ export const StaffCompensationRuleScalarFieldEnum = {
   label: 'label',
   percentage: 'percentage',
   isActive: 'isActive',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type StaffCompensationRuleScalarFieldEnum = (typeof StaffCompensationRuleScalarFieldEnum)[keyof typeof StaffCompensationRuleScalarFieldEnum]
@@ -213,7 +242,8 @@ export const ServiceItemScalarFieldEnum = {
   durationMin: 'durationMin',
   isActive: 'isActive',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 } as const
 
 export type ServiceItemScalarFieldEnum = (typeof ServiceItemScalarFieldEnum)[keyof typeof ServiceItemScalarFieldEnum]
@@ -225,7 +255,9 @@ export const WeeklyAvailabilityScalarFieldEnum = {
   dayOfWeek: 'dayOfWeek',
   startTime: 'startTime',
   endTime: 'endTime',
-  isActive: 'isActive'
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type WeeklyAvailabilityScalarFieldEnum = (typeof WeeklyAvailabilityScalarFieldEnum)[keyof typeof WeeklyAvailabilityScalarFieldEnum]
@@ -238,7 +270,8 @@ export const AvailabilityBlockScalarFieldEnum = {
   label: 'label',
   startAt: 'startAt',
   endAt: 'endAt',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type AvailabilityBlockScalarFieldEnum = (typeof AvailabilityBlockScalarFieldEnum)[keyof typeof AvailabilityBlockScalarFieldEnum]
@@ -255,7 +288,8 @@ export const ManualBookingScalarFieldEnum = {
   note: 'note',
   paymentMethod: 'paymentMethod',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 } as const
 
 export type ManualBookingScalarFieldEnum = (typeof ManualBookingScalarFieldEnum)[keyof typeof ManualBookingScalarFieldEnum]
@@ -269,6 +303,7 @@ export const BookingScalarFieldEnum = {
   scheduledAt: 'scheduledAt',
   status: 'status',
   paymentMethod: 'paymentMethod',
+  currency: 'currency',
   totalAmount: 'totalAmount',
   platformFee: 'platformFee',
   barberNet: 'barberNet',
@@ -286,8 +321,10 @@ export const BookingScalarFieldEnum = {
   boletaAnuladaAt: 'boletaAnuladaAt',
   boletaAnulMotivo: 'boletaAnulMotivo',
   boletaTipo: 'boletaTipo',
+  barbershopId: 'barbershopId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 } as const
 
 export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
@@ -298,7 +335,8 @@ export const ChatThreadScalarFieldEnum = {
   bookingId: 'bookingId',
   threadType: 'threadType',
   status: 'status',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ChatThreadScalarFieldEnum = (typeof ChatThreadScalarFieldEnum)[keyof typeof ChatThreadScalarFieldEnum]
@@ -309,7 +347,9 @@ export const ChatParticipantScalarFieldEnum = {
   threadId: 'threadId',
   userId: 'userId',
   roleInThread: 'roleInThread',
-  lastReadAt: 'lastReadAt'
+  lastReadAt: 'lastReadAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ChatParticipantScalarFieldEnum = (typeof ChatParticipantScalarFieldEnum)[keyof typeof ChatParticipantScalarFieldEnum]
@@ -323,6 +363,7 @@ export const ChatMessageScalarFieldEnum = {
   body: 'body',
   metadataJson: 'metadataJson',
   createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
 } as const
 
@@ -336,7 +377,8 @@ export const PaymentScalarFieldEnum = {
   amount: 'amount',
   status: 'status',
   transactionRef: 'transactionRef',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
@@ -349,7 +391,9 @@ export const ReviewScalarFieldEnum = {
   barberId: 'barberId',
   rating: 'rating',
   comment: 'comment',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
@@ -362,7 +406,8 @@ export const NotificationScalarFieldEnum = {
   title: 'title',
   body: 'body',
   isRead: 'isRead',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
@@ -375,7 +420,8 @@ export const BarberPortfolioItemScalarFieldEnum = {
   description: 'description',
   isFeatured: 'isFeatured',
   visibility: 'visibility',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type BarberPortfolioItemScalarFieldEnum = (typeof BarberPortfolioItemScalarFieldEnum)[keyof typeof BarberPortfolioItemScalarFieldEnum]
@@ -388,7 +434,8 @@ export const BarberPortfolioMediaScalarFieldEnum = {
   url: 'url',
   thumbnailUrl: 'thumbnailUrl',
   sortOrder: 'sortOrder',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type BarberPortfolioMediaScalarFieldEnum = (typeof BarberPortfolioMediaScalarFieldEnum)[keyof typeof BarberPortfolioMediaScalarFieldEnum]
@@ -403,7 +450,8 @@ export const EarningScalarFieldEnum = {
   platformFee: 'platformFee',
   netAmount: 'netAmount',
   paymentMethod: 'paymentMethod',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type EarningScalarFieldEnum = (typeof EarningScalarFieldEnum)[keyof typeof EarningScalarFieldEnum]
@@ -417,7 +465,10 @@ export const ExpenseScalarFieldEnum = {
   amount: 'amount',
   date: 'date',
   receiptUrl: 'receiptUrl',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt',
+  barbershopId: 'barbershopId'
 } as const
 
 export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
@@ -430,7 +481,10 @@ export const DailyLedgerEntryScalarFieldEnum = {
   type: 'type',
   label: 'label',
   amount: 'amount',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt',
+  barbershopId: 'barbershopId'
 } as const
 
 export type DailyLedgerEntryScalarFieldEnum = (typeof DailyLedgerEntryScalarFieldEnum)[keyof typeof DailyLedgerEntryScalarFieldEnum]
@@ -441,7 +495,8 @@ export const FollowScalarFieldEnum = {
   followerId: 'followerId',
   followedType: 'followedType',
   followedId: 'followedId',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type FollowScalarFieldEnum = (typeof FollowScalarFieldEnum)[keyof typeof FollowScalarFieldEnum]
@@ -466,7 +521,8 @@ export const RewardsCatalogScalarFieldEnum = {
   description: 'description',
   pointsCost: 'pointsCost',
   isActive: 'isActive',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type RewardsCatalogScalarFieldEnum = (typeof RewardsCatalogScalarFieldEnum)[keyof typeof RewardsCatalogScalarFieldEnum]
@@ -491,7 +547,9 @@ export const CommunityMembershipScalarFieldEnum = {
   communityId: 'communityId',
   userId: 'userId',
   role: 'role',
-  joinedAt: 'joinedAt'
+  joinedAt: 'joinedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type CommunityMembershipScalarFieldEnum = (typeof CommunityMembershipScalarFieldEnum)[keyof typeof CommunityMembershipScalarFieldEnum]
@@ -515,7 +573,9 @@ export type CommunityPostScalarFieldEnum = (typeof CommunityPostScalarFieldEnum)
 export const CommunityTopicTagScalarFieldEnum = {
   id: 'id',
   communityId: 'communityId',
-  name: 'name'
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type CommunityTopicTagScalarFieldEnum = (typeof CommunityTopicTagScalarFieldEnum)[keyof typeof CommunityTopicTagScalarFieldEnum]
@@ -540,7 +600,8 @@ export const AiFaceAnalysisScalarFieldEnum = {
   faceShape: 'faceShape',
   confidence: 'confidence',
   attributesJson: 'attributesJson',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type AiFaceAnalysisScalarFieldEnum = (typeof AiFaceAnalysisScalarFieldEnum)[keyof typeof AiFaceAnalysisScalarFieldEnum]
@@ -553,7 +614,8 @@ export const AiHairstyleRecommendationScalarFieldEnum = {
   rationale: 'rationale',
   score: 'score',
   tags: 'tags',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type AiHairstyleRecommendationScalarFieldEnum = (typeof AiHairstyleRecommendationScalarFieldEnum)[keyof typeof AiHairstyleRecommendationScalarFieldEnum]
@@ -564,7 +626,8 @@ export const AiHairstylePreviewScalarFieldEnum = {
   recommendationId: 'recommendationId',
   previewImageUrl: 'previewImageUrl',
   generationStatus: 'generationStatus',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type AiHairstylePreviewScalarFieldEnum = (typeof AiHairstylePreviewScalarFieldEnum)[keyof typeof AiHairstylePreviewScalarFieldEnum]
@@ -626,7 +689,8 @@ export const TaxDeclarationLogScalarFieldEnum = {
   action: 'action',
   performedBy: 'performedBy',
   metadata: 'metadata',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type TaxDeclarationLogScalarFieldEnum = (typeof TaxDeclarationLogScalarFieldEnum)[keyof typeof TaxDeclarationLogScalarFieldEnum]
@@ -672,14 +736,6 @@ export const QueryMode = {
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
 export const JsonNullValueFilter = {
   DbNull: DbNull,
   JsonNull: JsonNull,
@@ -687,4 +743,12 @@ export const JsonNullValueFilter = {
 } as const
 
 export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

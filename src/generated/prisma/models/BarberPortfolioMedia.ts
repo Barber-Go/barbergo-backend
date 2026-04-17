@@ -42,6 +42,7 @@ export type BarberPortfolioMediaMinAggregateOutputType = {
   thumbnailUrl: string | null
   sortOrder: number | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type BarberPortfolioMediaMaxAggregateOutputType = {
@@ -52,6 +53,7 @@ export type BarberPortfolioMediaMaxAggregateOutputType = {
   thumbnailUrl: string | null
   sortOrder: number | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type BarberPortfolioMediaCountAggregateOutputType = {
@@ -62,6 +64,7 @@ export type BarberPortfolioMediaCountAggregateOutputType = {
   thumbnailUrl: number
   sortOrder: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -82,6 +85,7 @@ export type BarberPortfolioMediaMinAggregateInputType = {
   thumbnailUrl?: true
   sortOrder?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type BarberPortfolioMediaMaxAggregateInputType = {
@@ -92,6 +96,7 @@ export type BarberPortfolioMediaMaxAggregateInputType = {
   thumbnailUrl?: true
   sortOrder?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type BarberPortfolioMediaCountAggregateInputType = {
@@ -102,6 +107,7 @@ export type BarberPortfolioMediaCountAggregateInputType = {
   thumbnailUrl?: true
   sortOrder?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -199,6 +205,7 @@ export type BarberPortfolioMediaGroupByOutputType = {
   thumbnailUrl: string | null
   sortOrder: number
   createdAt: Date
+  updatedAt: Date
   _count: BarberPortfolioMediaCountAggregateOutputType | null
   _avg: BarberPortfolioMediaAvgAggregateOutputType | null
   _sum: BarberPortfolioMediaSumAggregateOutputType | null
@@ -232,6 +239,7 @@ export type BarberPortfolioMediaWhereInput = {
   thumbnailUrl?: Prisma.StringNullableFilter<"BarberPortfolioMedia"> | string | null
   sortOrder?: Prisma.IntFilter<"BarberPortfolioMedia"> | number
   createdAt?: Prisma.DateTimeFilter<"BarberPortfolioMedia"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BarberPortfolioMedia"> | Date | string
   portfolioItem?: Prisma.XOR<Prisma.BarberPortfolioItemScalarRelationFilter, Prisma.BarberPortfolioItemWhereInput>
 }
 
@@ -243,6 +251,7 @@ export type BarberPortfolioMediaOrderByWithRelationInput = {
   thumbnailUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   portfolioItem?: Prisma.BarberPortfolioItemOrderByWithRelationInput
 }
 
@@ -257,6 +266,7 @@ export type BarberPortfolioMediaWhereUniqueInput = Prisma.AtLeast<{
   thumbnailUrl?: Prisma.StringNullableFilter<"BarberPortfolioMedia"> | string | null
   sortOrder?: Prisma.IntFilter<"BarberPortfolioMedia"> | number
   createdAt?: Prisma.DateTimeFilter<"BarberPortfolioMedia"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BarberPortfolioMedia"> | Date | string
   portfolioItem?: Prisma.XOR<Prisma.BarberPortfolioItemScalarRelationFilter, Prisma.BarberPortfolioItemWhereInput>
 }, "id">
 
@@ -268,6 +278,7 @@ export type BarberPortfolioMediaOrderByWithAggregationInput = {
   thumbnailUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.BarberPortfolioMediaCountOrderByAggregateInput
   _avg?: Prisma.BarberPortfolioMediaAvgOrderByAggregateInput
   _max?: Prisma.BarberPortfolioMediaMaxOrderByAggregateInput
@@ -286,6 +297,7 @@ export type BarberPortfolioMediaScalarWhereWithAggregatesInput = {
   thumbnailUrl?: Prisma.StringNullableWithAggregatesFilter<"BarberPortfolioMedia"> | string | null
   sortOrder?: Prisma.IntWithAggregatesFilter<"BarberPortfolioMedia"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"BarberPortfolioMedia"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BarberPortfolioMedia"> | Date | string
 }
 
 export type BarberPortfolioMediaCreateInput = {
@@ -295,6 +307,7 @@ export type BarberPortfolioMediaCreateInput = {
   thumbnailUrl?: string | null
   sortOrder?: number
   createdAt?: Date | string
+  updatedAt?: Date | string
   portfolioItem: Prisma.BarberPortfolioItemCreateNestedOneWithoutMediaInput
 }
 
@@ -306,6 +319,7 @@ export type BarberPortfolioMediaUncheckedCreateInput = {
   thumbnailUrl?: string | null
   sortOrder?: number
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BarberPortfolioMediaUpdateInput = {
@@ -315,6 +329,7 @@ export type BarberPortfolioMediaUpdateInput = {
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   portfolioItem?: Prisma.BarberPortfolioItemUpdateOneRequiredWithoutMediaNestedInput
 }
 
@@ -326,6 +341,7 @@ export type BarberPortfolioMediaUncheckedUpdateInput = {
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BarberPortfolioMediaCreateManyInput = {
@@ -336,6 +352,7 @@ export type BarberPortfolioMediaCreateManyInput = {
   thumbnailUrl?: string | null
   sortOrder?: number
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BarberPortfolioMediaUpdateManyMutationInput = {
@@ -345,6 +362,7 @@ export type BarberPortfolioMediaUpdateManyMutationInput = {
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BarberPortfolioMediaUncheckedUpdateManyInput = {
@@ -355,6 +373,7 @@ export type BarberPortfolioMediaUncheckedUpdateManyInput = {
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BarberPortfolioMediaListRelationFilter = {
@@ -375,6 +394,7 @@ export type BarberPortfolioMediaCountOrderByAggregateInput = {
   thumbnailUrl?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type BarberPortfolioMediaAvgOrderByAggregateInput = {
@@ -389,6 +409,7 @@ export type BarberPortfolioMediaMaxOrderByAggregateInput = {
   thumbnailUrl?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type BarberPortfolioMediaMinOrderByAggregateInput = {
@@ -399,6 +420,7 @@ export type BarberPortfolioMediaMinOrderByAggregateInput = {
   thumbnailUrl?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type BarberPortfolioMediaSumOrderByAggregateInput = {
@@ -458,6 +480,7 @@ export type BarberPortfolioMediaCreateWithoutPortfolioItemInput = {
   thumbnailUrl?: string | null
   sortOrder?: number
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BarberPortfolioMediaUncheckedCreateWithoutPortfolioItemInput = {
@@ -467,6 +490,7 @@ export type BarberPortfolioMediaUncheckedCreateWithoutPortfolioItemInput = {
   thumbnailUrl?: string | null
   sortOrder?: number
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BarberPortfolioMediaCreateOrConnectWithoutPortfolioItemInput = {
@@ -506,6 +530,7 @@ export type BarberPortfolioMediaScalarWhereInput = {
   thumbnailUrl?: Prisma.StringNullableFilter<"BarberPortfolioMedia"> | string | null
   sortOrder?: Prisma.IntFilter<"BarberPortfolioMedia"> | number
   createdAt?: Prisma.DateTimeFilter<"BarberPortfolioMedia"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BarberPortfolioMedia"> | Date | string
 }
 
 export type BarberPortfolioMediaCreateManyPortfolioItemInput = {
@@ -515,6 +540,7 @@ export type BarberPortfolioMediaCreateManyPortfolioItemInput = {
   thumbnailUrl?: string | null
   sortOrder?: number
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type BarberPortfolioMediaUpdateWithoutPortfolioItemInput = {
@@ -524,6 +550,7 @@ export type BarberPortfolioMediaUpdateWithoutPortfolioItemInput = {
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BarberPortfolioMediaUncheckedUpdateWithoutPortfolioItemInput = {
@@ -533,6 +560,7 @@ export type BarberPortfolioMediaUncheckedUpdateWithoutPortfolioItemInput = {
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BarberPortfolioMediaUncheckedUpdateManyWithoutPortfolioItemInput = {
@@ -542,6 +570,7 @@ export type BarberPortfolioMediaUncheckedUpdateManyWithoutPortfolioItemInput = {
   thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -554,6 +583,7 @@ export type BarberPortfolioMediaSelect<ExtArgs extends runtime.Types.Extensions.
   thumbnailUrl?: boolean
   sortOrder?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   portfolioItem?: boolean | Prisma.BarberPortfolioItemDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["barberPortfolioMedia"]>
 
@@ -565,6 +595,7 @@ export type BarberPortfolioMediaSelectCreateManyAndReturn<ExtArgs extends runtim
   thumbnailUrl?: boolean
   sortOrder?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   portfolioItem?: boolean | Prisma.BarberPortfolioItemDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["barberPortfolioMedia"]>
 
@@ -576,6 +607,7 @@ export type BarberPortfolioMediaSelectUpdateManyAndReturn<ExtArgs extends runtim
   thumbnailUrl?: boolean
   sortOrder?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   portfolioItem?: boolean | Prisma.BarberPortfolioItemDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["barberPortfolioMedia"]>
 
@@ -587,9 +619,10 @@ export type BarberPortfolioMediaSelectScalar = {
   thumbnailUrl?: boolean
   sortOrder?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type BarberPortfolioMediaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "portfolioItemId" | "type" | "url" | "thumbnailUrl" | "sortOrder" | "createdAt", ExtArgs["result"]["barberPortfolioMedia"]>
+export type BarberPortfolioMediaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "portfolioItemId" | "type" | "url" | "thumbnailUrl" | "sortOrder" | "createdAt" | "updatedAt", ExtArgs["result"]["barberPortfolioMedia"]>
 export type BarberPortfolioMediaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   portfolioItem?: boolean | Prisma.BarberPortfolioItemDefaultArgs<ExtArgs>
 }
@@ -613,6 +646,7 @@ export type $BarberPortfolioMediaPayload<ExtArgs extends runtime.Types.Extension
     thumbnailUrl: string | null
     sortOrder: number
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["barberPortfolioMedia"]>
   composites: {}
 }
@@ -1044,6 +1078,7 @@ export interface BarberPortfolioMediaFieldRefs {
   readonly thumbnailUrl: Prisma.FieldRef<"BarberPortfolioMedia", 'String'>
   readonly sortOrder: Prisma.FieldRef<"BarberPortfolioMedia", 'Int'>
   readonly createdAt: Prisma.FieldRef<"BarberPortfolioMedia", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"BarberPortfolioMedia", 'DateTime'>
 }
     
 

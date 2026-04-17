@@ -28,18 +28,24 @@ export type CommunityTopicTagMinAggregateOutputType = {
   id: string | null
   communityId: string | null
   name: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type CommunityTopicTagMaxAggregateOutputType = {
   id: string | null
   communityId: string | null
   name: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type CommunityTopicTagCountAggregateOutputType = {
   id: number
   communityId: number
   name: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -48,18 +54,24 @@ export type CommunityTopicTagMinAggregateInputType = {
   id?: true
   communityId?: true
   name?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type CommunityTopicTagMaxAggregateInputType = {
   id?: true
   communityId?: true
   name?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type CommunityTopicTagCountAggregateInputType = {
   id?: true
   communityId?: true
   name?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -139,6 +151,8 @@ export type CommunityTopicTagGroupByOutputType = {
   id: string
   communityId: string
   name: string
+  createdAt: Date
+  updatedAt: Date
   _count: CommunityTopicTagCountAggregateOutputType | null
   _min: CommunityTopicTagMinAggregateOutputType | null
   _max: CommunityTopicTagMaxAggregateOutputType | null
@@ -166,6 +180,8 @@ export type CommunityTopicTagWhereInput = {
   id?: Prisma.StringFilter<"CommunityTopicTag"> | string
   communityId?: Prisma.StringFilter<"CommunityTopicTag"> | string
   name?: Prisma.StringFilter<"CommunityTopicTag"> | string
+  createdAt?: Prisma.DateTimeFilter<"CommunityTopicTag"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"CommunityTopicTag"> | Date | string
   community?: Prisma.XOR<Prisma.CommunityScalarRelationFilter, Prisma.CommunityWhereInput>
 }
 
@@ -173,6 +189,8 @@ export type CommunityTopicTagOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   communityId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   community?: Prisma.CommunityOrderByWithRelationInput
 }
 
@@ -184,6 +202,8 @@ export type CommunityTopicTagWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.CommunityTopicTagWhereInput | Prisma.CommunityTopicTagWhereInput[]
   communityId?: Prisma.StringFilter<"CommunityTopicTag"> | string
   name?: Prisma.StringFilter<"CommunityTopicTag"> | string
+  createdAt?: Prisma.DateTimeFilter<"CommunityTopicTag"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"CommunityTopicTag"> | Date | string
   community?: Prisma.XOR<Prisma.CommunityScalarRelationFilter, Prisma.CommunityWhereInput>
 }, "id" | "communityId_name">
 
@@ -191,6 +211,8 @@ export type CommunityTopicTagOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   communityId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.CommunityTopicTagCountOrderByAggregateInput
   _max?: Prisma.CommunityTopicTagMaxOrderByAggregateInput
   _min?: Prisma.CommunityTopicTagMinOrderByAggregateInput
@@ -203,11 +225,15 @@ export type CommunityTopicTagScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"CommunityTopicTag"> | string
   communityId?: Prisma.StringWithAggregatesFilter<"CommunityTopicTag"> | string
   name?: Prisma.StringWithAggregatesFilter<"CommunityTopicTag"> | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"CommunityTopicTag"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CommunityTopicTag"> | Date | string
 }
 
 export type CommunityTopicTagCreateInput = {
   id?: string
   name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   community: Prisma.CommunityCreateNestedOneWithoutTagsInput
 }
 
@@ -215,11 +241,15 @@ export type CommunityTopicTagUncheckedCreateInput = {
   id?: string
   communityId: string
   name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CommunityTopicTagUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   community?: Prisma.CommunityUpdateOneRequiredWithoutTagsNestedInput
 }
 
@@ -227,23 +257,31 @@ export type CommunityTopicTagUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   communityId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CommunityTopicTagCreateManyInput = {
   id?: string
   communityId: string
   name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CommunityTopicTagUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CommunityTopicTagUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   communityId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CommunityTopicTagListRelationFilter = {
@@ -265,18 +303,24 @@ export type CommunityTopicTagCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   communityId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type CommunityTopicTagMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   communityId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type CommunityTopicTagMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   communityId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type CommunityTopicTagCreateNestedManyWithoutCommunityInput = {
@@ -324,11 +368,15 @@ export type CommunityTopicTagUncheckedUpdateManyWithoutCommunityNestedInput = {
 export type CommunityTopicTagCreateWithoutCommunityInput = {
   id?: string
   name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CommunityTopicTagUncheckedCreateWithoutCommunityInput = {
   id?: string
   name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CommunityTopicTagCreateOrConnectWithoutCommunityInput = {
@@ -364,26 +412,36 @@ export type CommunityTopicTagScalarWhereInput = {
   id?: Prisma.StringFilter<"CommunityTopicTag"> | string
   communityId?: Prisma.StringFilter<"CommunityTopicTag"> | string
   name?: Prisma.StringFilter<"CommunityTopicTag"> | string
+  createdAt?: Prisma.DateTimeFilter<"CommunityTopicTag"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"CommunityTopicTag"> | Date | string
 }
 
 export type CommunityTopicTagCreateManyCommunityInput = {
   id?: string
   name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type CommunityTopicTagUpdateWithoutCommunityInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CommunityTopicTagUncheckedUpdateWithoutCommunityInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CommunityTopicTagUncheckedUpdateManyWithoutCommunityInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -392,6 +450,8 @@ export type CommunityTopicTagSelect<ExtArgs extends runtime.Types.Extensions.Int
   id?: boolean
   communityId?: boolean
   name?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   community?: boolean | Prisma.CommunityDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["communityTopicTag"]>
 
@@ -399,6 +459,8 @@ export type CommunityTopicTagSelectCreateManyAndReturn<ExtArgs extends runtime.T
   id?: boolean
   communityId?: boolean
   name?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   community?: boolean | Prisma.CommunityDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["communityTopicTag"]>
 
@@ -406,6 +468,8 @@ export type CommunityTopicTagSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   id?: boolean
   communityId?: boolean
   name?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   community?: boolean | Prisma.CommunityDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["communityTopicTag"]>
 
@@ -413,9 +477,11 @@ export type CommunityTopicTagSelectScalar = {
   id?: boolean
   communityId?: boolean
   name?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type CommunityTopicTagOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "communityId" | "name", ExtArgs["result"]["communityTopicTag"]>
+export type CommunityTopicTagOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "communityId" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["communityTopicTag"]>
 export type CommunityTopicTagInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   community?: boolean | Prisma.CommunityDefaultArgs<ExtArgs>
 }
@@ -435,6 +501,8 @@ export type $CommunityTopicTagPayload<ExtArgs extends runtime.Types.Extensions.I
     id: string
     communityId: string
     name: string
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["communityTopicTag"]>
   composites: {}
 }
@@ -862,6 +930,8 @@ export interface CommunityTopicTagFieldRefs {
   readonly id: Prisma.FieldRef<"CommunityTopicTag", 'String'>
   readonly communityId: Prisma.FieldRef<"CommunityTopicTag", 'String'>
   readonly name: Prisma.FieldRef<"CommunityTopicTag", 'String'>
+  readonly createdAt: Prisma.FieldRef<"CommunityTopicTag", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"CommunityTopicTag", 'DateTime'>
 }
     
 

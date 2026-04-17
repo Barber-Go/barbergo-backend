@@ -40,6 +40,7 @@ export type ClientProfileMinAggregateOutputType = {
   preferredRadius: number | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type ClientProfileMaxAggregateOutputType = {
@@ -48,6 +49,7 @@ export type ClientProfileMaxAggregateOutputType = {
   preferredRadius: number | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type ClientProfileCountAggregateOutputType = {
@@ -56,6 +58,7 @@ export type ClientProfileCountAggregateOutputType = {
   preferredRadius: number
   createdAt: number
   updatedAt: number
+  deletedAt: number
   _all: number
 }
 
@@ -74,6 +77,7 @@ export type ClientProfileMinAggregateInputType = {
   preferredRadius?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type ClientProfileMaxAggregateInputType = {
@@ -82,6 +86,7 @@ export type ClientProfileMaxAggregateInputType = {
   preferredRadius?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type ClientProfileCountAggregateInputType = {
@@ -90,6 +95,7 @@ export type ClientProfileCountAggregateInputType = {
   preferredRadius?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -185,6 +191,7 @@ export type ClientProfileGroupByOutputType = {
   preferredRadius: number
   createdAt: Date
   updatedAt: Date
+  deletedAt: Date | null
   _count: ClientProfileCountAggregateOutputType | null
   _avg: ClientProfileAvgAggregateOutputType | null
   _sum: ClientProfileSumAggregateOutputType | null
@@ -216,6 +223,7 @@ export type ClientProfileWhereInput = {
   preferredRadius?: Prisma.FloatFilter<"ClientProfile"> | number
   createdAt?: Prisma.DateTimeFilter<"ClientProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ClientProfile"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ClientProfile"> | Date | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -225,6 +233,7 @@ export type ClientProfileOrderByWithRelationInput = {
   preferredRadius?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -237,6 +246,7 @@ export type ClientProfileWhereUniqueInput = Prisma.AtLeast<{
   preferredRadius?: Prisma.FloatFilter<"ClientProfile"> | number
   createdAt?: Prisma.DateTimeFilter<"ClientProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ClientProfile"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ClientProfile"> | Date | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "userId">
 
@@ -246,6 +256,7 @@ export type ClientProfileOrderByWithAggregationInput = {
   preferredRadius?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ClientProfileCountOrderByAggregateInput
   _avg?: Prisma.ClientProfileAvgOrderByAggregateInput
   _max?: Prisma.ClientProfileMaxOrderByAggregateInput
@@ -262,6 +273,7 @@ export type ClientProfileScalarWhereWithAggregatesInput = {
   preferredRadius?: Prisma.FloatWithAggregatesFilter<"ClientProfile"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ClientProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ClientProfile"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ClientProfile"> | Date | string | null
 }
 
 export type ClientProfileCreateInput = {
@@ -269,6 +281,7 @@ export type ClientProfileCreateInput = {
   preferredRadius?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutClientProfileInput
 }
 
@@ -278,6 +291,7 @@ export type ClientProfileUncheckedCreateInput = {
   preferredRadius?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ClientProfileUpdateInput = {
@@ -285,6 +299,7 @@ export type ClientProfileUpdateInput = {
   preferredRadius?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutClientProfileNestedInput
 }
 
@@ -294,6 +309,7 @@ export type ClientProfileUncheckedUpdateInput = {
   preferredRadius?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ClientProfileCreateManyInput = {
@@ -302,6 +318,7 @@ export type ClientProfileCreateManyInput = {
   preferredRadius?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ClientProfileUpdateManyMutationInput = {
@@ -309,6 +326,7 @@ export type ClientProfileUpdateManyMutationInput = {
   preferredRadius?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ClientProfileUncheckedUpdateManyInput = {
@@ -317,6 +335,7 @@ export type ClientProfileUncheckedUpdateManyInput = {
   preferredRadius?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ClientProfileNullableScalarRelationFilter = {
@@ -330,6 +349,7 @@ export type ClientProfileCountOrderByAggregateInput = {
   preferredRadius?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ClientProfileAvgOrderByAggregateInput = {
@@ -342,6 +362,7 @@ export type ClientProfileMaxOrderByAggregateInput = {
   preferredRadius?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ClientProfileMinOrderByAggregateInput = {
@@ -350,6 +371,7 @@ export type ClientProfileMinOrderByAggregateInput = {
   preferredRadius?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ClientProfileSumOrderByAggregateInput = {
@@ -401,6 +423,7 @@ export type ClientProfileCreateWithoutUserInput = {
   preferredRadius?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ClientProfileUncheckedCreateWithoutUserInput = {
@@ -408,6 +431,7 @@ export type ClientProfileUncheckedCreateWithoutUserInput = {
   preferredRadius?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ClientProfileCreateOrConnectWithoutUserInput = {
@@ -431,6 +455,7 @@ export type ClientProfileUpdateWithoutUserInput = {
   preferredRadius?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ClientProfileUncheckedUpdateWithoutUserInput = {
@@ -438,6 +463,7 @@ export type ClientProfileUncheckedUpdateWithoutUserInput = {
   preferredRadius?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -448,6 +474,7 @@ export type ClientProfileSelect<ExtArgs extends runtime.Types.Extensions.Interna
   preferredRadius?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["clientProfile"]>
 
@@ -457,6 +484,7 @@ export type ClientProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   preferredRadius?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["clientProfile"]>
 
@@ -466,6 +494,7 @@ export type ClientProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   preferredRadius?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["clientProfile"]>
 
@@ -475,9 +504,10 @@ export type ClientProfileSelectScalar = {
   preferredRadius?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
 }
 
-export type ClientProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "preferredRadius" | "createdAt" | "updatedAt", ExtArgs["result"]["clientProfile"]>
+export type ClientProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "preferredRadius" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["clientProfile"]>
 export type ClientProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -499,6 +529,7 @@ export type $ClientProfilePayload<ExtArgs extends runtime.Types.Extensions.Inter
     preferredRadius: number
     createdAt: Date
     updatedAt: Date
+    deletedAt: Date | null
   }, ExtArgs["result"]["clientProfile"]>
   composites: {}
 }
@@ -928,6 +959,7 @@ export interface ClientProfileFieldRefs {
   readonly preferredRadius: Prisma.FieldRef<"ClientProfile", 'Float'>
   readonly createdAt: Prisma.FieldRef<"ClientProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ClientProfile", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"ClientProfile", 'DateTime'>
 }
     
 

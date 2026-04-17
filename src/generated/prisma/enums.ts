@@ -120,3 +120,22 @@ export const PublicEntityType = {
 } as const
 
 export type PublicEntityType = (typeof PublicEntityType)[keyof typeof PublicEntityType]
+
+
+export const TenantStatus = {
+  ACTIVE: 'ACTIVE',
+  SUSPENDED: 'SUSPENDED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type TenantStatus = (typeof TenantStatus)[keyof typeof TenantStatus]
+
+
+export const BarbershopStatus = {
+  DRAFT: 'DRAFT',
+  ACTIVE: 'ACTIVE',
+  PAUSED: 'PAUSED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type BarbershopStatus = (typeof BarbershopStatus)[keyof typeof BarbershopStatus]

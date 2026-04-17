@@ -41,6 +41,7 @@ export type AiHairstyleRecommendationMinAggregateOutputType = {
   rationale: string | null
   score: number | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type AiHairstyleRecommendationMaxAggregateOutputType = {
@@ -50,6 +51,7 @@ export type AiHairstyleRecommendationMaxAggregateOutputType = {
   rationale: string | null
   score: number | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type AiHairstyleRecommendationCountAggregateOutputType = {
@@ -60,6 +62,7 @@ export type AiHairstyleRecommendationCountAggregateOutputType = {
   score: number
   tags: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -79,6 +82,7 @@ export type AiHairstyleRecommendationMinAggregateInputType = {
   rationale?: true
   score?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type AiHairstyleRecommendationMaxAggregateInputType = {
@@ -88,6 +92,7 @@ export type AiHairstyleRecommendationMaxAggregateInputType = {
   rationale?: true
   score?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type AiHairstyleRecommendationCountAggregateInputType = {
@@ -98,6 +103,7 @@ export type AiHairstyleRecommendationCountAggregateInputType = {
   score?: true
   tags?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -195,6 +201,7 @@ export type AiHairstyleRecommendationGroupByOutputType = {
   score: number
   tags: string[]
   createdAt: Date
+  updatedAt: Date
   _count: AiHairstyleRecommendationCountAggregateOutputType | null
   _avg: AiHairstyleRecommendationAvgAggregateOutputType | null
   _sum: AiHairstyleRecommendationSumAggregateOutputType | null
@@ -228,6 +235,7 @@ export type AiHairstyleRecommendationWhereInput = {
   score?: Prisma.FloatFilter<"AiHairstyleRecommendation"> | number
   tags?: Prisma.StringNullableListFilter<"AiHairstyleRecommendation">
   createdAt?: Prisma.DateTimeFilter<"AiHairstyleRecommendation"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AiHairstyleRecommendation"> | Date | string
   analysis?: Prisma.XOR<Prisma.AiFaceAnalysisScalarRelationFilter, Prisma.AiFaceAnalysisWhereInput>
   previews?: Prisma.AiHairstylePreviewListRelationFilter
 }
@@ -240,6 +248,7 @@ export type AiHairstyleRecommendationOrderByWithRelationInput = {
   score?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   analysis?: Prisma.AiFaceAnalysisOrderByWithRelationInput
   previews?: Prisma.AiHairstylePreviewOrderByRelationAggregateInput
 }
@@ -255,6 +264,7 @@ export type AiHairstyleRecommendationWhereUniqueInput = Prisma.AtLeast<{
   score?: Prisma.FloatFilter<"AiHairstyleRecommendation"> | number
   tags?: Prisma.StringNullableListFilter<"AiHairstyleRecommendation">
   createdAt?: Prisma.DateTimeFilter<"AiHairstyleRecommendation"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AiHairstyleRecommendation"> | Date | string
   analysis?: Prisma.XOR<Prisma.AiFaceAnalysisScalarRelationFilter, Prisma.AiFaceAnalysisWhereInput>
   previews?: Prisma.AiHairstylePreviewListRelationFilter
 }, "id">
@@ -267,6 +277,7 @@ export type AiHairstyleRecommendationOrderByWithAggregationInput = {
   score?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.AiHairstyleRecommendationCountOrderByAggregateInput
   _avg?: Prisma.AiHairstyleRecommendationAvgOrderByAggregateInput
   _max?: Prisma.AiHairstyleRecommendationMaxOrderByAggregateInput
@@ -285,6 +296,7 @@ export type AiHairstyleRecommendationScalarWhereWithAggregatesInput = {
   score?: Prisma.FloatWithAggregatesFilter<"AiHairstyleRecommendation"> | number
   tags?: Prisma.StringNullableListFilter<"AiHairstyleRecommendation">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AiHairstyleRecommendation"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AiHairstyleRecommendation"> | Date | string
 }
 
 export type AiHairstyleRecommendationCreateInput = {
@@ -294,6 +306,7 @@ export type AiHairstyleRecommendationCreateInput = {
   score: number
   tags?: Prisma.AiHairstyleRecommendationCreatetagsInput | string[]
   createdAt?: Date | string
+  updatedAt?: Date | string
   analysis: Prisma.AiFaceAnalysisCreateNestedOneWithoutRecommendationsInput
   previews?: Prisma.AiHairstylePreviewCreateNestedManyWithoutRecommendationInput
 }
@@ -306,6 +319,7 @@ export type AiHairstyleRecommendationUncheckedCreateInput = {
   score: number
   tags?: Prisma.AiHairstyleRecommendationCreatetagsInput | string[]
   createdAt?: Date | string
+  updatedAt?: Date | string
   previews?: Prisma.AiHairstylePreviewUncheckedCreateNestedManyWithoutRecommendationInput
 }
 
@@ -316,6 +330,7 @@ export type AiHairstyleRecommendationUpdateInput = {
   score?: Prisma.FloatFieldUpdateOperationsInput | number
   tags?: Prisma.AiHairstyleRecommendationUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   analysis?: Prisma.AiFaceAnalysisUpdateOneRequiredWithoutRecommendationsNestedInput
   previews?: Prisma.AiHairstylePreviewUpdateManyWithoutRecommendationNestedInput
 }
@@ -328,6 +343,7 @@ export type AiHairstyleRecommendationUncheckedUpdateInput = {
   score?: Prisma.FloatFieldUpdateOperationsInput | number
   tags?: Prisma.AiHairstyleRecommendationUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   previews?: Prisma.AiHairstylePreviewUncheckedUpdateManyWithoutRecommendationNestedInput
 }
 
@@ -339,6 +355,7 @@ export type AiHairstyleRecommendationCreateManyInput = {
   score: number
   tags?: Prisma.AiHairstyleRecommendationCreatetagsInput | string[]
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AiHairstyleRecommendationUpdateManyMutationInput = {
@@ -348,6 +365,7 @@ export type AiHairstyleRecommendationUpdateManyMutationInput = {
   score?: Prisma.FloatFieldUpdateOperationsInput | number
   tags?: Prisma.AiHairstyleRecommendationUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AiHairstyleRecommendationUncheckedUpdateManyInput = {
@@ -358,6 +376,7 @@ export type AiHairstyleRecommendationUncheckedUpdateManyInput = {
   score?: Prisma.FloatFieldUpdateOperationsInput | number
   tags?: Prisma.AiHairstyleRecommendationUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AiHairstyleRecommendationListRelationFilter = {
@@ -386,6 +405,7 @@ export type AiHairstyleRecommendationCountOrderByAggregateInput = {
   score?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type AiHairstyleRecommendationAvgOrderByAggregateInput = {
@@ -399,6 +419,7 @@ export type AiHairstyleRecommendationMaxOrderByAggregateInput = {
   rationale?: Prisma.SortOrder
   score?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type AiHairstyleRecommendationMinOrderByAggregateInput = {
@@ -408,6 +429,7 @@ export type AiHairstyleRecommendationMinOrderByAggregateInput = {
   rationale?: Prisma.SortOrder
   score?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type AiHairstyleRecommendationSumOrderByAggregateInput = {
@@ -491,6 +513,7 @@ export type AiHairstyleRecommendationCreateWithoutAnalysisInput = {
   score: number
   tags?: Prisma.AiHairstyleRecommendationCreatetagsInput | string[]
   createdAt?: Date | string
+  updatedAt?: Date | string
   previews?: Prisma.AiHairstylePreviewCreateNestedManyWithoutRecommendationInput
 }
 
@@ -501,6 +524,7 @@ export type AiHairstyleRecommendationUncheckedCreateWithoutAnalysisInput = {
   score: number
   tags?: Prisma.AiHairstyleRecommendationCreatetagsInput | string[]
   createdAt?: Date | string
+  updatedAt?: Date | string
   previews?: Prisma.AiHairstylePreviewUncheckedCreateNestedManyWithoutRecommendationInput
 }
 
@@ -541,6 +565,7 @@ export type AiHairstyleRecommendationScalarWhereInput = {
   score?: Prisma.FloatFilter<"AiHairstyleRecommendation"> | number
   tags?: Prisma.StringNullableListFilter<"AiHairstyleRecommendation">
   createdAt?: Prisma.DateTimeFilter<"AiHairstyleRecommendation"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AiHairstyleRecommendation"> | Date | string
 }
 
 export type AiHairstyleRecommendationCreateWithoutPreviewsInput = {
@@ -550,6 +575,7 @@ export type AiHairstyleRecommendationCreateWithoutPreviewsInput = {
   score: number
   tags?: Prisma.AiHairstyleRecommendationCreatetagsInput | string[]
   createdAt?: Date | string
+  updatedAt?: Date | string
   analysis: Prisma.AiFaceAnalysisCreateNestedOneWithoutRecommendationsInput
 }
 
@@ -561,6 +587,7 @@ export type AiHairstyleRecommendationUncheckedCreateWithoutPreviewsInput = {
   score: number
   tags?: Prisma.AiHairstyleRecommendationCreatetagsInput | string[]
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AiHairstyleRecommendationCreateOrConnectWithoutPreviewsInput = {
@@ -586,6 +613,7 @@ export type AiHairstyleRecommendationUpdateWithoutPreviewsInput = {
   score?: Prisma.FloatFieldUpdateOperationsInput | number
   tags?: Prisma.AiHairstyleRecommendationUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   analysis?: Prisma.AiFaceAnalysisUpdateOneRequiredWithoutRecommendationsNestedInput
 }
 
@@ -597,6 +625,7 @@ export type AiHairstyleRecommendationUncheckedUpdateWithoutPreviewsInput = {
   score?: Prisma.FloatFieldUpdateOperationsInput | number
   tags?: Prisma.AiHairstyleRecommendationUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AiHairstyleRecommendationCreateManyAnalysisInput = {
@@ -606,6 +635,7 @@ export type AiHairstyleRecommendationCreateManyAnalysisInput = {
   score: number
   tags?: Prisma.AiHairstyleRecommendationCreatetagsInput | string[]
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AiHairstyleRecommendationUpdateWithoutAnalysisInput = {
@@ -615,6 +645,7 @@ export type AiHairstyleRecommendationUpdateWithoutAnalysisInput = {
   score?: Prisma.FloatFieldUpdateOperationsInput | number
   tags?: Prisma.AiHairstyleRecommendationUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   previews?: Prisma.AiHairstylePreviewUpdateManyWithoutRecommendationNestedInput
 }
 
@@ -625,6 +656,7 @@ export type AiHairstyleRecommendationUncheckedUpdateWithoutAnalysisInput = {
   score?: Prisma.FloatFieldUpdateOperationsInput | number
   tags?: Prisma.AiHairstyleRecommendationUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   previews?: Prisma.AiHairstylePreviewUncheckedUpdateManyWithoutRecommendationNestedInput
 }
 
@@ -635,6 +667,7 @@ export type AiHairstyleRecommendationUncheckedUpdateManyWithoutAnalysisInput = {
   score?: Prisma.FloatFieldUpdateOperationsInput | number
   tags?: Prisma.AiHairstyleRecommendationUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -676,6 +709,7 @@ export type AiHairstyleRecommendationSelect<ExtArgs extends runtime.Types.Extens
   score?: boolean
   tags?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   analysis?: boolean | Prisma.AiFaceAnalysisDefaultArgs<ExtArgs>
   previews?: boolean | Prisma.AiHairstyleRecommendation$previewsArgs<ExtArgs>
   _count?: boolean | Prisma.AiHairstyleRecommendationCountOutputTypeDefaultArgs<ExtArgs>
@@ -689,6 +723,7 @@ export type AiHairstyleRecommendationSelectCreateManyAndReturn<ExtArgs extends r
   score?: boolean
   tags?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   analysis?: boolean | Prisma.AiFaceAnalysisDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["aiHairstyleRecommendation"]>
 
@@ -700,6 +735,7 @@ export type AiHairstyleRecommendationSelectUpdateManyAndReturn<ExtArgs extends r
   score?: boolean
   tags?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   analysis?: boolean | Prisma.AiFaceAnalysisDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["aiHairstyleRecommendation"]>
 
@@ -711,9 +747,10 @@ export type AiHairstyleRecommendationSelectScalar = {
   score?: boolean
   tags?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type AiHairstyleRecommendationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "analysisId" | "haircutName" | "rationale" | "score" | "tags" | "createdAt", ExtArgs["result"]["aiHairstyleRecommendation"]>
+export type AiHairstyleRecommendationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "analysisId" | "haircutName" | "rationale" | "score" | "tags" | "createdAt" | "updatedAt", ExtArgs["result"]["aiHairstyleRecommendation"]>
 export type AiHairstyleRecommendationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   analysis?: boolean | Prisma.AiFaceAnalysisDefaultArgs<ExtArgs>
   previews?: boolean | Prisma.AiHairstyleRecommendation$previewsArgs<ExtArgs>
@@ -740,6 +777,7 @@ export type $AiHairstyleRecommendationPayload<ExtArgs extends runtime.Types.Exte
     score: number
     tags: string[]
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["aiHairstyleRecommendation"]>
   composites: {}
 }
@@ -1172,6 +1210,7 @@ export interface AiHairstyleRecommendationFieldRefs {
   readonly score: Prisma.FieldRef<"AiHairstyleRecommendation", 'Float'>
   readonly tags: Prisma.FieldRef<"AiHairstyleRecommendation", 'String[]'>
   readonly createdAt: Prisma.FieldRef<"AiHairstyleRecommendation", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"AiHairstyleRecommendation", 'DateTime'>
 }
     
 

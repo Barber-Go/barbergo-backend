@@ -41,6 +41,7 @@ export type AiFaceAnalysisMinAggregateOutputType = {
   faceShape: string | null
   confidence: number | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type AiFaceAnalysisMaxAggregateOutputType = {
@@ -50,6 +51,7 @@ export type AiFaceAnalysisMaxAggregateOutputType = {
   faceShape: string | null
   confidence: number | null
   createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type AiFaceAnalysisCountAggregateOutputType = {
@@ -60,6 +62,7 @@ export type AiFaceAnalysisCountAggregateOutputType = {
   confidence: number
   attributesJson: number
   createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -79,6 +82,7 @@ export type AiFaceAnalysisMinAggregateInputType = {
   faceShape?: true
   confidence?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type AiFaceAnalysisMaxAggregateInputType = {
@@ -88,6 +92,7 @@ export type AiFaceAnalysisMaxAggregateInputType = {
   faceShape?: true
   confidence?: true
   createdAt?: true
+  updatedAt?: true
 }
 
 export type AiFaceAnalysisCountAggregateInputType = {
@@ -98,6 +103,7 @@ export type AiFaceAnalysisCountAggregateInputType = {
   confidence?: true
   attributesJson?: true
   createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -195,6 +201,7 @@ export type AiFaceAnalysisGroupByOutputType = {
   confidence: number
   attributesJson: runtime.JsonValue | null
   createdAt: Date
+  updatedAt: Date
   _count: AiFaceAnalysisCountAggregateOutputType | null
   _avg: AiFaceAnalysisAvgAggregateOutputType | null
   _sum: AiFaceAnalysisSumAggregateOutputType | null
@@ -228,6 +235,7 @@ export type AiFaceAnalysisWhereInput = {
   confidence?: Prisma.FloatFilter<"AiFaceAnalysis"> | number
   attributesJson?: Prisma.JsonNullableFilter<"AiFaceAnalysis">
   createdAt?: Prisma.DateTimeFilter<"AiFaceAnalysis"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AiFaceAnalysis"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   recommendations?: Prisma.AiHairstyleRecommendationListRelationFilter
 }
@@ -240,6 +248,7 @@ export type AiFaceAnalysisOrderByWithRelationInput = {
   confidence?: Prisma.SortOrder
   attributesJson?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   recommendations?: Prisma.AiHairstyleRecommendationOrderByRelationAggregateInput
 }
@@ -255,6 +264,7 @@ export type AiFaceAnalysisWhereUniqueInput = Prisma.AtLeast<{
   confidence?: Prisma.FloatFilter<"AiFaceAnalysis"> | number
   attributesJson?: Prisma.JsonNullableFilter<"AiFaceAnalysis">
   createdAt?: Prisma.DateTimeFilter<"AiFaceAnalysis"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AiFaceAnalysis"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   recommendations?: Prisma.AiHairstyleRecommendationListRelationFilter
 }, "id">
@@ -267,6 +277,7 @@ export type AiFaceAnalysisOrderByWithAggregationInput = {
   confidence?: Prisma.SortOrder
   attributesJson?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.AiFaceAnalysisCountOrderByAggregateInput
   _avg?: Prisma.AiFaceAnalysisAvgOrderByAggregateInput
   _max?: Prisma.AiFaceAnalysisMaxOrderByAggregateInput
@@ -285,6 +296,7 @@ export type AiFaceAnalysisScalarWhereWithAggregatesInput = {
   confidence?: Prisma.FloatWithAggregatesFilter<"AiFaceAnalysis"> | number
   attributesJson?: Prisma.JsonNullableWithAggregatesFilter<"AiFaceAnalysis">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AiFaceAnalysis"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AiFaceAnalysis"> | Date | string
 }
 
 export type AiFaceAnalysisCreateInput = {
@@ -294,6 +306,7 @@ export type AiFaceAnalysisCreateInput = {
   confidence: number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiFaceAnalysesInput
   recommendations?: Prisma.AiHairstyleRecommendationCreateNestedManyWithoutAnalysisInput
 }
@@ -306,6 +319,7 @@ export type AiFaceAnalysisUncheckedCreateInput = {
   confidence: number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   recommendations?: Prisma.AiHairstyleRecommendationUncheckedCreateNestedManyWithoutAnalysisInput
 }
 
@@ -316,6 +330,7 @@ export type AiFaceAnalysisUpdateInput = {
   confidence?: Prisma.FloatFieldUpdateOperationsInput | number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiFaceAnalysesNestedInput
   recommendations?: Prisma.AiHairstyleRecommendationUpdateManyWithoutAnalysisNestedInput
 }
@@ -328,6 +343,7 @@ export type AiFaceAnalysisUncheckedUpdateInput = {
   confidence?: Prisma.FloatFieldUpdateOperationsInput | number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recommendations?: Prisma.AiHairstyleRecommendationUncheckedUpdateManyWithoutAnalysisNestedInput
 }
 
@@ -339,6 +355,7 @@ export type AiFaceAnalysisCreateManyInput = {
   confidence: number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AiFaceAnalysisUpdateManyMutationInput = {
@@ -348,6 +365,7 @@ export type AiFaceAnalysisUpdateManyMutationInput = {
   confidence?: Prisma.FloatFieldUpdateOperationsInput | number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AiFaceAnalysisUncheckedUpdateManyInput = {
@@ -358,6 +376,7 @@ export type AiFaceAnalysisUncheckedUpdateManyInput = {
   confidence?: Prisma.FloatFieldUpdateOperationsInput | number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AiFaceAnalysisListRelationFilter = {
@@ -378,6 +397,7 @@ export type AiFaceAnalysisCountOrderByAggregateInput = {
   confidence?: Prisma.SortOrder
   attributesJson?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type AiFaceAnalysisAvgOrderByAggregateInput = {
@@ -391,6 +411,7 @@ export type AiFaceAnalysisMaxOrderByAggregateInput = {
   faceShape?: Prisma.SortOrder
   confidence?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type AiFaceAnalysisMinOrderByAggregateInput = {
@@ -400,6 +421,7 @@ export type AiFaceAnalysisMinOrderByAggregateInput = {
   faceShape?: Prisma.SortOrder
   confidence?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type AiFaceAnalysisSumOrderByAggregateInput = {
@@ -474,6 +496,7 @@ export type AiFaceAnalysisCreateWithoutUserInput = {
   confidence: number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   recommendations?: Prisma.AiHairstyleRecommendationCreateNestedManyWithoutAnalysisInput
 }
 
@@ -484,6 +507,7 @@ export type AiFaceAnalysisUncheckedCreateWithoutUserInput = {
   confidence: number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   recommendations?: Prisma.AiHairstyleRecommendationUncheckedCreateNestedManyWithoutAnalysisInput
 }
 
@@ -524,6 +548,7 @@ export type AiFaceAnalysisScalarWhereInput = {
   confidence?: Prisma.FloatFilter<"AiFaceAnalysis"> | number
   attributesJson?: Prisma.JsonNullableFilter<"AiFaceAnalysis">
   createdAt?: Prisma.DateTimeFilter<"AiFaceAnalysis"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AiFaceAnalysis"> | Date | string
 }
 
 export type AiFaceAnalysisCreateWithoutRecommendationsInput = {
@@ -533,6 +558,7 @@ export type AiFaceAnalysisCreateWithoutRecommendationsInput = {
   confidence: number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiFaceAnalysesInput
 }
 
@@ -544,6 +570,7 @@ export type AiFaceAnalysisUncheckedCreateWithoutRecommendationsInput = {
   confidence: number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AiFaceAnalysisCreateOrConnectWithoutRecommendationsInput = {
@@ -569,6 +596,7 @@ export type AiFaceAnalysisUpdateWithoutRecommendationsInput = {
   confidence?: Prisma.FloatFieldUpdateOperationsInput | number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiFaceAnalysesNestedInput
 }
 
@@ -580,6 +608,7 @@ export type AiFaceAnalysisUncheckedUpdateWithoutRecommendationsInput = {
   confidence?: Prisma.FloatFieldUpdateOperationsInput | number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AiFaceAnalysisCreateManyUserInput = {
@@ -589,6 +618,7 @@ export type AiFaceAnalysisCreateManyUserInput = {
   confidence: number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type AiFaceAnalysisUpdateWithoutUserInput = {
@@ -598,6 +628,7 @@ export type AiFaceAnalysisUpdateWithoutUserInput = {
   confidence?: Prisma.FloatFieldUpdateOperationsInput | number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recommendations?: Prisma.AiHairstyleRecommendationUpdateManyWithoutAnalysisNestedInput
 }
 
@@ -608,6 +639,7 @@ export type AiFaceAnalysisUncheckedUpdateWithoutUserInput = {
   confidence?: Prisma.FloatFieldUpdateOperationsInput | number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recommendations?: Prisma.AiHairstyleRecommendationUncheckedUpdateManyWithoutAnalysisNestedInput
 }
 
@@ -618,6 +650,7 @@ export type AiFaceAnalysisUncheckedUpdateManyWithoutUserInput = {
   confidence?: Prisma.FloatFieldUpdateOperationsInput | number
   attributesJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -659,6 +692,7 @@ export type AiFaceAnalysisSelect<ExtArgs extends runtime.Types.Extensions.Intern
   confidence?: boolean
   attributesJson?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   recommendations?: boolean | Prisma.AiFaceAnalysis$recommendationsArgs<ExtArgs>
   _count?: boolean | Prisma.AiFaceAnalysisCountOutputTypeDefaultArgs<ExtArgs>
@@ -672,6 +706,7 @@ export type AiFaceAnalysisSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   confidence?: boolean
   attributesJson?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["aiFaceAnalysis"]>
 
@@ -683,6 +718,7 @@ export type AiFaceAnalysisSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   confidence?: boolean
   attributesJson?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["aiFaceAnalysis"]>
 
@@ -694,9 +730,10 @@ export type AiFaceAnalysisSelectScalar = {
   confidence?: boolean
   attributesJson?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type AiFaceAnalysisOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "sourceImageUrl" | "faceShape" | "confidence" | "attributesJson" | "createdAt", ExtArgs["result"]["aiFaceAnalysis"]>
+export type AiFaceAnalysisOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "sourceImageUrl" | "faceShape" | "confidence" | "attributesJson" | "createdAt" | "updatedAt", ExtArgs["result"]["aiFaceAnalysis"]>
 export type AiFaceAnalysisInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   recommendations?: boolean | Prisma.AiFaceAnalysis$recommendationsArgs<ExtArgs>
@@ -723,6 +760,7 @@ export type $AiFaceAnalysisPayload<ExtArgs extends runtime.Types.Extensions.Inte
     confidence: number
     attributesJson: runtime.JsonValue | null
     createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["aiFaceAnalysis"]>
   composites: {}
 }
@@ -1155,6 +1193,7 @@ export interface AiFaceAnalysisFieldRefs {
   readonly confidence: Prisma.FieldRef<"AiFaceAnalysis", 'Float'>
   readonly attributesJson: Prisma.FieldRef<"AiFaceAnalysis", 'Json'>
   readonly createdAt: Prisma.FieldRef<"AiFaceAnalysis", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"AiFaceAnalysis", 'DateTime'>
 }
     
 

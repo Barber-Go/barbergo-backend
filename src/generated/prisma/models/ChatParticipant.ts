@@ -30,6 +30,8 @@ export type ChatParticipantMinAggregateOutputType = {
   userId: string | null
   roleInThread: string | null
   lastReadAt: Date | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ChatParticipantMaxAggregateOutputType = {
@@ -38,6 +40,8 @@ export type ChatParticipantMaxAggregateOutputType = {
   userId: string | null
   roleInThread: string | null
   lastReadAt: Date | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ChatParticipantCountAggregateOutputType = {
@@ -46,6 +50,8 @@ export type ChatParticipantCountAggregateOutputType = {
   userId: number
   roleInThread: number
   lastReadAt: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -56,6 +62,8 @@ export type ChatParticipantMinAggregateInputType = {
   userId?: true
   roleInThread?: true
   lastReadAt?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ChatParticipantMaxAggregateInputType = {
@@ -64,6 +72,8 @@ export type ChatParticipantMaxAggregateInputType = {
   userId?: true
   roleInThread?: true
   lastReadAt?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ChatParticipantCountAggregateInputType = {
@@ -72,6 +82,8 @@ export type ChatParticipantCountAggregateInputType = {
   userId?: true
   roleInThread?: true
   lastReadAt?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -153,6 +165,8 @@ export type ChatParticipantGroupByOutputType = {
   userId: string
   roleInThread: string
   lastReadAt: Date
+  createdAt: Date
+  updatedAt: Date
   _count: ChatParticipantCountAggregateOutputType | null
   _min: ChatParticipantMinAggregateOutputType | null
   _max: ChatParticipantMaxAggregateOutputType | null
@@ -182,6 +196,8 @@ export type ChatParticipantWhereInput = {
   userId?: Prisma.StringFilter<"ChatParticipant"> | string
   roleInThread?: Prisma.StringFilter<"ChatParticipant"> | string
   lastReadAt?: Prisma.DateTimeFilter<"ChatParticipant"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"ChatParticipant"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ChatParticipant"> | Date | string
   thread?: Prisma.XOR<Prisma.ChatThreadScalarRelationFilter, Prisma.ChatThreadWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
@@ -192,6 +208,8 @@ export type ChatParticipantOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   roleInThread?: Prisma.SortOrder
   lastReadAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   thread?: Prisma.ChatThreadOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
 }
@@ -206,6 +224,8 @@ export type ChatParticipantWhereUniqueInput = Prisma.AtLeast<{
   userId?: Prisma.StringFilter<"ChatParticipant"> | string
   roleInThread?: Prisma.StringFilter<"ChatParticipant"> | string
   lastReadAt?: Prisma.DateTimeFilter<"ChatParticipant"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"ChatParticipant"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ChatParticipant"> | Date | string
   thread?: Prisma.XOR<Prisma.ChatThreadScalarRelationFilter, Prisma.ChatThreadWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "threadId_userId">
@@ -216,6 +236,8 @@ export type ChatParticipantOrderByWithAggregationInput = {
   userId?: Prisma.SortOrder
   roleInThread?: Prisma.SortOrder
   lastReadAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.ChatParticipantCountOrderByAggregateInput
   _max?: Prisma.ChatParticipantMaxOrderByAggregateInput
   _min?: Prisma.ChatParticipantMinOrderByAggregateInput
@@ -230,12 +252,16 @@ export type ChatParticipantScalarWhereWithAggregatesInput = {
   userId?: Prisma.StringWithAggregatesFilter<"ChatParticipant"> | string
   roleInThread?: Prisma.StringWithAggregatesFilter<"ChatParticipant"> | string
   lastReadAt?: Prisma.DateTimeWithAggregatesFilter<"ChatParticipant"> | Date | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"ChatParticipant"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ChatParticipant"> | Date | string
 }
 
 export type ChatParticipantCreateInput = {
   id?: string
   roleInThread: string
   lastReadAt?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   thread: Prisma.ChatThreadCreateNestedOneWithoutParticipantsInput
   user: Prisma.UserCreateNestedOneWithoutChatParticipantsInput
 }
@@ -246,12 +272,16 @@ export type ChatParticipantUncheckedCreateInput = {
   userId: string
   roleInThread: string
   lastReadAt?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ChatParticipantUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   roleInThread?: Prisma.StringFieldUpdateOperationsInput | string
   lastReadAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   thread?: Prisma.ChatThreadUpdateOneRequiredWithoutParticipantsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutChatParticipantsNestedInput
 }
@@ -262,6 +292,8 @@ export type ChatParticipantUncheckedUpdateInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   roleInThread?: Prisma.StringFieldUpdateOperationsInput | string
   lastReadAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChatParticipantCreateManyInput = {
@@ -270,12 +302,16 @@ export type ChatParticipantCreateManyInput = {
   userId: string
   roleInThread: string
   lastReadAt?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ChatParticipantUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   roleInThread?: Prisma.StringFieldUpdateOperationsInput | string
   lastReadAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChatParticipantUncheckedUpdateManyInput = {
@@ -284,6 +320,8 @@ export type ChatParticipantUncheckedUpdateManyInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   roleInThread?: Prisma.StringFieldUpdateOperationsInput | string
   lastReadAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChatParticipantListRelationFilter = {
@@ -307,6 +345,8 @@ export type ChatParticipantCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   roleInThread?: Prisma.SortOrder
   lastReadAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ChatParticipantMaxOrderByAggregateInput = {
@@ -315,6 +355,8 @@ export type ChatParticipantMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   roleInThread?: Prisma.SortOrder
   lastReadAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ChatParticipantMinOrderByAggregateInput = {
@@ -323,6 +365,8 @@ export type ChatParticipantMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   roleInThread?: Prisma.SortOrder
   lastReadAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ChatParticipantCreateNestedManyWithoutUserInput = {
@@ -413,6 +457,8 @@ export type ChatParticipantCreateWithoutUserInput = {
   id?: string
   roleInThread: string
   lastReadAt?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   thread: Prisma.ChatThreadCreateNestedOneWithoutParticipantsInput
 }
 
@@ -421,6 +467,8 @@ export type ChatParticipantUncheckedCreateWithoutUserInput = {
   threadId: string
   roleInThread: string
   lastReadAt?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ChatParticipantCreateOrConnectWithoutUserInput = {
@@ -458,12 +506,16 @@ export type ChatParticipantScalarWhereInput = {
   userId?: Prisma.StringFilter<"ChatParticipant"> | string
   roleInThread?: Prisma.StringFilter<"ChatParticipant"> | string
   lastReadAt?: Prisma.DateTimeFilter<"ChatParticipant"> | Date | string
+  createdAt?: Prisma.DateTimeFilter<"ChatParticipant"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ChatParticipant"> | Date | string
 }
 
 export type ChatParticipantCreateWithoutThreadInput = {
   id?: string
   roleInThread: string
   lastReadAt?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutChatParticipantsInput
 }
 
@@ -472,6 +524,8 @@ export type ChatParticipantUncheckedCreateWithoutThreadInput = {
   userId: string
   roleInThread: string
   lastReadAt?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ChatParticipantCreateOrConnectWithoutThreadInput = {
@@ -505,12 +559,16 @@ export type ChatParticipantCreateManyUserInput = {
   threadId: string
   roleInThread: string
   lastReadAt?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ChatParticipantUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   roleInThread?: Prisma.StringFieldUpdateOperationsInput | string
   lastReadAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   thread?: Prisma.ChatThreadUpdateOneRequiredWithoutParticipantsNestedInput
 }
 
@@ -519,6 +577,8 @@ export type ChatParticipantUncheckedUpdateWithoutUserInput = {
   threadId?: Prisma.StringFieldUpdateOperationsInput | string
   roleInThread?: Prisma.StringFieldUpdateOperationsInput | string
   lastReadAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChatParticipantUncheckedUpdateManyWithoutUserInput = {
@@ -526,6 +586,8 @@ export type ChatParticipantUncheckedUpdateManyWithoutUserInput = {
   threadId?: Prisma.StringFieldUpdateOperationsInput | string
   roleInThread?: Prisma.StringFieldUpdateOperationsInput | string
   lastReadAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChatParticipantCreateManyThreadInput = {
@@ -533,12 +595,16 @@ export type ChatParticipantCreateManyThreadInput = {
   userId: string
   roleInThread: string
   lastReadAt?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ChatParticipantUpdateWithoutThreadInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   roleInThread?: Prisma.StringFieldUpdateOperationsInput | string
   lastReadAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutChatParticipantsNestedInput
 }
 
@@ -547,6 +613,8 @@ export type ChatParticipantUncheckedUpdateWithoutThreadInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   roleInThread?: Prisma.StringFieldUpdateOperationsInput | string
   lastReadAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChatParticipantUncheckedUpdateManyWithoutThreadInput = {
@@ -554,6 +622,8 @@ export type ChatParticipantUncheckedUpdateManyWithoutThreadInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   roleInThread?: Prisma.StringFieldUpdateOperationsInput | string
   lastReadAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -564,6 +634,8 @@ export type ChatParticipantSelect<ExtArgs extends runtime.Types.Extensions.Inter
   userId?: boolean
   roleInThread?: boolean
   lastReadAt?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   thread?: boolean | Prisma.ChatThreadDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["chatParticipant"]>
@@ -574,6 +646,8 @@ export type ChatParticipantSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   userId?: boolean
   roleInThread?: boolean
   lastReadAt?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   thread?: boolean | Prisma.ChatThreadDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["chatParticipant"]>
@@ -584,6 +658,8 @@ export type ChatParticipantSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   userId?: boolean
   roleInThread?: boolean
   lastReadAt?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   thread?: boolean | Prisma.ChatThreadDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["chatParticipant"]>
@@ -594,9 +670,11 @@ export type ChatParticipantSelectScalar = {
   userId?: boolean
   roleInThread?: boolean
   lastReadAt?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type ChatParticipantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "threadId" | "userId" | "roleInThread" | "lastReadAt", ExtArgs["result"]["chatParticipant"]>
+export type ChatParticipantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "threadId" | "userId" | "roleInThread" | "lastReadAt" | "createdAt" | "updatedAt", ExtArgs["result"]["chatParticipant"]>
 export type ChatParticipantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   thread?: boolean | Prisma.ChatThreadDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -622,6 +700,8 @@ export type $ChatParticipantPayload<ExtArgs extends runtime.Types.Extensions.Int
     userId: string
     roleInThread: string
     lastReadAt: Date
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["chatParticipant"]>
   composites: {}
 }
@@ -1052,6 +1132,8 @@ export interface ChatParticipantFieldRefs {
   readonly userId: Prisma.FieldRef<"ChatParticipant", 'String'>
   readonly roleInThread: Prisma.FieldRef<"ChatParticipant", 'String'>
   readonly lastReadAt: Prisma.FieldRef<"ChatParticipant", 'DateTime'>
+  readonly createdAt: Prisma.FieldRef<"ChatParticipant", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"ChatParticipant", 'DateTime'>
 }
     
 

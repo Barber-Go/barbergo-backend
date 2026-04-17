@@ -36,6 +36,7 @@ export type ManualBookingMinAggregateOutputType = {
   paymentMethod: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type ManualBookingMaxAggregateOutputType = {
@@ -50,6 +51,7 @@ export type ManualBookingMaxAggregateOutputType = {
   paymentMethod: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type ManualBookingCountAggregateOutputType = {
@@ -64,6 +66,7 @@ export type ManualBookingCountAggregateOutputType = {
   paymentMethod: number
   createdAt: number
   updatedAt: number
+  deletedAt: number
   _all: number
 }
 
@@ -80,6 +83,7 @@ export type ManualBookingMinAggregateInputType = {
   paymentMethod?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type ManualBookingMaxAggregateInputType = {
@@ -94,6 +98,7 @@ export type ManualBookingMaxAggregateInputType = {
   paymentMethod?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type ManualBookingCountAggregateInputType = {
@@ -108,6 +113,7 @@ export type ManualBookingCountAggregateInputType = {
   paymentMethod?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -195,6 +201,7 @@ export type ManualBookingGroupByOutputType = {
   paymentMethod: string
   createdAt: Date
   updatedAt: Date
+  deletedAt: Date | null
   _count: ManualBookingCountAggregateOutputType | null
   _min: ManualBookingMinAggregateOutputType | null
   _max: ManualBookingMaxAggregateOutputType | null
@@ -230,6 +237,7 @@ export type ManualBookingWhereInput = {
   paymentMethod?: Prisma.StringFilter<"ManualBooking"> | string
   createdAt?: Prisma.DateTimeFilter<"ManualBooking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ManualBooking"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ManualBooking"> | Date | string | null
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
 }
 
@@ -245,6 +253,7 @@ export type ManualBookingOrderByWithRelationInput = {
   paymentMethod?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   barber?: Prisma.BarberProfileOrderByWithRelationInput
 }
 
@@ -263,6 +272,7 @@ export type ManualBookingWhereUniqueInput = Prisma.AtLeast<{
   paymentMethod?: Prisma.StringFilter<"ManualBooking"> | string
   createdAt?: Prisma.DateTimeFilter<"ManualBooking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ManualBooking"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ManualBooking"> | Date | string | null
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
 }, "id">
 
@@ -278,6 +288,7 @@ export type ManualBookingOrderByWithAggregationInput = {
   paymentMethod?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ManualBookingCountOrderByAggregateInput
   _max?: Prisma.ManualBookingMaxOrderByAggregateInput
   _min?: Prisma.ManualBookingMinOrderByAggregateInput
@@ -298,6 +309,7 @@ export type ManualBookingScalarWhereWithAggregatesInput = {
   paymentMethod?: Prisma.StringWithAggregatesFilter<"ManualBooking"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ManualBooking"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ManualBooking"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ManualBooking"> | Date | string | null
 }
 
 export type ManualBookingCreateInput = {
@@ -311,6 +323,7 @@ export type ManualBookingCreateInput = {
   paymentMethod?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   barber: Prisma.BarberProfileCreateNestedOneWithoutManualBookingsInput
 }
 
@@ -326,6 +339,7 @@ export type ManualBookingUncheckedCreateInput = {
   paymentMethod?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ManualBookingUpdateInput = {
@@ -339,6 +353,7 @@ export type ManualBookingUpdateInput = {
   paymentMethod?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutManualBookingsNestedInput
 }
 
@@ -354,6 +369,7 @@ export type ManualBookingUncheckedUpdateInput = {
   paymentMethod?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ManualBookingCreateManyInput = {
@@ -368,6 +384,7 @@ export type ManualBookingCreateManyInput = {
   paymentMethod?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ManualBookingUpdateManyMutationInput = {
@@ -381,6 +398,7 @@ export type ManualBookingUpdateManyMutationInput = {
   paymentMethod?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ManualBookingUncheckedUpdateManyInput = {
@@ -395,6 +413,7 @@ export type ManualBookingUncheckedUpdateManyInput = {
   paymentMethod?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ManualBookingListRelationFilter = {
@@ -419,6 +438,7 @@ export type ManualBookingCountOrderByAggregateInput = {
   paymentMethod?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ManualBookingMaxOrderByAggregateInput = {
@@ -433,6 +453,7 @@ export type ManualBookingMaxOrderByAggregateInput = {
   paymentMethod?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ManualBookingMinOrderByAggregateInput = {
@@ -447,6 +468,7 @@ export type ManualBookingMinOrderByAggregateInput = {
   paymentMethod?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ManualBookingCreateNestedManyWithoutBarberInput = {
@@ -502,6 +524,7 @@ export type ManualBookingCreateWithoutBarberInput = {
   paymentMethod?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ManualBookingUncheckedCreateWithoutBarberInput = {
@@ -515,6 +538,7 @@ export type ManualBookingUncheckedCreateWithoutBarberInput = {
   paymentMethod?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ManualBookingCreateOrConnectWithoutBarberInput = {
@@ -558,6 +582,7 @@ export type ManualBookingScalarWhereInput = {
   paymentMethod?: Prisma.StringFilter<"ManualBooking"> | string
   createdAt?: Prisma.DateTimeFilter<"ManualBooking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ManualBooking"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ManualBooking"> | Date | string | null
 }
 
 export type ManualBookingCreateManyBarberInput = {
@@ -571,6 +596,7 @@ export type ManualBookingCreateManyBarberInput = {
   paymentMethod?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ManualBookingUpdateWithoutBarberInput = {
@@ -584,6 +610,7 @@ export type ManualBookingUpdateWithoutBarberInput = {
   paymentMethod?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ManualBookingUncheckedUpdateWithoutBarberInput = {
@@ -597,6 +624,7 @@ export type ManualBookingUncheckedUpdateWithoutBarberInput = {
   paymentMethod?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ManualBookingUncheckedUpdateManyWithoutBarberInput = {
@@ -610,6 +638,7 @@ export type ManualBookingUncheckedUpdateManyWithoutBarberInput = {
   paymentMethod?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -626,6 +655,7 @@ export type ManualBookingSelect<ExtArgs extends runtime.Types.Extensions.Interna
   paymentMethod?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["manualBooking"]>
 
@@ -641,6 +671,7 @@ export type ManualBookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   paymentMethod?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["manualBooking"]>
 
@@ -656,6 +687,7 @@ export type ManualBookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   paymentMethod?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["manualBooking"]>
 
@@ -671,9 +703,10 @@ export type ManualBookingSelectScalar = {
   paymentMethod?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
 }
 
-export type ManualBookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "clientName" | "serviceName" | "date" | "startTime" | "endTime" | "note" | "paymentMethod" | "createdAt" | "updatedAt", ExtArgs["result"]["manualBooking"]>
+export type ManualBookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "clientName" | "serviceName" | "date" | "startTime" | "endTime" | "note" | "paymentMethod" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["manualBooking"]>
 export type ManualBookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }
@@ -701,6 +734,7 @@ export type $ManualBookingPayload<ExtArgs extends runtime.Types.Extensions.Inter
     paymentMethod: string
     createdAt: Date
     updatedAt: Date
+    deletedAt: Date | null
   }, ExtArgs["result"]["manualBooking"]>
   composites: {}
 }
@@ -1136,6 +1170,7 @@ export interface ManualBookingFieldRefs {
   readonly paymentMethod: Prisma.FieldRef<"ManualBooking", 'String'>
   readonly createdAt: Prisma.FieldRef<"ManualBooking", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ManualBooking", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"ManualBooking", 'DateTime'>
 }
     
 

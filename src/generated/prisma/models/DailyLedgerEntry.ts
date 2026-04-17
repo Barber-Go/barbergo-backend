@@ -42,6 +42,9 @@ export type DailyLedgerEntryMinAggregateOutputType = {
   label: string | null
   amount: runtime.Decimal | null
   createdAt: Date | null
+  updatedAt: Date | null
+  deletedAt: Date | null
+  barbershopId: string | null
 }
 
 export type DailyLedgerEntryMaxAggregateOutputType = {
@@ -52,6 +55,9 @@ export type DailyLedgerEntryMaxAggregateOutputType = {
   label: string | null
   amount: runtime.Decimal | null
   createdAt: Date | null
+  updatedAt: Date | null
+  deletedAt: Date | null
+  barbershopId: string | null
 }
 
 export type DailyLedgerEntryCountAggregateOutputType = {
@@ -62,6 +68,9 @@ export type DailyLedgerEntryCountAggregateOutputType = {
   label: number
   amount: number
   createdAt: number
+  updatedAt: number
+  deletedAt: number
+  barbershopId: number
   _all: number
 }
 
@@ -82,6 +91,9 @@ export type DailyLedgerEntryMinAggregateInputType = {
   label?: true
   amount?: true
   createdAt?: true
+  updatedAt?: true
+  deletedAt?: true
+  barbershopId?: true
 }
 
 export type DailyLedgerEntryMaxAggregateInputType = {
@@ -92,6 +104,9 @@ export type DailyLedgerEntryMaxAggregateInputType = {
   label?: true
   amount?: true
   createdAt?: true
+  updatedAt?: true
+  deletedAt?: true
+  barbershopId?: true
 }
 
 export type DailyLedgerEntryCountAggregateInputType = {
@@ -102,6 +117,9 @@ export type DailyLedgerEntryCountAggregateInputType = {
   label?: true
   amount?: true
   createdAt?: true
+  updatedAt?: true
+  deletedAt?: true
+  barbershopId?: true
   _all?: true
 }
 
@@ -199,6 +217,9 @@ export type DailyLedgerEntryGroupByOutputType = {
   label: string
   amount: runtime.Decimal
   createdAt: Date
+  updatedAt: Date
+  deletedAt: Date | null
+  barbershopId: string | null
   _count: DailyLedgerEntryCountAggregateOutputType | null
   _avg: DailyLedgerEntryAvgAggregateOutputType | null
   _sum: DailyLedgerEntrySumAggregateOutputType | null
@@ -232,7 +253,11 @@ export type DailyLedgerEntryWhereInput = {
   label?: Prisma.StringFilter<"DailyLedgerEntry"> | string
   amount?: Prisma.DecimalFilter<"DailyLedgerEntry"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"DailyLedgerEntry"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"DailyLedgerEntry"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"DailyLedgerEntry"> | Date | string | null
+  barbershopId?: Prisma.StringNullableFilter<"DailyLedgerEntry"> | string | null
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
+  barbershop?: Prisma.XOR<Prisma.BarbershopProfileNullableScalarRelationFilter, Prisma.BarbershopProfileWhereInput> | null
 }
 
 export type DailyLedgerEntryOrderByWithRelationInput = {
@@ -243,7 +268,11 @@ export type DailyLedgerEntryOrderByWithRelationInput = {
   label?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  barbershopId?: Prisma.SortOrderInput | Prisma.SortOrder
   barber?: Prisma.BarberProfileOrderByWithRelationInput
+  barbershop?: Prisma.BarbershopProfileOrderByWithRelationInput
 }
 
 export type DailyLedgerEntryWhereUniqueInput = Prisma.AtLeast<{
@@ -257,7 +286,11 @@ export type DailyLedgerEntryWhereUniqueInput = Prisma.AtLeast<{
   label?: Prisma.StringFilter<"DailyLedgerEntry"> | string
   amount?: Prisma.DecimalFilter<"DailyLedgerEntry"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"DailyLedgerEntry"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"DailyLedgerEntry"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"DailyLedgerEntry"> | Date | string | null
+  barbershopId?: Prisma.StringNullableFilter<"DailyLedgerEntry"> | string | null
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
+  barbershop?: Prisma.XOR<Prisma.BarbershopProfileNullableScalarRelationFilter, Prisma.BarbershopProfileWhereInput> | null
 }, "id">
 
 export type DailyLedgerEntryOrderByWithAggregationInput = {
@@ -268,6 +301,9 @@ export type DailyLedgerEntryOrderByWithAggregationInput = {
   label?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  barbershopId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.DailyLedgerEntryCountOrderByAggregateInput
   _avg?: Prisma.DailyLedgerEntryAvgOrderByAggregateInput
   _max?: Prisma.DailyLedgerEntryMaxOrderByAggregateInput
@@ -286,6 +322,9 @@ export type DailyLedgerEntryScalarWhereWithAggregatesInput = {
   label?: Prisma.StringWithAggregatesFilter<"DailyLedgerEntry"> | string
   amount?: Prisma.DecimalWithAggregatesFilter<"DailyLedgerEntry"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"DailyLedgerEntry"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"DailyLedgerEntry"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"DailyLedgerEntry"> | Date | string | null
+  barbershopId?: Prisma.StringNullableWithAggregatesFilter<"DailyLedgerEntry"> | string | null
 }
 
 export type DailyLedgerEntryCreateInput = {
@@ -295,7 +334,10 @@ export type DailyLedgerEntryCreateInput = {
   label: string
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
   barber: Prisma.BarberProfileCreateNestedOneWithoutLedgerEntriesInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutLedgerEntriesInput
 }
 
 export type DailyLedgerEntryUncheckedCreateInput = {
@@ -306,6 +348,9 @@ export type DailyLedgerEntryUncheckedCreateInput = {
   label: string
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  barbershopId?: string | null
 }
 
 export type DailyLedgerEntryUpdateInput = {
@@ -315,7 +360,10 @@ export type DailyLedgerEntryUpdateInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutLedgerEntriesNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutLedgerEntriesNestedInput
 }
 
 export type DailyLedgerEntryUncheckedUpdateInput = {
@@ -326,6 +374,9 @@ export type DailyLedgerEntryUncheckedUpdateInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DailyLedgerEntryCreateManyInput = {
@@ -336,6 +387,9 @@ export type DailyLedgerEntryCreateManyInput = {
   label: string
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  barbershopId?: string | null
 }
 
 export type DailyLedgerEntryUpdateManyMutationInput = {
@@ -345,6 +399,8 @@ export type DailyLedgerEntryUpdateManyMutationInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type DailyLedgerEntryUncheckedUpdateManyInput = {
@@ -355,6 +411,9 @@ export type DailyLedgerEntryUncheckedUpdateManyInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DailyLedgerEntryListRelationFilter = {
@@ -375,6 +434,9 @@ export type DailyLedgerEntryCountOrderByAggregateInput = {
   label?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
+  barbershopId?: Prisma.SortOrder
 }
 
 export type DailyLedgerEntryAvgOrderByAggregateInput = {
@@ -389,6 +451,9 @@ export type DailyLedgerEntryMaxOrderByAggregateInput = {
   label?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
+  barbershopId?: Prisma.SortOrder
 }
 
 export type DailyLedgerEntryMinOrderByAggregateInput = {
@@ -399,6 +464,9 @@ export type DailyLedgerEntryMinOrderByAggregateInput = {
   label?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
+  barbershopId?: Prisma.SortOrder
 }
 
 export type DailyLedgerEntrySumOrderByAggregateInput = {
@@ -447,6 +515,48 @@ export type DailyLedgerEntryUncheckedUpdateManyWithoutBarberNestedInput = {
   deleteMany?: Prisma.DailyLedgerEntryScalarWhereInput | Prisma.DailyLedgerEntryScalarWhereInput[]
 }
 
+export type DailyLedgerEntryCreateNestedManyWithoutBarbershopInput = {
+  create?: Prisma.XOR<Prisma.DailyLedgerEntryCreateWithoutBarbershopInput, Prisma.DailyLedgerEntryUncheckedCreateWithoutBarbershopInput> | Prisma.DailyLedgerEntryCreateWithoutBarbershopInput[] | Prisma.DailyLedgerEntryUncheckedCreateWithoutBarbershopInput[]
+  connectOrCreate?: Prisma.DailyLedgerEntryCreateOrConnectWithoutBarbershopInput | Prisma.DailyLedgerEntryCreateOrConnectWithoutBarbershopInput[]
+  createMany?: Prisma.DailyLedgerEntryCreateManyBarbershopInputEnvelope
+  connect?: Prisma.DailyLedgerEntryWhereUniqueInput | Prisma.DailyLedgerEntryWhereUniqueInput[]
+}
+
+export type DailyLedgerEntryUncheckedCreateNestedManyWithoutBarbershopInput = {
+  create?: Prisma.XOR<Prisma.DailyLedgerEntryCreateWithoutBarbershopInput, Prisma.DailyLedgerEntryUncheckedCreateWithoutBarbershopInput> | Prisma.DailyLedgerEntryCreateWithoutBarbershopInput[] | Prisma.DailyLedgerEntryUncheckedCreateWithoutBarbershopInput[]
+  connectOrCreate?: Prisma.DailyLedgerEntryCreateOrConnectWithoutBarbershopInput | Prisma.DailyLedgerEntryCreateOrConnectWithoutBarbershopInput[]
+  createMany?: Prisma.DailyLedgerEntryCreateManyBarbershopInputEnvelope
+  connect?: Prisma.DailyLedgerEntryWhereUniqueInput | Prisma.DailyLedgerEntryWhereUniqueInput[]
+}
+
+export type DailyLedgerEntryUpdateManyWithoutBarbershopNestedInput = {
+  create?: Prisma.XOR<Prisma.DailyLedgerEntryCreateWithoutBarbershopInput, Prisma.DailyLedgerEntryUncheckedCreateWithoutBarbershopInput> | Prisma.DailyLedgerEntryCreateWithoutBarbershopInput[] | Prisma.DailyLedgerEntryUncheckedCreateWithoutBarbershopInput[]
+  connectOrCreate?: Prisma.DailyLedgerEntryCreateOrConnectWithoutBarbershopInput | Prisma.DailyLedgerEntryCreateOrConnectWithoutBarbershopInput[]
+  upsert?: Prisma.DailyLedgerEntryUpsertWithWhereUniqueWithoutBarbershopInput | Prisma.DailyLedgerEntryUpsertWithWhereUniqueWithoutBarbershopInput[]
+  createMany?: Prisma.DailyLedgerEntryCreateManyBarbershopInputEnvelope
+  set?: Prisma.DailyLedgerEntryWhereUniqueInput | Prisma.DailyLedgerEntryWhereUniqueInput[]
+  disconnect?: Prisma.DailyLedgerEntryWhereUniqueInput | Prisma.DailyLedgerEntryWhereUniqueInput[]
+  delete?: Prisma.DailyLedgerEntryWhereUniqueInput | Prisma.DailyLedgerEntryWhereUniqueInput[]
+  connect?: Prisma.DailyLedgerEntryWhereUniqueInput | Prisma.DailyLedgerEntryWhereUniqueInput[]
+  update?: Prisma.DailyLedgerEntryUpdateWithWhereUniqueWithoutBarbershopInput | Prisma.DailyLedgerEntryUpdateWithWhereUniqueWithoutBarbershopInput[]
+  updateMany?: Prisma.DailyLedgerEntryUpdateManyWithWhereWithoutBarbershopInput | Prisma.DailyLedgerEntryUpdateManyWithWhereWithoutBarbershopInput[]
+  deleteMany?: Prisma.DailyLedgerEntryScalarWhereInput | Prisma.DailyLedgerEntryScalarWhereInput[]
+}
+
+export type DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopNestedInput = {
+  create?: Prisma.XOR<Prisma.DailyLedgerEntryCreateWithoutBarbershopInput, Prisma.DailyLedgerEntryUncheckedCreateWithoutBarbershopInput> | Prisma.DailyLedgerEntryCreateWithoutBarbershopInput[] | Prisma.DailyLedgerEntryUncheckedCreateWithoutBarbershopInput[]
+  connectOrCreate?: Prisma.DailyLedgerEntryCreateOrConnectWithoutBarbershopInput | Prisma.DailyLedgerEntryCreateOrConnectWithoutBarbershopInput[]
+  upsert?: Prisma.DailyLedgerEntryUpsertWithWhereUniqueWithoutBarbershopInput | Prisma.DailyLedgerEntryUpsertWithWhereUniqueWithoutBarbershopInput[]
+  createMany?: Prisma.DailyLedgerEntryCreateManyBarbershopInputEnvelope
+  set?: Prisma.DailyLedgerEntryWhereUniqueInput | Prisma.DailyLedgerEntryWhereUniqueInput[]
+  disconnect?: Prisma.DailyLedgerEntryWhereUniqueInput | Prisma.DailyLedgerEntryWhereUniqueInput[]
+  delete?: Prisma.DailyLedgerEntryWhereUniqueInput | Prisma.DailyLedgerEntryWhereUniqueInput[]
+  connect?: Prisma.DailyLedgerEntryWhereUniqueInput | Prisma.DailyLedgerEntryWhereUniqueInput[]
+  update?: Prisma.DailyLedgerEntryUpdateWithWhereUniqueWithoutBarbershopInput | Prisma.DailyLedgerEntryUpdateWithWhereUniqueWithoutBarbershopInput[]
+  updateMany?: Prisma.DailyLedgerEntryUpdateManyWithWhereWithoutBarbershopInput | Prisma.DailyLedgerEntryUpdateManyWithWhereWithoutBarbershopInput[]
+  deleteMany?: Prisma.DailyLedgerEntryScalarWhereInput | Prisma.DailyLedgerEntryScalarWhereInput[]
+}
+
 export type EnumLedgerEntryTypeFieldUpdateOperationsInput = {
   set?: $Enums.LedgerEntryType
 }
@@ -458,6 +568,9 @@ export type DailyLedgerEntryCreateWithoutBarberInput = {
   label: string
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutLedgerEntriesInput
 }
 
 export type DailyLedgerEntryUncheckedCreateWithoutBarberInput = {
@@ -467,6 +580,9 @@ export type DailyLedgerEntryUncheckedCreateWithoutBarberInput = {
   label: string
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  barbershopId?: string | null
 }
 
 export type DailyLedgerEntryCreateOrConnectWithoutBarberInput = {
@@ -506,6 +622,59 @@ export type DailyLedgerEntryScalarWhereInput = {
   label?: Prisma.StringFilter<"DailyLedgerEntry"> | string
   amount?: Prisma.DecimalFilter<"DailyLedgerEntry"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"DailyLedgerEntry"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"DailyLedgerEntry"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"DailyLedgerEntry"> | Date | string | null
+  barbershopId?: Prisma.StringNullableFilter<"DailyLedgerEntry"> | string | null
+}
+
+export type DailyLedgerEntryCreateWithoutBarbershopInput = {
+  id?: string
+  date: Date | string
+  type: $Enums.LedgerEntryType
+  label: string
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  barber: Prisma.BarberProfileCreateNestedOneWithoutLedgerEntriesInput
+}
+
+export type DailyLedgerEntryUncheckedCreateWithoutBarbershopInput = {
+  id?: string
+  barberId: string
+  date: Date | string
+  type: $Enums.LedgerEntryType
+  label: string
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+}
+
+export type DailyLedgerEntryCreateOrConnectWithoutBarbershopInput = {
+  where: Prisma.DailyLedgerEntryWhereUniqueInput
+  create: Prisma.XOR<Prisma.DailyLedgerEntryCreateWithoutBarbershopInput, Prisma.DailyLedgerEntryUncheckedCreateWithoutBarbershopInput>
+}
+
+export type DailyLedgerEntryCreateManyBarbershopInputEnvelope = {
+  data: Prisma.DailyLedgerEntryCreateManyBarbershopInput | Prisma.DailyLedgerEntryCreateManyBarbershopInput[]
+  skipDuplicates?: boolean
+}
+
+export type DailyLedgerEntryUpsertWithWhereUniqueWithoutBarbershopInput = {
+  where: Prisma.DailyLedgerEntryWhereUniqueInput
+  update: Prisma.XOR<Prisma.DailyLedgerEntryUpdateWithoutBarbershopInput, Prisma.DailyLedgerEntryUncheckedUpdateWithoutBarbershopInput>
+  create: Prisma.XOR<Prisma.DailyLedgerEntryCreateWithoutBarbershopInput, Prisma.DailyLedgerEntryUncheckedCreateWithoutBarbershopInput>
+}
+
+export type DailyLedgerEntryUpdateWithWhereUniqueWithoutBarbershopInput = {
+  where: Prisma.DailyLedgerEntryWhereUniqueInput
+  data: Prisma.XOR<Prisma.DailyLedgerEntryUpdateWithoutBarbershopInput, Prisma.DailyLedgerEntryUncheckedUpdateWithoutBarbershopInput>
+}
+
+export type DailyLedgerEntryUpdateManyWithWhereWithoutBarbershopInput = {
+  where: Prisma.DailyLedgerEntryScalarWhereInput
+  data: Prisma.XOR<Prisma.DailyLedgerEntryUpdateManyMutationInput, Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopInput>
 }
 
 export type DailyLedgerEntryCreateManyBarberInput = {
@@ -515,6 +684,9 @@ export type DailyLedgerEntryCreateManyBarberInput = {
   label: string
   amount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  barbershopId?: string | null
 }
 
 export type DailyLedgerEntryUpdateWithoutBarberInput = {
@@ -524,6 +696,9 @@ export type DailyLedgerEntryUpdateWithoutBarberInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutLedgerEntriesNestedInput
 }
 
 export type DailyLedgerEntryUncheckedUpdateWithoutBarberInput = {
@@ -533,6 +708,9 @@ export type DailyLedgerEntryUncheckedUpdateWithoutBarberInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DailyLedgerEntryUncheckedUpdateManyWithoutBarberInput = {
@@ -542,6 +720,57 @@ export type DailyLedgerEntryUncheckedUpdateManyWithoutBarberInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type DailyLedgerEntryCreateManyBarbershopInput = {
+  id?: string
+  barberId: string
+  date: Date | string
+  type: $Enums.LedgerEntryType
+  label: string
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+}
+
+export type DailyLedgerEntryUpdateWithoutBarbershopInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumLedgerEntryTypeFieldUpdateOperationsInput | $Enums.LedgerEntryType
+  label?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutLedgerEntriesNestedInput
+}
+
+export type DailyLedgerEntryUncheckedUpdateWithoutBarbershopInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  barberId?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumLedgerEntryTypeFieldUpdateOperationsInput | $Enums.LedgerEntryType
+  label?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  barberId?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.EnumLedgerEntryTypeFieldUpdateOperationsInput | $Enums.LedgerEntryType
+  label?: Prisma.StringFieldUpdateOperationsInput | string
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -554,7 +783,11 @@ export type DailyLedgerEntrySelect<ExtArgs extends runtime.Types.Extensions.Inte
   label?: boolean
   amount?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
+  deletedAt?: boolean
+  barbershopId?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.DailyLedgerEntry$barbershopArgs<ExtArgs>
 }, ExtArgs["result"]["dailyLedgerEntry"]>
 
 export type DailyLedgerEntrySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -565,7 +798,11 @@ export type DailyLedgerEntrySelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   label?: boolean
   amount?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
+  deletedAt?: boolean
+  barbershopId?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.DailyLedgerEntry$barbershopArgs<ExtArgs>
 }, ExtArgs["result"]["dailyLedgerEntry"]>
 
 export type DailyLedgerEntrySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -576,7 +813,11 @@ export type DailyLedgerEntrySelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   label?: boolean
   amount?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
+  deletedAt?: boolean
+  barbershopId?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.DailyLedgerEntry$barbershopArgs<ExtArgs>
 }, ExtArgs["result"]["dailyLedgerEntry"]>
 
 export type DailyLedgerEntrySelectScalar = {
@@ -587,23 +828,30 @@ export type DailyLedgerEntrySelectScalar = {
   label?: boolean
   amount?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
+  deletedAt?: boolean
+  barbershopId?: boolean
 }
 
-export type DailyLedgerEntryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "date" | "type" | "label" | "amount" | "createdAt", ExtArgs["result"]["dailyLedgerEntry"]>
+export type DailyLedgerEntryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "date" | "type" | "label" | "amount" | "createdAt" | "updatedAt" | "deletedAt" | "barbershopId", ExtArgs["result"]["dailyLedgerEntry"]>
 export type DailyLedgerEntryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.DailyLedgerEntry$barbershopArgs<ExtArgs>
 }
 export type DailyLedgerEntryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.DailyLedgerEntry$barbershopArgs<ExtArgs>
 }
 export type DailyLedgerEntryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.DailyLedgerEntry$barbershopArgs<ExtArgs>
 }
 
 export type $DailyLedgerEntryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "DailyLedgerEntry"
   objects: {
     barber: Prisma.$BarberProfilePayload<ExtArgs>
+    barbershop: Prisma.$BarbershopProfilePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -613,6 +861,9 @@ export type $DailyLedgerEntryPayload<ExtArgs extends runtime.Types.Extensions.In
     label: string
     amount: runtime.Decimal
     createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
+    barbershopId: string | null
   }, ExtArgs["result"]["dailyLedgerEntry"]>
   composites: {}
 }
@@ -1008,6 +1259,7 @@ readonly fields: DailyLedgerEntryFieldRefs;
 export interface Prisma__DailyLedgerEntryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   barber<T extends Prisma.BarberProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__BarberProfileClient<runtime.Types.Result.GetResult<Prisma.$BarberProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  barbershop<T extends Prisma.DailyLedgerEntry$barbershopArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DailyLedgerEntry$barbershopArgs<ExtArgs>>): Prisma.Prisma__BarbershopProfileClient<runtime.Types.Result.GetResult<Prisma.$BarbershopProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1044,6 +1296,9 @@ export interface DailyLedgerEntryFieldRefs {
   readonly label: Prisma.FieldRef<"DailyLedgerEntry", 'String'>
   readonly amount: Prisma.FieldRef<"DailyLedgerEntry", 'Decimal'>
   readonly createdAt: Prisma.FieldRef<"DailyLedgerEntry", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"DailyLedgerEntry", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"DailyLedgerEntry", 'DateTime'>
+  readonly barbershopId: Prisma.FieldRef<"DailyLedgerEntry", 'String'>
 }
     
 
@@ -1442,6 +1697,25 @@ export type DailyLedgerEntryDeleteManyArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many DailyLedgerEntries to delete.
    */
   limit?: number
+}
+
+/**
+ * DailyLedgerEntry.barbershop
+ */
+export type DailyLedgerEntry$barbershopArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BarbershopProfile
+   */
+  select?: Prisma.BarbershopProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BarbershopProfile
+   */
+  omit?: Prisma.BarbershopProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BarbershopProfileInclude<ExtArgs> | null
+  where?: Prisma.BarbershopProfileWhereInput
 }
 
 /**

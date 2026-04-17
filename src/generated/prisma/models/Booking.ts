@@ -58,6 +58,7 @@ export type BookingMinAggregateOutputType = {
   scheduledAt: Date | null
   status: $Enums.BookingStatus | null
   paymentMethod: $Enums.PaymentMethod | null
+  currency: string | null
   totalAmount: runtime.Decimal | null
   platformFee: runtime.Decimal | null
   barberNet: runtime.Decimal | null
@@ -74,8 +75,10 @@ export type BookingMinAggregateOutputType = {
   boletaAnuladaAt: Date | null
   boletaAnulMotivo: string | null
   boletaTipo: string | null
+  barbershopId: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type BookingMaxAggregateOutputType = {
@@ -86,6 +89,7 @@ export type BookingMaxAggregateOutputType = {
   scheduledAt: Date | null
   status: $Enums.BookingStatus | null
   paymentMethod: $Enums.PaymentMethod | null
+  currency: string | null
   totalAmount: runtime.Decimal | null
   platformFee: runtime.Decimal | null
   barberNet: runtime.Decimal | null
@@ -102,8 +106,10 @@ export type BookingMaxAggregateOutputType = {
   boletaAnuladaAt: Date | null
   boletaAnulMotivo: string | null
   boletaTipo: string | null
+  barbershopId: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type BookingCountAggregateOutputType = {
@@ -114,6 +120,7 @@ export type BookingCountAggregateOutputType = {
   scheduledAt: number
   status: number
   paymentMethod: number
+  currency: number
   totalAmount: number
   platformFee: number
   barberNet: number
@@ -131,8 +138,10 @@ export type BookingCountAggregateOutputType = {
   boletaAnuladaAt: number
   boletaAnulMotivo: number
   boletaTipo: number
+  barbershopId: number
   createdAt: number
   updatedAt: number
+  deletedAt: number
   _all: number
 }
 
@@ -169,6 +178,7 @@ export type BookingMinAggregateInputType = {
   scheduledAt?: true
   status?: true
   paymentMethod?: true
+  currency?: true
   totalAmount?: true
   platformFee?: true
   barberNet?: true
@@ -185,8 +195,10 @@ export type BookingMinAggregateInputType = {
   boletaAnuladaAt?: true
   boletaAnulMotivo?: true
   boletaTipo?: true
+  barbershopId?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type BookingMaxAggregateInputType = {
@@ -197,6 +209,7 @@ export type BookingMaxAggregateInputType = {
   scheduledAt?: true
   status?: true
   paymentMethod?: true
+  currency?: true
   totalAmount?: true
   platformFee?: true
   barberNet?: true
@@ -213,8 +226,10 @@ export type BookingMaxAggregateInputType = {
   boletaAnuladaAt?: true
   boletaAnulMotivo?: true
   boletaTipo?: true
+  barbershopId?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type BookingCountAggregateInputType = {
@@ -225,6 +240,7 @@ export type BookingCountAggregateInputType = {
   scheduledAt?: true
   status?: true
   paymentMethod?: true
+  currency?: true
   totalAmount?: true
   platformFee?: true
   barberNet?: true
@@ -242,8 +258,10 @@ export type BookingCountAggregateInputType = {
   boletaAnuladaAt?: true
   boletaAnulMotivo?: true
   boletaTipo?: true
+  barbershopId?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -341,6 +359,7 @@ export type BookingGroupByOutputType = {
   scheduledAt: Date
   status: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency: string
   totalAmount: runtime.Decimal
   platformFee: runtime.Decimal
   barberNet: runtime.Decimal
@@ -358,8 +377,10 @@ export type BookingGroupByOutputType = {
   boletaAnuladaAt: Date | null
   boletaAnulMotivo: string | null
   boletaTipo: string | null
+  barbershopId: string | null
   createdAt: Date
   updatedAt: Date
+  deletedAt: Date | null
   _count: BookingCountAggregateOutputType | null
   _avg: BookingAvgAggregateOutputType | null
   _sum: BookingSumAggregateOutputType | null
@@ -393,6 +414,7 @@ export type BookingWhereInput = {
   scheduledAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   status?: Prisma.EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFilter<"Booking"> | $Enums.PaymentMethod
+  currency?: Prisma.StringFilter<"Booking"> | string
   totalAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -410,11 +432,14 @@ export type BookingWhereInput = {
   boletaAnuladaAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   boletaAnulMotivo?: Prisma.StringNullableFilter<"Booking"> | string | null
   boletaTipo?: Prisma.StringNullableFilter<"Booking"> | string | null
+  barbershopId?: Prisma.StringNullableFilter<"Booking"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   client?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
   service?: Prisma.XOR<Prisma.ServiceItemScalarRelationFilter, Prisma.ServiceItemWhereInput>
+  barbershop?: Prisma.XOR<Prisma.BarbershopProfileNullableScalarRelationFilter, Prisma.BarbershopProfileWhereInput> | null
   payment?: Prisma.XOR<Prisma.PaymentNullableScalarRelationFilter, Prisma.PaymentWhereInput> | null
   review?: Prisma.XOR<Prisma.ReviewNullableScalarRelationFilter, Prisma.ReviewWhereInput> | null
   earning?: Prisma.XOR<Prisma.EarningNullableScalarRelationFilter, Prisma.EarningWhereInput> | null
@@ -429,6 +454,7 @@ export type BookingOrderByWithRelationInput = {
   scheduledAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
   platformFee?: Prisma.SortOrder
   barberNet?: Prisma.SortOrder
@@ -446,11 +472,14 @@ export type BookingOrderByWithRelationInput = {
   boletaAnuladaAt?: Prisma.SortOrderInput | Prisma.SortOrder
   boletaAnulMotivo?: Prisma.SortOrderInput | Prisma.SortOrder
   boletaTipo?: Prisma.SortOrderInput | Prisma.SortOrder
+  barbershopId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   client?: Prisma.UserOrderByWithRelationInput
   barber?: Prisma.BarberProfileOrderByWithRelationInput
   service?: Prisma.ServiceItemOrderByWithRelationInput
+  barbershop?: Prisma.BarbershopProfileOrderByWithRelationInput
   payment?: Prisma.PaymentOrderByWithRelationInput
   review?: Prisma.ReviewOrderByWithRelationInput
   earning?: Prisma.EarningOrderByWithRelationInput
@@ -468,6 +497,7 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   scheduledAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   status?: Prisma.EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFilter<"Booking"> | $Enums.PaymentMethod
+  currency?: Prisma.StringFilter<"Booking"> | string
   totalAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -485,11 +515,14 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   boletaAnuladaAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   boletaAnulMotivo?: Prisma.StringNullableFilter<"Booking"> | string | null
   boletaTipo?: Prisma.StringNullableFilter<"Booking"> | string | null
+  barbershopId?: Prisma.StringNullableFilter<"Booking"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   client?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
   service?: Prisma.XOR<Prisma.ServiceItemScalarRelationFilter, Prisma.ServiceItemWhereInput>
+  barbershop?: Prisma.XOR<Prisma.BarbershopProfileNullableScalarRelationFilter, Prisma.BarbershopProfileWhereInput> | null
   payment?: Prisma.XOR<Prisma.PaymentNullableScalarRelationFilter, Prisma.PaymentWhereInput> | null
   review?: Prisma.XOR<Prisma.ReviewNullableScalarRelationFilter, Prisma.ReviewWhereInput> | null
   earning?: Prisma.XOR<Prisma.EarningNullableScalarRelationFilter, Prisma.EarningWhereInput> | null
@@ -504,6 +537,7 @@ export type BookingOrderByWithAggregationInput = {
   scheduledAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
   platformFee?: Prisma.SortOrder
   barberNet?: Prisma.SortOrder
@@ -521,8 +555,10 @@ export type BookingOrderByWithAggregationInput = {
   boletaAnuladaAt?: Prisma.SortOrderInput | Prisma.SortOrder
   boletaAnulMotivo?: Prisma.SortOrderInput | Prisma.SortOrder
   boletaTipo?: Prisma.SortOrderInput | Prisma.SortOrder
+  barbershopId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.BookingCountOrderByAggregateInput
   _avg?: Prisma.BookingAvgOrderByAggregateInput
   _max?: Prisma.BookingMaxOrderByAggregateInput
@@ -541,6 +577,7 @@ export type BookingScalarWhereWithAggregatesInput = {
   scheduledAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   status?: Prisma.EnumBookingStatusWithAggregatesFilter<"Booking"> | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodWithAggregatesFilter<"Booking"> | $Enums.PaymentMethod
+  currency?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   totalAmount?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -558,8 +595,10 @@ export type BookingScalarWhereWithAggregatesInput = {
   boletaAnuladaAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
   boletaAnulMotivo?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
   boletaTipo?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  barbershopId?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
 }
 
 export type BookingCreateInput = {
@@ -567,6 +606,7 @@ export type BookingCreateInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -586,9 +626,11 @@ export type BookingCreateInput = {
   boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
   barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
   service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
@@ -603,6 +645,7 @@ export type BookingUncheckedCreateInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -620,8 +663,10 @@ export type BookingUncheckedCreateInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  barbershopId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
@@ -633,6 +678,7 @@ export type BookingUpdateInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -652,9 +698,11 @@ export type BookingUpdateInput = {
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
   service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
@@ -669,6 +717,7 @@ export type BookingUncheckedUpdateInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -686,8 +735,10 @@ export type BookingUncheckedUpdateInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
@@ -702,6 +753,7 @@ export type BookingCreateManyInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -719,8 +771,10 @@ export type BookingCreateManyInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  barbershopId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type BookingUpdateManyMutationInput = {
@@ -728,6 +782,7 @@ export type BookingUpdateManyMutationInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -747,6 +802,7 @@ export type BookingUpdateManyMutationInput = {
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type BookingUncheckedUpdateManyInput = {
@@ -757,6 +813,7 @@ export type BookingUncheckedUpdateManyInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -774,8 +831,10 @@ export type BookingUncheckedUpdateManyInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type BookingListRelationFilter = {
@@ -796,6 +855,7 @@ export type BookingCountOrderByAggregateInput = {
   scheduledAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
   platformFee?: Prisma.SortOrder
   barberNet?: Prisma.SortOrder
@@ -813,8 +873,10 @@ export type BookingCountOrderByAggregateInput = {
   boletaAnuladaAt?: Prisma.SortOrder
   boletaAnulMotivo?: Prisma.SortOrder
   boletaTipo?: Prisma.SortOrder
+  barbershopId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type BookingAvgOrderByAggregateInput = {
@@ -837,6 +899,7 @@ export type BookingMaxOrderByAggregateInput = {
   scheduledAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
   platformFee?: Prisma.SortOrder
   barberNet?: Prisma.SortOrder
@@ -853,8 +916,10 @@ export type BookingMaxOrderByAggregateInput = {
   boletaAnuladaAt?: Prisma.SortOrder
   boletaAnulMotivo?: Prisma.SortOrder
   boletaTipo?: Prisma.SortOrder
+  barbershopId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type BookingMinOrderByAggregateInput = {
@@ -865,6 +930,7 @@ export type BookingMinOrderByAggregateInput = {
   scheduledAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   paymentMethod?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   totalAmount?: Prisma.SortOrder
   platformFee?: Prisma.SortOrder
   barberNet?: Prisma.SortOrder
@@ -881,8 +947,10 @@ export type BookingMinOrderByAggregateInput = {
   boletaAnuladaAt?: Prisma.SortOrder
   boletaAnulMotivo?: Prisma.SortOrder
   boletaTipo?: Prisma.SortOrder
+  barbershopId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type BookingSumOrderByAggregateInput = {
@@ -988,6 +1056,48 @@ export type BookingUncheckedUpdateManyWithoutBarberNestedInput = {
   connect?: Prisma.BookingWhereUniqueInput | Prisma.BookingWhereUniqueInput[]
   update?: Prisma.BookingUpdateWithWhereUniqueWithoutBarberInput | Prisma.BookingUpdateWithWhereUniqueWithoutBarberInput[]
   updateMany?: Prisma.BookingUpdateManyWithWhereWithoutBarberInput | Prisma.BookingUpdateManyWithWhereWithoutBarberInput[]
+  deleteMany?: Prisma.BookingScalarWhereInput | Prisma.BookingScalarWhereInput[]
+}
+
+export type BookingCreateNestedManyWithoutBarbershopInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutBarbershopInput, Prisma.BookingUncheckedCreateWithoutBarbershopInput> | Prisma.BookingCreateWithoutBarbershopInput[] | Prisma.BookingUncheckedCreateWithoutBarbershopInput[]
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutBarbershopInput | Prisma.BookingCreateOrConnectWithoutBarbershopInput[]
+  createMany?: Prisma.BookingCreateManyBarbershopInputEnvelope
+  connect?: Prisma.BookingWhereUniqueInput | Prisma.BookingWhereUniqueInput[]
+}
+
+export type BookingUncheckedCreateNestedManyWithoutBarbershopInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutBarbershopInput, Prisma.BookingUncheckedCreateWithoutBarbershopInput> | Prisma.BookingCreateWithoutBarbershopInput[] | Prisma.BookingUncheckedCreateWithoutBarbershopInput[]
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutBarbershopInput | Prisma.BookingCreateOrConnectWithoutBarbershopInput[]
+  createMany?: Prisma.BookingCreateManyBarbershopInputEnvelope
+  connect?: Prisma.BookingWhereUniqueInput | Prisma.BookingWhereUniqueInput[]
+}
+
+export type BookingUpdateManyWithoutBarbershopNestedInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutBarbershopInput, Prisma.BookingUncheckedCreateWithoutBarbershopInput> | Prisma.BookingCreateWithoutBarbershopInput[] | Prisma.BookingUncheckedCreateWithoutBarbershopInput[]
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutBarbershopInput | Prisma.BookingCreateOrConnectWithoutBarbershopInput[]
+  upsert?: Prisma.BookingUpsertWithWhereUniqueWithoutBarbershopInput | Prisma.BookingUpsertWithWhereUniqueWithoutBarbershopInput[]
+  createMany?: Prisma.BookingCreateManyBarbershopInputEnvelope
+  set?: Prisma.BookingWhereUniqueInput | Prisma.BookingWhereUniqueInput[]
+  disconnect?: Prisma.BookingWhereUniqueInput | Prisma.BookingWhereUniqueInput[]
+  delete?: Prisma.BookingWhereUniqueInput | Prisma.BookingWhereUniqueInput[]
+  connect?: Prisma.BookingWhereUniqueInput | Prisma.BookingWhereUniqueInput[]
+  update?: Prisma.BookingUpdateWithWhereUniqueWithoutBarbershopInput | Prisma.BookingUpdateWithWhereUniqueWithoutBarbershopInput[]
+  updateMany?: Prisma.BookingUpdateManyWithWhereWithoutBarbershopInput | Prisma.BookingUpdateManyWithWhereWithoutBarbershopInput[]
+  deleteMany?: Prisma.BookingScalarWhereInput | Prisma.BookingScalarWhereInput[]
+}
+
+export type BookingUncheckedUpdateManyWithoutBarbershopNestedInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutBarbershopInput, Prisma.BookingUncheckedCreateWithoutBarbershopInput> | Prisma.BookingCreateWithoutBarbershopInput[] | Prisma.BookingUncheckedCreateWithoutBarbershopInput[]
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutBarbershopInput | Prisma.BookingCreateOrConnectWithoutBarbershopInput[]
+  upsert?: Prisma.BookingUpsertWithWhereUniqueWithoutBarbershopInput | Prisma.BookingUpsertWithWhereUniqueWithoutBarbershopInput[]
+  createMany?: Prisma.BookingCreateManyBarbershopInputEnvelope
+  set?: Prisma.BookingWhereUniqueInput | Prisma.BookingWhereUniqueInput[]
+  disconnect?: Prisma.BookingWhereUniqueInput | Prisma.BookingWhereUniqueInput[]
+  delete?: Prisma.BookingWhereUniqueInput | Prisma.BookingWhereUniqueInput[]
+  connect?: Prisma.BookingWhereUniqueInput | Prisma.BookingWhereUniqueInput[]
+  update?: Prisma.BookingUpdateWithWhereUniqueWithoutBarbershopInput | Prisma.BookingUpdateWithWhereUniqueWithoutBarbershopInput[]
+  updateMany?: Prisma.BookingUpdateManyWithWhereWithoutBarbershopInput | Prisma.BookingUpdateManyWithWhereWithoutBarbershopInput[]
   deleteMany?: Prisma.BookingScalarWhereInput | Prisma.BookingScalarWhereInput[]
 }
 
@@ -1104,6 +1214,7 @@ export type BookingCreateWithoutClientInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1123,8 +1234,10 @@ export type BookingCreateWithoutClientInput = {
   boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
   service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
@@ -1138,6 +1251,7 @@ export type BookingUncheckedCreateWithoutClientInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1155,8 +1269,10 @@ export type BookingUncheckedCreateWithoutClientInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  barbershopId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
@@ -1200,6 +1316,7 @@ export type BookingScalarWhereInput = {
   scheduledAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   status?: Prisma.EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFilter<"Booking"> | $Enums.PaymentMethod
+  currency?: Prisma.StringFilter<"Booking"> | string
   totalAmount?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1217,8 +1334,10 @@ export type BookingScalarWhereInput = {
   boletaAnuladaAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   boletaAnulMotivo?: Prisma.StringNullableFilter<"Booking"> | string | null
   boletaTipo?: Prisma.StringNullableFilter<"Booking"> | string | null
+  barbershopId?: Prisma.StringNullableFilter<"Booking"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
 }
 
 export type BookingCreateWithoutBarberInput = {
@@ -1226,6 +1345,7 @@ export type BookingCreateWithoutBarberInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1245,8 +1365,10 @@ export type BookingCreateWithoutBarberInput = {
   boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
   service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
@@ -1260,6 +1382,7 @@ export type BookingUncheckedCreateWithoutBarberInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1277,8 +1400,10 @@ export type BookingUncheckedCreateWithoutBarberInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  barbershopId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
@@ -1311,11 +1436,12 @@ export type BookingUpdateManyWithWhereWithoutBarberInput = {
   data: Prisma.XOR<Prisma.BookingUpdateManyMutationInput, Prisma.BookingUncheckedUpdateManyWithoutBarberInput>
 }
 
-export type BookingCreateWithoutServiceInput = {
+export type BookingCreateWithoutBarbershopInput = {
   id?: string
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1335,8 +1461,106 @@ export type BookingCreateWithoutServiceInput = {
   boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
   barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
+  service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
+  payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
+  review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+  earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
+  chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
+}
+
+export type BookingUncheckedCreateWithoutBarbershopInput = {
+  id?: string
+  clientId: string
+  barberId: string
+  serviceId: string
+  scheduledAt: Date | string
+  status?: $Enums.BookingStatus
+  paymentMethod: $Enums.PaymentMethod
+  currency?: string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: string | null
+  boletaPdfUrl?: string | null
+  boletaEstado?: string | null
+  boletaEmitidaAt?: Date | string | null
+  boletaAnuladaAt?: Date | string | null
+  boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
+  review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+  earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
+  chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
+}
+
+export type BookingCreateOrConnectWithoutBarbershopInput = {
+  where: Prisma.BookingWhereUniqueInput
+  create: Prisma.XOR<Prisma.BookingCreateWithoutBarbershopInput, Prisma.BookingUncheckedCreateWithoutBarbershopInput>
+}
+
+export type BookingCreateManyBarbershopInputEnvelope = {
+  data: Prisma.BookingCreateManyBarbershopInput | Prisma.BookingCreateManyBarbershopInput[]
+  skipDuplicates?: boolean
+}
+
+export type BookingUpsertWithWhereUniqueWithoutBarbershopInput = {
+  where: Prisma.BookingWhereUniqueInput
+  update: Prisma.XOR<Prisma.BookingUpdateWithoutBarbershopInput, Prisma.BookingUncheckedUpdateWithoutBarbershopInput>
+  create: Prisma.XOR<Prisma.BookingCreateWithoutBarbershopInput, Prisma.BookingUncheckedCreateWithoutBarbershopInput>
+}
+
+export type BookingUpdateWithWhereUniqueWithoutBarbershopInput = {
+  where: Prisma.BookingWhereUniqueInput
+  data: Prisma.XOR<Prisma.BookingUpdateWithoutBarbershopInput, Prisma.BookingUncheckedUpdateWithoutBarbershopInput>
+}
+
+export type BookingUpdateManyWithWhereWithoutBarbershopInput = {
+  where: Prisma.BookingScalarWhereInput
+  data: Prisma.XOR<Prisma.BookingUpdateManyMutationInput, Prisma.BookingUncheckedUpdateManyWithoutBarbershopInput>
+}
+
+export type BookingCreateWithoutServiceInput = {
+  id?: string
+  scheduledAt: Date | string
+  status?: $Enums.BookingStatus
+  paymentMethod: $Enums.PaymentMethod
+  currency?: string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: string | null
+  boletaPdfUrl?: string | null
+  boletaEstado?: string | null
+  boletaEmitidaAt?: Date | string | null
+  boletaAnuladaAt?: Date | string | null
+  boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  client: Prisma.UserCreateNestedOneWithoutBookingsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
@@ -1350,6 +1574,7 @@ export type BookingUncheckedCreateWithoutServiceInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1367,8 +1592,10 @@ export type BookingUncheckedCreateWithoutServiceInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  barbershopId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
@@ -1406,6 +1633,7 @@ export type BookingCreateWithoutChatThreadInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1425,9 +1653,11 @@ export type BookingCreateWithoutChatThreadInput = {
   boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
   barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
   service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
@@ -1441,6 +1671,7 @@ export type BookingUncheckedCreateWithoutChatThreadInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1458,8 +1689,10 @@ export type BookingUncheckedCreateWithoutChatThreadInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  barbershopId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
@@ -1486,6 +1719,7 @@ export type BookingUpdateWithoutChatThreadInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1505,9 +1739,11 @@ export type BookingUpdateWithoutChatThreadInput = {
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
   service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
@@ -1521,6 +1757,7 @@ export type BookingUncheckedUpdateWithoutChatThreadInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1538,8 +1775,10 @@ export type BookingUncheckedUpdateWithoutChatThreadInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
@@ -1550,6 +1789,7 @@ export type BookingCreateWithoutPaymentInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1569,9 +1809,11 @@ export type BookingCreateWithoutPaymentInput = {
   boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
   barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
   service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBookingsInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
@@ -1585,6 +1827,7 @@ export type BookingUncheckedCreateWithoutPaymentInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1602,8 +1845,10 @@ export type BookingUncheckedCreateWithoutPaymentInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  barbershopId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
@@ -1630,6 +1875,7 @@ export type BookingUpdateWithoutPaymentInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1649,9 +1895,11 @@ export type BookingUpdateWithoutPaymentInput = {
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
   service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBookingsNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
@@ -1665,6 +1913,7 @@ export type BookingUncheckedUpdateWithoutPaymentInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1682,8 +1931,10 @@ export type BookingUncheckedUpdateWithoutPaymentInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
@@ -1694,6 +1945,7 @@ export type BookingCreateWithoutReviewInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1713,9 +1965,11 @@ export type BookingCreateWithoutReviewInput = {
   boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
   barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
   service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
@@ -1729,6 +1983,7 @@ export type BookingUncheckedCreateWithoutReviewInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1746,8 +2001,10 @@ export type BookingUncheckedCreateWithoutReviewInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  barbershopId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
@@ -1774,6 +2031,7 @@ export type BookingUpdateWithoutReviewInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1793,9 +2051,11 @@ export type BookingUpdateWithoutReviewInput = {
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
   service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
@@ -1809,6 +2069,7 @@ export type BookingUncheckedUpdateWithoutReviewInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1826,8 +2087,10 @@ export type BookingUncheckedUpdateWithoutReviewInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
@@ -1838,6 +2101,7 @@ export type BookingCreateWithoutEarningInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1857,9 +2121,11 @@ export type BookingCreateWithoutEarningInput = {
   boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   client: Prisma.UserCreateNestedOneWithoutBookingsInput
   barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
   service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBookingsInput
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
@@ -1873,6 +2139,7 @@ export type BookingUncheckedCreateWithoutEarningInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1890,8 +2157,10 @@ export type BookingUncheckedCreateWithoutEarningInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  barbershopId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
@@ -1918,6 +2187,7 @@ export type BookingUpdateWithoutEarningInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1937,9 +2207,11 @@ export type BookingUpdateWithoutEarningInput = {
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
   service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
@@ -1953,6 +2225,7 @@ export type BookingUncheckedUpdateWithoutEarningInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1970,8 +2243,10 @@ export type BookingUncheckedUpdateWithoutEarningInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
@@ -1984,6 +2259,7 @@ export type BookingCreateManyClientInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -2001,8 +2277,10 @@ export type BookingCreateManyClientInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  barbershopId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type BookingUpdateWithoutClientInput = {
@@ -2010,6 +2288,7 @@ export type BookingUpdateWithoutClientInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -2029,8 +2308,10 @@ export type BookingUpdateWithoutClientInput = {
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
   service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
@@ -2044,6 +2325,7 @@ export type BookingUncheckedUpdateWithoutClientInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -2061,8 +2343,10 @@ export type BookingUncheckedUpdateWithoutClientInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
@@ -2076,6 +2360,7 @@ export type BookingUncheckedUpdateManyWithoutClientInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -2093,8 +2378,10 @@ export type BookingUncheckedUpdateManyWithoutClientInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type BookingCreateManyBarberInput = {
@@ -2104,6 +2391,7 @@ export type BookingCreateManyBarberInput = {
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -2121,8 +2409,10 @@ export type BookingCreateManyBarberInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  barbershopId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type BookingUpdateWithoutBarberInput = {
@@ -2130,6 +2420,7 @@ export type BookingUpdateWithoutBarberInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -2149,8 +2440,10 @@ export type BookingUpdateWithoutBarberInput = {
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
   service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
@@ -2164,6 +2457,7 @@ export type BookingUncheckedUpdateWithoutBarberInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -2181,8 +2475,10 @@ export type BookingUncheckedUpdateWithoutBarberInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
@@ -2196,6 +2492,7 @@ export type BookingUncheckedUpdateManyWithoutBarberInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -2213,17 +2510,21 @@ export type BookingUncheckedUpdateManyWithoutBarberInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type BookingCreateManyServiceInput = {
+export type BookingCreateManyBarbershopInput = {
   id?: string
   clientId: string
   barberId: string
+  serviceId: string
   scheduledAt: Date | string
   status?: $Enums.BookingStatus
   paymentMethod: $Enums.PaymentMethod
+  currency?: string
   totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -2243,13 +2544,15 @@ export type BookingCreateManyServiceInput = {
   boletaTipo?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
-export type BookingUpdateWithoutServiceInput = {
+export type BookingUpdateWithoutBarbershopInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -2269,8 +2572,142 @@ export type BookingUpdateWithoutServiceInput = {
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
+  service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
+  payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
+  review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+  earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
+  chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
+}
+
+export type BookingUncheckedUpdateWithoutBarbershopInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
+  barberId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceId?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+  paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaPdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEstado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
+  review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
+  earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
+  chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
+}
+
+export type BookingUncheckedUpdateManyWithoutBarbershopInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
+  barberId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceId?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+  paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaPdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEstado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type BookingCreateManyServiceInput = {
+  id?: string
+  clientId: string
+  barberId: string
+  scheduledAt: Date | string
+  status?: $Enums.BookingStatus
+  paymentMethod: $Enums.PaymentMethod
+  currency?: string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: string | null
+  boletaPdfUrl?: string | null
+  boletaEstado?: string | null
+  boletaEmitidaAt?: Date | string | null
+  boletaAnuladaAt?: Date | string | null
+  boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
+  barbershopId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+}
+
+export type BookingUpdateWithoutServiceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+  paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaPdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEstado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBookingsNestedInput
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
@@ -2284,6 +2721,7 @@ export type BookingUncheckedUpdateWithoutServiceInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -2301,8 +2739,10 @@ export type BookingUncheckedUpdateWithoutServiceInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
@@ -2316,6 +2756,7 @@ export type BookingUncheckedUpdateManyWithoutServiceInput = {
   scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
   totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -2333,8 +2774,10 @@ export type BookingUncheckedUpdateManyWithoutServiceInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -2347,6 +2790,7 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   scheduledAt?: boolean
   status?: boolean
   paymentMethod?: boolean
+  currency?: boolean
   totalAmount?: boolean
   platformFee?: boolean
   barberNet?: boolean
@@ -2364,11 +2808,14 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   boletaAnuladaAt?: boolean
   boletaAnulMotivo?: boolean
   boletaTipo?: boolean
+  barbershopId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   service?: boolean | Prisma.ServiceItemDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.Booking$barbershopArgs<ExtArgs>
   payment?: boolean | Prisma.Booking$paymentArgs<ExtArgs>
   review?: boolean | Prisma.Booking$reviewArgs<ExtArgs>
   earning?: boolean | Prisma.Booking$earningArgs<ExtArgs>
@@ -2383,6 +2830,7 @@ export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   scheduledAt?: boolean
   status?: boolean
   paymentMethod?: boolean
+  currency?: boolean
   totalAmount?: boolean
   platformFee?: boolean
   barberNet?: boolean
@@ -2400,11 +2848,14 @@ export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   boletaAnuladaAt?: boolean
   boletaAnulMotivo?: boolean
   boletaTipo?: boolean
+  barbershopId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   service?: boolean | Prisma.ServiceItemDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.Booking$barbershopArgs<ExtArgs>
 }, ExtArgs["result"]["booking"]>
 
 export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -2415,6 +2866,7 @@ export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   scheduledAt?: boolean
   status?: boolean
   paymentMethod?: boolean
+  currency?: boolean
   totalAmount?: boolean
   platformFee?: boolean
   barberNet?: boolean
@@ -2432,11 +2884,14 @@ export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   boletaAnuladaAt?: boolean
   boletaAnulMotivo?: boolean
   boletaTipo?: boolean
+  barbershopId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   service?: boolean | Prisma.ServiceItemDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.Booking$barbershopArgs<ExtArgs>
 }, ExtArgs["result"]["booking"]>
 
 export type BookingSelectScalar = {
@@ -2447,6 +2902,7 @@ export type BookingSelectScalar = {
   scheduledAt?: boolean
   status?: boolean
   paymentMethod?: boolean
+  currency?: boolean
   totalAmount?: boolean
   platformFee?: boolean
   barberNet?: boolean
@@ -2464,15 +2920,18 @@ export type BookingSelectScalar = {
   boletaAnuladaAt?: boolean
   boletaAnulMotivo?: boolean
   boletaTipo?: boolean
+  barbershopId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
 }
 
-export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "barberId" | "serviceId" | "scheduledAt" | "status" | "paymentMethod" | "totalAmount" | "platformFee" | "barberNet" | "grossAmount" | "platformFeePercent" | "distributableAmount" | "barberAmount" | "shopAmount" | "netPayoutToBarber" | "serviceSnapshot" | "boletaFolio" | "boletaPdfUrl" | "boletaEstado" | "boletaEmitidaAt" | "boletaAnuladaAt" | "boletaAnulMotivo" | "boletaTipo" | "createdAt" | "updatedAt", ExtArgs["result"]["booking"]>
+export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "barberId" | "serviceId" | "scheduledAt" | "status" | "paymentMethod" | "currency" | "totalAmount" | "platformFee" | "barberNet" | "grossAmount" | "platformFeePercent" | "distributableAmount" | "barberAmount" | "shopAmount" | "netPayoutToBarber" | "serviceSnapshot" | "boletaFolio" | "boletaPdfUrl" | "boletaEstado" | "boletaEmitidaAt" | "boletaAnuladaAt" | "boletaAnulMotivo" | "boletaTipo" | "barbershopId" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["booking"]>
 export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   service?: boolean | Prisma.ServiceItemDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.Booking$barbershopArgs<ExtArgs>
   payment?: boolean | Prisma.Booking$paymentArgs<ExtArgs>
   review?: boolean | Prisma.Booking$reviewArgs<ExtArgs>
   earning?: boolean | Prisma.Booking$earningArgs<ExtArgs>
@@ -2482,11 +2941,13 @@ export type BookingIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   service?: boolean | Prisma.ServiceItemDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.Booking$barbershopArgs<ExtArgs>
 }
 export type BookingIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   service?: boolean | Prisma.ServiceItemDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.Booking$barbershopArgs<ExtArgs>
 }
 
 export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2495,6 +2956,7 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     client: Prisma.$UserPayload<ExtArgs>
     barber: Prisma.$BarberProfilePayload<ExtArgs>
     service: Prisma.$ServiceItemPayload<ExtArgs>
+    barbershop: Prisma.$BarbershopProfilePayload<ExtArgs> | null
     payment: Prisma.$PaymentPayload<ExtArgs> | null
     review: Prisma.$ReviewPayload<ExtArgs> | null
     earning: Prisma.$EarningPayload<ExtArgs> | null
@@ -2508,6 +2970,7 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     scheduledAt: Date
     status: $Enums.BookingStatus
     paymentMethod: $Enums.PaymentMethod
+    currency: string
     totalAmount: runtime.Decimal
     platformFee: runtime.Decimal
     barberNet: runtime.Decimal
@@ -2525,8 +2988,10 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     boletaAnuladaAt: Date | null
     boletaAnulMotivo: string | null
     boletaTipo: string | null
+    barbershopId: string | null
     createdAt: Date
     updatedAt: Date
+    deletedAt: Date | null
   }, ExtArgs["result"]["booking"]>
   composites: {}
 }
@@ -2924,6 +3389,7 @@ export interface Prisma__BookingClient<T, Null = never, ExtArgs extends runtime.
   client<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   barber<T extends Prisma.BarberProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__BarberProfileClient<runtime.Types.Result.GetResult<Prisma.$BarberProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   service<T extends Prisma.ServiceItemDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceItemDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceItemClient<runtime.Types.Result.GetResult<Prisma.$ServiceItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  barbershop<T extends Prisma.Booking$barbershopArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$barbershopArgs<ExtArgs>>): Prisma.Prisma__BarbershopProfileClient<runtime.Types.Result.GetResult<Prisma.$BarbershopProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   payment<T extends Prisma.Booking$paymentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$paymentArgs<ExtArgs>>): Prisma.Prisma__PaymentClient<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   review<T extends Prisma.Booking$reviewArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$reviewArgs<ExtArgs>>): Prisma.Prisma__ReviewClient<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   earning<T extends Prisma.Booking$earningArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$earningArgs<ExtArgs>>): Prisma.Prisma__EarningClient<runtime.Types.Result.GetResult<Prisma.$EarningPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -2964,6 +3430,7 @@ export interface BookingFieldRefs {
   readonly scheduledAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly status: Prisma.FieldRef<"Booking", 'BookingStatus'>
   readonly paymentMethod: Prisma.FieldRef<"Booking", 'PaymentMethod'>
+  readonly currency: Prisma.FieldRef<"Booking", 'String'>
   readonly totalAmount: Prisma.FieldRef<"Booking", 'Decimal'>
   readonly platformFee: Prisma.FieldRef<"Booking", 'Decimal'>
   readonly barberNet: Prisma.FieldRef<"Booking", 'Decimal'>
@@ -2981,8 +3448,10 @@ export interface BookingFieldRefs {
   readonly boletaAnuladaAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly boletaAnulMotivo: Prisma.FieldRef<"Booking", 'String'>
   readonly boletaTipo: Prisma.FieldRef<"Booking", 'String'>
+  readonly barbershopId: Prisma.FieldRef<"Booking", 'String'>
   readonly createdAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Booking", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"Booking", 'DateTime'>
 }
     
 
@@ -3381,6 +3850,25 @@ export type BookingDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many Bookings to delete.
    */
   limit?: number
+}
+
+/**
+ * Booking.barbershop
+ */
+export type Booking$barbershopArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BarbershopProfile
+   */
+  select?: Prisma.BarbershopProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BarbershopProfile
+   */
+  omit?: Prisma.BarbershopProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BarbershopProfileInclude<ExtArgs> | null
+  where?: Prisma.BarbershopProfileWhereInput
 }
 
 /**

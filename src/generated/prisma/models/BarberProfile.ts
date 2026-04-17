@@ -59,6 +59,7 @@ export type BarberProfileMinAggregateOutputType = {
   claveTributaria: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type BarberProfileMaxAggregateOutputType = {
@@ -78,6 +79,7 @@ export type BarberProfileMaxAggregateOutputType = {
   claveTributaria: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type BarberProfileCountAggregateOutputType = {
@@ -97,6 +99,7 @@ export type BarberProfileCountAggregateOutputType = {
   claveTributaria: number
   createdAt: number
   updatedAt: number
+  deletedAt: number
   _all: number
 }
 
@@ -134,6 +137,7 @@ export type BarberProfileMinAggregateInputType = {
   claveTributaria?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type BarberProfileMaxAggregateInputType = {
@@ -153,6 +157,7 @@ export type BarberProfileMaxAggregateInputType = {
   claveTributaria?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type BarberProfileCountAggregateInputType = {
@@ -172,6 +177,7 @@ export type BarberProfileCountAggregateInputType = {
   claveTributaria?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -278,6 +284,7 @@ export type BarberProfileGroupByOutputType = {
   claveTributaria: string | null
   createdAt: Date
   updatedAt: Date
+  deletedAt: Date | null
   _count: BarberProfileCountAggregateOutputType | null
   _avg: BarberProfileAvgAggregateOutputType | null
   _sum: BarberProfileSumAggregateOutputType | null
@@ -320,6 +327,7 @@ export type BarberProfileWhereInput = {
   claveTributaria?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"BarberProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarberProfile"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"BarberProfile"> | Date | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   barbershop?: Prisma.XOR<Prisma.BarbershopProfileNullableScalarRelationFilter, Prisma.BarbershopProfileWhereInput> | null
   services?: Prisma.ServiceItemListRelationFilter
@@ -352,6 +360,7 @@ export type BarberProfileOrderByWithRelationInput = {
   claveTributaria?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   barbershop?: Prisma.BarbershopProfileOrderByWithRelationInput
   services?: Prisma.ServiceItemOrderByRelationAggregateInput
@@ -387,6 +396,7 @@ export type BarberProfileWhereUniqueInput = Prisma.AtLeast<{
   claveTributaria?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"BarberProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarberProfile"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"BarberProfile"> | Date | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   barbershop?: Prisma.XOR<Prisma.BarbershopProfileNullableScalarRelationFilter, Prisma.BarbershopProfileWhereInput> | null
   services?: Prisma.ServiceItemListRelationFilter
@@ -419,6 +429,7 @@ export type BarberProfileOrderByWithAggregationInput = {
   claveTributaria?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.BarberProfileCountOrderByAggregateInput
   _avg?: Prisma.BarberProfileAvgOrderByAggregateInput
   _max?: Prisma.BarberProfileMaxOrderByAggregateInput
@@ -446,6 +457,7 @@ export type BarberProfileScalarWhereWithAggregatesInput = {
   claveTributaria?: Prisma.StringNullableWithAggregatesFilter<"BarberProfile"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"BarberProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BarberProfile"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"BarberProfile"> | Date | string | null
 }
 
 export type BarberProfileCreateInput = {
@@ -463,6 +475,7 @@ export type BarberProfileCreateInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
@@ -495,6 +508,7 @@ export type BarberProfileUncheckedCreateInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
@@ -523,6 +537,7 @@ export type BarberProfileUpdateInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
@@ -555,6 +570,7 @@ export type BarberProfileUncheckedUpdateInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
@@ -585,6 +601,7 @@ export type BarberProfileCreateManyInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type BarberProfileUpdateManyMutationInput = {
@@ -602,6 +619,7 @@ export type BarberProfileUpdateManyMutationInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type BarberProfileUncheckedUpdateManyInput = {
@@ -621,6 +639,7 @@ export type BarberProfileUncheckedUpdateManyInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type BarberProfileNullableScalarRelationFilter = {
@@ -645,6 +664,7 @@ export type BarberProfileCountOrderByAggregateInput = {
   claveTributaria?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type BarberProfileAvgOrderByAggregateInput = {
@@ -672,6 +692,7 @@ export type BarberProfileMaxOrderByAggregateInput = {
   claveTributaria?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type BarberProfileMinOrderByAggregateInput = {
@@ -691,6 +712,7 @@ export type BarberProfileMinOrderByAggregateInput = {
   claveTributaria?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type BarberProfileSumOrderByAggregateInput = {
@@ -979,6 +1001,7 @@ export type BarberProfileCreateWithoutUserInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingCreateNestedManyWithoutBarberInput
@@ -1009,6 +1032,7 @@ export type BarberProfileUncheckedCreateWithoutUserInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
@@ -1053,6 +1077,7 @@ export type BarberProfileUpdateWithoutUserInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutBarberNestedInput
@@ -1083,6 +1108,7 @@ export type BarberProfileUncheckedUpdateWithoutUserInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
@@ -1111,6 +1137,7 @@ export type BarberProfileCreateWithoutBarbershopInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingCreateNestedManyWithoutBarberInput
@@ -1141,6 +1168,7 @@ export type BarberProfileUncheckedCreateWithoutBarbershopInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
@@ -1200,6 +1228,7 @@ export type BarberProfileScalarWhereInput = {
   claveTributaria?: Prisma.StringNullableFilter<"BarberProfile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"BarberProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarberProfile"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"BarberProfile"> | Date | string | null
 }
 
 export type BarberProfileCreateWithoutStaffMembershipsInput = {
@@ -1217,6 +1246,7 @@ export type BarberProfileCreateWithoutStaffMembershipsInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
@@ -1248,6 +1278,7 @@ export type BarberProfileUncheckedCreateWithoutStaffMembershipsInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
@@ -1291,6 +1322,7 @@ export type BarberProfileUpdateWithoutStaffMembershipsInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
@@ -1322,6 +1354,7 @@ export type BarberProfileUncheckedUpdateWithoutStaffMembershipsInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
@@ -1349,6 +1382,7 @@ export type BarberProfileCreateWithoutServicesInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   bookings?: Prisma.BookingCreateNestedManyWithoutBarberInput
@@ -1380,6 +1414,7 @@ export type BarberProfileUncheckedCreateWithoutServicesInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutBarberInput
@@ -1423,6 +1458,7 @@ export type BarberProfileUpdateWithoutServicesInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutBarberNestedInput
@@ -1454,6 +1490,7 @@ export type BarberProfileUncheckedUpdateWithoutServicesInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutBarberNestedInput
@@ -1481,6 +1518,7 @@ export type BarberProfileCreateWithoutAvailabilitiesInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
@@ -1512,6 +1550,7 @@ export type BarberProfileUncheckedCreateWithoutAvailabilitiesInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
@@ -1555,6 +1594,7 @@ export type BarberProfileUpdateWithoutAvailabilitiesInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
@@ -1586,6 +1626,7 @@ export type BarberProfileUncheckedUpdateWithoutAvailabilitiesInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
@@ -1613,6 +1654,7 @@ export type BarberProfileCreateWithoutBlocksInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
@@ -1644,6 +1686,7 @@ export type BarberProfileUncheckedCreateWithoutBlocksInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
@@ -1687,6 +1730,7 @@ export type BarberProfileUpdateWithoutBlocksInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
@@ -1718,6 +1762,7 @@ export type BarberProfileUncheckedUpdateWithoutBlocksInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
@@ -1745,6 +1790,7 @@ export type BarberProfileCreateWithoutManualBookingsInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
@@ -1776,6 +1822,7 @@ export type BarberProfileUncheckedCreateWithoutManualBookingsInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
@@ -1819,6 +1866,7 @@ export type BarberProfileUpdateWithoutManualBookingsInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
@@ -1850,6 +1898,7 @@ export type BarberProfileUncheckedUpdateWithoutManualBookingsInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
@@ -1877,6 +1926,7 @@ export type BarberProfileCreateWithoutBookingsInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
@@ -1908,6 +1958,7 @@ export type BarberProfileUncheckedCreateWithoutBookingsInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutBarberInput
@@ -1951,6 +2002,7 @@ export type BarberProfileUpdateWithoutBookingsInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
@@ -1982,6 +2034,7 @@ export type BarberProfileUncheckedUpdateWithoutBookingsInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutBarberNestedInput
@@ -2009,6 +2062,7 @@ export type BarberProfileCreateWithoutReviewsInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
@@ -2040,6 +2094,7 @@ export type BarberProfileUncheckedCreateWithoutReviewsInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   earnings?: Prisma.EarningUncheckedCreateNestedManyWithoutBarberInput
@@ -2083,6 +2138,7 @@ export type BarberProfileUpdateWithoutReviewsInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
@@ -2114,6 +2170,7 @@ export type BarberProfileUncheckedUpdateWithoutReviewsInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   earnings?: Prisma.EarningUncheckedUpdateManyWithoutBarberNestedInput
@@ -2141,6 +2198,7 @@ export type BarberProfileCreateWithoutPortfolioInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
@@ -2172,6 +2230,7 @@ export type BarberProfileUncheckedCreateWithoutPortfolioInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
@@ -2215,6 +2274,7 @@ export type BarberProfileUpdateWithoutPortfolioInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
@@ -2246,6 +2306,7 @@ export type BarberProfileUncheckedUpdateWithoutPortfolioInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
@@ -2273,6 +2334,7 @@ export type BarberProfileCreateWithoutEarningsInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
@@ -2304,6 +2366,7 @@ export type BarberProfileUncheckedCreateWithoutEarningsInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
@@ -2347,6 +2410,7 @@ export type BarberProfileUpdateWithoutEarningsInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
@@ -2378,6 +2442,7 @@ export type BarberProfileUncheckedUpdateWithoutEarningsInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
@@ -2405,6 +2470,7 @@ export type BarberProfileCreateWithoutExpensesInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
@@ -2436,6 +2502,7 @@ export type BarberProfileUncheckedCreateWithoutExpensesInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
@@ -2479,6 +2546,7 @@ export type BarberProfileUpdateWithoutExpensesInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
@@ -2510,6 +2578,7 @@ export type BarberProfileUncheckedUpdateWithoutExpensesInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
@@ -2537,6 +2606,7 @@ export type BarberProfileCreateWithoutLedgerEntriesInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarberProfileInput
   barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBarbersInput
   services?: Prisma.ServiceItemCreateNestedManyWithoutBarberInput
@@ -2568,6 +2638,7 @@ export type BarberProfileUncheckedCreateWithoutLedgerEntriesInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   services?: Prisma.ServiceItemUncheckedCreateNestedManyWithoutBarberInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarberInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutBarberInput
@@ -2611,6 +2682,7 @@ export type BarberProfileUpdateWithoutLedgerEntriesInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBarbersNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
@@ -2642,6 +2714,7 @@ export type BarberProfileUncheckedUpdateWithoutLedgerEntriesInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
@@ -2670,6 +2743,7 @@ export type BarberProfileCreateManyBarbershopInput = {
   claveTributaria?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type BarberProfileUpdateWithoutBarbershopInput = {
@@ -2687,6 +2761,7 @@ export type BarberProfileUpdateWithoutBarbershopInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarberProfileNestedInput
   services?: Prisma.ServiceItemUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutBarberNestedInput
@@ -2717,6 +2792,7 @@ export type BarberProfileUncheckedUpdateWithoutBarbershopInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   services?: Prisma.ServiceItemUncheckedUpdateManyWithoutBarberNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarberNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutBarberNestedInput
@@ -2746,6 +2822,7 @@ export type BarberProfileUncheckedUpdateManyWithoutBarbershopInput = {
   claveTributaria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -2886,6 +2963,7 @@ export type BarberProfileSelect<ExtArgs extends runtime.Types.Extensions.Interna
   claveTributaria?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barbershop?: boolean | Prisma.BarberProfile$barbershopArgs<ExtArgs>
   services?: boolean | Prisma.BarberProfile$servicesArgs<ExtArgs>
@@ -2919,6 +2997,7 @@ export type BarberProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   claveTributaria?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barbershop?: boolean | Prisma.BarberProfile$barbershopArgs<ExtArgs>
 }, ExtArgs["result"]["barberProfile"]>
@@ -2940,6 +3019,7 @@ export type BarberProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   claveTributaria?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barbershop?: boolean | Prisma.BarberProfile$barbershopArgs<ExtArgs>
 }, ExtArgs["result"]["barberProfile"]>
@@ -2961,9 +3041,10 @@ export type BarberProfileSelectScalar = {
   claveTributaria?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
 }
 
-export type BarberProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "bio" | "lat" | "lng" | "rating" | "totalReviews" | "isActive" | "commissionRate" | "employmentType" | "barbershopId" | "rutTributario" | "tipoClaveSii" | "claveTributaria" | "createdAt" | "updatedAt", ExtArgs["result"]["barberProfile"]>
+export type BarberProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "bio" | "lat" | "lng" | "rating" | "totalReviews" | "isActive" | "commissionRate" | "employmentType" | "barbershopId" | "rutTributario" | "tipoClaveSii" | "claveTributaria" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["barberProfile"]>
 export type BarberProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barbershop?: boolean | Prisma.BarberProfile$barbershopArgs<ExtArgs>
@@ -3023,6 +3104,7 @@ export type $BarberProfilePayload<ExtArgs extends runtime.Types.Extensions.Inter
     claveTributaria: string | null
     createdAt: Date
     updatedAt: Date
+    deletedAt: Date | null
   }, ExtArgs["result"]["barberProfile"]>
   composites: {}
 }
@@ -3475,6 +3557,7 @@ export interface BarberProfileFieldRefs {
   readonly claveTributaria: Prisma.FieldRef<"BarberProfile", 'String'>
   readonly createdAt: Prisma.FieldRef<"BarberProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"BarberProfile", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"BarberProfile", 'DateTime'>
 }
     
 

@@ -103,7 +103,8 @@ export class BarbershopsController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.BARBERSHOP_OWNER)
   getDashboard(@Request() req: { user: { id: string } }, @Query() query: DashboardQueryDto) {
-    return this.barbershopsService.getDashboard(req.user.id, query.scope, query.period);
+    const year = query.year ? Number(query.year) : undefined;
+    return this.barbershopsService.getDashboard(req.user.id, query.scope, query.period, year);
   }
 
   // ── Public ──

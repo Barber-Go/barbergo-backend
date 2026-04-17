@@ -288,7 +288,7 @@ export class TaxComplianceService {
   // ── Helpers ───────────────────────────────────────────────────────────────
 
   private async assertOwner(userId: string) {
-    const shop = await this.prisma.client.barbershopProfile.findUnique({ where: { userId } });
+    const shop = await this.prisma.client.barbershopProfile.findFirst({ where: { userId } });
     if (!shop) throw new NotFoundException('Barbershop profile not found');
     return shop;
   }

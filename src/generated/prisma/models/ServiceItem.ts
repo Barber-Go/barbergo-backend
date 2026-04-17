@@ -46,6 +46,7 @@ export type ServiceItemMinAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type ServiceItemMaxAggregateOutputType = {
@@ -58,6 +59,7 @@ export type ServiceItemMaxAggregateOutputType = {
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type ServiceItemCountAggregateOutputType = {
@@ -70,6 +72,7 @@ export type ServiceItemCountAggregateOutputType = {
   isActive: number
   createdAt: number
   updatedAt: number
+  deletedAt: number
   _all: number
 }
 
@@ -94,6 +97,7 @@ export type ServiceItemMinAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type ServiceItemMaxAggregateInputType = {
@@ -106,6 +110,7 @@ export type ServiceItemMaxAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type ServiceItemCountAggregateInputType = {
@@ -118,6 +123,7 @@ export type ServiceItemCountAggregateInputType = {
   isActive?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -217,6 +223,7 @@ export type ServiceItemGroupByOutputType = {
   isActive: boolean
   createdAt: Date
   updatedAt: Date
+  deletedAt: Date | null
   _count: ServiceItemCountAggregateOutputType | null
   _avg: ServiceItemAvgAggregateOutputType | null
   _sum: ServiceItemSumAggregateOutputType | null
@@ -252,6 +259,7 @@ export type ServiceItemWhereInput = {
   isActive?: Prisma.BoolFilter<"ServiceItem"> | boolean
   createdAt?: Prisma.DateTimeFilter<"ServiceItem"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ServiceItem"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ServiceItem"> | Date | string | null
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
   bookings?: Prisma.BookingListRelationFilter
 }
@@ -266,6 +274,7 @@ export type ServiceItemOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   barber?: Prisma.BarberProfileOrderByWithRelationInput
   bookings?: Prisma.BookingOrderByRelationAggregateInput
 }
@@ -283,6 +292,7 @@ export type ServiceItemWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"ServiceItem"> | boolean
   createdAt?: Prisma.DateTimeFilter<"ServiceItem"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ServiceItem"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ServiceItem"> | Date | string | null
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
   bookings?: Prisma.BookingListRelationFilter
 }, "id">
@@ -297,6 +307,7 @@ export type ServiceItemOrderByWithAggregationInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ServiceItemCountOrderByAggregateInput
   _avg?: Prisma.ServiceItemAvgOrderByAggregateInput
   _max?: Prisma.ServiceItemMaxOrderByAggregateInput
@@ -317,6 +328,7 @@ export type ServiceItemScalarWhereWithAggregatesInput = {
   isActive?: Prisma.BoolWithAggregatesFilter<"ServiceItem"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ServiceItem"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ServiceItem"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ServiceItem"> | Date | string | null
 }
 
 export type ServiceItemCreateInput = {
@@ -328,6 +340,7 @@ export type ServiceItemCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   barber: Prisma.BarberProfileCreateNestedOneWithoutServicesInput
   bookings?: Prisma.BookingCreateNestedManyWithoutServiceInput
 }
@@ -342,6 +355,7 @@ export type ServiceItemUncheckedCreateInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutServiceInput
 }
 
@@ -354,6 +368,7 @@ export type ServiceItemUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutServicesNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutServiceNestedInput
 }
@@ -368,6 +383,7 @@ export type ServiceItemUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutServiceNestedInput
 }
 
@@ -381,6 +397,7 @@ export type ServiceItemCreateManyInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ServiceItemUpdateManyMutationInput = {
@@ -392,6 +409,7 @@ export type ServiceItemUpdateManyMutationInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ServiceItemUncheckedUpdateManyInput = {
@@ -404,6 +422,7 @@ export type ServiceItemUncheckedUpdateManyInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ServiceItemListRelationFilter = {
@@ -426,6 +445,7 @@ export type ServiceItemCountOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ServiceItemAvgOrderByAggregateInput = {
@@ -443,6 +463,7 @@ export type ServiceItemMaxOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ServiceItemMinOrderByAggregateInput = {
@@ -455,6 +476,7 @@ export type ServiceItemMinOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ServiceItemSumOrderByAggregateInput = {
@@ -540,6 +562,7 @@ export type ServiceItemCreateWithoutBarberInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   bookings?: Prisma.BookingCreateNestedManyWithoutServiceInput
 }
 
@@ -552,6 +575,7 @@ export type ServiceItemUncheckedCreateWithoutBarberInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutServiceInput
 }
 
@@ -594,6 +618,7 @@ export type ServiceItemScalarWhereInput = {
   isActive?: Prisma.BoolFilter<"ServiceItem"> | boolean
   createdAt?: Prisma.DateTimeFilter<"ServiceItem"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ServiceItem"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ServiceItem"> | Date | string | null
 }
 
 export type ServiceItemCreateWithoutBookingsInput = {
@@ -605,6 +630,7 @@ export type ServiceItemCreateWithoutBookingsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   barber: Prisma.BarberProfileCreateNestedOneWithoutServicesInput
 }
 
@@ -618,6 +644,7 @@ export type ServiceItemUncheckedCreateWithoutBookingsInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ServiceItemCreateOrConnectWithoutBookingsInput = {
@@ -645,6 +672,7 @@ export type ServiceItemUpdateWithoutBookingsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutServicesNestedInput
 }
 
@@ -658,6 +686,7 @@ export type ServiceItemUncheckedUpdateWithoutBookingsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ServiceItemCreateManyBarberInput = {
@@ -669,6 +698,7 @@ export type ServiceItemCreateManyBarberInput = {
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ServiceItemUpdateWithoutBarberInput = {
@@ -680,6 +710,7 @@ export type ServiceItemUpdateWithoutBarberInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUpdateManyWithoutServiceNestedInput
 }
 
@@ -692,6 +723,7 @@ export type ServiceItemUncheckedUpdateWithoutBarberInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutServiceNestedInput
 }
 
@@ -704,6 +736,7 @@ export type ServiceItemUncheckedUpdateManyWithoutBarberInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -747,6 +780,7 @@ export type ServiceItemSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   bookings?: boolean | Prisma.ServiceItem$bookingsArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceItemCountOutputTypeDefaultArgs<ExtArgs>
@@ -762,6 +796,7 @@ export type ServiceItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["serviceItem"]>
 
@@ -775,6 +810,7 @@ export type ServiceItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["serviceItem"]>
 
@@ -788,9 +824,10 @@ export type ServiceItemSelectScalar = {
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
 }
 
-export type ServiceItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "name" | "description" | "price" | "durationMin" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["serviceItem"]>
+export type ServiceItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "name" | "description" | "price" | "durationMin" | "isActive" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["serviceItem"]>
 export type ServiceItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
   bookings?: boolean | Prisma.ServiceItem$bookingsArgs<ExtArgs>
@@ -819,6 +856,7 @@ export type $ServiceItemPayload<ExtArgs extends runtime.Types.Extensions.Interna
     isActive: boolean
     createdAt: Date
     updatedAt: Date
+    deletedAt: Date | null
   }, ExtArgs["result"]["serviceItem"]>
   composites: {}
 }
@@ -1253,6 +1291,7 @@ export interface ServiceItemFieldRefs {
   readonly isActive: Prisma.FieldRef<"ServiceItem", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"ServiceItem", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ServiceItem", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"ServiceItem", 'DateTime'>
 }
     
 

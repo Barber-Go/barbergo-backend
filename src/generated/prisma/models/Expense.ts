@@ -43,6 +43,9 @@ export type ExpenseMinAggregateOutputType = {
   date: Date | null
   receiptUrl: string | null
   createdAt: Date | null
+  updatedAt: Date | null
+  deletedAt: Date | null
+  barbershopId: string | null
 }
 
 export type ExpenseMaxAggregateOutputType = {
@@ -54,6 +57,9 @@ export type ExpenseMaxAggregateOutputType = {
   date: Date | null
   receiptUrl: string | null
   createdAt: Date | null
+  updatedAt: Date | null
+  deletedAt: Date | null
+  barbershopId: string | null
 }
 
 export type ExpenseCountAggregateOutputType = {
@@ -65,6 +71,9 @@ export type ExpenseCountAggregateOutputType = {
   date: number
   receiptUrl: number
   createdAt: number
+  updatedAt: number
+  deletedAt: number
+  barbershopId: number
   _all: number
 }
 
@@ -86,6 +95,9 @@ export type ExpenseMinAggregateInputType = {
   date?: true
   receiptUrl?: true
   createdAt?: true
+  updatedAt?: true
+  deletedAt?: true
+  barbershopId?: true
 }
 
 export type ExpenseMaxAggregateInputType = {
@@ -97,6 +109,9 @@ export type ExpenseMaxAggregateInputType = {
   date?: true
   receiptUrl?: true
   createdAt?: true
+  updatedAt?: true
+  deletedAt?: true
+  barbershopId?: true
 }
 
 export type ExpenseCountAggregateInputType = {
@@ -108,6 +123,9 @@ export type ExpenseCountAggregateInputType = {
   date?: true
   receiptUrl?: true
   createdAt?: true
+  updatedAt?: true
+  deletedAt?: true
+  barbershopId?: true
   _all?: true
 }
 
@@ -206,6 +224,9 @@ export type ExpenseGroupByOutputType = {
   date: Date
   receiptUrl: string | null
   createdAt: Date
+  updatedAt: Date
+  deletedAt: Date | null
+  barbershopId: string | null
   _count: ExpenseCountAggregateOutputType | null
   _avg: ExpenseAvgAggregateOutputType | null
   _sum: ExpenseSumAggregateOutputType | null
@@ -240,7 +261,11 @@ export type ExpenseWhereInput = {
   date?: Prisma.DateTimeFilter<"Expense"> | Date | string
   receiptUrl?: Prisma.StringNullableFilter<"Expense"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Expense"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Expense"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"Expense"> | Date | string | null
+  barbershopId?: Prisma.StringNullableFilter<"Expense"> | string | null
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
+  barbershop?: Prisma.XOR<Prisma.BarbershopProfileNullableScalarRelationFilter, Prisma.BarbershopProfileWhereInput> | null
 }
 
 export type ExpenseOrderByWithRelationInput = {
@@ -252,7 +277,11 @@ export type ExpenseOrderByWithRelationInput = {
   date?: Prisma.SortOrder
   receiptUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  barbershopId?: Prisma.SortOrderInput | Prisma.SortOrder
   barber?: Prisma.BarberProfileOrderByWithRelationInput
+  barbershop?: Prisma.BarbershopProfileOrderByWithRelationInput
 }
 
 export type ExpenseWhereUniqueInput = Prisma.AtLeast<{
@@ -267,7 +296,11 @@ export type ExpenseWhereUniqueInput = Prisma.AtLeast<{
   date?: Prisma.DateTimeFilter<"Expense"> | Date | string
   receiptUrl?: Prisma.StringNullableFilter<"Expense"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Expense"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Expense"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"Expense"> | Date | string | null
+  barbershopId?: Prisma.StringNullableFilter<"Expense"> | string | null
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
+  barbershop?: Prisma.XOR<Prisma.BarbershopProfileNullableScalarRelationFilter, Prisma.BarbershopProfileWhereInput> | null
 }, "id">
 
 export type ExpenseOrderByWithAggregationInput = {
@@ -279,6 +312,9 @@ export type ExpenseOrderByWithAggregationInput = {
   date?: Prisma.SortOrder
   receiptUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  barbershopId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ExpenseCountOrderByAggregateInput
   _avg?: Prisma.ExpenseAvgOrderByAggregateInput
   _max?: Prisma.ExpenseMaxOrderByAggregateInput
@@ -298,6 +334,9 @@ export type ExpenseScalarWhereWithAggregatesInput = {
   date?: Prisma.DateTimeWithAggregatesFilter<"Expense"> | Date | string
   receiptUrl?: Prisma.StringNullableWithAggregatesFilter<"Expense"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Expense"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Expense"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Expense"> | Date | string | null
+  barbershopId?: Prisma.StringNullableWithAggregatesFilter<"Expense"> | string | null
 }
 
 export type ExpenseCreateInput = {
@@ -308,7 +347,10 @@ export type ExpenseCreateInput = {
   date: Date | string
   receiptUrl?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
   barber: Prisma.BarberProfileCreateNestedOneWithoutExpensesInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutExpensesInput
 }
 
 export type ExpenseUncheckedCreateInput = {
@@ -320,6 +362,9 @@ export type ExpenseUncheckedCreateInput = {
   date: Date | string
   receiptUrl?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  barbershopId?: string | null
 }
 
 export type ExpenseUpdateInput = {
@@ -330,7 +375,10 @@ export type ExpenseUpdateInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   barber?: Prisma.BarberProfileUpdateOneRequiredWithoutExpensesNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutExpensesNestedInput
 }
 
 export type ExpenseUncheckedUpdateInput = {
@@ -342,6 +390,9 @@ export type ExpenseUncheckedUpdateInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ExpenseCreateManyInput = {
@@ -353,6 +404,9 @@ export type ExpenseCreateManyInput = {
   date: Date | string
   receiptUrl?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  barbershopId?: string | null
 }
 
 export type ExpenseUpdateManyMutationInput = {
@@ -363,6 +417,8 @@ export type ExpenseUpdateManyMutationInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ExpenseUncheckedUpdateManyInput = {
@@ -374,6 +430,9 @@ export type ExpenseUncheckedUpdateManyInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ExpenseListRelationFilter = {
@@ -395,6 +454,9 @@ export type ExpenseCountOrderByAggregateInput = {
   date?: Prisma.SortOrder
   receiptUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
+  barbershopId?: Prisma.SortOrder
 }
 
 export type ExpenseAvgOrderByAggregateInput = {
@@ -410,6 +472,9 @@ export type ExpenseMaxOrderByAggregateInput = {
   date?: Prisma.SortOrder
   receiptUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
+  barbershopId?: Prisma.SortOrder
 }
 
 export type ExpenseMinOrderByAggregateInput = {
@@ -421,6 +486,9 @@ export type ExpenseMinOrderByAggregateInput = {
   date?: Prisma.SortOrder
   receiptUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
+  barbershopId?: Prisma.SortOrder
 }
 
 export type ExpenseSumOrderByAggregateInput = {
@@ -469,6 +537,48 @@ export type ExpenseUncheckedUpdateManyWithoutBarberNestedInput = {
   deleteMany?: Prisma.ExpenseScalarWhereInput | Prisma.ExpenseScalarWhereInput[]
 }
 
+export type ExpenseCreateNestedManyWithoutBarbershopInput = {
+  create?: Prisma.XOR<Prisma.ExpenseCreateWithoutBarbershopInput, Prisma.ExpenseUncheckedCreateWithoutBarbershopInput> | Prisma.ExpenseCreateWithoutBarbershopInput[] | Prisma.ExpenseUncheckedCreateWithoutBarbershopInput[]
+  connectOrCreate?: Prisma.ExpenseCreateOrConnectWithoutBarbershopInput | Prisma.ExpenseCreateOrConnectWithoutBarbershopInput[]
+  createMany?: Prisma.ExpenseCreateManyBarbershopInputEnvelope
+  connect?: Prisma.ExpenseWhereUniqueInput | Prisma.ExpenseWhereUniqueInput[]
+}
+
+export type ExpenseUncheckedCreateNestedManyWithoutBarbershopInput = {
+  create?: Prisma.XOR<Prisma.ExpenseCreateWithoutBarbershopInput, Prisma.ExpenseUncheckedCreateWithoutBarbershopInput> | Prisma.ExpenseCreateWithoutBarbershopInput[] | Prisma.ExpenseUncheckedCreateWithoutBarbershopInput[]
+  connectOrCreate?: Prisma.ExpenseCreateOrConnectWithoutBarbershopInput | Prisma.ExpenseCreateOrConnectWithoutBarbershopInput[]
+  createMany?: Prisma.ExpenseCreateManyBarbershopInputEnvelope
+  connect?: Prisma.ExpenseWhereUniqueInput | Prisma.ExpenseWhereUniqueInput[]
+}
+
+export type ExpenseUpdateManyWithoutBarbershopNestedInput = {
+  create?: Prisma.XOR<Prisma.ExpenseCreateWithoutBarbershopInput, Prisma.ExpenseUncheckedCreateWithoutBarbershopInput> | Prisma.ExpenseCreateWithoutBarbershopInput[] | Prisma.ExpenseUncheckedCreateWithoutBarbershopInput[]
+  connectOrCreate?: Prisma.ExpenseCreateOrConnectWithoutBarbershopInput | Prisma.ExpenseCreateOrConnectWithoutBarbershopInput[]
+  upsert?: Prisma.ExpenseUpsertWithWhereUniqueWithoutBarbershopInput | Prisma.ExpenseUpsertWithWhereUniqueWithoutBarbershopInput[]
+  createMany?: Prisma.ExpenseCreateManyBarbershopInputEnvelope
+  set?: Prisma.ExpenseWhereUniqueInput | Prisma.ExpenseWhereUniqueInput[]
+  disconnect?: Prisma.ExpenseWhereUniqueInput | Prisma.ExpenseWhereUniqueInput[]
+  delete?: Prisma.ExpenseWhereUniqueInput | Prisma.ExpenseWhereUniqueInput[]
+  connect?: Prisma.ExpenseWhereUniqueInput | Prisma.ExpenseWhereUniqueInput[]
+  update?: Prisma.ExpenseUpdateWithWhereUniqueWithoutBarbershopInput | Prisma.ExpenseUpdateWithWhereUniqueWithoutBarbershopInput[]
+  updateMany?: Prisma.ExpenseUpdateManyWithWhereWithoutBarbershopInput | Prisma.ExpenseUpdateManyWithWhereWithoutBarbershopInput[]
+  deleteMany?: Prisma.ExpenseScalarWhereInput | Prisma.ExpenseScalarWhereInput[]
+}
+
+export type ExpenseUncheckedUpdateManyWithoutBarbershopNestedInput = {
+  create?: Prisma.XOR<Prisma.ExpenseCreateWithoutBarbershopInput, Prisma.ExpenseUncheckedCreateWithoutBarbershopInput> | Prisma.ExpenseCreateWithoutBarbershopInput[] | Prisma.ExpenseUncheckedCreateWithoutBarbershopInput[]
+  connectOrCreate?: Prisma.ExpenseCreateOrConnectWithoutBarbershopInput | Prisma.ExpenseCreateOrConnectWithoutBarbershopInput[]
+  upsert?: Prisma.ExpenseUpsertWithWhereUniqueWithoutBarbershopInput | Prisma.ExpenseUpsertWithWhereUniqueWithoutBarbershopInput[]
+  createMany?: Prisma.ExpenseCreateManyBarbershopInputEnvelope
+  set?: Prisma.ExpenseWhereUniqueInput | Prisma.ExpenseWhereUniqueInput[]
+  disconnect?: Prisma.ExpenseWhereUniqueInput | Prisma.ExpenseWhereUniqueInput[]
+  delete?: Prisma.ExpenseWhereUniqueInput | Prisma.ExpenseWhereUniqueInput[]
+  connect?: Prisma.ExpenseWhereUniqueInput | Prisma.ExpenseWhereUniqueInput[]
+  update?: Prisma.ExpenseUpdateWithWhereUniqueWithoutBarbershopInput | Prisma.ExpenseUpdateWithWhereUniqueWithoutBarbershopInput[]
+  updateMany?: Prisma.ExpenseUpdateManyWithWhereWithoutBarbershopInput | Prisma.ExpenseUpdateManyWithWhereWithoutBarbershopInput[]
+  deleteMany?: Prisma.ExpenseScalarWhereInput | Prisma.ExpenseScalarWhereInput[]
+}
+
 export type ExpenseCreateWithoutBarberInput = {
   id?: string
   category: string
@@ -477,6 +587,9 @@ export type ExpenseCreateWithoutBarberInput = {
   date: Date | string
   receiptUrl?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutExpensesInput
 }
 
 export type ExpenseUncheckedCreateWithoutBarberInput = {
@@ -487,6 +600,9 @@ export type ExpenseUncheckedCreateWithoutBarberInput = {
   date: Date | string
   receiptUrl?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  barbershopId?: string | null
 }
 
 export type ExpenseCreateOrConnectWithoutBarberInput = {
@@ -527,6 +643,61 @@ export type ExpenseScalarWhereInput = {
   date?: Prisma.DateTimeFilter<"Expense"> | Date | string
   receiptUrl?: Prisma.StringNullableFilter<"Expense"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Expense"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Expense"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"Expense"> | Date | string | null
+  barbershopId?: Prisma.StringNullableFilter<"Expense"> | string | null
+}
+
+export type ExpenseCreateWithoutBarbershopInput = {
+  id?: string
+  category: string
+  description?: string | null
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  date: Date | string
+  receiptUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  barber: Prisma.BarberProfileCreateNestedOneWithoutExpensesInput
+}
+
+export type ExpenseUncheckedCreateWithoutBarbershopInput = {
+  id?: string
+  barberId: string
+  category: string
+  description?: string | null
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  date: Date | string
+  receiptUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+}
+
+export type ExpenseCreateOrConnectWithoutBarbershopInput = {
+  where: Prisma.ExpenseWhereUniqueInput
+  create: Prisma.XOR<Prisma.ExpenseCreateWithoutBarbershopInput, Prisma.ExpenseUncheckedCreateWithoutBarbershopInput>
+}
+
+export type ExpenseCreateManyBarbershopInputEnvelope = {
+  data: Prisma.ExpenseCreateManyBarbershopInput | Prisma.ExpenseCreateManyBarbershopInput[]
+  skipDuplicates?: boolean
+}
+
+export type ExpenseUpsertWithWhereUniqueWithoutBarbershopInput = {
+  where: Prisma.ExpenseWhereUniqueInput
+  update: Prisma.XOR<Prisma.ExpenseUpdateWithoutBarbershopInput, Prisma.ExpenseUncheckedUpdateWithoutBarbershopInput>
+  create: Prisma.XOR<Prisma.ExpenseCreateWithoutBarbershopInput, Prisma.ExpenseUncheckedCreateWithoutBarbershopInput>
+}
+
+export type ExpenseUpdateWithWhereUniqueWithoutBarbershopInput = {
+  where: Prisma.ExpenseWhereUniqueInput
+  data: Prisma.XOR<Prisma.ExpenseUpdateWithoutBarbershopInput, Prisma.ExpenseUncheckedUpdateWithoutBarbershopInput>
+}
+
+export type ExpenseUpdateManyWithWhereWithoutBarbershopInput = {
+  where: Prisma.ExpenseScalarWhereInput
+  data: Prisma.XOR<Prisma.ExpenseUpdateManyMutationInput, Prisma.ExpenseUncheckedUpdateManyWithoutBarbershopInput>
 }
 
 export type ExpenseCreateManyBarberInput = {
@@ -537,6 +708,9 @@ export type ExpenseCreateManyBarberInput = {
   date: Date | string
   receiptUrl?: string | null
   createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  barbershopId?: string | null
 }
 
 export type ExpenseUpdateWithoutBarberInput = {
@@ -547,6 +721,9 @@ export type ExpenseUpdateWithoutBarberInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutExpensesNestedInput
 }
 
 export type ExpenseUncheckedUpdateWithoutBarberInput = {
@@ -557,6 +734,9 @@ export type ExpenseUncheckedUpdateWithoutBarberInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ExpenseUncheckedUpdateManyWithoutBarberInput = {
@@ -567,6 +747,61 @@ export type ExpenseUncheckedUpdateManyWithoutBarberInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type ExpenseCreateManyBarbershopInput = {
+  id?: string
+  barberId: string
+  category: string
+  description?: string | null
+  amount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  date: Date | string
+  receiptUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+}
+
+export type ExpenseUpdateWithoutBarbershopInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutExpensesNestedInput
+}
+
+export type ExpenseUncheckedUpdateWithoutBarbershopInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  barberId?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type ExpenseUncheckedUpdateManyWithoutBarbershopInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  barberId?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  amount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  receiptUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -580,7 +815,11 @@ export type ExpenseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   date?: boolean
   receiptUrl?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
+  deletedAt?: boolean
+  barbershopId?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.Expense$barbershopArgs<ExtArgs>
 }, ExtArgs["result"]["expense"]>
 
 export type ExpenseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -592,7 +831,11 @@ export type ExpenseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   date?: boolean
   receiptUrl?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
+  deletedAt?: boolean
+  barbershopId?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.Expense$barbershopArgs<ExtArgs>
 }, ExtArgs["result"]["expense"]>
 
 export type ExpenseSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -604,7 +847,11 @@ export type ExpenseSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   date?: boolean
   receiptUrl?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
+  deletedAt?: boolean
+  barbershopId?: boolean
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.Expense$barbershopArgs<ExtArgs>
 }, ExtArgs["result"]["expense"]>
 
 export type ExpenseSelectScalar = {
@@ -616,23 +863,30 @@ export type ExpenseSelectScalar = {
   date?: boolean
   receiptUrl?: boolean
   createdAt?: boolean
+  updatedAt?: boolean
+  deletedAt?: boolean
+  barbershopId?: boolean
 }
 
-export type ExpenseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "category" | "description" | "amount" | "date" | "receiptUrl" | "createdAt", ExtArgs["result"]["expense"]>
+export type ExpenseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "barberId" | "category" | "description" | "amount" | "date" | "receiptUrl" | "createdAt" | "updatedAt" | "deletedAt" | "barbershopId", ExtArgs["result"]["expense"]>
 export type ExpenseInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.Expense$barbershopArgs<ExtArgs>
 }
 export type ExpenseIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.Expense$barbershopArgs<ExtArgs>
 }
 export type ExpenseIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
+  barbershop?: boolean | Prisma.Expense$barbershopArgs<ExtArgs>
 }
 
 export type $ExpensePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Expense"
   objects: {
     barber: Prisma.$BarberProfilePayload<ExtArgs>
+    barbershop: Prisma.$BarbershopProfilePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -643,6 +897,9 @@ export type $ExpensePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     date: Date
     receiptUrl: string | null
     createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
+    barbershopId: string | null
   }, ExtArgs["result"]["expense"]>
   composites: {}
 }
@@ -1038,6 +1295,7 @@ readonly fields: ExpenseFieldRefs;
 export interface Prisma__ExpenseClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   barber<T extends Prisma.BarberProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarberProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__BarberProfileClient<runtime.Types.Result.GetResult<Prisma.$BarberProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  barbershop<T extends Prisma.Expense$barbershopArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Expense$barbershopArgs<ExtArgs>>): Prisma.Prisma__BarbershopProfileClient<runtime.Types.Result.GetResult<Prisma.$BarbershopProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1075,6 +1333,9 @@ export interface ExpenseFieldRefs {
   readonly date: Prisma.FieldRef<"Expense", 'DateTime'>
   readonly receiptUrl: Prisma.FieldRef<"Expense", 'String'>
   readonly createdAt: Prisma.FieldRef<"Expense", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Expense", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"Expense", 'DateTime'>
+  readonly barbershopId: Prisma.FieldRef<"Expense", 'String'>
 }
     
 
@@ -1473,6 +1734,25 @@ export type ExpenseDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many Expenses to delete.
    */
   limit?: number
+}
+
+/**
+ * Expense.barbershop
+ */
+export type Expense$barbershopArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BarbershopProfile
+   */
+  select?: Prisma.BarbershopProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BarbershopProfile
+   */
+  omit?: Prisma.BarbershopProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BarbershopProfileInclude<ExtArgs> | null
+  where?: Prisma.BarbershopProfileWhereInput
 }
 
 /**

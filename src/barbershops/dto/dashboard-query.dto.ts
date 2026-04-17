@@ -1,4 +1,4 @@
-import { IsEnum, IsString } from 'class-validator';
+import { IsEnum, IsOptional, IsString } from 'class-validator';
 
 export enum DashboardPeriod {
   TODAY = 'today',
@@ -13,4 +13,8 @@ export class DashboardQueryDto {
 
   @IsEnum(DashboardPeriod)
   period: DashboardPeriod;
+
+  @IsOptional()
+  @IsString()
+  year?: string;
 }

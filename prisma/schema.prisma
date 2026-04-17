@@ -1,9 +1,9 @@
-// BarberGo v2 Schema
+// BarberGo v2 Schema — Enterprise Multi-Barbershop
 // ─────────────────────────────────────────────────────────────────────────────
-// Migration strategy: additive only. No columns or tables dropped.
-// New columns have defaults so existing rows remain valid.
-// Model renames (Barber→BarberProfile, Service→ServiceItem, etc.) keep @@map
-// pointing to the original table name — zero SQL change for renames.
+// Migration: enterprise_multi_barbershop_v1
+// Changes: soft delete, multi-barbershop, tenant layer, enum status,
+//          timezone/currency, barbershopId on bookings/expenses/ledger,
+//          consistent timestamps on all models.
 // ─────────────────────────────────────────────────────────────────────────────
 
 generator client {
@@ -100,6 +100,41 @@ enum PublicEntityType {
   BARBER_EMPLOYEE
 }
 
+enum TenantStatus {
+  ACTIVE
+  SUSPENDED
+  ARCHIVED
+}
+
+enum BarbershopStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  ARCHIVED
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Tenant (enterprise chain layer)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model Tenant {
+  id        String       @id @default(cuid())
+  name      String
+  legalName String?
+  country   String       @default("CL")
+  currency  String       @default("CLP")
+  status    TenantStatus @default(ACTIVE)
+  metadata  Json?
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  deletedAt DateTime?
+
+  users       User[]
+  barbershops BarbershopProfile[]
+
+  @@map("tenants")
+}
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // Core: User & Profiles
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -112,15 +147,20 @@ model User {
   name       String
   avatarUrl  String?
   pushToken  String?
-  role       Role @default(CLIENT)
+  role       Role     @default(CLIENT)
   isVerified Boolean  @default(false)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+  deletedAt  DateTime?
+
+  // Tenant (optional — only for chain enterprises)
+  tenantId String?
+  tenant   Tenant? @relation(fields: [tenantId], references: [id])
 
   // Profiles (one per role type)
-  clientProfile     ClientProfile?
-  barberProfile     BarberProfile?
-  barbershopProfile BarbershopProfile?
+  clientProfile      ClientProfile?
+  barberProfile      BarberProfile?
+  barbershopProfiles BarbershopProfile[]
 
   // Core relations (kept from v1)
   bookings      Booking[]      @relation("ClientBookings")
@@ -140,18 +180,20 @@ model User {
   aiFaceAnalyses   AiFaceAnalysis[]
 
   // Tax module
-  taxModuleEnabled    Boolean   @default(false)
+  taxModuleEnabled     Boolean   @default(false)
   taxModuleActivatedAt DateTime?
 
+  @@index([tenantId])
   @@map("users")
 }
 
 model ClientProfile {
-  id              String   @id @default(cuid())
-  userId          String   @unique
-  preferredRadius Float    @default(10)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id              String    @id @default(cuid())
+  userId          String    @unique
+  preferredRadius Float     @default(10)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  deletedAt       DateTime?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -159,15 +201,15 @@ model ClientProfile {
 }
 
 model BarberProfile {
-  id             String               @id @default(cuid())
-  userId         String               @unique
-  bio            String?
-  lat            Float?
-  lng            Float?
-  rating         Float                @default(0)
-  totalReviews   Int                  @default(0)
-  isActive       Boolean              @default(true)
-  commissionRate Float                @default(0.15)
+  id               String               @id @default(cuid())
+  userId           String               @unique
+  bio              String?
+  lat              Float?
+  lng              Float?
+  rating           Float                @default(0)
+  totalReviews     Int                  @default(0)
+  isActive         Boolean              @default(true)
+  commissionRate   Float                @default(0.15)
   employmentType   BarberEmploymentType @default(INDEPENDENT)
   barbershopId     String?
   rutTributario    String?
@@ -175,6 +217,7 @@ model BarberProfile {
   claveTributaria  String?              // AES-256-GCM encrypted
   createdAt        DateTime             @default(now())
   updatedAt        DateTime             @updatedAt
+  deletedAt        DateTime?
 
   user             User                        @relation(fields: [userId], references: [id], onDelete: Cascade)
   barbershop       BarbershopProfile?          @relation("BarbershopBarbers", fields: [barbershopId], references: [id])
@@ -194,22 +237,30 @@ model BarberProfile {
 }
 
 model BarbershopProfile {
-  id          String   @id @default(cuid())
-  userId      String   @unique
-  name        String
-  description String?
-  address     String?
-  lat         Float?
-  lng         Float?
-  phone       String?
-  logoUrl     String?
-  coverUrl    String?
-  inviteCode  String?  @unique
-  isActive    Boolean  @default(true)
-  status      String   @default("DRAFT")
-  scheduleJson String? // JSON: { "0": [{start,end}], "1": [...], ... } keyed by dayOfWeek
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id           String           @id @default(cuid())
+  userId       String
+  name         String
+  description  String?
+  address      String?
+  lat          Float?
+  lng          Float?
+  phone        String?
+  logoUrl      String?
+  coverUrl     String?
+  inviteCode   String?          @unique
+  isActive     Boolean          @default(true)
+  status       BarbershopStatus @default(DRAFT)
+  timezone     String           @default("America/Santiago")
+  currency     String           @default("CLP")
+  country      String           @default("CL")
+  scheduleJson String?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  deletedAt    DateTime?
+
+  // Tenant (optional — only for chain enterprises)
+  tenantId String?
+  tenant   Tenant? @relation(fields: [tenantId], references: [id])
 
   user    User                        @relation(fields: [userId], references: [id], onDelete: Cascade)
   staff   BarbershopStaffMembership[]
@@ -217,6 +268,13 @@ model BarbershopProfile {
   taxProfile     TaxProfile?
   billingRecords BillingRecord[]
 
+  // Enterprise relations
+  bookings      Booking[]          @relation("BarbershopBookings")
+  expenses      Expense[]          @relation("BarbershopExpenses")
+  ledgerEntries DailyLedgerEntry[] @relation("BarbershopLedger")
+
+  @@index([userId])
+  @@index([tenantId])
   @@map("barbershop_profiles")
 }
 
@@ -227,6 +285,8 @@ model BarbershopStaffMembership {
   role            String   @default("BARBER")
   joinedAt        DateTime @default(now())
   isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @default(now()) @updatedAt
 
   barbershop        BarbershopProfile       @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
   barberProfile     BarberProfile           @relation(fields: [barberProfileId], references: [id], onDelete: Cascade)
@@ -243,6 +303,7 @@ model StaffCompensationRule {
   percentage   Float
   isActive     Boolean  @default(true)
   createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt
 
   membership BarbershopStaffMembership @relation(fields: [membershipId], references: [id], onDelete: Cascade)
 
@@ -254,15 +315,16 @@ model StaffCompensationRule {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 model ServiceItem {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   barberId    String
   name        String
   description String?
-  price       Decimal  @db.Decimal(10, 2)
+  price       Decimal   @db.Decimal(10, 2)
   durationMin Int
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
 
   barber   BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
   bookings Booking[]
@@ -271,12 +333,14 @@ model ServiceItem {
 }
 
 model WeeklyAvailability {
-  id        String  @id @default(cuid())
+  id        String   @id @default(cuid())
   barberId  String
   dayOfWeek Int
   startTime String
   endTime   String
-  isActive  Boolean @default(true)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   barber BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
 
@@ -292,6 +356,7 @@ model AvailabilityBlock {
   startAt   DateTime
   endAt     DateTime
   createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
 
   barber BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
 
@@ -299,7 +364,7 @@ model AvailabilityBlock {
 }
 
 model ManualBooking {
-  id            String   @id @default(cuid())
+  id            String    @id @default(cuid())
   barberId      String
   clientName    String?
   serviceName   String?
@@ -307,9 +372,10 @@ model ManualBooking {
   startTime     String
   endTime       String
   note          String?
-  paymentMethod String   @default("EXTERNAL")
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  paymentMethod String    @default("EXTERNAL")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
 
   barber BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
 
@@ -328,6 +394,7 @@ model Booking {
   scheduledAt   DateTime
   status        BookingStatus @default(PENDING)
   paymentMethod PaymentMethod
+  currency      String        @default("CLP")
 
   // V1 financial columns (kept for backward compat)
   totalAmount Decimal @db.Decimal(10, 2)
@@ -352,17 +419,24 @@ model Booking {
   boletaAnulMotivo  String?
   boletaTipo        String?    // BHE | BVS_39 | FACTURA_33
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  // Enterprise: direct barbershop reference
+  barbershopId String?
 
-  client  User          @relation("ClientBookings", fields: [clientId], references: [id])
-  barber  BarberProfile @relation("BarberBookings", fields: [barberId], references: [id])
-  service ServiceItem   @relation(fields: [serviceId], references: [id])
-  payment Payment?
-  review  Review?
-  earning Earning?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  client     User               @relation("ClientBookings", fields: [clientId], references: [id])
+  barber     BarberProfile      @relation("BarberBookings", fields: [barberId], references: [id])
+  service    ServiceItem        @relation(fields: [serviceId], references: [id])
+  barbershop BarbershopProfile? @relation("BarbershopBookings", fields: [barbershopId], references: [id])
+  payment    Payment?
+  review     Review?
+  earning    Earning?
   chatThread ChatThread?
 
+  @@index([barbershopId, scheduledAt])
+  @@index([barbershopId, status])
   @@map("bookings")
 }
 
@@ -376,6 +450,7 @@ model ChatThread {
   threadType String   @default("BOOKING_DIRECT") // BOOKING_DIRECT | BOOKING_BARBERSHOP | SUPPORT
   status     String   @default("OPEN")           // OPEN | CLOSED | ARCHIVED
   createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
 
   booking      Booking?          @relation(fields: [bookingId], references: [id])
   participants ChatParticipant[]
@@ -385,11 +460,13 @@ model ChatThread {
 }
 
 model ChatParticipant {
-  id           String    @id @default(cuid())
+  id           String   @id @default(cuid())
   threadId     String
   userId       String
   roleInThread String    // CLIENT | BARBER | OWNER | SUPPORT
   lastReadAt   DateTime  @default(now())
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now()) @updatedAt
 
   thread ChatThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
   user   User       @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -406,6 +483,7 @@ model ChatMessage {
   body         String
   metadataJson Json?
   createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now()) @updatedAt
   deletedAt    DateTime?
 
   thread ChatThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
@@ -423,6 +501,7 @@ model Payment {
   status         PaymentStatus @default(PENDING)
   transactionRef String?
   createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @default(now()) @updatedAt
 
   booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
 
@@ -434,13 +513,15 @@ model Payment {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 model Review {
-  id        String   @id @default(cuid())
-  bookingId String   @unique
+  id        String    @id @default(cuid())
+  bookingId String    @unique
   clientId  String
   barberId  String
   rating    Int
   comment   String?
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  deletedAt DateTime?
 
   booking Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
   client  User          @relation("ClientReviews", fields: [clientId], references: [id])
@@ -461,6 +542,7 @@ model Notification {
   body      String
   isRead    Boolean          @default(false)
   createdAt DateTime         @default(now())
+  updatedAt DateTime         @default(now()) @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -479,6 +561,7 @@ model BarberPortfolioItem {
   isFeatured  Boolean  @default(false)
   visibility  String   @default("PUBLIC") // PUBLIC | PRIVATE | UNLISTED
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
 
   barber BarberProfile        @relation(fields: [barberId], references: [id], onDelete: Cascade)
   media  BarberPortfolioMedia[]
@@ -494,6 +577,7 @@ model BarberPortfolioMedia {
   thumbnailUrl    String?
   sortOrder       Int       @default(0)
   createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @default(now()) @updatedAt
 
   portfolioItem BarberPortfolioItem @relation(fields: [portfolioItemId], references: [id], onDelete: Cascade)
 
@@ -514,6 +598,7 @@ model Earning {
   netAmount     Decimal       @db.Decimal(10, 2)
   paymentMethod PaymentMethod
   createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @default(now()) @updatedAt
 
   barber  BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
   booking Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
@@ -522,17 +607,24 @@ model Earning {
 }
 
 model Expense {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   barberId    String
   category    String
   description String?
-  amount      Decimal  @db.Decimal(10, 2)
+  amount      Decimal   @db.Decimal(10, 2)
   date        DateTime
   receiptUrl  String?
-  createdAt   DateTime @default(now())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
 
-  barber BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
+  // Enterprise: direct barbershop reference
+  barbershopId String?
 
+  barber     BarberProfile      @relation(fields: [barberId], references: [id], onDelete: Cascade)
+  barbershop BarbershopProfile? @relation("BarbershopExpenses", fields: [barbershopId], references: [id])
+
+  @@index([barbershopId, date])
   @@map("expenses")
 }
 
@@ -544,9 +636,16 @@ model DailyLedgerEntry {
   label     String
   amount    Decimal         @db.Decimal(10, 2)
   createdAt DateTime        @default(now())
+  updatedAt DateTime        @default(now()) @updatedAt
+  deletedAt DateTime?
 
-  barber BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
+  // Enterprise: direct barbershop reference
+  barbershopId String?
 
+  barber     BarberProfile      @relation(fields: [barberId], references: [id], onDelete: Cascade)
+  barbershop BarbershopProfile? @relation("BarbershopLedger", fields: [barbershopId], references: [id])
+
+  @@index([barbershopId, date])
   @@map("daily_ledger_entries")
 }
 
@@ -560,6 +659,7 @@ model Follow {
   followedType PublicEntityType
   followedId   String
   createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @default(now()) @updatedAt
 
   follower User @relation("Follower", fields: [followerId], references: [id], onDelete: Cascade)
 
@@ -588,6 +688,7 @@ model RewardsCatalog {
   pointsCost  Int
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
 
   @@map("rewards_catalog")
 }
@@ -619,6 +720,8 @@ model CommunityMembership {
   userId      String
   role        String   @default("MEMBER")
   joinedAt    DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
 
   community Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -645,9 +748,11 @@ model CommunityPost {
 }
 
 model CommunityTopicTag {
-  id          String @id @default(cuid())
+  id          String   @id @default(cuid())
   communityId String
   name        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
 
   community Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
 
@@ -684,6 +789,7 @@ model AiFaceAnalysis {
   confidence      Float
   attributesJson  Json?
   createdAt       DateTime @default(now())
+  updatedAt       DateTime @default(now()) @updatedAt
 
   user            User                       @relation(fields: [userId], references: [id], onDelete: Cascade)
   recommendations AiHairstyleRecommendation[]
@@ -699,6 +805,7 @@ model AiHairstyleRecommendation {
   score       Float
   tags        String[]
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
 
   analysis AiFaceAnalysis       @relation(fields: [analysisId], references: [id], onDelete: Cascade)
   previews AiHairstylePreview[]
@@ -712,6 +819,7 @@ model AiHairstylePreview {
   previewImageUrl  String?
   generationStatus String   @default("PENDING") // PENDING | COMPLETED | FAILED
   createdAt        DateTime @default(now())
+  updatedAt        DateTime @default(now()) @updatedAt
 
   recommendation AiHairstyleRecommendation @relation(fields: [recommendationId], references: [id], onDelete: Cascade)
 
@@ -784,6 +892,7 @@ model TaxDeclarationLog {
   performedBy  String?
   metadata     Json?
   createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt
 
   obligation TaxObligation @relation(fields: [obligationId], references: [id], onDelete: Cascade)
 
