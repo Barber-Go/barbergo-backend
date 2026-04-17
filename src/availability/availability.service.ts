@@ -29,27 +29,20 @@ export class AvailabilityService {
     });
     if (!barber) throw new NotFoundException('Barber profile not found');
 
-    // Upsert each slot by (barberId, dayOfWeek) unique constraint
-    for (const slot of slots) {
-      await this.prisma.client.weeklyAvailability.upsert({
-        where: {
-          barberId_dayOfWeek: {
-            barberId: barber.id,
-            dayOfWeek: slot.dayOfWeek,
-          },
-        },
-        create: {
+    // Delete all existing and recreate (supports multiple blocks per day)
+    await this.prisma.client.weeklyAvailability.deleteMany({
+      where: { barberId: barber.id },
+    });
+
+    if (slots.length > 0) {
+      await this.prisma.client.weeklyAvailability.createMany({
+        data: slots.map((slot) => ({
           barberId: barber.id,
           dayOfWeek: slot.dayOfWeek,
           startTime: slot.startTime,
           endTime: slot.endTime,
           isActive: slot.isActive,
-        },
-        update: {
-          startTime: slot.startTime,
-          endTime: slot.endTime,
-          isActive: slot.isActive,
-        },
+        })),
       });
     }
 
@@ -104,18 +97,12 @@ export class AvailabilityService {
     const date = new Date(dateStr);
     const dayOfWeek = date.getDay();
 
-    const weekly = await this.prisma.client.weeklyAvailability.findFirst({
+    const weeklyBlocks = await this.prisma.client.weeklyAvailability.findMany({
       where: { barberId, dayOfWeek, isActive: true },
     });
-    if (!weekly) return [];
+    if (weeklyBlocks.length === 0) return [];
 
-    // Generate 30-min slots
-    const [sh, sm] = weekly.startTime.split(':').map(Number);
-    const [eh, em] = weekly.endTime.split(':').map(Number);
-    const startMin = sh * 60 + sm;
-    const endMin = eh * 60 + em;
-
-    // Fetch blocks for this day
+    // Fetch blocks and bookings for this day
     const dayStart = new Date(date); dayStart.setHours(0, 0, 0, 0);
     const dayEnd = new Date(date); dayEnd.setHours(23, 59, 59, 999);
 
@@ -133,27 +120,36 @@ export class AvailabilityService {
       }),
     ]);
 
+    // Generate 30-min slots from all weekly blocks for this day
     const slots: string[] = [];
-    for (let m = startMin; m < endMin; m += 30) {
-      const slotStart = new Date(date);
-      slotStart.setHours(Math.floor(m / 60), m % 60, 0, 0);
-      const slotEnd = new Date(slotStart.getTime() + 30 * 60 * 1000);
+    for (const wb of weeklyBlocks) {
+      const [sh, sm] = wb.startTime.split(':').map(Number);
+      const [eh, em] = wb.endTime.split(':').map(Number);
+      const startMin = sh * 60 + sm;
+      const endMin = eh * 60 + em;
 
-      const blockedByBlock = blocks.some((b) => b.startAt < slotEnd && b.endAt > slotStart);
-      const blockedByBooking = bookings.some((b) => {
-        const bStart = new Date(b.scheduledAt);
-        const bEnd = new Date(bStart.getTime() + b.service.durationMin * 60 * 1000);
-        return bStart < slotEnd && bEnd > slotStart;
-      });
+      for (let m = startMin; m < endMin; m += 30) {
+        const slotStart = new Date(date);
+        slotStart.setHours(Math.floor(m / 60), m % 60, 0, 0);
+        const slotEnd = new Date(slotStart.getTime() + 30 * 60 * 1000);
 
-      if (!blockedByBlock && !blockedByBooking) {
-        const hh = String(Math.floor(m / 60)).padStart(2, '0');
-        const mm = String(m % 60).padStart(2, '0');
-        slots.push(`${hh}:${mm}`);
+        const blockedByBlock = blocks.some((b) => b.startAt < slotEnd && b.endAt > slotStart);
+        const blockedByBooking = bookings.some((b) => {
+          const bStart = new Date(b.scheduledAt);
+          const bEnd = new Date(bStart.getTime() + b.service.durationMin * 60 * 1000);
+          return bStart < slotEnd && bEnd > slotStart;
+        });
+
+        if (!blockedByBlock && !blockedByBooking) {
+          const hh = String(Math.floor(m / 60)).padStart(2, '0');
+          const mm = String(m % 60).padStart(2, '0');
+          slots.push(`${hh}:${mm}`);
+        }
       }
     }
 
-    return slots;
+    // Deduplicate and sort
+    return [...new Set(slots)].sort();
   }
 
   // ── Availability blocks CRUD ────────────────────────────────────────────────

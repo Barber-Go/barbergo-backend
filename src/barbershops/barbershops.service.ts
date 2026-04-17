@@ -326,11 +326,18 @@ export class BarbershopsService {
     });
     if (!membership) throw new NotFoundException('Barber not in this barbershop');
 
-    for (const slot of slots) {
-      await this.prisma.client.weeklyAvailability.upsert({
-        where: { barberId_dayOfWeek: { barberId, dayOfWeek: slot.dayOfWeek } },
-        create: { barberId, dayOfWeek: slot.dayOfWeek, startTime: slot.startTime, endTime: slot.endTime, isActive: slot.isActive },
-        update: { startTime: slot.startTime, endTime: slot.endTime, isActive: slot.isActive },
+    // Delete all existing and recreate (supports multiple blocks per day)
+    await this.prisma.client.weeklyAvailability.deleteMany({ where: { barberId } });
+
+    if (slots.length > 0) {
+      await this.prisma.client.weeklyAvailability.createMany({
+        data: slots.map((slot) => ({
+          barberId,
+          dayOfWeek: slot.dayOfWeek,
+          startTime: slot.startTime,
+          endTime: slot.endTime,
+          isActive: slot.isActive,
+        })),
       });
     }
 

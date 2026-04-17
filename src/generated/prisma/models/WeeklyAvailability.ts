@@ -239,7 +239,6 @@ export type WeeklyAvailabilityOrderByWithRelationInput = {
 
 export type WeeklyAvailabilityWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  barberId_dayOfWeek?: Prisma.WeeklyAvailabilityBarberIdDayOfWeekCompoundUniqueInput
   AND?: Prisma.WeeklyAvailabilityWhereInput | Prisma.WeeklyAvailabilityWhereInput[]
   OR?: Prisma.WeeklyAvailabilityWhereInput[]
   NOT?: Prisma.WeeklyAvailabilityWhereInput | Prisma.WeeklyAvailabilityWhereInput[]
@@ -249,7 +248,7 @@ export type WeeklyAvailabilityWhereUniqueInput = Prisma.AtLeast<{
   endTime?: Prisma.StringFilter<"WeeklyAvailability"> | string
   isActive?: Prisma.BoolFilter<"WeeklyAvailability"> | boolean
   barber?: Prisma.XOR<Prisma.BarberProfileScalarRelationFilter, Prisma.BarberProfileWhereInput>
-}, "id" | "barberId_dayOfWeek">
+}, "id">
 
 export type WeeklyAvailabilityOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -347,11 +346,6 @@ export type WeeklyAvailabilityListRelationFilter = {
 
 export type WeeklyAvailabilityOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
-}
-
-export type WeeklyAvailabilityBarberIdDayOfWeekCompoundUniqueInput = {
-  barberId: string
-  dayOfWeek: number
 }
 
 export type WeeklyAvailabilityCountOrderByAggregateInput = {

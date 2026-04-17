@@ -13,8 +13,33 @@ export class ManualBookingsService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(userId: string, dto: CreateManualBookingDto) {
-    const barber = await this.prisma.client.barberProfile.findUnique({ where: { userId } });
-    if (!barber) throw new NotFoundException('Barber profile not found');
+    let barber;
+
+    if (dto.barberId) {
+      // Barbershop owner creating booking for a staff barber
+      barber = await this.prisma.client.barberProfile.findUnique({ where: { id: dto.barberId } });
+      if (!barber) throw new NotFoundException('Barber profile not found');
+
+      // Verify the authenticated user owns the barbershop this barber belongs to
+      if (barber.barbershopId) {
+        const shop = await this.prisma.client.barbershopProfile.findUnique({
+          where: { id: barber.barbershopId },
+          select: { userId: true },
+        });
+        if (!shop || shop.userId !== userId) {
+          throw new ForbiddenException('Este barbero no pertenece a tu barberia');
+        }
+      } else {
+        // Barber is not in any barbershop — check if it's the user's own profile
+        if (barber.userId !== userId) {
+          throw new ForbiddenException('No tienes permiso para crear citas para este barbero');
+        }
+      }
+    } else {
+      // Barber creating booking for themselves
+      barber = await this.prisma.client.barberProfile.findUnique({ where: { userId } });
+      if (!barber) throw new NotFoundException('Barber profile not found');
+    }
 
     const date = new Date(dto.date);
 

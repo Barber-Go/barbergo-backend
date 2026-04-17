@@ -3,6 +3,10 @@ import { IsString, IsOptional, IsNotEmpty, Matches } from 'class-validator';
 export class CreateManualBookingDto {
   @IsOptional()
   @IsString()
+  barberId?: string;
+
+  @IsOptional()
+  @IsString()
   clientName?: string;
 
   @IsOptional()

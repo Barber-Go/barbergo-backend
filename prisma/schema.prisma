@@ -280,7 +280,7 @@ model WeeklyAvailability {
 
   barber BarberProfile @relation(fields: [barberId], references: [id], onDelete: Cascade)
 
-  @@unique([barberId, dayOfWeek])
+  @@index([barberId, dayOfWeek])
   @@map("availabilities")
 }
 
