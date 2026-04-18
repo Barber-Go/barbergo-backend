@@ -921,7 +921,27 @@ export class BarbershopsService {
       bookings: v.bookings,
     }));
 
-    // 7. Shop distribution (only if scope === 'all')
+    // 7. Peak hours (bookings grouped by hour of day)
+    const hourMap = new Map<number, { count: number; revenue: number }>();
+    for (let h = 9; h <= 21; h++) {
+      hourMap.set(h, { count: 0, revenue: 0 });
+    }
+    for (const b of bookings) {
+      const hour = b.scheduledAt.getHours();
+      if (hour >= 9 && hour <= 21) {
+        const acc = hourMap.get(hour)!;
+        acc.count += 1;
+        acc.revenue += Number(b.grossAmount);
+      }
+    }
+    const peakHours = [...hourMap.entries()].map(([hour, data]) => ({
+      hour,
+      label: `${String(hour).padStart(2, '0')}:00`,
+      count: data.count,
+      revenue: Math.round(data.revenue),
+    }));
+
+    // 8. Shop distribution (only if scope === 'all')
     let shopDistribution: {
       shopId: string;
       name: string;
@@ -1085,6 +1105,7 @@ export class BarbershopsService {
           },
         },
         incomeByDay,
+        peakHours,
         ...(shopDistribution ? { shopDistribution } : {}),
         paymentMethodDistribution: pmDist,
         topBarbers,
