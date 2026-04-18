@@ -391,6 +391,7 @@ export const ModelName = {
   BarbershopProfile: 'BarbershopProfile',
   BarbershopStaffMembership: 'BarbershopStaffMembership',
   StaffCompensationRule: 'StaffCompensationRule',
+  BarberInvitation: 'BarberInvitation',
   ServiceItem: 'ServiceItem',
   WeeklyAvailability: 'WeeklyAvailability',
   AvailabilityBlock: 'AvailabilityBlock',
@@ -437,7 +438,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "tenant" | "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "manualBooking" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "rewardsCatalog" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview" | "taxProfile" | "taxObligation" | "taxDeclarationLog" | "billingRecord"
+    modelProps: "tenant" | "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "barberInvitation" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "manualBooking" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "rewardsCatalog" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview" | "taxProfile" | "taxObligation" | "taxDeclarationLog" | "billingRecord"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -956,6 +957,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.StaffCompensationRuleCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.StaffCompensationRuleCountAggregateOutputType> | number
+        }
+      }
+    }
+    BarberInvitation: {
+      payload: Prisma.$BarberInvitationPayload<ExtArgs>
+      fields: Prisma.BarberInvitationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BarberInvitationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarberInvitationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BarberInvitationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarberInvitationPayload>
+        }
+        findFirst: {
+          args: Prisma.BarberInvitationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarberInvitationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BarberInvitationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarberInvitationPayload>
+        }
+        findMany: {
+          args: Prisma.BarberInvitationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarberInvitationPayload>[]
+        }
+        create: {
+          args: Prisma.BarberInvitationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarberInvitationPayload>
+        }
+        createMany: {
+          args: Prisma.BarberInvitationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BarberInvitationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarberInvitationPayload>[]
+        }
+        delete: {
+          args: Prisma.BarberInvitationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarberInvitationPayload>
+        }
+        update: {
+          args: Prisma.BarberInvitationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarberInvitationPayload>
+        }
+        deleteMany: {
+          args: Prisma.BarberInvitationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BarberInvitationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BarberInvitationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarberInvitationPayload>[]
+        }
+        upsert: {
+          args: Prisma.BarberInvitationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BarberInvitationPayload>
+        }
+        aggregate: {
+          args: Prisma.BarberInvitationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBarberInvitation>
+        }
+        groupBy: {
+          args: Prisma.BarberInvitationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BarberInvitationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BarberInvitationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BarberInvitationCountAggregateOutputType> | number
         }
       }
     }
@@ -3418,6 +3493,25 @@ export const StaffCompensationRuleScalarFieldEnum = {
 export type StaffCompensationRuleScalarFieldEnum = (typeof StaffCompensationRuleScalarFieldEnum)[keyof typeof StaffCompensationRuleScalarFieldEnum]
 
 
+export const BarberInvitationScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  barbershopId: 'barbershopId',
+  invitedByUserId: 'invitedByUserId',
+  initialBarberPercent: 'initialBarberPercent',
+  initialShopPercent: 'initialShopPercent',
+  status: 'status',
+  email: 'email',
+  acceptedByUserId: 'acceptedByUserId',
+  acceptedAt: 'acceptedAt',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BarberInvitationScalarFieldEnum = (typeof BarberInvitationScalarFieldEnum)[keyof typeof BarberInvitationScalarFieldEnum]
+
+
 export const ServiceItemScalarFieldEnum = {
   id: 'id',
   barberId: 'barberId',
@@ -4078,6 +4172,20 @@ export type ListEnumBarbershopStatusFieldRefInput<$PrismaModel> = FieldRefInputT
 
 
 /**
+ * Reference to a field of type 'InvitationStatus'
+ */
+export type EnumInvitationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvitationStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'InvitationStatus[]'
+ */
+export type ListEnumInvitationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvitationStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'Decimal'
  */
 export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
@@ -4318,6 +4426,7 @@ export type GlobalOmitConfig = {
   barbershopProfile?: Prisma.BarbershopProfileOmit
   barbershopStaffMembership?: Prisma.BarbershopStaffMembershipOmit
   staffCompensationRule?: Prisma.StaffCompensationRuleOmit
+  barberInvitation?: Prisma.BarberInvitationOmit
   serviceItem?: Prisma.ServiceItemOmit
   weeklyAvailability?: Prisma.WeeklyAvailabilityOmit
   availabilityBlock?: Prisma.AvailabilityBlockOmit

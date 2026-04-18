@@ -5,6 +5,9 @@ import { UpdateBarbershopDto } from './dto/update-barbershop.dto';
 import { AddStaffDto } from './dto/add-staff.dto';
 import { UpdateStaffDto } from './dto/update-staff.dto';
 import { DashboardQueryDto } from './dto/dashboard-query.dto';
+import { TeamQueryDto } from './dto/team-query.dto';
+import { CreateInvitationDto } from './dto/create-invitation.dto';
+import { UpdateCommissionDto } from './dto/update-commission.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decorator';
@@ -95,6 +98,61 @@ export class BarbershopsController {
     @Body() body: { slots: { dayOfWeek: number; startTime: string; endTime: string; isActive: boolean }[] },
   ) {
     return this.barbershopsService.updateStaffAvailability(req.user.id, barberId, body.slots);
+  }
+
+  // ── Team ──
+
+  @Get('team')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  getTeam(@Request() req: { user: { id: string } }, @Query() query: TeamQueryDto) {
+    return this.barbershopsService.getTeam(req.user.id, query.scope, query.period);
+  }
+
+  @Get('team/invitations')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  getInvitations(@Request() req: { user: { id: string } }, @Query('barbershopId') barbershopId?: string) {
+    return this.barbershopsService.getInvitations(req.user.id, barbershopId);
+  }
+
+  @Post('team/invitations')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  createInvitation(@Request() req: { user: { id: string } }, @Body() dto: CreateInvitationDto) {
+    return this.barbershopsService.createInvitation(req.user.id, dto);
+  }
+
+  @Delete('team/invitations/:invitationId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  revokeInvitation(@Request() req: { user: { id: string } }, @Param('invitationId') invitationId: string) {
+    return this.barbershopsService.revokeInvitation(req.user.id, invitationId);
+  }
+
+  @Get('team/:barberId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  getTeamMemberDetail(@Request() req: { user: { id: string } }, @Param('barberId') barberId: string) {
+    return this.barbershopsService.getTeamMemberDetail(req.user.id, barberId);
+  }
+
+  @Patch('team/:barberId/commission')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  updateCommission(
+    @Request() req: { user: { id: string } },
+    @Param('barberId') barberId: string,
+    @Body() dto: UpdateCommissionDto,
+  ) {
+    return this.barbershopsService.updateCommission(req.user.id, barberId, dto);
+  }
+
+  @Delete('team/:barberId')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  removeTeamMember(@Request() req: { user: { id: string } }, @Param('barberId') barberId: string) {
+    return this.barbershopsService.removeTeamMember(req.user.id, barberId);
   }
 
   // ── Dashboard ──

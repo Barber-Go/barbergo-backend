@@ -113,6 +113,13 @@ enum BarbershopStatus {
   ARCHIVED
 }
 
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  EXPIRED
+  REVOKED
+}
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // Tenant (enterprise chain layer)
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -182,6 +189,10 @@ model User {
   // Tax module
   taxModuleEnabled     Boolean   @default(false)
   taxModuleActivatedAt DateTime?
+
+  // Invitations
+  invitationsSent     BarberInvitation[] @relation("UserInvitations")
+  invitationsAccepted BarberInvitation[] @relation("AcceptedInvitations")
 
   @@index([tenantId])
   @@map("users")
@@ -265,6 +276,7 @@ model BarbershopProfile {
   user    User                        @relation(fields: [userId], references: [id], onDelete: Cascade)
   staff   BarbershopStaffMembership[]
   barbers BarberProfile[]             @relation("BarbershopBarbers")
+  invitations BarberInvitation[]      @relation("BarbershopInvitations")
   taxProfile     TaxProfile?
   billingRecords BillingRecord[]
 
@@ -308,6 +320,33 @@ model StaffCompensationRule {
   membership BarbershopStaffMembership @relation(fields: [membershipId], references: [id], onDelete: Cascade)
 
   @@map("staff_compensation_rules")
+}
+
+model BarberInvitation {
+  id              String           @id @default(cuid())
+  code            String           @unique
+  barbershopId    String
+  barbershop      BarbershopProfile @relation("BarbershopInvitations", fields: [barbershopId], references: [id])
+
+  invitedByUserId String
+  invitedBy       User             @relation("UserInvitations", fields: [invitedByUserId], references: [id])
+
+  initialBarberPercent Int         @default(60)
+  initialShopPercent   Int         @default(40)
+
+  status          InvitationStatus @default(PENDING)
+  email           String?
+  acceptedByUserId String?
+  acceptedBy      User?            @relation("AcceptedInvitations", fields: [acceptedByUserId], references: [id])
+  acceptedAt      DateTime?
+
+  expiresAt       DateTime
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  @@index([code])
+  @@index([barbershopId, status])
+  @@map("barber_invitations")
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════

@@ -58,6 +58,7 @@ export const ModelName = {
   BarbershopProfile: 'BarbershopProfile',
   BarbershopStaffMembership: 'BarbershopStaffMembership',
   StaffCompensationRule: 'StaffCompensationRule',
+  BarberInvitation: 'BarberInvitation',
   ServiceItem: 'ServiceItem',
   WeeklyAvailability: 'WeeklyAvailability',
   AvailabilityBlock: 'AvailabilityBlock',
@@ -231,6 +232,25 @@ export const StaffCompensationRuleScalarFieldEnum = {
 } as const
 
 export type StaffCompensationRuleScalarFieldEnum = (typeof StaffCompensationRuleScalarFieldEnum)[keyof typeof StaffCompensationRuleScalarFieldEnum]
+
+
+export const BarberInvitationScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  barbershopId: 'barbershopId',
+  invitedByUserId: 'invitedByUserId',
+  initialBarberPercent: 'initialBarberPercent',
+  initialShopPercent: 'initialShopPercent',
+  status: 'status',
+  email: 'email',
+  acceptedByUserId: 'acceptedByUserId',
+  acceptedAt: 'acceptedAt',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BarberInvitationScalarFieldEnum = (typeof BarberInvitationScalarFieldEnum)[keyof typeof BarberInvitationScalarFieldEnum]
 
 
 export const ServiceItemScalarFieldEnum = {

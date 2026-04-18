@@ -53,6 +53,11 @@ export type BarbershopStaffMembership = Prisma.BarbershopStaffMembershipModel
  */
 export type StaffCompensationRule = Prisma.StaffCompensationRuleModel
 /**
+ * Model BarberInvitation
+ * 
+ */
+export type BarberInvitation = Prisma.BarberInvitationModel
+/**
  * Model ServiceItem
  * 
  */

@@ -1,11 +1,13 @@
-import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateBarbershopDto } from './dto/create-barbershop.dto';
 import { UpdateBarbershopDto } from './dto/update-barbershop.dto';
 import { AddStaffDto } from './dto/add-staff.dto';
 import { UpdateStaffDto } from './dto/update-staff.dto';
+import { CreateInvitationDto } from './dto/create-invitation.dto';
+import { UpdateCommissionDto } from './dto/update-commission.dto';
 import { DashboardPeriod } from './dto/dashboard-query.dto';
-import { Role, BookingStatus, BarbershopStatus } from '../generated/prisma/enums';
+import { Role, BookingStatus, BarbershopStatus, InvitationStatus } from '../generated/prisma/enums';
 
 @Injectable()
 export class BarbershopsService {
@@ -253,6 +255,450 @@ export class BarbershopsService {
       data: { isActive: false },
     });
     return { message: 'Staff member removed' };
+  }
+
+  // ── Team ──────────────────────────────────────────────────────────────────────
+
+  async getTeam(userId: string, scope: string, period?: DashboardPeriod) {
+    const ownerShops = await this.prisma.client.barbershopProfile.findMany({
+      where: { userId, deletedAt: null },
+      select: { id: true, name: true },
+    });
+    if (ownerShops.length === 0) throw new NotFoundException('No barbershops found');
+
+    let barbershopIds: string[];
+    if (scope === 'all') {
+      barbershopIds = ownerShops.map((s) => s.id);
+    } else {
+      const found = ownerShops.find((s) => s.id === scope);
+      if (!found) throw new ForbiddenException('Barbershop not found or not owned by you');
+      barbershopIds = [scope];
+    }
+
+    // Resolve period for KPIs (default to current month)
+    const effectivePeriod = period ?? DashboardPeriod.MONTH;
+    const { rangeFrom, rangeTo } = this.resolveDateRange(effectivePeriod);
+
+    // Fetch active staff across selected shops
+    const memberships = await this.prisma.client.barbershopStaffMembership.findMany({
+      where: { barbershopId: { in: barbershopIds }, isActive: true },
+      include: {
+        barberProfile: {
+          include: {
+            user: { select: { id: true, name: true, email: true, avatarUrl: true } },
+          },
+        },
+        barbershop: { select: { id: true, name: true } },
+        compensationRules: { where: { isActive: true }, take: 1 },
+      },
+    });
+
+    // Fetch completed bookings in period for these barbers
+    const barberIds = memberships.map((m) => m.barberProfileId);
+    const bookings = barberIds.length > 0
+      ? await this.prisma.client.booking.findMany({
+          where: {
+            barberId: { in: barberIds },
+            barbershopId: { in: barbershopIds },
+            status: BookingStatus.COMPLETED,
+            scheduledAt: { gte: rangeFrom, lte: rangeTo },
+            deletedAt: null,
+          },
+          select: {
+            barberId: true,
+            grossAmount: true,
+            barberAmount: true,
+          },
+        })
+      : [];
+
+    // Fetch average ratings
+    const reviews = barberIds.length > 0
+      ? await this.prisma.client.review.findMany({
+          where: { barberId: { in: barberIds }, deletedAt: null },
+          select: { barberId: true, rating: true },
+        })
+      : [];
+
+    // Build per-barber KPIs
+    const bookingMap = new Map<string, { count: number; gross: number; earnings: number }>();
+    for (const b of bookings) {
+      const entry = bookingMap.get(b.barberId) ?? { count: 0, gross: 0, earnings: 0 };
+      entry.count += 1;
+      entry.gross += Number(b.grossAmount);
+      entry.earnings += Number(b.barberAmount);
+      bookingMap.set(b.barberId, entry);
+    }
+
+    const ratingMap = new Map<string, { sum: number; count: number }>();
+    for (const r of reviews) {
+      const entry = ratingMap.get(r.barberId) ?? { sum: 0, count: 0 };
+      entry.sum += r.rating;
+      entry.count += 1;
+      ratingMap.set(r.barberId, entry);
+    }
+
+    const team = memberships.map((m) => {
+      const fullName = m.barberProfile.user.name ?? '';
+      const parts = fullName.trim().split(/\s+/);
+      const initials = parts.length >= 2
+        ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+        : fullName.slice(0, 2).toUpperCase();
+
+      const barberPercent = m.compensationRules[0]?.percentage ?? 60;
+      const bkpi = bookingMap.get(m.barberProfileId) ?? { count: 0, gross: 0, earnings: 0 };
+      const rEntry = ratingMap.get(m.barberProfileId);
+      const avgRating = rEntry ? Math.round((rEntry.sum / rEntry.count) * 10) / 10 : null;
+
+      return {
+        barberId: m.barberProfileId,
+        userId: m.barberProfile.userId,
+        membershipId: m.id,
+        name: fullName,
+        avatarInitials: initials,
+        avatarUrl: m.barberProfile.user.avatarUrl,
+        email: m.barberProfile.user.email,
+        shopId: m.barbershop.id,
+        shopName: m.barbershop.name,
+        barberPercent: Math.round(barberPercent),
+        shopPercent: 100 - Math.round(barberPercent),
+        membershipStatus: 'ACTIVE',
+        kpis: {
+          totalBookings: bkpi.count,
+          totalGross: Math.round(bkpi.gross),
+          totalEarnings: Math.round(bkpi.earnings),
+          averageRating: avgRating,
+        },
+      };
+    });
+
+    return { data: team, message: 'OK', statusCode: 200 };
+  }
+
+  async getTeamMemberDetail(userId: string, barberId: string) {
+    const ownerShops = await this.prisma.client.barbershopProfile.findMany({
+      where: { userId, deletedAt: null },
+      select: { id: true },
+    });
+    if (ownerShops.length === 0) throw new NotFoundException('No barbershops found');
+    const shopIds = ownerShops.map((s) => s.id);
+
+    const membership = await this.prisma.client.barbershopStaffMembership.findFirst({
+      where: { barberProfileId: barberId, barbershopId: { in: shopIds }, isActive: true },
+      include: {
+        barberProfile: {
+          include: {
+            user: { select: { id: true, name: true, email: true, phone: true, avatarUrl: true, createdAt: true } },
+            services: { where: { isActive: true }, select: { id: true, name: true, price: true, durationMin: true } },
+          },
+        },
+        barbershop: { select: { id: true, name: true } },
+        compensationRules: { orderBy: { createdAt: 'desc' } },
+      },
+    });
+    if (!membership) throw new NotFoundException('Barber not found in your barbershops');
+
+    // Aggregate stats
+    const [bookingStats, reviewStats, recentBookings] = await Promise.all([
+      this.prisma.client.booking.aggregate({
+        where: {
+          barberId,
+          barbershopId: { in: shopIds },
+          status: BookingStatus.COMPLETED,
+          deletedAt: null,
+        },
+        _count: true,
+        _sum: { grossAmount: true, barberAmount: true },
+      }),
+      this.prisma.client.review.aggregate({
+        where: { barberId, deletedAt: null },
+        _avg: { rating: true },
+        _count: true,
+      }),
+      this.prisma.client.booking.findMany({
+        where: {
+          barberId,
+          barbershopId: { in: shopIds },
+          status: BookingStatus.COMPLETED,
+          deletedAt: null,
+        },
+        orderBy: { scheduledAt: 'desc' },
+        take: 5,
+        select: {
+          id: true,
+          scheduledAt: true,
+          grossAmount: true,
+          barberAmount: true,
+          paymentMethod: true,
+          service: { select: { name: true } },
+          client: { select: { name: true } },
+        },
+      }),
+    ]);
+
+    const fullName = membership.barberProfile.user.name ?? '';
+    const parts = fullName.trim().split(/\s+/);
+    const initials = parts.length >= 2
+      ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+      : fullName.slice(0, 2).toUpperCase();
+
+    const activeRule = membership.compensationRules.find((r) => r.isActive);
+
+    return {
+      data: {
+        barberId: membership.barberProfileId,
+        userId: membership.barberProfile.userId,
+        membershipId: membership.id,
+        name: fullName,
+        avatarInitials: initials,
+        avatarUrl: membership.barberProfile.user.avatarUrl,
+        email: membership.barberProfile.user.email,
+        phone: membership.barberProfile.user.phone,
+        joinedAt: membership.joinedAt,
+        shopId: membership.barbershop.id,
+        shopName: membership.barbershop.name,
+        barberPercent: Math.round(activeRule?.percentage ?? 60),
+        shopPercent: 100 - Math.round(activeRule?.percentage ?? 60),
+        services: membership.barberProfile.services.map((s) => ({
+          id: s.id,
+          name: s.name,
+          price: Number(s.price),
+          durationMin: s.durationMin,
+        })),
+        stats: {
+          totalBookings: bookingStats._count,
+          totalGross: Math.round(Number(bookingStats._sum.grossAmount ?? 0)),
+          totalEarnings: Math.round(Number(bookingStats._sum.barberAmount ?? 0)),
+          averageRating: reviewStats._avg.rating
+            ? Math.round(reviewStats._avg.rating * 10) / 10
+            : null,
+          totalReviews: reviewStats._count,
+        },
+        recentBookings: recentBookings.map((b) => ({
+          id: b.id,
+          scheduledAt: b.scheduledAt,
+          grossAmount: Number(b.grossAmount),
+          barberAmount: Number(b.barberAmount),
+          paymentMethod: b.paymentMethod,
+          serviceName: b.service.name,
+          clientName: b.client.name,
+        })),
+        compensationHistory: membership.compensationRules.map((r) => ({
+          id: r.id,
+          percentage: r.percentage,
+          isActive: r.isActive,
+          createdAt: r.createdAt,
+        })),
+      },
+      message: 'OK',
+      statusCode: 200,
+    };
+  }
+
+  async updateCommission(userId: string, barberId: string, dto: UpdateCommissionDto) {
+    if (dto.barberPercent + dto.shopPercent !== 100) {
+      throw new BadRequestException('barberPercent + shopPercent must equal 100');
+    }
+
+    const ownerShops = await this.prisma.client.barbershopProfile.findMany({
+      where: { userId, deletedAt: null },
+      select: { id: true },
+    });
+    if (ownerShops.length === 0) throw new NotFoundException('No barbershops found');
+    const shopIds = ownerShops.map((s) => s.id);
+
+    const membership = await this.prisma.client.barbershopStaffMembership.findFirst({
+      where: { barberProfileId: barberId, barbershopId: { in: shopIds }, isActive: true },
+    });
+    if (!membership) throw new NotFoundException('Barber not found in your barbershops');
+
+    // Deactivate old rules (preserve history)
+    await this.prisma.client.staffCompensationRule.updateMany({
+      where: { membershipId: membership.id, isActive: true },
+      data: { isActive: false },
+    });
+
+    // Create new active rule
+    const rule = await this.prisma.client.staffCompensationRule.create({
+      data: {
+        membershipId: membership.id,
+        label: 'Comision barbero',
+        percentage: dto.barberPercent,
+        isActive: true,
+      },
+    });
+
+    return {
+      data: {
+        membershipId: membership.id,
+        barberPercent: dto.barberPercent,
+        shopPercent: dto.shopPercent,
+        ruleId: rule.id,
+        effectiveFrom: rule.createdAt,
+      },
+      message: 'Commission updated',
+      statusCode: 200,
+    };
+  }
+
+  async createInvitation(userId: string, dto: CreateInvitationDto) {
+    // Validate ownership
+    const shop = await this.prisma.client.barbershopProfile.findFirst({
+      where: { id: dto.barbershopId, userId, deletedAt: null },
+    });
+    if (!shop) throw new ForbiddenException('Barbershop not found or not owned by you');
+
+    // Validate percentages
+    const barberPct = dto.barberPercent ?? 60;
+    const shopPct = dto.shopPercent ?? 40;
+    if (barberPct + shopPct !== 100) {
+      throw new BadRequestException('barberPercent + shopPercent must equal 100');
+    }
+
+    // Check for existing pending invitation with same email (if provided)
+    if (dto.email) {
+      const existing = await this.prisma.client.barberInvitation.findFirst({
+        where: {
+          barbershopId: dto.barbershopId,
+          email: dto.email.toLowerCase(),
+          status: InvitationStatus.PENDING,
+          expiresAt: { gt: new Date() },
+        },
+      });
+      if (existing) {
+        throw new ConflictException('Already exists a pending invitation for this email');
+      }
+    }
+
+    // Generate 6-digit code
+    const code = this.generateInvitationCode();
+    const expiresAt = new Date();
+    expiresAt.setDate(expiresAt.getDate() + 7);
+
+    const invitation = await this.prisma.client.barberInvitation.create({
+      data: {
+        code,
+        barbershopId: dto.barbershopId,
+        invitedByUserId: userId,
+        initialBarberPercent: barberPct,
+        initialShopPercent: shopPct,
+        email: dto.email?.toLowerCase(),
+        expiresAt,
+      },
+    });
+
+    return {
+      data: {
+        id: invitation.id,
+        code: invitation.code,
+        barbershopId: invitation.barbershopId,
+        barbershopName: shop.name,
+        barberPercent: invitation.initialBarberPercent,
+        shopPercent: invitation.initialShopPercent,
+        email: invitation.email,
+        expiresAt: invitation.expiresAt,
+        status: invitation.status,
+      },
+      message: 'Invitation created',
+      statusCode: 201,
+    };
+  }
+
+  async getInvitations(userId: string, barbershopId?: string) {
+    const ownerShops = await this.prisma.client.barbershopProfile.findMany({
+      where: { userId, deletedAt: null },
+      select: { id: true, name: true },
+    });
+    if (ownerShops.length === 0) throw new NotFoundException('No barbershops found');
+    const shopIds = barbershopId
+      ? [barbershopId]
+      : ownerShops.map((s) => s.id);
+
+    if (barbershopId && !ownerShops.find((s) => s.id === barbershopId)) {
+      throw new ForbiddenException('Barbershop not found or not owned by you');
+    }
+
+    const shopMap = new Map(ownerShops.map((s) => [s.id, s.name]));
+
+    const invitations = await this.prisma.client.barberInvitation.findMany({
+      where: { barbershopId: { in: shopIds } },
+      orderBy: { createdAt: 'desc' },
+    });
+
+    return {
+      data: invitations.map((inv) => ({
+        id: inv.id,
+        code: inv.code,
+        barbershopId: inv.barbershopId,
+        barbershopName: shopMap.get(inv.barbershopId) ?? '',
+        barberPercent: inv.initialBarberPercent,
+        shopPercent: inv.initialShopPercent,
+        email: inv.email,
+        status: inv.expiresAt < new Date() && inv.status === 'PENDING' ? 'EXPIRED' : inv.status,
+        expiresAt: inv.expiresAt,
+        createdAt: inv.createdAt,
+      })),
+      message: 'OK',
+      statusCode: 200,
+    };
+  }
+
+  async revokeInvitation(userId: string, invitationId: string) {
+    const invitation = await this.prisma.client.barberInvitation.findUnique({
+      where: { id: invitationId },
+      include: { barbershop: { select: { userId: true } } },
+    });
+    if (!invitation) throw new NotFoundException('Invitation not found');
+    if (invitation.barbershop.userId !== userId) {
+      throw new ForbiddenException('Not your invitation');
+    }
+    if (invitation.status !== 'PENDING') {
+      throw new BadRequestException('Only pending invitations can be revoked');
+    }
+
+    await this.prisma.client.barberInvitation.update({
+      where: { id: invitationId },
+      data: { status: InvitationStatus.REVOKED },
+    });
+
+    return { message: 'Invitation revoked', statusCode: 200 };
+  }
+
+  async removeTeamMember(userId: string, barberId: string) {
+    const ownerShops = await this.prisma.client.barbershopProfile.findMany({
+      where: { userId, deletedAt: null },
+      select: { id: true },
+    });
+    if (ownerShops.length === 0) throw new NotFoundException('No barbershops found');
+    const shopIds = ownerShops.map((s) => s.id);
+
+    const membership = await this.prisma.client.barbershopStaffMembership.findFirst({
+      where: { barberProfileId: barberId, barbershopId: { in: shopIds }, isActive: true },
+    });
+    if (!membership) throw new NotFoundException('Barber not found in your barbershops');
+
+    // Soft deactivate membership
+    await this.prisma.client.barbershopStaffMembership.update({
+      where: { id: membership.id },
+      data: { isActive: false },
+    });
+
+    // Remove barbershop link from barber profile
+    await this.prisma.client.barberProfile.update({
+      where: { id: barberId },
+      data: { barbershopId: null },
+    });
+
+    return { message: 'Barber removed from team', statusCode: 200 };
+  }
+
+  private generateInvitationCode(): string {
+    const chars = '0123456789';
+    let code = '';
+    for (let i = 0; i < 6; i++) {
+      code += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return code;
   }
 
   // ── Invite code ──
