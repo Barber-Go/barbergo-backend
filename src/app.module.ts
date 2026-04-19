@@ -25,6 +25,7 @@ import { TaxComplianceModule } from './tax-compliance/tax-compliance.module';
 import { BillingModule } from './billing/billing.module';
 import { PointsModule } from './points/points.module';
 import { ManualBookingsModule } from './manual-bookings/manual-bookings.module';
+import { BarberEmployeeModule } from './barber-employee/barber-employee.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -59,6 +60,7 @@ import { AppService } from './app.service';
     BillingModule,
     PointsModule,
     ManualBookingsModule,
+    BarberEmployeeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
