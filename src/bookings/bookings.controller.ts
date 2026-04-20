@@ -37,9 +37,9 @@ export class BookingsController {
   // GET /api/v1/bookings/mine — returns bookings for the authenticated user
   // CLIENT → own bookings as client; BARBER → own bookings as barber
   @Get('mine')
-  @Roles(Role.CLIENT, Role.BARBER)
+  @Roles(Role.CLIENT, Role.BARBER, Role.BARBER_INDEPENDENT, Role.BARBER_EMPLOYEE)
   findMine(@Request() req: { user: JwtUser }) {
-    if (req.user.role === Role.BARBER) {
+    if (req.user.role !== Role.CLIENT) {
       return this.bookingsService.findForBarber(req.user.id);
     }
     return this.bookingsService.findForClient(req.user.id);
@@ -47,14 +47,14 @@ export class BookingsController {
 
   // GET /api/v1/bookings/:id — single booking (owner or admin)
   @Get(':id')
-  @Roles(Role.CLIENT, Role.BARBER, Role.ADMIN)
+  @Roles(Role.CLIENT, Role.BARBER, Role.BARBER_INDEPENDENT, Role.BARBER_EMPLOYEE, Role.ADMIN)
   findOne(@Param('id') id: string, @Request() req: { user: JwtUser }) {
     return this.bookingsService.findOne(id, req.user.id, req.user.role);
   }
 
   // PATCH /api/v1/bookings/:id/status — update status
   @Patch(':id/status')
-  @Roles(Role.CLIENT, Role.BARBER, Role.ADMIN)
+  @Roles(Role.CLIENT, Role.BARBER, Role.BARBER_INDEPENDENT, Role.BARBER_EMPLOYEE, Role.ADMIN)
   updateStatus(
     @Param('id') id: string,
     @Body() dto: UpdateBookingStatusDto,

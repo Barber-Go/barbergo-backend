@@ -62,28 +62,28 @@ export class BarbersController {
 
   @Get('me')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.BARBER)
+  @Roles(Role.BARBER, Role.BARBER_INDEPENDENT)
   getMe(@Request() req: any) {
     return this.barbersService.findMe(req.user.id);
   }
 
   @Patch('me')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.BARBER)
+  @Roles(Role.BARBER, Role.BARBER_INDEPENDENT)
   updateMe(@Request() req: any, @Body() dto: UpdateBarberProfileDto) {
     return this.barbersService.updateMe(req.user.id, dto);
   }
 
   @Get('me/dashboard')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.BARBER)
+  @Roles(Role.BARBER, Role.BARBER_INDEPENDENT)
   getDashboard(@Request() req: { user: { id: string } }, @Query() query: DashboardQueryDto) {
     return this.barbersService.getDashboard(req.user.id, query.period, query.from, query.to);
   }
 
   @Post('me/avatar')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.BARBER)
+  @Roles(Role.BARBER, Role.BARBER_INDEPENDENT)
   @UseInterceptors(FileInterceptor('file', { limits: { fileSize: 5 * 1024 * 1024 } }))
   uploadAvatar(@Request() req: any, @UploadedFile() file: Express.Multer.File) {
     return this.barbersService.uploadAvatar(req.user.id, file);
@@ -91,14 +91,14 @@ export class BarbersController {
 
   @Post('me/services')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.BARBER)
+  @Roles(Role.BARBER, Role.BARBER_INDEPENDENT)
   createService(@Request() req: any, @Body() dto: CreateServiceDto) {
     return this.barbersService.createService(req.user.id, dto);
   }
 
   @Patch('me/services/:serviceId')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.BARBER)
+  @Roles(Role.BARBER, Role.BARBER_INDEPENDENT)
   updateService(
     @Request() req: any,
     @Param('serviceId') serviceId: string,
@@ -109,7 +109,7 @@ export class BarbersController {
 
   @Delete('me/services/:serviceId')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.BARBER)
+  @Roles(Role.BARBER, Role.BARBER_INDEPENDENT)
   deleteService(@Request() req: any, @Param('serviceId') serviceId: string) {
     return this.barbersService.deleteService(req.user.id, serviceId);
   }
@@ -134,7 +134,7 @@ export class BarbersController {
 
   @Patch('me/availability')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.BARBER)
+  @Roles(Role.BARBER, Role.BARBER_INDEPENDENT)
   upsertAvailability(@Request() req: any, @Body() dto: UpsertAvailabilityDto) {
     return this.availabilityService.upsertForBarber(req.user.id, dto.slots);
   }
