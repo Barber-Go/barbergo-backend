@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -10,6 +11,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { TaxComplianceService } from './tax-compliance.service';
+import { TaxDocumentService } from './tax-document.service';
 import { CreateTaxProfileDto } from './dto/create-tax-profile.dto';
 import { UpdateTaxProfileDto } from './dto/update-tax-profile.dto';
 import { SaveCredentialsDto } from './dto/save-credentials.dto';
@@ -22,7 +24,10 @@ import { Role } from '../generated/prisma/enums';
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles(Role.BARBERSHOP_OWNER)
 export class TaxComplianceController {
-  constructor(private readonly taxService: TaxComplianceService) {}
+  constructor(
+    private readonly taxService: TaxComplianceService,
+    private readonly docService: TaxDocumentService,
+  ) {}
 
   // ── Credentials ─────────────────────────────────────────────────────────
 
@@ -94,5 +99,47 @@ export class TaxComplianceController {
   @Get('history/me')
   getHistory(@Request() req: { user: { id: string } }, @Query('year') year: string) {
     return this.taxService.getHistory(req.user.id, Number(year) || new Date().getFullYear());
+  }
+
+  // ── Documents ──────────────────────────────────────────────────────────
+
+  @Post('documents')
+  createDocument(@Request() req: { user: { id: string } }, @Body() body: {
+    documentType: 'BOLETA' | 'FACTURA';
+    amount: number;
+    period: string;
+    barbershopId?: string;
+    receptorRut?: string;
+    receptorName?: string;
+    receptorAddress?: string;
+  }) {
+    return this.docService.createDocument(req.user.id, body);
+  }
+
+  @Get('documents')
+  getDocuments(
+    @Request() req: { user: { id: string } },
+    @Query('period') period?: string,
+    @Query('barbershopId') barbershopId?: string,
+  ) {
+    return this.docService.getDocuments(req.user.id, period, barbershopId);
+  }
+
+  @Delete('documents/:id')
+  cancelDocument(
+    @Request() req: { user: { id: string } },
+    @Param('id') id: string,
+    @Body() body?: { reason?: string },
+  ) {
+    return this.docService.cancelDocument(req.user.id, id, body?.reason);
+  }
+
+  @Get('documents/summary')
+  getDocumentSummary(
+    @Request() req: { user: { id: string } },
+    @Query('period') period?: string,
+    @Query('barbershopId') barbershopId?: string,
+  ) {
+    return this.docService.getSummary(req.user.id, period, barbershopId);
   }
 }

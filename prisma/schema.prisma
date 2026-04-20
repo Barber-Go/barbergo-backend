@@ -189,6 +189,7 @@ model User {
   // Tax module
   taxModuleEnabled     Boolean   @default(false)
   taxModuleActivatedAt DateTime?
+  taxDocuments         TaxDocument[]      @relation("UserTaxDocuments")
 
   // Invitations
   invitationsSent     BarberInvitation[] @relation("UserInvitations")
@@ -285,6 +286,7 @@ model BarbershopProfile {
   bookings      Booking[]          @relation("BarbershopBookings")
   expenses      Expense[]          @relation("BarbershopExpenses")
   ledgerEntries DailyLedgerEntry[] @relation("BarbershopLedger")
+  taxDocuments  TaxDocument[]      @relation("BarbershopTaxDocuments")
 
   @@index([userId])
   @@index([tenantId])
@@ -955,4 +957,54 @@ model BillingRecord {
 
   @@unique([barbershopId, period])
   @@map("billing_records")
+}
+
+// ── Tax Documents (Boletas/Facturas) ──────────────────────────────────────
+
+enum TaxDocumentType {
+  BOLETA
+  FACTURA
+}
+
+enum TaxDocStatus {
+  SIMULATED
+  PENDING
+  EMITTED
+  CANCELLED
+  FAILED
+}
+
+model TaxDocument {
+  id                 String           @id @default(cuid())
+  userId             String
+  barbershopId       String?
+
+  documentType       TaxDocumentType
+  amount             Int
+  taxAmount          Int              @default(0)
+  totalAmount        Int
+
+  period             String           // YYYY-MM
+  issuedAt           DateTime         @default(now())
+
+  receptorRut        String?
+  receptorName       String?
+  receptorAddress    String?
+
+  folio              Int?
+  status             TaxDocStatus     @default(SIMULATED)
+  pdfUrl             String?
+
+  emitterRut         String
+  emitterName        String
+
+  cancelledAt        DateTime?
+  cancellationReason String?
+  deletedAt          DateTime?
+
+  user               User                @relation("UserTaxDocuments", fields: [userId], references: [id])
+  barbershop         BarbershopProfile?  @relation("BarbershopTaxDocuments", fields: [barbershopId], references: [id])
+
+  @@index([userId, period])
+  @@map("tax_documents")
 }
