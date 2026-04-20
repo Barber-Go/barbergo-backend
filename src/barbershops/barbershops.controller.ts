@@ -8,6 +8,7 @@ import { DashboardQueryDto } from './dto/dashboard-query.dto';
 import { TeamQueryDto } from './dto/team-query.dto';
 import { CreateInvitationDto } from './dto/create-invitation.dto';
 import { UpdateCommissionDto } from './dto/update-commission.dto';
+import { UpdateBarbershopStatusDto } from './dto/update-status.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles.decorator';
@@ -153,6 +154,47 @@ export class BarbershopsController {
   @Roles(Role.BARBERSHOP_OWNER)
   removeTeamMember(@Request() req: { user: { id: string } }, @Param('barberId') barberId: string) {
     return this.barbershopsService.removeTeamMember(req.user.id, barberId);
+  }
+
+  // ── Locations ──
+
+  @Get('me/locations')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  getLocations(@Request() req: { user: { id: string } }) {
+    return this.barbershopsService.getLocations(req.user.id);
+  }
+
+  @Patch(':id')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  updateBarbershopById(
+    @Request() req: { user: { id: string } },
+    @Param('id') id: string,
+    @Body() dto: UpdateBarbershopDto,
+  ) {
+    return this.barbershopsService.updateBarbershopById(req.user.id, id, dto);
+  }
+
+  @Patch(':id/status')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  updateBarbershopStatus(
+    @Request() req: { user: { id: string } },
+    @Param('id') id: string,
+    @Body() dto: UpdateBarbershopStatusDto,
+  ) {
+    return this.barbershopsService.updateBarbershopStatus(req.user.id, id, dto.status);
+  }
+
+  @Delete(':id')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.BARBERSHOP_OWNER)
+  deleteBarbershop(
+    @Request() req: { user: { id: string } },
+    @Param('id') id: string,
+  ) {
+    return this.barbershopsService.deleteBarbershop(req.user.id, id);
   }
 
   // ── Dashboard ──

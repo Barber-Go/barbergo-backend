@@ -737,6 +737,127 @@ export class BarbershopsService {
     return shop;
   }
 
+  // ── Locations management ────────────────────────────────────────────────
+
+  async getLocations(userId: string) {
+    const now = new Date();
+    const monthStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
+
+    const shops = await this.prisma.client.barbershopProfile.findMany({
+      where: { userId, deletedAt: null },
+      include: {
+        staff: { where: { isActive: true }, select: { id: true } },
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+
+    const result = await Promise.all(
+      shops.map(async (shop) => {
+        const bookingsAgg = await this.prisma.client.booking.aggregate({
+          where: {
+            barbershopId: shop.id,
+            status: BookingStatus.COMPLETED,
+            scheduledAt: { gte: monthStart },
+            deletedAt: null,
+          },
+          _count: true,
+          _sum: { grossAmount: true },
+        });
+
+        return {
+          id: shop.id,
+          name: shop.name,
+          address: shop.address,
+          phone: shop.phone,
+          status: shop.status,
+          staffCount: shop.staff.length,
+          monthlyBookings: bookingsAgg._count,
+          monthlyRevenue: Math.round(Number(bookingsAgg._sum.grossAmount ?? 0)),
+          createdAt: shop.createdAt.toISOString(),
+          archivedAt: shop.archivedAt?.toISOString() ?? null,
+        };
+      }),
+    );
+
+    // Sort: ACTIVE first, PAUSED, ARCHIVED last
+    const statusOrder: Record<string, number> = { ACTIVE: 0, PAUSED: 1, DRAFT: 2, ARCHIVED: 3 };
+    result.sort((a, b) => (statusOrder[a.status] ?? 9) - (statusOrder[b.status] ?? 9));
+
+    return { data: result, message: 'OK', statusCode: 200 };
+  }
+
+  async updateBarbershopById(userId: string, shopId: string, dto: UpdateBarbershopDto) {
+    const shop = await this.prisma.client.barbershopProfile.findFirst({
+      where: { id: shopId, userId, deletedAt: null },
+    });
+    if (!shop) throw new NotFoundException('Barbershop not found');
+
+    const updated = await this.prisma.client.barbershopProfile.update({
+      where: { id: shopId },
+      data: { ...dto },
+    });
+    return { data: this.formatShop(updated), message: 'Updated', statusCode: 200 };
+  }
+
+  async updateBarbershopStatus(userId: string, shopId: string, newStatus: BarbershopStatus) {
+    const shop = await this.prisma.client.barbershopProfile.findFirst({
+      where: { id: shopId, userId, deletedAt: null },
+    });
+    if (!shop) throw new NotFoundException('Barbershop not found');
+
+    // Validate transition
+    const current = shop.status;
+    if (current === BarbershopStatus.ARCHIVED && newStatus === BarbershopStatus.PAUSED) {
+      throw new BadRequestException('No puedes pausar una barberia archivada. Reactiva primero.');
+    }
+
+    const updateData: Record<string, unknown> = { status: newStatus };
+
+    if (newStatus === BarbershopStatus.ARCHIVED) {
+      updateData.archivedAt = new Date();
+      updateData.isActive = false;
+      // Deactivate all staff memberships
+      await this.prisma.client.barbershopStaffMembership.updateMany({
+        where: { barbershopId: shopId, isActive: true },
+        data: { isActive: false },
+      });
+    }
+
+    if (newStatus === BarbershopStatus.ACTIVE) {
+      updateData.archivedAt = null;
+      updateData.isActive = true;
+    }
+
+    if (newStatus === BarbershopStatus.PAUSED) {
+      updateData.isActive = false;
+    }
+
+    await this.prisma.client.barbershopProfile.update({
+      where: { id: shopId },
+      data: updateData,
+    });
+
+    return { data: { id: shopId, status: newStatus }, message: 'Status updated', statusCode: 200 };
+  }
+
+  async deleteBarbershop(userId: string, shopId: string) {
+    const shop = await this.prisma.client.barbershopProfile.findFirst({
+      where: { id: shopId, userId, deletedAt: null },
+    });
+    if (!shop) throw new NotFoundException('Barbershop not found');
+
+    if (shop.status !== BarbershopStatus.ARCHIVED) {
+      throw new BadRequestException('Archiva la barberia primero');
+    }
+
+    await this.prisma.client.barbershopProfile.update({
+      where: { id: shopId },
+      data: { deletedAt: new Date() },
+    });
+
+    return { message: 'Barbershop deleted', statusCode: 200 };
+  }
+
   private formatShop(shop: any) {
     return {
       id: shop.id,
