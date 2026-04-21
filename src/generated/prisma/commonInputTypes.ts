@@ -572,6 +572,40 @@ export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedIntNullableFilter<$PrismaModel>
 }
 
+export type EnumTaxDocumentTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.TaxDocumentType | Prisma.EnumTaxDocumentTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.TaxDocumentType[] | Prisma.ListEnumTaxDocumentTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TaxDocumentType[] | Prisma.ListEnumTaxDocumentTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTaxDocumentTypeFilter<$PrismaModel> | $Enums.TaxDocumentType
+}
+
+export type EnumTaxDocStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.TaxDocStatus | Prisma.EnumTaxDocStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.TaxDocStatus[] | Prisma.ListEnumTaxDocStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TaxDocStatus[] | Prisma.ListEnumTaxDocStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTaxDocStatusFilter<$PrismaModel> | $Enums.TaxDocStatus
+}
+
+export type EnumTaxDocumentTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TaxDocumentType | Prisma.EnumTaxDocumentTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.TaxDocumentType[] | Prisma.ListEnumTaxDocumentTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TaxDocumentType[] | Prisma.ListEnumTaxDocumentTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTaxDocumentTypeWithAggregatesFilter<$PrismaModel> | $Enums.TaxDocumentType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTaxDocumentTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTaxDocumentTypeFilter<$PrismaModel>
+}
+
+export type EnumTaxDocStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TaxDocStatus | Prisma.EnumTaxDocStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.TaxDocStatus[] | Prisma.ListEnumTaxDocStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TaxDocStatus[] | Prisma.ListEnumTaxDocStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTaxDocStatusWithAggregatesFilter<$PrismaModel> | $Enums.TaxDocStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTaxDocStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTaxDocStatusFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -1092,6 +1126,40 @@ export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
   _sum?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _max?: Prisma.NestedIntNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumTaxDocumentTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.TaxDocumentType | Prisma.EnumTaxDocumentTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.TaxDocumentType[] | Prisma.ListEnumTaxDocumentTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TaxDocumentType[] | Prisma.ListEnumTaxDocumentTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTaxDocumentTypeFilter<$PrismaModel> | $Enums.TaxDocumentType
+}
+
+export type NestedEnumTaxDocStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.TaxDocStatus | Prisma.EnumTaxDocStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.TaxDocStatus[] | Prisma.ListEnumTaxDocStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TaxDocStatus[] | Prisma.ListEnumTaxDocStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTaxDocStatusFilter<$PrismaModel> | $Enums.TaxDocStatus
+}
+
+export type NestedEnumTaxDocumentTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TaxDocumentType | Prisma.EnumTaxDocumentTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.TaxDocumentType[] | Prisma.ListEnumTaxDocumentTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TaxDocumentType[] | Prisma.ListEnumTaxDocumentTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTaxDocumentTypeWithAggregatesFilter<$PrismaModel> | $Enums.TaxDocumentType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTaxDocumentTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTaxDocumentTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumTaxDocStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TaxDocStatus | Prisma.EnumTaxDocStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.TaxDocStatus[] | Prisma.ListEnumTaxDocStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TaxDocStatus[] | Prisma.ListEnumTaxDocStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTaxDocStatusWithAggregatesFilter<$PrismaModel> | $Enums.TaxDocStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTaxDocStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTaxDocStatusFilter<$PrismaModel>
 }
 
 

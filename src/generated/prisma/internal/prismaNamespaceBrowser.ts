@@ -89,7 +89,8 @@ export const ModelName = {
   TaxProfile: 'TaxProfile',
   TaxObligation: 'TaxObligation',
   TaxDeclarationLog: 'TaxDeclarationLog',
-  BillingRecord: 'BillingRecord'
+  BillingRecord: 'BillingRecord',
+  TaxDocument: 'TaxDocument'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -201,6 +202,7 @@ export const BarbershopProfileScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt',
+  archivedAt: 'archivedAt',
   tenantId: 'tenantId'
 } as const
 
@@ -730,6 +732,32 @@ export const BillingRecordScalarFieldEnum = {
 } as const
 
 export type BillingRecordScalarFieldEnum = (typeof BillingRecordScalarFieldEnum)[keyof typeof BillingRecordScalarFieldEnum]
+
+
+export const TaxDocumentScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  barbershopId: 'barbershopId',
+  documentType: 'documentType',
+  amount: 'amount',
+  taxAmount: 'taxAmount',
+  totalAmount: 'totalAmount',
+  period: 'period',
+  issuedAt: 'issuedAt',
+  receptorRut: 'receptorRut',
+  receptorName: 'receptorName',
+  receptorAddress: 'receptorAddress',
+  folio: 'folio',
+  status: 'status',
+  pdfUrl: 'pdfUrl',
+  emitterRut: 'emitterRut',
+  emitterName: 'emitterName',
+  cancelledAt: 'cancelledAt',
+  cancellationReason: 'cancellationReason',
+  deletedAt: 'deletedAt'
+} as const
+
+export type TaxDocumentScalarFieldEnum = (typeof TaxDocumentScalarFieldEnum)[keyof typeof TaxDocumentScalarFieldEnum]
 
 
 export const SortOrder = {

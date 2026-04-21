@@ -149,3 +149,22 @@ export const InvitationStatus = {
 } as const
 
 export type InvitationStatus = (typeof InvitationStatus)[keyof typeof InvitationStatus]
+
+
+export const TaxDocumentType = {
+  BOLETA: 'BOLETA',
+  FACTURA: 'FACTURA'
+} as const
+
+export type TaxDocumentType = (typeof TaxDocumentType)[keyof typeof TaxDocumentType]
+
+
+export const TaxDocStatus = {
+  SIMULATED: 'SIMULATED',
+  PENDING: 'PENDING',
+  EMITTED: 'EMITTED',
+  CANCELLED: 'CANCELLED',
+  FAILED: 'FAILED'
+} as const
+
+export type TaxDocStatus = (typeof TaxDocStatus)[keyof typeof TaxDocStatus]

@@ -57,6 +57,7 @@ export type BarbershopProfileMinAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
+  archivedAt: Date | null
   tenantId: string | null
 }
 
@@ -81,6 +82,7 @@ export type BarbershopProfileMaxAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
+  archivedAt: Date | null
   tenantId: string | null
 }
 
@@ -105,6 +107,7 @@ export type BarbershopProfileCountAggregateOutputType = {
   createdAt: number
   updatedAt: number
   deletedAt: number
+  archivedAt: number
   tenantId: number
   _all: number
 }
@@ -141,6 +144,7 @@ export type BarbershopProfileMinAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
+  archivedAt?: true
   tenantId?: true
 }
 
@@ -165,6 +169,7 @@ export type BarbershopProfileMaxAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
+  archivedAt?: true
   tenantId?: true
 }
 
@@ -189,6 +194,7 @@ export type BarbershopProfileCountAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
+  archivedAt?: true
   tenantId?: true
   _all?: true
 }
@@ -300,6 +306,7 @@ export type BarbershopProfileGroupByOutputType = {
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
+  archivedAt: Date | null
   tenantId: string | null
   _count: BarbershopProfileCountAggregateOutputType | null
   _avg: BarbershopProfileAvgAggregateOutputType | null
@@ -347,6 +354,7 @@ export type BarbershopProfileWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"BarbershopProfile"> | Date | string | null
+  archivedAt?: Prisma.DateTimeNullableFilter<"BarbershopProfile"> | Date | string | null
   tenantId?: Prisma.StringNullableFilter<"BarbershopProfile"> | string | null
   tenant?: Prisma.XOR<Prisma.TenantNullableScalarRelationFilter, Prisma.TenantWhereInput> | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -358,6 +366,7 @@ export type BarbershopProfileWhereInput = {
   bookings?: Prisma.BookingListRelationFilter
   expenses?: Prisma.ExpenseListRelationFilter
   ledgerEntries?: Prisma.DailyLedgerEntryListRelationFilter
+  taxDocuments?: Prisma.TaxDocumentListRelationFilter
 }
 
 export type BarbershopProfileOrderByWithRelationInput = {
@@ -381,6 +390,7 @@ export type BarbershopProfileOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  archivedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   tenantId?: Prisma.SortOrderInput | Prisma.SortOrder
   tenant?: Prisma.TenantOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
@@ -392,6 +402,7 @@ export type BarbershopProfileOrderByWithRelationInput = {
   bookings?: Prisma.BookingOrderByRelationAggregateInput
   expenses?: Prisma.ExpenseOrderByRelationAggregateInput
   ledgerEntries?: Prisma.DailyLedgerEntryOrderByRelationAggregateInput
+  taxDocuments?: Prisma.TaxDocumentOrderByRelationAggregateInput
 }
 
 export type BarbershopProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -418,6 +429,7 @@ export type BarbershopProfileWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"BarbershopProfile"> | Date | string | null
+  archivedAt?: Prisma.DateTimeNullableFilter<"BarbershopProfile"> | Date | string | null
   tenantId?: Prisma.StringNullableFilter<"BarbershopProfile"> | string | null
   tenant?: Prisma.XOR<Prisma.TenantNullableScalarRelationFilter, Prisma.TenantWhereInput> | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -429,6 +441,7 @@ export type BarbershopProfileWhereUniqueInput = Prisma.AtLeast<{
   bookings?: Prisma.BookingListRelationFilter
   expenses?: Prisma.ExpenseListRelationFilter
   ledgerEntries?: Prisma.DailyLedgerEntryListRelationFilter
+  taxDocuments?: Prisma.TaxDocumentListRelationFilter
 }, "id" | "inviteCode">
 
 export type BarbershopProfileOrderByWithAggregationInput = {
@@ -452,6 +465,7 @@ export type BarbershopProfileOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  archivedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   tenantId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.BarbershopProfileCountOrderByAggregateInput
   _avg?: Prisma.BarbershopProfileAvgOrderByAggregateInput
@@ -484,6 +498,7 @@ export type BarbershopProfileScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"BarbershopProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BarbershopProfile"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"BarbershopProfile"> | Date | string | null
+  archivedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"BarbershopProfile"> | Date | string | null
   tenantId?: Prisma.StringNullableWithAggregatesFilter<"BarbershopProfile"> | string | null
 }
 
@@ -507,6 +522,7 @@ export type BarbershopProfileCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenant?: Prisma.TenantCreateNestedOneWithoutBarbershopsInput
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfilesInput
   staff?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarbershopInput
@@ -517,6 +533,7 @@ export type BarbershopProfileCreateInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileUncheckedCreateInput = {
@@ -540,6 +557,7 @@ export type BarbershopProfileUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenantId?: string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
   barbers?: Prisma.BarberProfileUncheckedCreateNestedManyWithoutBarbershopInput
@@ -549,6 +567,7 @@ export type BarbershopProfileUncheckedCreateInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileUpdateInput = {
@@ -571,6 +590,7 @@ export type BarbershopProfileUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUpdateOneWithoutBarbershopsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfilesNestedInput
   staff?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarbershopNestedInput
@@ -581,6 +601,7 @@ export type BarbershopProfileUpdateInput = {
   bookings?: Prisma.BookingUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateInput = {
@@ -604,6 +625,7 @@ export type BarbershopProfileUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
   barbers?: Prisma.BarberProfileUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -613,6 +635,7 @@ export type BarbershopProfileUncheckedUpdateInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileCreateManyInput = {
@@ -636,6 +659,7 @@ export type BarbershopProfileCreateManyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenantId?: string | null
 }
 
@@ -659,6 +683,7 @@ export type BarbershopProfileUpdateManyMutationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type BarbershopProfileUncheckedUpdateManyInput = {
@@ -682,6 +707,7 @@ export type BarbershopProfileUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -721,6 +747,7 @@ export type BarbershopProfileCountOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+  archivedAt?: Prisma.SortOrder
   tenantId?: Prisma.SortOrder
 }
 
@@ -750,6 +777,7 @@ export type BarbershopProfileMaxOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+  archivedAt?: Prisma.SortOrder
   tenantId?: Prisma.SortOrder
 }
 
@@ -774,6 +802,7 @@ export type BarbershopProfileMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+  archivedAt?: Prisma.SortOrder
   tenantId?: Prisma.SortOrder
 }
 
@@ -995,6 +1024,22 @@ export type BarbershopProfileUpdateOneRequiredWithoutBillingRecordsNestedInput =
   update?: Prisma.XOR<Prisma.XOR<Prisma.BarbershopProfileUpdateToOneWithWhereWithoutBillingRecordsInput, Prisma.BarbershopProfileUpdateWithoutBillingRecordsInput>, Prisma.BarbershopProfileUncheckedUpdateWithoutBillingRecordsInput>
 }
 
+export type BarbershopProfileCreateNestedOneWithoutTaxDocumentsInput = {
+  create?: Prisma.XOR<Prisma.BarbershopProfileCreateWithoutTaxDocumentsInput, Prisma.BarbershopProfileUncheckedCreateWithoutTaxDocumentsInput>
+  connectOrCreate?: Prisma.BarbershopProfileCreateOrConnectWithoutTaxDocumentsInput
+  connect?: Prisma.BarbershopProfileWhereUniqueInput
+}
+
+export type BarbershopProfileUpdateOneWithoutTaxDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.BarbershopProfileCreateWithoutTaxDocumentsInput, Prisma.BarbershopProfileUncheckedCreateWithoutTaxDocumentsInput>
+  connectOrCreate?: Prisma.BarbershopProfileCreateOrConnectWithoutTaxDocumentsInput
+  upsert?: Prisma.BarbershopProfileUpsertWithoutTaxDocumentsInput
+  disconnect?: Prisma.BarbershopProfileWhereInput | boolean
+  delete?: Prisma.BarbershopProfileWhereInput | boolean
+  connect?: Prisma.BarbershopProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BarbershopProfileUpdateToOneWithWhereWithoutTaxDocumentsInput, Prisma.BarbershopProfileUpdateWithoutTaxDocumentsInput>, Prisma.BarbershopProfileUncheckedUpdateWithoutTaxDocumentsInput>
+}
+
 export type BarbershopProfileCreateWithoutTenantInput = {
   id?: string
   name: string
@@ -1015,6 +1060,7 @@ export type BarbershopProfileCreateWithoutTenantInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfilesInput
   staff?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarbershopInput
   barbers?: Prisma.BarberProfileCreateNestedManyWithoutBarbershopInput
@@ -1024,6 +1070,7 @@ export type BarbershopProfileCreateWithoutTenantInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileUncheckedCreateWithoutTenantInput = {
@@ -1047,6 +1094,7 @@ export type BarbershopProfileUncheckedCreateWithoutTenantInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
   barbers?: Prisma.BarberProfileUncheckedCreateNestedManyWithoutBarbershopInput
   invitations?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutBarbershopInput
@@ -1055,6 +1103,7 @@ export type BarbershopProfileUncheckedCreateWithoutTenantInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileCreateOrConnectWithoutTenantInput = {
@@ -1107,6 +1156,7 @@ export type BarbershopProfileScalarWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"BarbershopProfile"> | Date | string | null
+  archivedAt?: Prisma.DateTimeNullableFilter<"BarbershopProfile"> | Date | string | null
   tenantId?: Prisma.StringNullableFilter<"BarbershopProfile"> | string | null
 }
 
@@ -1130,6 +1180,7 @@ export type BarbershopProfileCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenant?: Prisma.TenantCreateNestedOneWithoutBarbershopsInput
   staff?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarbershopInput
   barbers?: Prisma.BarberProfileCreateNestedManyWithoutBarbershopInput
@@ -1139,6 +1190,7 @@ export type BarbershopProfileCreateWithoutUserInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileUncheckedCreateWithoutUserInput = {
@@ -1161,6 +1213,7 @@ export type BarbershopProfileUncheckedCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenantId?: string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
   barbers?: Prisma.BarberProfileUncheckedCreateNestedManyWithoutBarbershopInput
@@ -1170,6 +1223,7 @@ export type BarbershopProfileUncheckedCreateWithoutUserInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileCreateOrConnectWithoutUserInput = {
@@ -1218,6 +1272,7 @@ export type BarbershopProfileCreateWithoutBarbersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenant?: Prisma.TenantCreateNestedOneWithoutBarbershopsInput
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfilesInput
   staff?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarbershopInput
@@ -1227,6 +1282,7 @@ export type BarbershopProfileCreateWithoutBarbersInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileUncheckedCreateWithoutBarbersInput = {
@@ -1250,6 +1306,7 @@ export type BarbershopProfileUncheckedCreateWithoutBarbersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenantId?: string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
   invitations?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutBarbershopInput
@@ -1258,6 +1315,7 @@ export type BarbershopProfileUncheckedCreateWithoutBarbersInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileCreateOrConnectWithoutBarbersInput = {
@@ -1296,6 +1354,7 @@ export type BarbershopProfileUpdateWithoutBarbersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUpdateOneWithoutBarbershopsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfilesNestedInput
   staff?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarbershopNestedInput
@@ -1305,6 +1364,7 @@ export type BarbershopProfileUpdateWithoutBarbersInput = {
   bookings?: Prisma.BookingUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateWithoutBarbersInput = {
@@ -1328,6 +1388,7 @@ export type BarbershopProfileUncheckedUpdateWithoutBarbersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
   invitations?: Prisma.BarberInvitationUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -1336,6 +1397,7 @@ export type BarbershopProfileUncheckedUpdateWithoutBarbersInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileCreateWithoutStaffInput = {
@@ -1358,6 +1420,7 @@ export type BarbershopProfileCreateWithoutStaffInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenant?: Prisma.TenantCreateNestedOneWithoutBarbershopsInput
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfilesInput
   barbers?: Prisma.BarberProfileCreateNestedManyWithoutBarbershopInput
@@ -1367,6 +1430,7 @@ export type BarbershopProfileCreateWithoutStaffInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileUncheckedCreateWithoutStaffInput = {
@@ -1390,6 +1454,7 @@ export type BarbershopProfileUncheckedCreateWithoutStaffInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenantId?: string | null
   barbers?: Prisma.BarberProfileUncheckedCreateNestedManyWithoutBarbershopInput
   invitations?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutBarbershopInput
@@ -1398,6 +1463,7 @@ export type BarbershopProfileUncheckedCreateWithoutStaffInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileCreateOrConnectWithoutStaffInput = {
@@ -1436,6 +1502,7 @@ export type BarbershopProfileUpdateWithoutStaffInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUpdateOneWithoutBarbershopsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfilesNestedInput
   barbers?: Prisma.BarberProfileUpdateManyWithoutBarbershopNestedInput
@@ -1445,6 +1512,7 @@ export type BarbershopProfileUpdateWithoutStaffInput = {
   bookings?: Prisma.BookingUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateWithoutStaffInput = {
@@ -1468,6 +1536,7 @@ export type BarbershopProfileUncheckedUpdateWithoutStaffInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbers?: Prisma.BarberProfileUncheckedUpdateManyWithoutBarbershopNestedInput
   invitations?: Prisma.BarberInvitationUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -1476,6 +1545,7 @@ export type BarbershopProfileUncheckedUpdateWithoutStaffInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileCreateWithoutInvitationsInput = {
@@ -1498,6 +1568,7 @@ export type BarbershopProfileCreateWithoutInvitationsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenant?: Prisma.TenantCreateNestedOneWithoutBarbershopsInput
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfilesInput
   staff?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarbershopInput
@@ -1507,6 +1578,7 @@ export type BarbershopProfileCreateWithoutInvitationsInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileUncheckedCreateWithoutInvitationsInput = {
@@ -1530,6 +1602,7 @@ export type BarbershopProfileUncheckedCreateWithoutInvitationsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenantId?: string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
   barbers?: Prisma.BarberProfileUncheckedCreateNestedManyWithoutBarbershopInput
@@ -1538,6 +1611,7 @@ export type BarbershopProfileUncheckedCreateWithoutInvitationsInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileCreateOrConnectWithoutInvitationsInput = {
@@ -1576,6 +1650,7 @@ export type BarbershopProfileUpdateWithoutInvitationsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUpdateOneWithoutBarbershopsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfilesNestedInput
   staff?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarbershopNestedInput
@@ -1585,6 +1660,7 @@ export type BarbershopProfileUpdateWithoutInvitationsInput = {
   bookings?: Prisma.BookingUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateWithoutInvitationsInput = {
@@ -1608,6 +1684,7 @@ export type BarbershopProfileUncheckedUpdateWithoutInvitationsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
   barbers?: Prisma.BarberProfileUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -1616,6 +1693,7 @@ export type BarbershopProfileUncheckedUpdateWithoutInvitationsInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileCreateWithoutBookingsInput = {
@@ -1638,6 +1716,7 @@ export type BarbershopProfileCreateWithoutBookingsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenant?: Prisma.TenantCreateNestedOneWithoutBarbershopsInput
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfilesInput
   staff?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarbershopInput
@@ -1647,6 +1726,7 @@ export type BarbershopProfileCreateWithoutBookingsInput = {
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileUncheckedCreateWithoutBookingsInput = {
@@ -1670,6 +1750,7 @@ export type BarbershopProfileUncheckedCreateWithoutBookingsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenantId?: string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
   barbers?: Prisma.BarberProfileUncheckedCreateNestedManyWithoutBarbershopInput
@@ -1678,6 +1759,7 @@ export type BarbershopProfileUncheckedCreateWithoutBookingsInput = {
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileCreateOrConnectWithoutBookingsInput = {
@@ -1716,6 +1798,7 @@ export type BarbershopProfileUpdateWithoutBookingsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUpdateOneWithoutBarbershopsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfilesNestedInput
   staff?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarbershopNestedInput
@@ -1725,6 +1808,7 @@ export type BarbershopProfileUpdateWithoutBookingsInput = {
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateWithoutBookingsInput = {
@@ -1748,6 +1832,7 @@ export type BarbershopProfileUncheckedUpdateWithoutBookingsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
   barbers?: Prisma.BarberProfileUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -1756,6 +1841,7 @@ export type BarbershopProfileUncheckedUpdateWithoutBookingsInput = {
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileCreateWithoutExpensesInput = {
@@ -1778,6 +1864,7 @@ export type BarbershopProfileCreateWithoutExpensesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenant?: Prisma.TenantCreateNestedOneWithoutBarbershopsInput
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfilesInput
   staff?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarbershopInput
@@ -1787,6 +1874,7 @@ export type BarbershopProfileCreateWithoutExpensesInput = {
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutBarbershopInput
   bookings?: Prisma.BookingCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileUncheckedCreateWithoutExpensesInput = {
@@ -1810,6 +1898,7 @@ export type BarbershopProfileUncheckedCreateWithoutExpensesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenantId?: string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
   barbers?: Prisma.BarberProfileUncheckedCreateNestedManyWithoutBarbershopInput
@@ -1818,6 +1907,7 @@ export type BarbershopProfileUncheckedCreateWithoutExpensesInput = {
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutBarbershopInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileCreateOrConnectWithoutExpensesInput = {
@@ -1856,6 +1946,7 @@ export type BarbershopProfileUpdateWithoutExpensesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUpdateOneWithoutBarbershopsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfilesNestedInput
   staff?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarbershopNestedInput
@@ -1865,6 +1956,7 @@ export type BarbershopProfileUpdateWithoutExpensesInput = {
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutBarbershopNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateWithoutExpensesInput = {
@@ -1888,6 +1980,7 @@ export type BarbershopProfileUncheckedUpdateWithoutExpensesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
   barbers?: Prisma.BarberProfileUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -1896,6 +1989,7 @@ export type BarbershopProfileUncheckedUpdateWithoutExpensesInput = {
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutBarbershopNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileCreateWithoutLedgerEntriesInput = {
@@ -1918,6 +2012,7 @@ export type BarbershopProfileCreateWithoutLedgerEntriesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenant?: Prisma.TenantCreateNestedOneWithoutBarbershopsInput
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfilesInput
   staff?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarbershopInput
@@ -1927,6 +2022,7 @@ export type BarbershopProfileCreateWithoutLedgerEntriesInput = {
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutBarbershopInput
   bookings?: Prisma.BookingCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileUncheckedCreateWithoutLedgerEntriesInput = {
@@ -1950,6 +2046,7 @@ export type BarbershopProfileUncheckedCreateWithoutLedgerEntriesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenantId?: string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
   barbers?: Prisma.BarberProfileUncheckedCreateNestedManyWithoutBarbershopInput
@@ -1958,6 +2055,7 @@ export type BarbershopProfileUncheckedCreateWithoutLedgerEntriesInput = {
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutBarbershopInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileCreateOrConnectWithoutLedgerEntriesInput = {
@@ -1996,6 +2094,7 @@ export type BarbershopProfileUpdateWithoutLedgerEntriesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUpdateOneWithoutBarbershopsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfilesNestedInput
   staff?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarbershopNestedInput
@@ -2005,6 +2104,7 @@ export type BarbershopProfileUpdateWithoutLedgerEntriesInput = {
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutBarbershopNestedInput
   bookings?: Prisma.BookingUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateWithoutLedgerEntriesInput = {
@@ -2028,6 +2128,7 @@ export type BarbershopProfileUncheckedUpdateWithoutLedgerEntriesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
   barbers?: Prisma.BarberProfileUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -2036,6 +2137,7 @@ export type BarbershopProfileUncheckedUpdateWithoutLedgerEntriesInput = {
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutBarbershopNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileCreateWithoutTaxProfileInput = {
@@ -2058,6 +2160,7 @@ export type BarbershopProfileCreateWithoutTaxProfileInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenant?: Prisma.TenantCreateNestedOneWithoutBarbershopsInput
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfilesInput
   staff?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarbershopInput
@@ -2067,6 +2170,7 @@ export type BarbershopProfileCreateWithoutTaxProfileInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileUncheckedCreateWithoutTaxProfileInput = {
@@ -2090,6 +2194,7 @@ export type BarbershopProfileUncheckedCreateWithoutTaxProfileInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenantId?: string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
   barbers?: Prisma.BarberProfileUncheckedCreateNestedManyWithoutBarbershopInput
@@ -2098,6 +2203,7 @@ export type BarbershopProfileUncheckedCreateWithoutTaxProfileInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileCreateOrConnectWithoutTaxProfileInput = {
@@ -2136,6 +2242,7 @@ export type BarbershopProfileUpdateWithoutTaxProfileInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUpdateOneWithoutBarbershopsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfilesNestedInput
   staff?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarbershopNestedInput
@@ -2145,6 +2252,7 @@ export type BarbershopProfileUpdateWithoutTaxProfileInput = {
   bookings?: Prisma.BookingUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateWithoutTaxProfileInput = {
@@ -2168,6 +2276,7 @@ export type BarbershopProfileUncheckedUpdateWithoutTaxProfileInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
   barbers?: Prisma.BarberProfileUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -2176,6 +2285,7 @@ export type BarbershopProfileUncheckedUpdateWithoutTaxProfileInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileCreateWithoutBillingRecordsInput = {
@@ -2198,6 +2308,7 @@ export type BarbershopProfileCreateWithoutBillingRecordsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenant?: Prisma.TenantCreateNestedOneWithoutBarbershopsInput
   user: Prisma.UserCreateNestedOneWithoutBarbershopProfilesInput
   staff?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarbershopInput
@@ -2207,6 +2318,7 @@ export type BarbershopProfileCreateWithoutBillingRecordsInput = {
   bookings?: Prisma.BookingCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileUncheckedCreateWithoutBillingRecordsInput = {
@@ -2230,6 +2342,7 @@ export type BarbershopProfileUncheckedCreateWithoutBillingRecordsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenantId?: string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
   barbers?: Prisma.BarberProfileUncheckedCreateNestedManyWithoutBarbershopInput
@@ -2238,6 +2351,7 @@ export type BarbershopProfileUncheckedCreateWithoutBillingRecordsInput = {
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarbershopInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarbershopInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarbershopInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutBarbershopInput
 }
 
 export type BarbershopProfileCreateOrConnectWithoutBillingRecordsInput = {
@@ -2276,6 +2390,7 @@ export type BarbershopProfileUpdateWithoutBillingRecordsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUpdateOneWithoutBarbershopsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfilesNestedInput
   staff?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarbershopNestedInput
@@ -2285,6 +2400,7 @@ export type BarbershopProfileUpdateWithoutBillingRecordsInput = {
   bookings?: Prisma.BookingUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateWithoutBillingRecordsInput = {
@@ -2308,11 +2424,161 @@ export type BarbershopProfileUncheckedUpdateWithoutBillingRecordsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
   barbers?: Prisma.BarberProfileUncheckedUpdateManyWithoutBarbershopNestedInput
   invitations?: Prisma.BarberInvitationUncheckedUpdateManyWithoutBarbershopNestedInput
   taxProfile?: Prisma.TaxProfileUncheckedUpdateOneWithoutBarbershopNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarbershopNestedInput
+  expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarbershopNestedInput
+  ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutBarbershopNestedInput
+}
+
+export type BarbershopProfileCreateWithoutTaxDocumentsInput = {
+  id?: string
+  name: string
+  description?: string | null
+  address?: string | null
+  lat?: number | null
+  lng?: number | null
+  phone?: string | null
+  logoUrl?: string | null
+  coverUrl?: string | null
+  inviteCode?: string | null
+  isActive?: boolean
+  status?: $Enums.BarbershopStatus
+  timezone?: string
+  currency?: string
+  country?: string
+  scheduleJson?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  tenant?: Prisma.TenantCreateNestedOneWithoutBarbershopsInput
+  user: Prisma.UserCreateNestedOneWithoutBarbershopProfilesInput
+  staff?: Prisma.BarbershopStaffMembershipCreateNestedManyWithoutBarbershopInput
+  barbers?: Prisma.BarberProfileCreateNestedManyWithoutBarbershopInput
+  invitations?: Prisma.BarberInvitationCreateNestedManyWithoutBarbershopInput
+  taxProfile?: Prisma.TaxProfileCreateNestedOneWithoutBarbershopInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutBarbershopInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutBarbershopInput
+  expenses?: Prisma.ExpenseCreateNestedManyWithoutBarbershopInput
+  ledgerEntries?: Prisma.DailyLedgerEntryCreateNestedManyWithoutBarbershopInput
+}
+
+export type BarbershopProfileUncheckedCreateWithoutTaxDocumentsInput = {
+  id?: string
+  userId: string
+  name: string
+  description?: string | null
+  address?: string | null
+  lat?: number | null
+  lng?: number | null
+  phone?: string | null
+  logoUrl?: string | null
+  coverUrl?: string | null
+  inviteCode?: string | null
+  isActive?: boolean
+  status?: $Enums.BarbershopStatus
+  timezone?: string
+  currency?: string
+  country?: string
+  scheduleJson?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  tenantId?: string | null
+  staff?: Prisma.BarbershopStaffMembershipUncheckedCreateNestedManyWithoutBarbershopInput
+  barbers?: Prisma.BarberProfileUncheckedCreateNestedManyWithoutBarbershopInput
+  invitations?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutBarbershopInput
+  taxProfile?: Prisma.TaxProfileUncheckedCreateNestedOneWithoutBarbershopInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutBarbershopInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutBarbershopInput
+  expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutBarbershopInput
+  ledgerEntries?: Prisma.DailyLedgerEntryUncheckedCreateNestedManyWithoutBarbershopInput
+}
+
+export type BarbershopProfileCreateOrConnectWithoutTaxDocumentsInput = {
+  where: Prisma.BarbershopProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.BarbershopProfileCreateWithoutTaxDocumentsInput, Prisma.BarbershopProfileUncheckedCreateWithoutTaxDocumentsInput>
+}
+
+export type BarbershopProfileUpsertWithoutTaxDocumentsInput = {
+  update: Prisma.XOR<Prisma.BarbershopProfileUpdateWithoutTaxDocumentsInput, Prisma.BarbershopProfileUncheckedUpdateWithoutTaxDocumentsInput>
+  create: Prisma.XOR<Prisma.BarbershopProfileCreateWithoutTaxDocumentsInput, Prisma.BarbershopProfileUncheckedCreateWithoutTaxDocumentsInput>
+  where?: Prisma.BarbershopProfileWhereInput
+}
+
+export type BarbershopProfileUpdateToOneWithWhereWithoutTaxDocumentsInput = {
+  where?: Prisma.BarbershopProfileWhereInput
+  data: Prisma.XOR<Prisma.BarbershopProfileUpdateWithoutTaxDocumentsInput, Prisma.BarbershopProfileUncheckedUpdateWithoutTaxDocumentsInput>
+}
+
+export type BarbershopProfileUpdateWithoutTaxDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inviteCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumBarbershopStatusFieldUpdateOperationsInput | $Enums.BarbershopStatus
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenant?: Prisma.TenantUpdateOneWithoutBarbershopsNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfilesNestedInput
+  staff?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarbershopNestedInput
+  barbers?: Prisma.BarberProfileUpdateManyWithoutBarbershopNestedInput
+  invitations?: Prisma.BarberInvitationUpdateManyWithoutBarbershopNestedInput
+  taxProfile?: Prisma.TaxProfileUpdateOneWithoutBarbershopNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutBarbershopNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutBarbershopNestedInput
+  expenses?: Prisma.ExpenseUpdateManyWithoutBarbershopNestedInput
+  ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarbershopNestedInput
+}
+
+export type BarbershopProfileUncheckedUpdateWithoutTaxDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  inviteCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumBarbershopStatusFieldUpdateOperationsInput | $Enums.BarbershopStatus
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
+  barbers?: Prisma.BarberProfileUncheckedUpdateManyWithoutBarbershopNestedInput
+  invitations?: Prisma.BarberInvitationUncheckedUpdateManyWithoutBarbershopNestedInput
+  taxProfile?: Prisma.TaxProfileUncheckedUpdateOneWithoutBarbershopNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutBarbershopNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -2339,6 +2605,7 @@ export type BarbershopProfileCreateManyTenantInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
 }
 
 export type BarbershopProfileUpdateWithoutTenantInput = {
@@ -2361,6 +2628,7 @@ export type BarbershopProfileUpdateWithoutTenantInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutBarbershopProfilesNestedInput
   staff?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarbershopNestedInput
   barbers?: Prisma.BarberProfileUpdateManyWithoutBarbershopNestedInput
@@ -2370,6 +2638,7 @@ export type BarbershopProfileUpdateWithoutTenantInput = {
   bookings?: Prisma.BookingUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateWithoutTenantInput = {
@@ -2393,6 +2662,7 @@ export type BarbershopProfileUncheckedUpdateWithoutTenantInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
   barbers?: Prisma.BarberProfileUncheckedUpdateManyWithoutBarbershopNestedInput
   invitations?: Prisma.BarberInvitationUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -2401,6 +2671,7 @@ export type BarbershopProfileUncheckedUpdateWithoutTenantInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateManyWithoutTenantInput = {
@@ -2424,6 +2695,7 @@ export type BarbershopProfileUncheckedUpdateManyWithoutTenantInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type BarbershopProfileCreateManyUserInput = {
@@ -2446,6 +2718,7 @@ export type BarbershopProfileCreateManyUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  archivedAt?: Date | string | null
   tenantId?: string | null
 }
 
@@ -2469,6 +2742,7 @@ export type BarbershopProfileUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenant?: Prisma.TenantUpdateOneWithoutBarbershopsNestedInput
   staff?: Prisma.BarbershopStaffMembershipUpdateManyWithoutBarbershopNestedInput
   barbers?: Prisma.BarberProfileUpdateManyWithoutBarbershopNestedInput
@@ -2478,6 +2752,7 @@ export type BarbershopProfileUpdateWithoutUserInput = {
   bookings?: Prisma.BookingUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateWithoutUserInput = {
@@ -2500,6 +2775,7 @@ export type BarbershopProfileUncheckedUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   staff?: Prisma.BarbershopStaffMembershipUncheckedUpdateManyWithoutBarbershopNestedInput
   barbers?: Prisma.BarberProfileUncheckedUpdateManyWithoutBarbershopNestedInput
@@ -2509,6 +2785,7 @@ export type BarbershopProfileUncheckedUpdateWithoutUserInput = {
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutBarbershopNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutBarbershopNestedInput
   ledgerEntries?: Prisma.DailyLedgerEntryUncheckedUpdateManyWithoutBarbershopNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutBarbershopNestedInput
 }
 
 export type BarbershopProfileUncheckedUpdateManyWithoutUserInput = {
@@ -2531,6 +2808,7 @@ export type BarbershopProfileUncheckedUpdateManyWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -2547,6 +2825,7 @@ export type BarbershopProfileCountOutputType = {
   bookings: number
   expenses: number
   ledgerEntries: number
+  taxDocuments: number
 }
 
 export type BarbershopProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2557,6 +2836,7 @@ export type BarbershopProfileCountOutputTypeSelect<ExtArgs extends runtime.Types
   bookings?: boolean | BarbershopProfileCountOutputTypeCountBookingsArgs
   expenses?: boolean | BarbershopProfileCountOutputTypeCountExpensesArgs
   ledgerEntries?: boolean | BarbershopProfileCountOutputTypeCountLedgerEntriesArgs
+  taxDocuments?: boolean | BarbershopProfileCountOutputTypeCountTaxDocumentsArgs
 }
 
 /**
@@ -2618,6 +2898,13 @@ export type BarbershopProfileCountOutputTypeCountLedgerEntriesArgs<ExtArgs exten
   where?: Prisma.DailyLedgerEntryWhereInput
 }
 
+/**
+ * BarbershopProfileCountOutputType without action
+ */
+export type BarbershopProfileCountOutputTypeCountTaxDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TaxDocumentWhereInput
+}
+
 
 export type BarbershopProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2640,6 +2927,7 @@ export type BarbershopProfileSelect<ExtArgs extends runtime.Types.Extensions.Int
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  archivedAt?: boolean
   tenantId?: boolean
   tenant?: boolean | Prisma.BarbershopProfile$tenantArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -2651,6 +2939,7 @@ export type BarbershopProfileSelect<ExtArgs extends runtime.Types.Extensions.Int
   bookings?: boolean | Prisma.BarbershopProfile$bookingsArgs<ExtArgs>
   expenses?: boolean | Prisma.BarbershopProfile$expensesArgs<ExtArgs>
   ledgerEntries?: boolean | Prisma.BarbershopProfile$ledgerEntriesArgs<ExtArgs>
+  taxDocuments?: boolean | Prisma.BarbershopProfile$taxDocumentsArgs<ExtArgs>
   _count?: boolean | Prisma.BarbershopProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["barbershopProfile"]>
 
@@ -2675,6 +2964,7 @@ export type BarbershopProfileSelectCreateManyAndReturn<ExtArgs extends runtime.T
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  archivedAt?: boolean
   tenantId?: boolean
   tenant?: boolean | Prisma.BarbershopProfile$tenantArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -2701,6 +2991,7 @@ export type BarbershopProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  archivedAt?: boolean
   tenantId?: boolean
   tenant?: boolean | Prisma.BarbershopProfile$tenantArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -2727,10 +3018,11 @@ export type BarbershopProfileSelectScalar = {
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  archivedAt?: boolean
   tenantId?: boolean
 }
 
-export type BarbershopProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "name" | "description" | "address" | "lat" | "lng" | "phone" | "logoUrl" | "coverUrl" | "inviteCode" | "isActive" | "status" | "timezone" | "currency" | "country" | "scheduleJson" | "createdAt" | "updatedAt" | "deletedAt" | "tenantId", ExtArgs["result"]["barbershopProfile"]>
+export type BarbershopProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "name" | "description" | "address" | "lat" | "lng" | "phone" | "logoUrl" | "coverUrl" | "inviteCode" | "isActive" | "status" | "timezone" | "currency" | "country" | "scheduleJson" | "createdAt" | "updatedAt" | "deletedAt" | "archivedAt" | "tenantId", ExtArgs["result"]["barbershopProfile"]>
 export type BarbershopProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tenant?: boolean | Prisma.BarbershopProfile$tenantArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -2742,6 +3034,7 @@ export type BarbershopProfileInclude<ExtArgs extends runtime.Types.Extensions.In
   bookings?: boolean | Prisma.BarbershopProfile$bookingsArgs<ExtArgs>
   expenses?: boolean | Prisma.BarbershopProfile$expensesArgs<ExtArgs>
   ledgerEntries?: boolean | Prisma.BarbershopProfile$ledgerEntriesArgs<ExtArgs>
+  taxDocuments?: boolean | Prisma.BarbershopProfile$taxDocumentsArgs<ExtArgs>
   _count?: boolean | Prisma.BarbershopProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BarbershopProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2766,6 +3059,7 @@ export type $BarbershopProfilePayload<ExtArgs extends runtime.Types.Extensions.I
     bookings: Prisma.$BookingPayload<ExtArgs>[]
     expenses: Prisma.$ExpensePayload<ExtArgs>[]
     ledgerEntries: Prisma.$DailyLedgerEntryPayload<ExtArgs>[]
+    taxDocuments: Prisma.$TaxDocumentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2788,6 +3082,7 @@ export type $BarbershopProfilePayload<ExtArgs extends runtime.Types.Extensions.I
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
+    archivedAt: Date | null
     tenantId: string | null
   }, ExtArgs["result"]["barbershopProfile"]>
   composites: {}
@@ -3193,6 +3488,7 @@ export interface Prisma__BarbershopProfileClient<T, Null = never, ExtArgs extend
   bookings<T extends Prisma.BarbershopProfile$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarbershopProfile$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   expenses<T extends Prisma.BarbershopProfile$expensesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarbershopProfile$expensesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExpensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   ledgerEntries<T extends Prisma.BarbershopProfile$ledgerEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarbershopProfile$ledgerEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DailyLedgerEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  taxDocuments<T extends Prisma.BarbershopProfile$taxDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BarbershopProfile$taxDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaxDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3242,6 +3538,7 @@ export interface BarbershopProfileFieldRefs {
   readonly createdAt: Prisma.FieldRef<"BarbershopProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"BarbershopProfile", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"BarbershopProfile", 'DateTime'>
+  readonly archivedAt: Prisma.FieldRef<"BarbershopProfile", 'DateTime'>
   readonly tenantId: Prisma.FieldRef<"BarbershopProfile", 'String'>
 }
     
@@ -3847,6 +4144,30 @@ export type BarbershopProfile$ledgerEntriesArgs<ExtArgs extends runtime.Types.Ex
   take?: number
   skip?: number
   distinct?: Prisma.DailyLedgerEntryScalarFieldEnum | Prisma.DailyLedgerEntryScalarFieldEnum[]
+}
+
+/**
+ * BarbershopProfile.taxDocuments
+ */
+export type BarbershopProfile$taxDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TaxDocument
+   */
+  select?: Prisma.TaxDocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TaxDocument
+   */
+  omit?: Prisma.TaxDocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TaxDocumentInclude<ExtArgs> | null
+  where?: Prisma.TaxDocumentWhereInput
+  orderBy?: Prisma.TaxDocumentOrderByWithRelationInput | Prisma.TaxDocumentOrderByWithRelationInput[]
+  cursor?: Prisma.TaxDocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TaxDocumentScalarFieldEnum | Prisma.TaxDocumentScalarFieldEnum[]
 }
 
 /**

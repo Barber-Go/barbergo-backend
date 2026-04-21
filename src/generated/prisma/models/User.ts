@@ -277,6 +277,7 @@ export type UserWhereInput = {
   chatParticipants?: Prisma.ChatParticipantListRelationFilter
   chatMessages?: Prisma.ChatMessageListRelationFilter
   aiFaceAnalyses?: Prisma.AiFaceAnalysisListRelationFilter
+  taxDocuments?: Prisma.TaxDocumentListRelationFilter
   invitationsSent?: Prisma.BarberInvitationListRelationFilter
   invitationsAccepted?: Prisma.BarberInvitationListRelationFilter
 }
@@ -312,6 +313,7 @@ export type UserOrderByWithRelationInput = {
   chatParticipants?: Prisma.ChatParticipantOrderByRelationAggregateInput
   chatMessages?: Prisma.ChatMessageOrderByRelationAggregateInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisOrderByRelationAggregateInput
+  taxDocuments?: Prisma.TaxDocumentOrderByRelationAggregateInput
   invitationsSent?: Prisma.BarberInvitationOrderByRelationAggregateInput
   invitationsAccepted?: Prisma.BarberInvitationOrderByRelationAggregateInput
 }
@@ -350,6 +352,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   chatParticipants?: Prisma.ChatParticipantListRelationFilter
   chatMessages?: Prisma.ChatMessageListRelationFilter
   aiFaceAnalyses?: Prisma.AiFaceAnalysisListRelationFilter
+  taxDocuments?: Prisma.TaxDocumentListRelationFilter
   invitationsSent?: Prisma.BarberInvitationListRelationFilter
   invitationsAccepted?: Prisma.BarberInvitationListRelationFilter
 }, "id" | "email" | "phone">
@@ -426,6 +429,7 @@ export type UserCreateInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -460,6 +464,7 @@ export type UserUncheckedCreateInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -494,6 +499,7 @@ export type UserUpdateInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -528,6 +534,7 @@ export type UserUncheckedUpdateInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -935,6 +942,20 @@ export type UserUpdateOneRequiredWithoutAiFaceAnalysesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAiFaceAnalysesInput, Prisma.UserUpdateWithoutAiFaceAnalysesInput>, Prisma.UserUncheckedUpdateWithoutAiFaceAnalysesInput>
 }
 
+export type UserCreateNestedOneWithoutTaxDocumentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTaxDocumentsInput, Prisma.UserUncheckedCreateWithoutTaxDocumentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTaxDocumentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutTaxDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTaxDocumentsInput, Prisma.UserUncheckedCreateWithoutTaxDocumentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTaxDocumentsInput
+  upsert?: Prisma.UserUpsertWithoutTaxDocumentsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTaxDocumentsInput, Prisma.UserUpdateWithoutTaxDocumentsInput>, Prisma.UserUncheckedUpdateWithoutTaxDocumentsInput>
+}
+
 export type UserCreateWithoutTenantInput = {
   id?: string
   email: string
@@ -964,6 +985,7 @@ export type UserCreateWithoutTenantInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -997,6 +1019,7 @@ export type UserUncheckedCreateWithoutTenantInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -1077,6 +1100,7 @@ export type UserCreateWithoutClientProfileInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -1110,6 +1134,7 @@ export type UserUncheckedCreateWithoutClientProfileInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -1159,6 +1184,7 @@ export type UserUpdateWithoutClientProfileInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -1192,6 +1218,7 @@ export type UserUncheckedUpdateWithoutClientProfileInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -1225,6 +1252,7 @@ export type UserCreateWithoutBarberProfileInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -1258,6 +1286,7 @@ export type UserUncheckedCreateWithoutBarberProfileInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -1307,6 +1336,7 @@ export type UserUpdateWithoutBarberProfileInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -1340,6 +1370,7 @@ export type UserUncheckedUpdateWithoutBarberProfileInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -1373,6 +1404,7 @@ export type UserCreateWithoutBarbershopProfilesInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -1406,6 +1438,7 @@ export type UserUncheckedCreateWithoutBarbershopProfilesInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -1455,6 +1488,7 @@ export type UserUpdateWithoutBarbershopProfilesInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -1488,6 +1522,7 @@ export type UserUncheckedUpdateWithoutBarbershopProfilesInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -1522,6 +1557,7 @@ export type UserCreateWithoutInvitationsSentInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
 
@@ -1555,6 +1591,7 @@ export type UserUncheckedCreateWithoutInvitationsSentInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
 
@@ -1593,6 +1630,7 @@ export type UserCreateWithoutInvitationsAcceptedInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
 }
 
@@ -1626,6 +1664,7 @@ export type UserUncheckedCreateWithoutInvitationsAcceptedInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
 }
 
@@ -1675,6 +1714,7 @@ export type UserUpdateWithoutInvitationsSentInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
 
@@ -1708,6 +1748,7 @@ export type UserUncheckedUpdateWithoutInvitationsSentInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
 
@@ -1752,6 +1793,7 @@ export type UserUpdateWithoutInvitationsAcceptedInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
 }
 
@@ -1785,6 +1827,7 @@ export type UserUncheckedUpdateWithoutInvitationsAcceptedInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
 }
 
@@ -1817,6 +1860,7 @@ export type UserCreateWithoutBookingsInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -1850,6 +1894,7 @@ export type UserUncheckedCreateWithoutBookingsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -1899,6 +1944,7 @@ export type UserUpdateWithoutBookingsInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -1932,6 +1978,7 @@ export type UserUncheckedUpdateWithoutBookingsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -1965,6 +2012,7 @@ export type UserCreateWithoutChatParticipantsInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -1998,6 +2046,7 @@ export type UserUncheckedCreateWithoutChatParticipantsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -2047,6 +2096,7 @@ export type UserUpdateWithoutChatParticipantsInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2080,6 +2130,7 @@ export type UserUncheckedUpdateWithoutChatParticipantsInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2113,6 +2164,7 @@ export type UserCreateWithoutChatMessagesInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -2146,6 +2198,7 @@ export type UserUncheckedCreateWithoutChatMessagesInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -2195,6 +2248,7 @@ export type UserUpdateWithoutChatMessagesInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2228,6 +2282,7 @@ export type UserUncheckedUpdateWithoutChatMessagesInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2261,6 +2316,7 @@ export type UserCreateWithoutReviewsInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -2294,6 +2350,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -2343,6 +2400,7 @@ export type UserUpdateWithoutReviewsInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2376,6 +2434,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2409,6 +2468,7 @@ export type UserCreateWithoutNotificationsInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -2442,6 +2502,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -2491,6 +2552,7 @@ export type UserUpdateWithoutNotificationsInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2524,6 +2586,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2557,6 +2620,7 @@ export type UserCreateWithoutFollowsInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -2590,6 +2654,7 @@ export type UserUncheckedCreateWithoutFollowsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -2639,6 +2704,7 @@ export type UserUpdateWithoutFollowsInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2672,6 +2738,7 @@ export type UserUncheckedUpdateWithoutFollowsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2705,6 +2772,7 @@ export type UserCreateWithoutPointsWalletInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -2738,6 +2806,7 @@ export type UserUncheckedCreateWithoutPointsWalletInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -2787,6 +2856,7 @@ export type UserUpdateWithoutPointsWalletInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2820,6 +2890,7 @@ export type UserUncheckedUpdateWithoutPointsWalletInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2853,6 +2924,7 @@ export type UserCreateWithoutCommunityMembershipsInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -2886,6 +2958,7 @@ export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -2935,6 +3008,7 @@ export type UserUpdateWithoutCommunityMembershipsInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -2968,6 +3042,7 @@ export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -3001,6 +3076,7 @@ export type UserCreateWithoutCommunityPostsInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -3034,6 +3110,7 @@ export type UserUncheckedCreateWithoutCommunityPostsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -3083,6 +3160,7 @@ export type UserUpdateWithoutCommunityPostsInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -3116,6 +3194,7 @@ export type UserUncheckedUpdateWithoutCommunityPostsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -3149,6 +3228,7 @@ export type UserCreateWithoutSettingsInput = {
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -3182,6 +3262,7 @@ export type UserUncheckedCreateWithoutSettingsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -3231,6 +3312,7 @@ export type UserUpdateWithoutSettingsInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -3264,6 +3346,7 @@ export type UserUncheckedUpdateWithoutSettingsInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -3297,6 +3380,7 @@ export type UserCreateWithoutAiFaceAnalysesInput = {
   communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
 }
@@ -3330,6 +3414,7 @@ export type UserUncheckedCreateWithoutAiFaceAnalysesInput = {
   communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
   chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
   chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
 }
@@ -3379,6 +3464,7 @@ export type UserUpdateWithoutAiFaceAnalysesInput = {
   communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -3412,6 +3498,159 @@ export type UserUncheckedUpdateWithoutAiFaceAnalysesInput = {
   communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+}
+
+export type UserCreateWithoutTaxDocumentsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  tenant?: Prisma.TenantCreateNestedOneWithoutUsersInput
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+}
+
+export type UserUncheckedCreateWithoutTaxDocumentsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  tenantId?: string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+}
+
+export type UserCreateOrConnectWithoutTaxDocumentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTaxDocumentsInput, Prisma.UserUncheckedCreateWithoutTaxDocumentsInput>
+}
+
+export type UserUpsertWithoutTaxDocumentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTaxDocumentsInput, Prisma.UserUncheckedUpdateWithoutTaxDocumentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTaxDocumentsInput, Prisma.UserUncheckedCreateWithoutTaxDocumentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTaxDocumentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTaxDocumentsInput, Prisma.UserUncheckedUpdateWithoutTaxDocumentsInput>
+}
+
+export type UserUpdateWithoutTaxDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenant?: Prisma.TenantUpdateOneWithoutUsersNestedInput
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTaxDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -3462,6 +3701,7 @@ export type UserUpdateWithoutTenantInput = {
   chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
 }
@@ -3495,6 +3735,7 @@ export type UserUncheckedUpdateWithoutTenantInput = {
   chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
   chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
 }
@@ -3532,6 +3773,7 @@ export type UserCountOutputType = {
   chatParticipants: number
   chatMessages: number
   aiFaceAnalyses: number
+  taxDocuments: number
   invitationsSent: number
   invitationsAccepted: number
 }
@@ -3547,6 +3789,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   chatParticipants?: boolean | UserCountOutputTypeCountChatParticipantsArgs
   chatMessages?: boolean | UserCountOutputTypeCountChatMessagesArgs
   aiFaceAnalyses?: boolean | UserCountOutputTypeCountAiFaceAnalysesArgs
+  taxDocuments?: boolean | UserCountOutputTypeCountTaxDocumentsArgs
   invitationsSent?: boolean | UserCountOutputTypeCountInvitationsSentArgs
   invitationsAccepted?: boolean | UserCountOutputTypeCountInvitationsAcceptedArgs
 }
@@ -3634,6 +3877,13 @@ export type UserCountOutputTypeCountAiFaceAnalysesArgs<ExtArgs extends runtime.T
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountTaxDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TaxDocumentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountInvitationsSentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.BarberInvitationWhereInput
 }
@@ -3677,6 +3927,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   chatParticipants?: boolean | Prisma.User$chatParticipantsArgs<ExtArgs>
   chatMessages?: boolean | Prisma.User$chatMessagesArgs<ExtArgs>
   aiFaceAnalyses?: boolean | Prisma.User$aiFaceAnalysesArgs<ExtArgs>
+  taxDocuments?: boolean | Prisma.User$taxDocumentsArgs<ExtArgs>
   invitationsSent?: boolean | Prisma.User$invitationsSentArgs<ExtArgs>
   invitationsAccepted?: boolean | Prisma.User$invitationsAcceptedArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -3755,6 +4006,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   chatParticipants?: boolean | Prisma.User$chatParticipantsArgs<ExtArgs>
   chatMessages?: boolean | Prisma.User$chatMessagesArgs<ExtArgs>
   aiFaceAnalyses?: boolean | Prisma.User$aiFaceAnalysesArgs<ExtArgs>
+  taxDocuments?: boolean | Prisma.User$taxDocumentsArgs<ExtArgs>
   invitationsSent?: boolean | Prisma.User$invitationsSentArgs<ExtArgs>
   invitationsAccepted?: boolean | Prisma.User$invitationsAcceptedArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -3784,6 +4036,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     chatParticipants: Prisma.$ChatParticipantPayload<ExtArgs>[]
     chatMessages: Prisma.$ChatMessagePayload<ExtArgs>[]
     aiFaceAnalyses: Prisma.$AiFaceAnalysisPayload<ExtArgs>[]
+    taxDocuments: Prisma.$TaxDocumentPayload<ExtArgs>[]
     invitationsSent: Prisma.$BarberInvitationPayload<ExtArgs>[]
     invitationsAccepted: Prisma.$BarberInvitationPayload<ExtArgs>[]
   }
@@ -4212,6 +4465,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   chatParticipants<T extends Prisma.User$chatParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$chatParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   chatMessages<T extends Prisma.User$chatMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$chatMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   aiFaceAnalyses<T extends Prisma.User$aiFaceAnalysesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$aiFaceAnalysesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiFaceAnalysisPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  taxDocuments<T extends Prisma.User$taxDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$taxDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaxDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invitationsSent<T extends Prisma.User$invitationsSentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$invitationsSentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BarberInvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invitationsAccepted<T extends Prisma.User$invitationsAcceptedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$invitationsAcceptedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BarberInvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -4991,6 +5245,30 @@ export type User$aiFaceAnalysesArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.AiFaceAnalysisScalarFieldEnum | Prisma.AiFaceAnalysisScalarFieldEnum[]
+}
+
+/**
+ * User.taxDocuments
+ */
+export type User$taxDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TaxDocument
+   */
+  select?: Prisma.TaxDocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TaxDocument
+   */
+  omit?: Prisma.TaxDocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TaxDocumentInclude<ExtArgs> | null
+  where?: Prisma.TaxDocumentWhereInput
+  orderBy?: Prisma.TaxDocumentOrderByWithRelationInput | Prisma.TaxDocumentOrderByWithRelationInput[]
+  cursor?: Prisma.TaxDocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TaxDocumentScalarFieldEnum | Prisma.TaxDocumentScalarFieldEnum[]
 }
 
 /**

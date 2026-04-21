@@ -234,3 +234,8 @@ export type TaxDeclarationLog = Prisma.TaxDeclarationLogModel
  * 
  */
 export type BillingRecord = Prisma.BillingRecordModel
+/**
+ * Model TaxDocument
+ * 
+ */
+export type TaxDocument = Prisma.TaxDocumentModel
