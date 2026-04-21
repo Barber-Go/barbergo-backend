@@ -67,6 +67,28 @@ export class BookingsService {
 
     // Atomic validation + creation in a transaction
     const booking = await this.prisma.client.$transaction(async (tx) => {
+      // Check weekly availability
+      const dayOfWeek = scheduledAt.getDay();
+      const availability = await tx.weeklyAvailability.findFirst({
+        where: { barberId: dto.barberId, dayOfWeek, isActive: true },
+      });
+      if (!availability) {
+        throw new BadRequestException('El barbero no trabaja ese día');
+      }
+
+      const toMinutes = (t: string) => { const [h, m] = t.split(':').map(Number); return h * 60 + (m || 0); };
+      const slotStart = scheduledAt.getHours() * 60 + scheduledAt.getMinutes();
+      const slotEnd = endTime.getHours() * 60 + endTime.getMinutes();
+      const availStart = toMinutes(availability.startTime);
+      const availEnd = toMinutes(availability.endTime);
+
+      if (slotStart < availStart || slotEnd > availEnd) {
+        const pad = (n: number) => String(n).padStart(2, '0');
+        throw new BadRequestException(
+          `El barbero trabaja entre ${pad(Math.floor(availStart / 60))}:${pad(availStart % 60)} y ${pad(Math.floor(availEnd / 60))}:${pad(availEnd % 60)}`,
+        );
+      }
+
       // Check for overlapping CONFIRMED bookings
       const conflicts = await tx.booking.findMany({
         where: {
