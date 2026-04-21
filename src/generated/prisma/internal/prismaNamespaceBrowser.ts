@@ -90,7 +90,13 @@ export const ModelName = {
   TaxObligation: 'TaxObligation',
   TaxDeclarationLog: 'TaxDeclarationLog',
   BillingRecord: 'BillingRecord',
-  TaxDocument: 'TaxDocument'
+  TaxDocument: 'TaxDocument',
+  CreditWallet: 'CreditWallet',
+  CreditTransaction: 'CreditTransaction',
+  CancellationRecord: 'CancellationRecord',
+  ProviderSuspension: 'ProviderSuspension',
+  Tip: 'Tip',
+  Report: 'Report'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -173,6 +179,12 @@ export const BarberProfileScalarFieldEnum = {
   rutTributario: 'rutTributario',
   tipoClaveSii: 'tipoClaveSii',
   claveTributaria: 'claveTributaria',
+  cancellationRate: 'cancellationRate',
+  cancellationCount30d: 'cancellationCount30d',
+  bookingsCount30d: 'bookingsCount30d',
+  isCurrentlySuspended: 'isCurrentlySuspended',
+  suspensionLevel: 'suspensionLevel',
+  suspensionExpiresAt: 'suspensionExpiresAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
@@ -199,6 +211,12 @@ export const BarbershopProfileScalarFieldEnum = {
   currency: 'currency',
   country: 'country',
   scheduleJson: 'scheduleJson',
+  cancellationRate: 'cancellationRate',
+  cancellationCount30d: 'cancellationCount30d',
+  bookingsCount30d: 'bookingsCount30d',
+  isCurrentlySuspended: 'isCurrentlySuspended',
+  suspensionLevel: 'suspensionLevel',
+  suspensionExpiresAt: 'suspensionExpiresAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt',
@@ -344,6 +362,21 @@ export const BookingScalarFieldEnum = {
   boletaAnulMotivo: 'boletaAnulMotivo',
   boletaTipo: 'boletaTipo',
   barbershopId: 'barbershopId',
+  cancelledAt: 'cancelledAt',
+  cancelledByUserId: 'cancelledByUserId',
+  cancelledByRole: 'cancelledByRole',
+  cancellationReason: 'cancellationReason',
+  cancellationNotes: 'cancellationNotes',
+  refundAmount: 'refundAmount',
+  refundTransactionId: 'refundTransactionId',
+  compensationBonusAmount: 'compensationBonusAmount',
+  compensationBonusTxId: 'compensationBonusTxId',
+  hasTip: 'hasTip',
+  tipAmount: 'tipAmount',
+  tipId: 'tipId',
+  rateReminderSkipCount: 'rateReminderSkipCount',
+  rateReminderLastShownAt: 'rateReminderLastShownAt',
+  rateReminderStatus: 'rateReminderStatus',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
@@ -413,6 +446,8 @@ export const ReviewScalarFieldEnum = {
   barberId: 'barberId',
   rating: 'rating',
   comment: 'comment',
+  compliments: 'compliments',
+  issues: 'issues',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
@@ -760,6 +795,113 @@ export const TaxDocumentScalarFieldEnum = {
 export type TaxDocumentScalarFieldEnum = (typeof TaxDocumentScalarFieldEnum)[keyof typeof TaxDocumentScalarFieldEnum]
 
 
+export const CreditWalletScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  balance: 'balance',
+  totalEarned: 'totalEarned',
+  totalSpent: 'totalSpent',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CreditWalletScalarFieldEnum = (typeof CreditWalletScalarFieldEnum)[keyof typeof CreditWalletScalarFieldEnum]
+
+
+export const CreditTransactionScalarFieldEnum = {
+  id: 'id',
+  walletId: 'walletId',
+  userId: 'userId',
+  type: 'type',
+  amount: 'amount',
+  balanceAfter: 'balanceAfter',
+  description: 'description',
+  metadata: 'metadata',
+  expiresAt: 'expiresAt',
+  isExpired: 'isExpired',
+  bookingId: 'bookingId',
+  grantedByAdminId: 'grantedByAdminId',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CreditTransactionScalarFieldEnum = (typeof CreditTransactionScalarFieldEnum)[keyof typeof CreditTransactionScalarFieldEnum]
+
+
+export const CancellationRecordScalarFieldEnum = {
+  id: 'id',
+  providerUserId: 'providerUserId',
+  providerRole: 'providerRole',
+  barbershopId: 'barbershopId',
+  bookingId: 'bookingId',
+  cancelledAt: 'cancelledAt',
+  reason: 'reason',
+  notes: 'notes',
+  refundAmount: 'refundAmount',
+  compensationBonus: 'compensationBonus',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CancellationRecordScalarFieldEnum = (typeof CancellationRecordScalarFieldEnum)[keyof typeof CancellationRecordScalarFieldEnum]
+
+
+export const ProviderSuspensionScalarFieldEnum = {
+  id: 'id',
+  providerUserId: 'providerUserId',
+  barbershopId: 'barbershopId',
+  level: 'level',
+  triggeredAt: 'triggeredAt',
+  triggerReason: 'triggerReason',
+  triggerMetrics: 'triggerMetrics',
+  expiresAt: 'expiresAt',
+  resolvedAt: 'resolvedAt',
+  resolvedByAdminId: 'resolvedByAdminId',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+} as const
+
+export type ProviderSuspensionScalarFieldEnum = (typeof ProviderSuspensionScalarFieldEnum)[keyof typeof ProviderSuspensionScalarFieldEnum]
+
+
+export const TipScalarFieldEnum = {
+  id: 'id',
+  bookingId: 'bookingId',
+  clientId: 'clientId',
+  barberId: 'barberId',
+  amount: 'amount',
+  paidFromCredits: 'paidFromCredits',
+  paidFromCard: 'paidFromCard',
+  creditsTxId: 'creditsTxId',
+  webpayTxId: 'webpayTxId',
+  webpayStatus: 'webpayStatus',
+  status: 'status',
+  createdAt: 'createdAt',
+  paidAt: 'paidAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type TipScalarFieldEnum = (typeof TipScalarFieldEnum)[keyof typeof TipScalarFieldEnum]
+
+
+export const ReportScalarFieldEnum = {
+  id: 'id',
+  reporterId: 'reporterId',
+  targetType: 'targetType',
+  targetId: 'targetId',
+  bookingId: 'bookingId',
+  reason: 'reason',
+  comment: 'comment',
+  status: 'status',
+  resolvedAt: 'resolvedAt',
+  resolvedBy: 'resolvedBy',
+  resolutionNotes: 'resolutionNotes',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ReportScalarFieldEnum = (typeof ReportScalarFieldEnum)[keyof typeof ReportScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -774,6 +916,13 @@ export const NullableJsonNullValueInput = {
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {

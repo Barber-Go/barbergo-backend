@@ -29,11 +29,17 @@ export type AggregateBarbershopProfile = {
 export type BarbershopProfileAvgAggregateOutputType = {
   lat: number | null
   lng: number | null
+  cancellationRate: number | null
+  cancellationCount30d: number | null
+  bookingsCount30d: number | null
 }
 
 export type BarbershopProfileSumAggregateOutputType = {
   lat: number | null
   lng: number | null
+  cancellationRate: number | null
+  cancellationCount30d: number | null
+  bookingsCount30d: number | null
 }
 
 export type BarbershopProfileMinAggregateOutputType = {
@@ -54,6 +60,12 @@ export type BarbershopProfileMinAggregateOutputType = {
   currency: string | null
   country: string | null
   scheduleJson: string | null
+  cancellationRate: number | null
+  cancellationCount30d: number | null
+  bookingsCount30d: number | null
+  isCurrentlySuspended: boolean | null
+  suspensionLevel: $Enums.SuspensionLevel | null
+  suspensionExpiresAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -79,6 +91,12 @@ export type BarbershopProfileMaxAggregateOutputType = {
   currency: string | null
   country: string | null
   scheduleJson: string | null
+  cancellationRate: number | null
+  cancellationCount30d: number | null
+  bookingsCount30d: number | null
+  isCurrentlySuspended: boolean | null
+  suspensionLevel: $Enums.SuspensionLevel | null
+  suspensionExpiresAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -104,6 +122,12 @@ export type BarbershopProfileCountAggregateOutputType = {
   currency: number
   country: number
   scheduleJson: number
+  cancellationRate: number
+  cancellationCount30d: number
+  bookingsCount30d: number
+  isCurrentlySuspended: number
+  suspensionLevel: number
+  suspensionExpiresAt: number
   createdAt: number
   updatedAt: number
   deletedAt: number
@@ -116,11 +140,17 @@ export type BarbershopProfileCountAggregateOutputType = {
 export type BarbershopProfileAvgAggregateInputType = {
   lat?: true
   lng?: true
+  cancellationRate?: true
+  cancellationCount30d?: true
+  bookingsCount30d?: true
 }
 
 export type BarbershopProfileSumAggregateInputType = {
   lat?: true
   lng?: true
+  cancellationRate?: true
+  cancellationCount30d?: true
+  bookingsCount30d?: true
 }
 
 export type BarbershopProfileMinAggregateInputType = {
@@ -141,6 +171,12 @@ export type BarbershopProfileMinAggregateInputType = {
   currency?: true
   country?: true
   scheduleJson?: true
+  cancellationRate?: true
+  cancellationCount30d?: true
+  bookingsCount30d?: true
+  isCurrentlySuspended?: true
+  suspensionLevel?: true
+  suspensionExpiresAt?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -166,6 +202,12 @@ export type BarbershopProfileMaxAggregateInputType = {
   currency?: true
   country?: true
   scheduleJson?: true
+  cancellationRate?: true
+  cancellationCount30d?: true
+  bookingsCount30d?: true
+  isCurrentlySuspended?: true
+  suspensionLevel?: true
+  suspensionExpiresAt?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -191,6 +233,12 @@ export type BarbershopProfileCountAggregateInputType = {
   currency?: true
   country?: true
   scheduleJson?: true
+  cancellationRate?: true
+  cancellationCount30d?: true
+  bookingsCount30d?: true
+  isCurrentlySuspended?: true
+  suspensionLevel?: true
+  suspensionExpiresAt?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -303,6 +351,12 @@ export type BarbershopProfileGroupByOutputType = {
   currency: string
   country: string
   scheduleJson: string | null
+  cancellationRate: number | null
+  cancellationCount30d: number
+  bookingsCount30d: number
+  isCurrentlySuspended: boolean
+  suspensionLevel: $Enums.SuspensionLevel | null
+  suspensionExpiresAt: Date | null
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
@@ -351,6 +405,12 @@ export type BarbershopProfileWhereInput = {
   currency?: Prisma.StringFilter<"BarbershopProfile"> | string
   country?: Prisma.StringFilter<"BarbershopProfile"> | string
   scheduleJson?: Prisma.StringNullableFilter<"BarbershopProfile"> | string | null
+  cancellationRate?: Prisma.FloatNullableFilter<"BarbershopProfile"> | number | null
+  cancellationCount30d?: Prisma.IntFilter<"BarbershopProfile"> | number
+  bookingsCount30d?: Prisma.IntFilter<"BarbershopProfile"> | number
+  isCurrentlySuspended?: Prisma.BoolFilter<"BarbershopProfile"> | boolean
+  suspensionLevel?: Prisma.EnumSuspensionLevelNullableFilter<"BarbershopProfile"> | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.DateTimeNullableFilter<"BarbershopProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"BarbershopProfile"> | Date | string | null
@@ -387,6 +447,12 @@ export type BarbershopProfileOrderByWithRelationInput = {
   currency?: Prisma.SortOrder
   country?: Prisma.SortOrder
   scheduleJson?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancellationRate?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancellationCount30d?: Prisma.SortOrder
+  bookingsCount30d?: Prisma.SortOrder
+  isCurrentlySuspended?: Prisma.SortOrder
+  suspensionLevel?: Prisma.SortOrderInput | Prisma.SortOrder
+  suspensionExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -426,6 +492,12 @@ export type BarbershopProfileWhereUniqueInput = Prisma.AtLeast<{
   currency?: Prisma.StringFilter<"BarbershopProfile"> | string
   country?: Prisma.StringFilter<"BarbershopProfile"> | string
   scheduleJson?: Prisma.StringNullableFilter<"BarbershopProfile"> | string | null
+  cancellationRate?: Prisma.FloatNullableFilter<"BarbershopProfile"> | number | null
+  cancellationCount30d?: Prisma.IntFilter<"BarbershopProfile"> | number
+  bookingsCount30d?: Prisma.IntFilter<"BarbershopProfile"> | number
+  isCurrentlySuspended?: Prisma.BoolFilter<"BarbershopProfile"> | boolean
+  suspensionLevel?: Prisma.EnumSuspensionLevelNullableFilter<"BarbershopProfile"> | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.DateTimeNullableFilter<"BarbershopProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"BarbershopProfile"> | Date | string | null
@@ -462,6 +534,12 @@ export type BarbershopProfileOrderByWithAggregationInput = {
   currency?: Prisma.SortOrder
   country?: Prisma.SortOrder
   scheduleJson?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancellationRate?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancellationCount30d?: Prisma.SortOrder
+  bookingsCount30d?: Prisma.SortOrder
+  isCurrentlySuspended?: Prisma.SortOrder
+  suspensionLevel?: Prisma.SortOrderInput | Prisma.SortOrder
+  suspensionExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -495,6 +573,12 @@ export type BarbershopProfileScalarWhereWithAggregatesInput = {
   currency?: Prisma.StringWithAggregatesFilter<"BarbershopProfile"> | string
   country?: Prisma.StringWithAggregatesFilter<"BarbershopProfile"> | string
   scheduleJson?: Prisma.StringNullableWithAggregatesFilter<"BarbershopProfile"> | string | null
+  cancellationRate?: Prisma.FloatNullableWithAggregatesFilter<"BarbershopProfile"> | number | null
+  cancellationCount30d?: Prisma.IntWithAggregatesFilter<"BarbershopProfile"> | number
+  bookingsCount30d?: Prisma.IntWithAggregatesFilter<"BarbershopProfile"> | number
+  isCurrentlySuspended?: Prisma.BoolWithAggregatesFilter<"BarbershopProfile"> | boolean
+  suspensionLevel?: Prisma.EnumSuspensionLevelNullableWithAggregatesFilter<"BarbershopProfile"> | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<"BarbershopProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"BarbershopProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BarbershopProfile"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"BarbershopProfile"> | Date | string | null
@@ -519,6 +603,12 @@ export type BarbershopProfileCreateInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -554,6 +644,12 @@ export type BarbershopProfileUncheckedCreateInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -587,6 +683,12 @@ export type BarbershopProfileUpdateInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -622,6 +724,12 @@ export type BarbershopProfileUncheckedUpdateInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -656,6 +764,12 @@ export type BarbershopProfileCreateManyInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -680,6 +794,12 @@ export type BarbershopProfileUpdateManyMutationInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -704,6 +824,12 @@ export type BarbershopProfileUncheckedUpdateManyInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -744,6 +870,12 @@ export type BarbershopProfileCountOrderByAggregateInput = {
   currency?: Prisma.SortOrder
   country?: Prisma.SortOrder
   scheduleJson?: Prisma.SortOrder
+  cancellationRate?: Prisma.SortOrder
+  cancellationCount30d?: Prisma.SortOrder
+  bookingsCount30d?: Prisma.SortOrder
+  isCurrentlySuspended?: Prisma.SortOrder
+  suspensionLevel?: Prisma.SortOrder
+  suspensionExpiresAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -754,6 +886,9 @@ export type BarbershopProfileCountOrderByAggregateInput = {
 export type BarbershopProfileAvgOrderByAggregateInput = {
   lat?: Prisma.SortOrder
   lng?: Prisma.SortOrder
+  cancellationRate?: Prisma.SortOrder
+  cancellationCount30d?: Prisma.SortOrder
+  bookingsCount30d?: Prisma.SortOrder
 }
 
 export type BarbershopProfileMaxOrderByAggregateInput = {
@@ -774,6 +909,12 @@ export type BarbershopProfileMaxOrderByAggregateInput = {
   currency?: Prisma.SortOrder
   country?: Prisma.SortOrder
   scheduleJson?: Prisma.SortOrder
+  cancellationRate?: Prisma.SortOrder
+  cancellationCount30d?: Prisma.SortOrder
+  bookingsCount30d?: Prisma.SortOrder
+  isCurrentlySuspended?: Prisma.SortOrder
+  suspensionLevel?: Prisma.SortOrder
+  suspensionExpiresAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -799,6 +940,12 @@ export type BarbershopProfileMinOrderByAggregateInput = {
   currency?: Prisma.SortOrder
   country?: Prisma.SortOrder
   scheduleJson?: Prisma.SortOrder
+  cancellationRate?: Prisma.SortOrder
+  cancellationCount30d?: Prisma.SortOrder
+  bookingsCount30d?: Prisma.SortOrder
+  isCurrentlySuspended?: Prisma.SortOrder
+  suspensionLevel?: Prisma.SortOrder
+  suspensionExpiresAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -809,6 +956,9 @@ export type BarbershopProfileMinOrderByAggregateInput = {
 export type BarbershopProfileSumOrderByAggregateInput = {
   lat?: Prisma.SortOrder
   lng?: Prisma.SortOrder
+  cancellationRate?: Prisma.SortOrder
+  cancellationCount30d?: Prisma.SortOrder
+  bookingsCount30d?: Prisma.SortOrder
 }
 
 export type BarbershopProfileScalarRelationFilter = {
@@ -1057,6 +1207,12 @@ export type BarbershopProfileCreateWithoutTenantInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1091,6 +1247,12 @@ export type BarbershopProfileUncheckedCreateWithoutTenantInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1153,6 +1315,12 @@ export type BarbershopProfileScalarWhereInput = {
   currency?: Prisma.StringFilter<"BarbershopProfile"> | string
   country?: Prisma.StringFilter<"BarbershopProfile"> | string
   scheduleJson?: Prisma.StringNullableFilter<"BarbershopProfile"> | string | null
+  cancellationRate?: Prisma.FloatNullableFilter<"BarbershopProfile"> | number | null
+  cancellationCount30d?: Prisma.IntFilter<"BarbershopProfile"> | number
+  bookingsCount30d?: Prisma.IntFilter<"BarbershopProfile"> | number
+  isCurrentlySuspended?: Prisma.BoolFilter<"BarbershopProfile"> | boolean
+  suspensionLevel?: Prisma.EnumSuspensionLevelNullableFilter<"BarbershopProfile"> | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.DateTimeNullableFilter<"BarbershopProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BarbershopProfile"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"BarbershopProfile"> | Date | string | null
@@ -1177,6 +1345,12 @@ export type BarbershopProfileCreateWithoutUserInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1210,6 +1384,12 @@ export type BarbershopProfileUncheckedCreateWithoutUserInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1269,6 +1449,12 @@ export type BarbershopProfileCreateWithoutBarbersInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1303,6 +1489,12 @@ export type BarbershopProfileUncheckedCreateWithoutBarbersInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1351,6 +1543,12 @@ export type BarbershopProfileUpdateWithoutBarbersInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1385,6 +1583,12 @@ export type BarbershopProfileUncheckedUpdateWithoutBarbersInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1417,6 +1621,12 @@ export type BarbershopProfileCreateWithoutStaffInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1451,6 +1661,12 @@ export type BarbershopProfileUncheckedCreateWithoutStaffInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1499,6 +1715,12 @@ export type BarbershopProfileUpdateWithoutStaffInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1533,6 +1755,12 @@ export type BarbershopProfileUncheckedUpdateWithoutStaffInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1565,6 +1793,12 @@ export type BarbershopProfileCreateWithoutInvitationsInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1599,6 +1833,12 @@ export type BarbershopProfileUncheckedCreateWithoutInvitationsInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1647,6 +1887,12 @@ export type BarbershopProfileUpdateWithoutInvitationsInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1681,6 +1927,12 @@ export type BarbershopProfileUncheckedUpdateWithoutInvitationsInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1713,6 +1965,12 @@ export type BarbershopProfileCreateWithoutBookingsInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1747,6 +2005,12 @@ export type BarbershopProfileUncheckedCreateWithoutBookingsInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1795,6 +2059,12 @@ export type BarbershopProfileUpdateWithoutBookingsInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1829,6 +2099,12 @@ export type BarbershopProfileUncheckedUpdateWithoutBookingsInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1861,6 +2137,12 @@ export type BarbershopProfileCreateWithoutExpensesInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1895,6 +2177,12 @@ export type BarbershopProfileUncheckedCreateWithoutExpensesInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1943,6 +2231,12 @@ export type BarbershopProfileUpdateWithoutExpensesInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1977,6 +2271,12 @@ export type BarbershopProfileUncheckedUpdateWithoutExpensesInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2009,6 +2309,12 @@ export type BarbershopProfileCreateWithoutLedgerEntriesInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2043,6 +2349,12 @@ export type BarbershopProfileUncheckedCreateWithoutLedgerEntriesInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2091,6 +2403,12 @@ export type BarbershopProfileUpdateWithoutLedgerEntriesInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2125,6 +2443,12 @@ export type BarbershopProfileUncheckedUpdateWithoutLedgerEntriesInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2157,6 +2481,12 @@ export type BarbershopProfileCreateWithoutTaxProfileInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2191,6 +2521,12 @@ export type BarbershopProfileUncheckedCreateWithoutTaxProfileInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2239,6 +2575,12 @@ export type BarbershopProfileUpdateWithoutTaxProfileInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2273,6 +2615,12 @@ export type BarbershopProfileUncheckedUpdateWithoutTaxProfileInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2305,6 +2653,12 @@ export type BarbershopProfileCreateWithoutBillingRecordsInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2339,6 +2693,12 @@ export type BarbershopProfileUncheckedCreateWithoutBillingRecordsInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2387,6 +2747,12 @@ export type BarbershopProfileUpdateWithoutBillingRecordsInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2421,6 +2787,12 @@ export type BarbershopProfileUncheckedUpdateWithoutBillingRecordsInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2453,6 +2825,12 @@ export type BarbershopProfileCreateWithoutTaxDocumentsInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2487,6 +2865,12 @@ export type BarbershopProfileUncheckedCreateWithoutTaxDocumentsInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2535,6 +2919,12 @@ export type BarbershopProfileUpdateWithoutTaxDocumentsInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2569,6 +2959,12 @@ export type BarbershopProfileUncheckedUpdateWithoutTaxDocumentsInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2602,6 +2998,12 @@ export type BarbershopProfileCreateManyTenantInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2625,6 +3027,12 @@ export type BarbershopProfileUpdateWithoutTenantInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2659,6 +3067,12 @@ export type BarbershopProfileUncheckedUpdateWithoutTenantInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2692,6 +3106,12 @@ export type BarbershopProfileUncheckedUpdateManyWithoutTenantInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2715,6 +3135,12 @@ export type BarbershopProfileCreateManyUserInput = {
   currency?: string
   country?: string
   scheduleJson?: string | null
+  cancellationRate?: number | null
+  cancellationCount30d?: number
+  bookingsCount30d?: number
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2739,6 +3165,12 @@ export type BarbershopProfileUpdateWithoutUserInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2772,6 +3204,12 @@ export type BarbershopProfileUncheckedUpdateWithoutUserInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2805,6 +3243,12 @@ export type BarbershopProfileUncheckedUpdateManyWithoutUserInput = {
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   country?: Prisma.StringFieldUpdateOperationsInput | string
   scheduleJson?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancellationRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cancellationCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  bookingsCount30d?: Prisma.IntFieldUpdateOperationsInput | number
+  isCurrentlySuspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspensionLevel?: Prisma.NullableEnumSuspensionLevelFieldUpdateOperationsInput | $Enums.SuspensionLevel | null
+  suspensionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2924,6 +3368,12 @@ export type BarbershopProfileSelect<ExtArgs extends runtime.Types.Extensions.Int
   currency?: boolean
   country?: boolean
   scheduleJson?: boolean
+  cancellationRate?: boolean
+  cancellationCount30d?: boolean
+  bookingsCount30d?: boolean
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: boolean
+  suspensionExpiresAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -2961,6 +3411,12 @@ export type BarbershopProfileSelectCreateManyAndReturn<ExtArgs extends runtime.T
   currency?: boolean
   country?: boolean
   scheduleJson?: boolean
+  cancellationRate?: boolean
+  cancellationCount30d?: boolean
+  bookingsCount30d?: boolean
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: boolean
+  suspensionExpiresAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -2988,6 +3444,12 @@ export type BarbershopProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   currency?: boolean
   country?: boolean
   scheduleJson?: boolean
+  cancellationRate?: boolean
+  cancellationCount30d?: boolean
+  bookingsCount30d?: boolean
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: boolean
+  suspensionExpiresAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -3015,6 +3477,12 @@ export type BarbershopProfileSelectScalar = {
   currency?: boolean
   country?: boolean
   scheduleJson?: boolean
+  cancellationRate?: boolean
+  cancellationCount30d?: boolean
+  bookingsCount30d?: boolean
+  isCurrentlySuspended?: boolean
+  suspensionLevel?: boolean
+  suspensionExpiresAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -3022,7 +3490,7 @@ export type BarbershopProfileSelectScalar = {
   tenantId?: boolean
 }
 
-export type BarbershopProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "name" | "description" | "address" | "lat" | "lng" | "phone" | "logoUrl" | "coverUrl" | "inviteCode" | "isActive" | "status" | "timezone" | "currency" | "country" | "scheduleJson" | "createdAt" | "updatedAt" | "deletedAt" | "archivedAt" | "tenantId", ExtArgs["result"]["barbershopProfile"]>
+export type BarbershopProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "name" | "description" | "address" | "lat" | "lng" | "phone" | "logoUrl" | "coverUrl" | "inviteCode" | "isActive" | "status" | "timezone" | "currency" | "country" | "scheduleJson" | "cancellationRate" | "cancellationCount30d" | "bookingsCount30d" | "isCurrentlySuspended" | "suspensionLevel" | "suspensionExpiresAt" | "createdAt" | "updatedAt" | "deletedAt" | "archivedAt" | "tenantId", ExtArgs["result"]["barbershopProfile"]>
 export type BarbershopProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tenant?: boolean | Prisma.BarbershopProfile$tenantArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -3079,6 +3547,12 @@ export type $BarbershopProfilePayload<ExtArgs extends runtime.Types.Extensions.I
     currency: string
     country: string
     scheduleJson: string | null
+    cancellationRate: number | null
+    cancellationCount30d: number
+    bookingsCount30d: number
+    isCurrentlySuspended: boolean
+    suspensionLevel: $Enums.SuspensionLevel | null
+    suspensionExpiresAt: Date | null
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
@@ -3535,6 +4009,12 @@ export interface BarbershopProfileFieldRefs {
   readonly currency: Prisma.FieldRef<"BarbershopProfile", 'String'>
   readonly country: Prisma.FieldRef<"BarbershopProfile", 'String'>
   readonly scheduleJson: Prisma.FieldRef<"BarbershopProfile", 'String'>
+  readonly cancellationRate: Prisma.FieldRef<"BarbershopProfile", 'Float'>
+  readonly cancellationCount30d: Prisma.FieldRef<"BarbershopProfile", 'Int'>
+  readonly bookingsCount30d: Prisma.FieldRef<"BarbershopProfile", 'Int'>
+  readonly isCurrentlySuspended: Prisma.FieldRef<"BarbershopProfile", 'Boolean'>
+  readonly suspensionLevel: Prisma.FieldRef<"BarbershopProfile", 'SuspensionLevel'>
+  readonly suspensionExpiresAt: Prisma.FieldRef<"BarbershopProfile", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"BarbershopProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"BarbershopProfile", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"BarbershopProfile", 'DateTime'>

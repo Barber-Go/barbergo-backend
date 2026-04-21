@@ -846,14 +846,6 @@ export type TaxProfileUncheckedUpdateOneWithoutBarbershopNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.TaxProfileUpdateToOneWithWhereWithoutBarbershopInput, Prisma.TaxProfileUpdateWithoutBarbershopInput>, Prisma.TaxProfileUncheckedUpdateWithoutBarbershopInput>
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type TaxProfileCreateNestedOneWithoutObligationsInput = {
   create?: Prisma.XOR<Prisma.TaxProfileCreateWithoutObligationsInput, Prisma.TaxProfileUncheckedCreateWithoutObligationsInput>
   connectOrCreate?: Prisma.TaxProfileCreateOrConnectWithoutObligationsInput

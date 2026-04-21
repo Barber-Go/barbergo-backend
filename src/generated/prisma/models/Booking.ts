@@ -36,6 +36,10 @@ export type BookingAvgAggregateOutputType = {
   barberAmount: runtime.Decimal | null
   shopAmount: runtime.Decimal | null
   netPayoutToBarber: runtime.Decimal | null
+  refundAmount: number | null
+  compensationBonusAmount: number | null
+  tipAmount: number | null
+  rateReminderSkipCount: number | null
 }
 
 export type BookingSumAggregateOutputType = {
@@ -48,6 +52,10 @@ export type BookingSumAggregateOutputType = {
   barberAmount: runtime.Decimal | null
   shopAmount: runtime.Decimal | null
   netPayoutToBarber: runtime.Decimal | null
+  refundAmount: number | null
+  compensationBonusAmount: number | null
+  tipAmount: number | null
+  rateReminderSkipCount: number | null
 }
 
 export type BookingMinAggregateOutputType = {
@@ -76,6 +84,21 @@ export type BookingMinAggregateOutputType = {
   boletaAnulMotivo: string | null
   boletaTipo: string | null
   barbershopId: string | null
+  cancelledAt: Date | null
+  cancelledByUserId: string | null
+  cancelledByRole: $Enums.CancellerRole | null
+  cancellationReason: $Enums.CancellationReason | null
+  cancellationNotes: string | null
+  refundAmount: number | null
+  refundTransactionId: string | null
+  compensationBonusAmount: number | null
+  compensationBonusTxId: string | null
+  hasTip: boolean | null
+  tipAmount: number | null
+  tipId: string | null
+  rateReminderSkipCount: number | null
+  rateReminderLastShownAt: Date | null
+  rateReminderStatus: $Enums.RateReminderStatus | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -107,6 +130,21 @@ export type BookingMaxAggregateOutputType = {
   boletaAnulMotivo: string | null
   boletaTipo: string | null
   barbershopId: string | null
+  cancelledAt: Date | null
+  cancelledByUserId: string | null
+  cancelledByRole: $Enums.CancellerRole | null
+  cancellationReason: $Enums.CancellationReason | null
+  cancellationNotes: string | null
+  refundAmount: number | null
+  refundTransactionId: string | null
+  compensationBonusAmount: number | null
+  compensationBonusTxId: string | null
+  hasTip: boolean | null
+  tipAmount: number | null
+  tipId: string | null
+  rateReminderSkipCount: number | null
+  rateReminderLastShownAt: Date | null
+  rateReminderStatus: $Enums.RateReminderStatus | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -139,6 +177,21 @@ export type BookingCountAggregateOutputType = {
   boletaAnulMotivo: number
   boletaTipo: number
   barbershopId: number
+  cancelledAt: number
+  cancelledByUserId: number
+  cancelledByRole: number
+  cancellationReason: number
+  cancellationNotes: number
+  refundAmount: number
+  refundTransactionId: number
+  compensationBonusAmount: number
+  compensationBonusTxId: number
+  hasTip: number
+  tipAmount: number
+  tipId: number
+  rateReminderSkipCount: number
+  rateReminderLastShownAt: number
+  rateReminderStatus: number
   createdAt: number
   updatedAt: number
   deletedAt: number
@@ -156,6 +209,10 @@ export type BookingAvgAggregateInputType = {
   barberAmount?: true
   shopAmount?: true
   netPayoutToBarber?: true
+  refundAmount?: true
+  compensationBonusAmount?: true
+  tipAmount?: true
+  rateReminderSkipCount?: true
 }
 
 export type BookingSumAggregateInputType = {
@@ -168,6 +225,10 @@ export type BookingSumAggregateInputType = {
   barberAmount?: true
   shopAmount?: true
   netPayoutToBarber?: true
+  refundAmount?: true
+  compensationBonusAmount?: true
+  tipAmount?: true
+  rateReminderSkipCount?: true
 }
 
 export type BookingMinAggregateInputType = {
@@ -196,6 +257,21 @@ export type BookingMinAggregateInputType = {
   boletaAnulMotivo?: true
   boletaTipo?: true
   barbershopId?: true
+  cancelledAt?: true
+  cancelledByUserId?: true
+  cancelledByRole?: true
+  cancellationReason?: true
+  cancellationNotes?: true
+  refundAmount?: true
+  refundTransactionId?: true
+  compensationBonusAmount?: true
+  compensationBonusTxId?: true
+  hasTip?: true
+  tipAmount?: true
+  tipId?: true
+  rateReminderSkipCount?: true
+  rateReminderLastShownAt?: true
+  rateReminderStatus?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -227,6 +303,21 @@ export type BookingMaxAggregateInputType = {
   boletaAnulMotivo?: true
   boletaTipo?: true
   barbershopId?: true
+  cancelledAt?: true
+  cancelledByUserId?: true
+  cancelledByRole?: true
+  cancellationReason?: true
+  cancellationNotes?: true
+  refundAmount?: true
+  refundTransactionId?: true
+  compensationBonusAmount?: true
+  compensationBonusTxId?: true
+  hasTip?: true
+  tipAmount?: true
+  tipId?: true
+  rateReminderSkipCount?: true
+  rateReminderLastShownAt?: true
+  rateReminderStatus?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -259,6 +350,21 @@ export type BookingCountAggregateInputType = {
   boletaAnulMotivo?: true
   boletaTipo?: true
   barbershopId?: true
+  cancelledAt?: true
+  cancelledByUserId?: true
+  cancelledByRole?: true
+  cancellationReason?: true
+  cancellationNotes?: true
+  refundAmount?: true
+  refundTransactionId?: true
+  compensationBonusAmount?: true
+  compensationBonusTxId?: true
+  hasTip?: true
+  tipAmount?: true
+  tipId?: true
+  rateReminderSkipCount?: true
+  rateReminderLastShownAt?: true
+  rateReminderStatus?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -378,6 +484,21 @@ export type BookingGroupByOutputType = {
   boletaAnulMotivo: string | null
   boletaTipo: string | null
   barbershopId: string | null
+  cancelledAt: Date | null
+  cancelledByUserId: string | null
+  cancelledByRole: $Enums.CancellerRole | null
+  cancellationReason: $Enums.CancellationReason | null
+  cancellationNotes: string | null
+  refundAmount: number | null
+  refundTransactionId: string | null
+  compensationBonusAmount: number | null
+  compensationBonusTxId: string | null
+  hasTip: boolean
+  tipAmount: number | null
+  tipId: string | null
+  rateReminderSkipCount: number
+  rateReminderLastShownAt: Date | null
+  rateReminderStatus: $Enums.RateReminderStatus
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
@@ -433,6 +554,21 @@ export type BookingWhereInput = {
   boletaAnulMotivo?: Prisma.StringNullableFilter<"Booking"> | string | null
   boletaTipo?: Prisma.StringNullableFilter<"Booking"> | string | null
   barbershopId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  cancelledAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  cancelledByUserId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  cancelledByRole?: Prisma.EnumCancellerRoleNullableFilter<"Booking"> | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.EnumCancellationReasonNullableFilter<"Booking"> | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.StringNullableFilter<"Booking"> | string | null
+  refundAmount?: Prisma.IntNullableFilter<"Booking"> | number | null
+  refundTransactionId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  compensationBonusAmount?: Prisma.IntNullableFilter<"Booking"> | number | null
+  compensationBonusTxId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  hasTip?: Prisma.BoolFilter<"Booking"> | boolean
+  tipAmount?: Prisma.IntNullableFilter<"Booking"> | number | null
+  tipId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  rateReminderSkipCount?: Prisma.IntFilter<"Booking"> | number
+  rateReminderLastShownAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFilter<"Booking"> | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
@@ -444,6 +580,9 @@ export type BookingWhereInput = {
   review?: Prisma.XOR<Prisma.ReviewNullableScalarRelationFilter, Prisma.ReviewWhereInput> | null
   earning?: Prisma.XOR<Prisma.EarningNullableScalarRelationFilter, Prisma.EarningWhereInput> | null
   chatThread?: Prisma.XOR<Prisma.ChatThreadNullableScalarRelationFilter, Prisma.ChatThreadWhereInput> | null
+  creditTransactions?: Prisma.CreditTransactionListRelationFilter
+  cancellationRecord?: Prisma.XOR<Prisma.CancellationRecordNullableScalarRelationFilter, Prisma.CancellationRecordWhereInput> | null
+  tip?: Prisma.XOR<Prisma.TipNullableScalarRelationFilter, Prisma.TipWhereInput> | null
 }
 
 export type BookingOrderByWithRelationInput = {
@@ -473,6 +612,21 @@ export type BookingOrderByWithRelationInput = {
   boletaAnulMotivo?: Prisma.SortOrderInput | Prisma.SortOrder
   boletaTipo?: Prisma.SortOrderInput | Prisma.SortOrder
   barbershopId?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancelledAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancelledByUserId?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancelledByRole?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancellationReason?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancellationNotes?: Prisma.SortOrderInput | Prisma.SortOrder
+  refundAmount?: Prisma.SortOrderInput | Prisma.SortOrder
+  refundTransactionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  compensationBonusAmount?: Prisma.SortOrderInput | Prisma.SortOrder
+  compensationBonusTxId?: Prisma.SortOrderInput | Prisma.SortOrder
+  hasTip?: Prisma.SortOrder
+  tipAmount?: Prisma.SortOrderInput | Prisma.SortOrder
+  tipId?: Prisma.SortOrderInput | Prisma.SortOrder
+  rateReminderSkipCount?: Prisma.SortOrder
+  rateReminderLastShownAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  rateReminderStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -484,10 +638,14 @@ export type BookingOrderByWithRelationInput = {
   review?: Prisma.ReviewOrderByWithRelationInput
   earning?: Prisma.EarningOrderByWithRelationInput
   chatThread?: Prisma.ChatThreadOrderByWithRelationInput
+  creditTransactions?: Prisma.CreditTransactionOrderByRelationAggregateInput
+  cancellationRecord?: Prisma.CancellationRecordOrderByWithRelationInput
+  tip?: Prisma.TipOrderByWithRelationInput
 }
 
 export type BookingWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  tipId?: string
   AND?: Prisma.BookingWhereInput | Prisma.BookingWhereInput[]
   OR?: Prisma.BookingWhereInput[]
   NOT?: Prisma.BookingWhereInput | Prisma.BookingWhereInput[]
@@ -516,6 +674,20 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   boletaAnulMotivo?: Prisma.StringNullableFilter<"Booking"> | string | null
   boletaTipo?: Prisma.StringNullableFilter<"Booking"> | string | null
   barbershopId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  cancelledAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  cancelledByUserId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  cancelledByRole?: Prisma.EnumCancellerRoleNullableFilter<"Booking"> | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.EnumCancellationReasonNullableFilter<"Booking"> | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.StringNullableFilter<"Booking"> | string | null
+  refundAmount?: Prisma.IntNullableFilter<"Booking"> | number | null
+  refundTransactionId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  compensationBonusAmount?: Prisma.IntNullableFilter<"Booking"> | number | null
+  compensationBonusTxId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  hasTip?: Prisma.BoolFilter<"Booking"> | boolean
+  tipAmount?: Prisma.IntNullableFilter<"Booking"> | number | null
+  rateReminderSkipCount?: Prisma.IntFilter<"Booking"> | number
+  rateReminderLastShownAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFilter<"Booking"> | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
@@ -527,7 +699,10 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   review?: Prisma.XOR<Prisma.ReviewNullableScalarRelationFilter, Prisma.ReviewWhereInput> | null
   earning?: Prisma.XOR<Prisma.EarningNullableScalarRelationFilter, Prisma.EarningWhereInput> | null
   chatThread?: Prisma.XOR<Prisma.ChatThreadNullableScalarRelationFilter, Prisma.ChatThreadWhereInput> | null
-}, "id">
+  creditTransactions?: Prisma.CreditTransactionListRelationFilter
+  cancellationRecord?: Prisma.XOR<Prisma.CancellationRecordNullableScalarRelationFilter, Prisma.CancellationRecordWhereInput> | null
+  tip?: Prisma.XOR<Prisma.TipNullableScalarRelationFilter, Prisma.TipWhereInput> | null
+}, "id" | "tipId">
 
 export type BookingOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -556,6 +731,21 @@ export type BookingOrderByWithAggregationInput = {
   boletaAnulMotivo?: Prisma.SortOrderInput | Prisma.SortOrder
   boletaTipo?: Prisma.SortOrderInput | Prisma.SortOrder
   barbershopId?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancelledAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancelledByUserId?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancelledByRole?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancellationReason?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancellationNotes?: Prisma.SortOrderInput | Prisma.SortOrder
+  refundAmount?: Prisma.SortOrderInput | Prisma.SortOrder
+  refundTransactionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  compensationBonusAmount?: Prisma.SortOrderInput | Prisma.SortOrder
+  compensationBonusTxId?: Prisma.SortOrderInput | Prisma.SortOrder
+  hasTip?: Prisma.SortOrder
+  tipAmount?: Prisma.SortOrderInput | Prisma.SortOrder
+  tipId?: Prisma.SortOrderInput | Prisma.SortOrder
+  rateReminderSkipCount?: Prisma.SortOrder
+  rateReminderLastShownAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  rateReminderStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -596,6 +786,21 @@ export type BookingScalarWhereWithAggregatesInput = {
   boletaAnulMotivo?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
   boletaTipo?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
   barbershopId?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  cancelledAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
+  cancelledByUserId?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  cancelledByRole?: Prisma.EnumCancellerRoleNullableWithAggregatesFilter<"Booking"> | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.EnumCancellationReasonNullableWithAggregatesFilter<"Booking"> | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  refundAmount?: Prisma.IntNullableWithAggregatesFilter<"Booking"> | number | null
+  refundTransactionId?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  compensationBonusAmount?: Prisma.IntNullableWithAggregatesFilter<"Booking"> | number | null
+  compensationBonusTxId?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  hasTip?: Prisma.BoolWithAggregatesFilter<"Booking"> | boolean
+  tipAmount?: Prisma.IntNullableWithAggregatesFilter<"Booking"> | number | null
+  tipId?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  rateReminderSkipCount?: Prisma.IntWithAggregatesFilter<"Booking"> | number
+  rateReminderLastShownAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusWithAggregatesFilter<"Booking"> | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
@@ -624,6 +829,21 @@ export type BookingCreateInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -635,6 +855,9 @@ export type BookingCreateInput = {
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateInput = {
@@ -664,6 +887,21 @@ export type BookingUncheckedCreateInput = {
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
   barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -671,6 +909,9 @@ export type BookingUncheckedCreateInput = {
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUpdateInput = {
@@ -696,6 +937,21 @@ export type BookingUpdateInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -707,6 +963,9 @@ export type BookingUpdateInput = {
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateInput = {
@@ -736,6 +995,21 @@ export type BookingUncheckedUpdateInput = {
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -743,6 +1017,9 @@ export type BookingUncheckedUpdateInput = {
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingCreateManyInput = {
@@ -772,6 +1049,21 @@ export type BookingCreateManyInput = {
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
   barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -800,6 +1092,21 @@ export type BookingUpdateManyMutationInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -832,6 +1139,21 @@ export type BookingUncheckedUpdateManyInput = {
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -874,6 +1196,21 @@ export type BookingCountOrderByAggregateInput = {
   boletaAnulMotivo?: Prisma.SortOrder
   boletaTipo?: Prisma.SortOrder
   barbershopId?: Prisma.SortOrder
+  cancelledAt?: Prisma.SortOrder
+  cancelledByUserId?: Prisma.SortOrder
+  cancelledByRole?: Prisma.SortOrder
+  cancellationReason?: Prisma.SortOrder
+  cancellationNotes?: Prisma.SortOrder
+  refundAmount?: Prisma.SortOrder
+  refundTransactionId?: Prisma.SortOrder
+  compensationBonusAmount?: Prisma.SortOrder
+  compensationBonusTxId?: Prisma.SortOrder
+  hasTip?: Prisma.SortOrder
+  tipAmount?: Prisma.SortOrder
+  tipId?: Prisma.SortOrder
+  rateReminderSkipCount?: Prisma.SortOrder
+  rateReminderLastShownAt?: Prisma.SortOrder
+  rateReminderStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -889,6 +1226,10 @@ export type BookingAvgOrderByAggregateInput = {
   barberAmount?: Prisma.SortOrder
   shopAmount?: Prisma.SortOrder
   netPayoutToBarber?: Prisma.SortOrder
+  refundAmount?: Prisma.SortOrder
+  compensationBonusAmount?: Prisma.SortOrder
+  tipAmount?: Prisma.SortOrder
+  rateReminderSkipCount?: Prisma.SortOrder
 }
 
 export type BookingMaxOrderByAggregateInput = {
@@ -917,6 +1258,21 @@ export type BookingMaxOrderByAggregateInput = {
   boletaAnulMotivo?: Prisma.SortOrder
   boletaTipo?: Prisma.SortOrder
   barbershopId?: Prisma.SortOrder
+  cancelledAt?: Prisma.SortOrder
+  cancelledByUserId?: Prisma.SortOrder
+  cancelledByRole?: Prisma.SortOrder
+  cancellationReason?: Prisma.SortOrder
+  cancellationNotes?: Prisma.SortOrder
+  refundAmount?: Prisma.SortOrder
+  refundTransactionId?: Prisma.SortOrder
+  compensationBonusAmount?: Prisma.SortOrder
+  compensationBonusTxId?: Prisma.SortOrder
+  hasTip?: Prisma.SortOrder
+  tipAmount?: Prisma.SortOrder
+  tipId?: Prisma.SortOrder
+  rateReminderSkipCount?: Prisma.SortOrder
+  rateReminderLastShownAt?: Prisma.SortOrder
+  rateReminderStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -948,6 +1304,21 @@ export type BookingMinOrderByAggregateInput = {
   boletaAnulMotivo?: Prisma.SortOrder
   boletaTipo?: Prisma.SortOrder
   barbershopId?: Prisma.SortOrder
+  cancelledAt?: Prisma.SortOrder
+  cancelledByUserId?: Prisma.SortOrder
+  cancelledByRole?: Prisma.SortOrder
+  cancellationReason?: Prisma.SortOrder
+  cancellationNotes?: Prisma.SortOrder
+  refundAmount?: Prisma.SortOrder
+  refundTransactionId?: Prisma.SortOrder
+  compensationBonusAmount?: Prisma.SortOrder
+  compensationBonusTxId?: Prisma.SortOrder
+  hasTip?: Prisma.SortOrder
+  tipAmount?: Prisma.SortOrder
+  tipId?: Prisma.SortOrder
+  rateReminderSkipCount?: Prisma.SortOrder
+  rateReminderLastShownAt?: Prisma.SortOrder
+  rateReminderStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -963,6 +1334,10 @@ export type BookingSumOrderByAggregateInput = {
   barberAmount?: Prisma.SortOrder
   shopAmount?: Prisma.SortOrder
   netPayoutToBarber?: Prisma.SortOrder
+  refundAmount?: Prisma.SortOrder
+  compensationBonusAmount?: Prisma.SortOrder
+  tipAmount?: Prisma.SortOrder
+  rateReminderSkipCount?: Prisma.SortOrder
 }
 
 export type BookingNullableScalarRelationFilter = {
@@ -1151,6 +1526,26 @@ export type EnumPaymentMethodFieldUpdateOperationsInput = {
   set?: $Enums.PaymentMethod
 }
 
+export type NullableEnumCancellerRoleFieldUpdateOperationsInput = {
+  set?: $Enums.CancellerRole | null
+}
+
+export type NullableEnumCancellationReasonFieldUpdateOperationsInput = {
+  set?: $Enums.CancellationReason | null
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type EnumRateReminderStatusFieldUpdateOperationsInput = {
+  set?: $Enums.RateReminderStatus
+}
+
 export type BookingCreateNestedOneWithoutChatThreadInput = {
   create?: Prisma.XOR<Prisma.BookingCreateWithoutChatThreadInput, Prisma.BookingUncheckedCreateWithoutChatThreadInput>
   connectOrCreate?: Prisma.BookingCreateOrConnectWithoutChatThreadInput
@@ -1209,6 +1604,50 @@ export type BookingUpdateOneRequiredWithoutEarningNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BookingUpdateToOneWithWhereWithoutEarningInput, Prisma.BookingUpdateWithoutEarningInput>, Prisma.BookingUncheckedUpdateWithoutEarningInput>
 }
 
+export type BookingCreateNestedOneWithoutCreditTransactionsInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutCreditTransactionsInput, Prisma.BookingUncheckedCreateWithoutCreditTransactionsInput>
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutCreditTransactionsInput
+  connect?: Prisma.BookingWhereUniqueInput
+}
+
+export type BookingUpdateOneWithoutCreditTransactionsNestedInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutCreditTransactionsInput, Prisma.BookingUncheckedCreateWithoutCreditTransactionsInput>
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutCreditTransactionsInput
+  upsert?: Prisma.BookingUpsertWithoutCreditTransactionsInput
+  disconnect?: Prisma.BookingWhereInput | boolean
+  delete?: Prisma.BookingWhereInput | boolean
+  connect?: Prisma.BookingWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BookingUpdateToOneWithWhereWithoutCreditTransactionsInput, Prisma.BookingUpdateWithoutCreditTransactionsInput>, Prisma.BookingUncheckedUpdateWithoutCreditTransactionsInput>
+}
+
+export type BookingCreateNestedOneWithoutCancellationRecordInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutCancellationRecordInput, Prisma.BookingUncheckedCreateWithoutCancellationRecordInput>
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutCancellationRecordInput
+  connect?: Prisma.BookingWhereUniqueInput
+}
+
+export type BookingUpdateOneRequiredWithoutCancellationRecordNestedInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutCancellationRecordInput, Prisma.BookingUncheckedCreateWithoutCancellationRecordInput>
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutCancellationRecordInput
+  upsert?: Prisma.BookingUpsertWithoutCancellationRecordInput
+  connect?: Prisma.BookingWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BookingUpdateToOneWithWhereWithoutCancellationRecordInput, Prisma.BookingUpdateWithoutCancellationRecordInput>, Prisma.BookingUncheckedUpdateWithoutCancellationRecordInput>
+}
+
+export type BookingCreateNestedOneWithoutTipInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutTipInput, Prisma.BookingUncheckedCreateWithoutTipInput>
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutTipInput
+  connect?: Prisma.BookingWhereUniqueInput
+}
+
+export type BookingUpdateOneRequiredWithoutTipNestedInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutTipInput, Prisma.BookingUncheckedCreateWithoutTipInput>
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutTipInput
+  upsert?: Prisma.BookingUpsertWithoutTipInput
+  connect?: Prisma.BookingWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BookingUpdateToOneWithWhereWithoutTipInput, Prisma.BookingUpdateWithoutTipInput>, Prisma.BookingUncheckedUpdateWithoutTipInput>
+}
+
 export type BookingCreateWithoutClientInput = {
   id?: string
   scheduledAt: Date | string
@@ -1232,6 +1671,21 @@ export type BookingCreateWithoutClientInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1242,6 +1696,9 @@ export type BookingCreateWithoutClientInput = {
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutClientInput = {
@@ -1270,6 +1727,21 @@ export type BookingUncheckedCreateWithoutClientInput = {
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
   barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1277,6 +1749,9 @@ export type BookingUncheckedCreateWithoutClientInput = {
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutClientInput = {
@@ -1335,6 +1810,21 @@ export type BookingScalarWhereInput = {
   boletaAnulMotivo?: Prisma.StringNullableFilter<"Booking"> | string | null
   boletaTipo?: Prisma.StringNullableFilter<"Booking"> | string | null
   barbershopId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  cancelledAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  cancelledByUserId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  cancelledByRole?: Prisma.EnumCancellerRoleNullableFilter<"Booking"> | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.EnumCancellationReasonNullableFilter<"Booking"> | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.StringNullableFilter<"Booking"> | string | null
+  refundAmount?: Prisma.IntNullableFilter<"Booking"> | number | null
+  refundTransactionId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  compensationBonusAmount?: Prisma.IntNullableFilter<"Booking"> | number | null
+  compensationBonusTxId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  hasTip?: Prisma.BoolFilter<"Booking"> | boolean
+  tipAmount?: Prisma.IntNullableFilter<"Booking"> | number | null
+  tipId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  rateReminderSkipCount?: Prisma.IntFilter<"Booking"> | number
+  rateReminderLastShownAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFilter<"Booking"> | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
@@ -1363,6 +1853,21 @@ export type BookingCreateWithoutBarberInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1373,6 +1878,9 @@ export type BookingCreateWithoutBarberInput = {
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutBarberInput = {
@@ -1401,6 +1909,21 @@ export type BookingUncheckedCreateWithoutBarberInput = {
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
   barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1408,6 +1931,9 @@ export type BookingUncheckedCreateWithoutBarberInput = {
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutBarberInput = {
@@ -1459,6 +1985,21 @@ export type BookingCreateWithoutBarbershopInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1469,6 +2010,9 @@ export type BookingCreateWithoutBarbershopInput = {
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutBarbershopInput = {
@@ -1497,6 +2041,21 @@ export type BookingUncheckedCreateWithoutBarbershopInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1504,6 +2063,9 @@ export type BookingUncheckedCreateWithoutBarbershopInput = {
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutBarbershopInput = {
@@ -1555,6 +2117,21 @@ export type BookingCreateWithoutServiceInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1565,6 +2142,9 @@ export type BookingCreateWithoutServiceInput = {
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutServiceInput = {
@@ -1593,6 +2173,21 @@ export type BookingUncheckedCreateWithoutServiceInput = {
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
   barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1600,6 +2195,9 @@ export type BookingUncheckedCreateWithoutServiceInput = {
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutServiceInput = {
@@ -1651,6 +2249,21 @@ export type BookingCreateWithoutChatThreadInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1661,6 +2274,9 @@ export type BookingCreateWithoutChatThreadInput = {
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutChatThreadInput = {
@@ -1690,12 +2306,30 @@ export type BookingUncheckedCreateWithoutChatThreadInput = {
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
   barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutChatThreadInput = {
@@ -1737,6 +2371,21 @@ export type BookingUpdateWithoutChatThreadInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1747,6 +2396,9 @@ export type BookingUpdateWithoutChatThreadInput = {
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutChatThreadInput = {
@@ -1776,12 +2428,30 @@ export type BookingUncheckedUpdateWithoutChatThreadInput = {
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingCreateWithoutPaymentInput = {
@@ -1807,6 +2477,21 @@ export type BookingCreateWithoutPaymentInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1817,6 +2502,9 @@ export type BookingCreateWithoutPaymentInput = {
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutPaymentInput = {
@@ -1846,12 +2534,30 @@ export type BookingUncheckedCreateWithoutPaymentInput = {
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
   barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutPaymentInput = {
@@ -1893,6 +2599,21 @@ export type BookingUpdateWithoutPaymentInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1903,6 +2624,9 @@ export type BookingUpdateWithoutPaymentInput = {
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutPaymentInput = {
@@ -1932,12 +2656,30 @@ export type BookingUncheckedUpdateWithoutPaymentInput = {
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingCreateWithoutReviewInput = {
@@ -1963,6 +2705,21 @@ export type BookingCreateWithoutReviewInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1973,6 +2730,9 @@ export type BookingCreateWithoutReviewInput = {
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutReviewInput = {
@@ -2002,12 +2762,30 @@ export type BookingUncheckedCreateWithoutReviewInput = {
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
   barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
   earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutReviewInput = {
@@ -2049,6 +2827,21 @@ export type BookingUpdateWithoutReviewInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2059,6 +2852,9 @@ export type BookingUpdateWithoutReviewInput = {
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutReviewInput = {
@@ -2088,12 +2884,30 @@ export type BookingUncheckedUpdateWithoutReviewInput = {
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingCreateWithoutEarningInput = {
@@ -2119,6 +2933,21 @@ export type BookingCreateWithoutEarningInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2129,6 +2958,9 @@ export type BookingCreateWithoutEarningInput = {
   payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipCreateNestedOneWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutEarningInput = {
@@ -2158,12 +2990,30 @@ export type BookingUncheckedCreateWithoutEarningInput = {
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
   barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
   payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
   review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
   chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipUncheckedCreateNestedOneWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutEarningInput = {
@@ -2205,6 +3055,21 @@ export type BookingUpdateWithoutEarningInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2215,6 +3080,9 @@ export type BookingUpdateWithoutEarningInput = {
   payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutEarningInput = {
@@ -2244,12 +3112,714 @@ export type BookingUncheckedUpdateWithoutEarningInput = {
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUncheckedUpdateOneWithoutBookingNestedInput
+}
+
+export type BookingCreateWithoutCreditTransactionsInput = {
+  id?: string
+  scheduledAt: Date | string
+  status?: $Enums.BookingStatus
+  paymentMethod: $Enums.PaymentMethod
+  currency?: string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: string | null
+  boletaPdfUrl?: string | null
+  boletaEstado?: string | null
+  boletaEmitidaAt?: Date | string | null
+  boletaAnuladaAt?: Date | string | null
+  boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  client: Prisma.UserCreateNestedOneWithoutBookingsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
+  service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBookingsInput
+  payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
+  review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+  earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
+  chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipCreateNestedOneWithoutBookingInput
+}
+
+export type BookingUncheckedCreateWithoutCreditTransactionsInput = {
+  id?: string
+  clientId: string
+  barberId: string
+  serviceId: string
+  scheduledAt: Date | string
+  status?: $Enums.BookingStatus
+  paymentMethod: $Enums.PaymentMethod
+  currency?: string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: string | null
+  boletaPdfUrl?: string | null
+  boletaEstado?: string | null
+  boletaEmitidaAt?: Date | string | null
+  boletaAnuladaAt?: Date | string | null
+  boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
+  barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
+  review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+  earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
+  chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedCreateNestedOneWithoutBookingInput
+  tip?: Prisma.TipUncheckedCreateNestedOneWithoutBookingInput
+}
+
+export type BookingCreateOrConnectWithoutCreditTransactionsInput = {
+  where: Prisma.BookingWhereUniqueInput
+  create: Prisma.XOR<Prisma.BookingCreateWithoutCreditTransactionsInput, Prisma.BookingUncheckedCreateWithoutCreditTransactionsInput>
+}
+
+export type BookingUpsertWithoutCreditTransactionsInput = {
+  update: Prisma.XOR<Prisma.BookingUpdateWithoutCreditTransactionsInput, Prisma.BookingUncheckedUpdateWithoutCreditTransactionsInput>
+  create: Prisma.XOR<Prisma.BookingCreateWithoutCreditTransactionsInput, Prisma.BookingUncheckedCreateWithoutCreditTransactionsInput>
+  where?: Prisma.BookingWhereInput
+}
+
+export type BookingUpdateToOneWithWhereWithoutCreditTransactionsInput = {
+  where?: Prisma.BookingWhereInput
+  data: Prisma.XOR<Prisma.BookingUpdateWithoutCreditTransactionsInput, Prisma.BookingUncheckedUpdateWithoutCreditTransactionsInput>
+}
+
+export type BookingUpdateWithoutCreditTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+  paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaPdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEstado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
+  service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBookingsNestedInput
+  payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
+  review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+  earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
+  chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUpdateOneWithoutBookingNestedInput
+}
+
+export type BookingUncheckedUpdateWithoutCreditTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
+  barberId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceId?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+  paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaPdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEstado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
+  review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
+  earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
+  chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUncheckedUpdateOneWithoutBookingNestedInput
+}
+
+export type BookingCreateWithoutCancellationRecordInput = {
+  id?: string
+  scheduledAt: Date | string
+  status?: $Enums.BookingStatus
+  paymentMethod: $Enums.PaymentMethod
+  currency?: string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: string | null
+  boletaPdfUrl?: string | null
+  boletaEstado?: string | null
+  boletaEmitidaAt?: Date | string | null
+  boletaAnuladaAt?: Date | string | null
+  boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  client: Prisma.UserCreateNestedOneWithoutBookingsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
+  service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBookingsInput
+  payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
+  review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+  earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
+  chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutBookingInput
+  tip?: Prisma.TipCreateNestedOneWithoutBookingInput
+}
+
+export type BookingUncheckedCreateWithoutCancellationRecordInput = {
+  id?: string
+  clientId: string
+  barberId: string
+  serviceId: string
+  scheduledAt: Date | string
+  status?: $Enums.BookingStatus
+  paymentMethod: $Enums.PaymentMethod
+  currency?: string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: string | null
+  boletaPdfUrl?: string | null
+  boletaEstado?: string | null
+  boletaEmitidaAt?: Date | string | null
+  boletaAnuladaAt?: Date | string | null
+  boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
+  barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
+  review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+  earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
+  chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutBookingInput
+  tip?: Prisma.TipUncheckedCreateNestedOneWithoutBookingInput
+}
+
+export type BookingCreateOrConnectWithoutCancellationRecordInput = {
+  where: Prisma.BookingWhereUniqueInput
+  create: Prisma.XOR<Prisma.BookingCreateWithoutCancellationRecordInput, Prisma.BookingUncheckedCreateWithoutCancellationRecordInput>
+}
+
+export type BookingUpsertWithoutCancellationRecordInput = {
+  update: Prisma.XOR<Prisma.BookingUpdateWithoutCancellationRecordInput, Prisma.BookingUncheckedUpdateWithoutCancellationRecordInput>
+  create: Prisma.XOR<Prisma.BookingCreateWithoutCancellationRecordInput, Prisma.BookingUncheckedCreateWithoutCancellationRecordInput>
+  where?: Prisma.BookingWhereInput
+}
+
+export type BookingUpdateToOneWithWhereWithoutCancellationRecordInput = {
+  where?: Prisma.BookingWhereInput
+  data: Prisma.XOR<Prisma.BookingUpdateWithoutCancellationRecordInput, Prisma.BookingUncheckedUpdateWithoutCancellationRecordInput>
+}
+
+export type BookingUpdateWithoutCancellationRecordInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+  paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaPdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEstado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
+  service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBookingsNestedInput
+  payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
+  review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+  earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
+  chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutBookingNestedInput
+  tip?: Prisma.TipUpdateOneWithoutBookingNestedInput
+}
+
+export type BookingUncheckedUpdateWithoutCancellationRecordInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
+  barberId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceId?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+  paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaPdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEstado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
+  review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
+  earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
+  chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutBookingNestedInput
+  tip?: Prisma.TipUncheckedUpdateOneWithoutBookingNestedInput
+}
+
+export type BookingCreateWithoutTipInput = {
+  id?: string
+  scheduledAt: Date | string
+  status?: $Enums.BookingStatus
+  paymentMethod: $Enums.PaymentMethod
+  currency?: string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: string | null
+  boletaPdfUrl?: string | null
+  boletaEstado?: string | null
+  boletaEmitidaAt?: Date | string | null
+  boletaAnuladaAt?: Date | string | null
+  boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  client: Prisma.UserCreateNestedOneWithoutBookingsInput
+  barber: Prisma.BarberProfileCreateNestedOneWithoutBookingsInput
+  service: Prisma.ServiceItemCreateNestedOneWithoutBookingsInput
+  barbershop?: Prisma.BarbershopProfileCreateNestedOneWithoutBookingsInput
+  payment?: Prisma.PaymentCreateNestedOneWithoutBookingInput
+  review?: Prisma.ReviewCreateNestedOneWithoutBookingInput
+  earning?: Prisma.EarningCreateNestedOneWithoutBookingInput
+  chatThread?: Prisma.ChatThreadCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordCreateNestedOneWithoutBookingInput
+}
+
+export type BookingUncheckedCreateWithoutTipInput = {
+  id?: string
+  clientId: string
+  barberId: string
+  serviceId: string
+  scheduledAt: Date | string
+  status?: $Enums.BookingStatus
+  paymentMethod: $Enums.PaymentMethod
+  currency?: string
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet: runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: number
+  distributableAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: string | null
+  boletaPdfUrl?: string | null
+  boletaEstado?: string | null
+  boletaEmitidaAt?: Date | string | null
+  boletaAnuladaAt?: Date | string | null
+  boletaAnulMotivo?: string | null
+  boletaTipo?: string | null
+  barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutBookingInput
+  review?: Prisma.ReviewUncheckedCreateNestedOneWithoutBookingInput
+  earning?: Prisma.EarningUncheckedCreateNestedOneWithoutBookingInput
+  chatThread?: Prisma.ChatThreadUncheckedCreateNestedOneWithoutBookingInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutBookingInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedCreateNestedOneWithoutBookingInput
+}
+
+export type BookingCreateOrConnectWithoutTipInput = {
+  where: Prisma.BookingWhereUniqueInput
+  create: Prisma.XOR<Prisma.BookingCreateWithoutTipInput, Prisma.BookingUncheckedCreateWithoutTipInput>
+}
+
+export type BookingUpsertWithoutTipInput = {
+  update: Prisma.XOR<Prisma.BookingUpdateWithoutTipInput, Prisma.BookingUncheckedUpdateWithoutTipInput>
+  create: Prisma.XOR<Prisma.BookingCreateWithoutTipInput, Prisma.BookingUncheckedCreateWithoutTipInput>
+  where?: Prisma.BookingWhereInput
+}
+
+export type BookingUpdateToOneWithWhereWithoutTipInput = {
+  where?: Prisma.BookingWhereInput
+  data: Prisma.XOR<Prisma.BookingUpdateWithoutTipInput, Prisma.BookingUncheckedUpdateWithoutTipInput>
+}
+
+export type BookingUpdateWithoutTipInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+  paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaPdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEstado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  client?: Prisma.UserUpdateOneRequiredWithoutBookingsNestedInput
+  barber?: Prisma.BarberProfileUpdateOneRequiredWithoutBookingsNestedInput
+  service?: Prisma.ServiceItemUpdateOneRequiredWithoutBookingsNestedInput
+  barbershop?: Prisma.BarbershopProfileUpdateOneWithoutBookingsNestedInput
+  payment?: Prisma.PaymentUpdateOneWithoutBookingNestedInput
+  review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
+  earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
+  chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUpdateOneWithoutBookingNestedInput
+}
+
+export type BookingUncheckedUpdateWithoutTipInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
+  barberId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceId?: Prisma.StringFieldUpdateOperationsInput | string
+  scheduledAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+  paymentMethod?: Prisma.EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFee?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberNet?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  grossAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  platformFeePercent?: Prisma.FloatFieldUpdateOperationsInput | number
+  distributableAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  barberAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  shopAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  netPayoutToBarber?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  serviceSnapshot?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  boletaFolio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaPdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEstado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaEmitidaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  payment?: Prisma.PaymentUncheckedUpdateOneWithoutBookingNestedInput
+  review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
+  earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
+  chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingCreateManyClientInput = {
@@ -2278,6 +3848,21 @@ export type BookingCreateManyClientInput = {
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
   barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2306,6 +3891,21 @@ export type BookingUpdateWithoutClientInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2316,6 +3916,9 @@ export type BookingUpdateWithoutClientInput = {
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutClientInput = {
@@ -2344,6 +3947,21 @@ export type BookingUncheckedUpdateWithoutClientInput = {
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2351,6 +3969,9 @@ export type BookingUncheckedUpdateWithoutClientInput = {
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutClientInput = {
@@ -2379,6 +4000,21 @@ export type BookingUncheckedUpdateManyWithoutClientInput = {
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2410,6 +4046,21 @@ export type BookingCreateManyBarberInput = {
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
   barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2438,6 +4089,21 @@ export type BookingUpdateWithoutBarberInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2448,6 +4114,9 @@ export type BookingUpdateWithoutBarberInput = {
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutBarberInput = {
@@ -2476,6 +4145,21 @@ export type BookingUncheckedUpdateWithoutBarberInput = {
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2483,6 +4167,9 @@ export type BookingUncheckedUpdateWithoutBarberInput = {
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutBarberInput = {
@@ -2511,6 +4198,21 @@ export type BookingUncheckedUpdateManyWithoutBarberInput = {
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2542,6 +4244,21 @@ export type BookingCreateManyBarbershopInput = {
   boletaAnuladaAt?: Date | string | null
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2570,6 +4287,21 @@ export type BookingUpdateWithoutBarbershopInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2580,6 +4312,9 @@ export type BookingUpdateWithoutBarbershopInput = {
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutBarbershopInput = {
@@ -2608,6 +4343,21 @@ export type BookingUncheckedUpdateWithoutBarbershopInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2615,6 +4365,9 @@ export type BookingUncheckedUpdateWithoutBarbershopInput = {
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutBarbershopInput = {
@@ -2643,6 +4396,21 @@ export type BookingUncheckedUpdateManyWithoutBarbershopInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2674,6 +4442,21 @@ export type BookingCreateManyServiceInput = {
   boletaAnulMotivo?: string | null
   boletaTipo?: string | null
   barbershopId?: string | null
+  cancelledAt?: Date | string | null
+  cancelledByUserId?: string | null
+  cancelledByRole?: $Enums.CancellerRole | null
+  cancellationReason?: $Enums.CancellationReason | null
+  cancellationNotes?: string | null
+  refundAmount?: number | null
+  refundTransactionId?: string | null
+  compensationBonusAmount?: number | null
+  compensationBonusTxId?: string | null
+  hasTip?: boolean
+  tipAmount?: number | null
+  tipId?: string | null
+  rateReminderSkipCount?: number
+  rateReminderLastShownAt?: Date | string | null
+  rateReminderStatus?: $Enums.RateReminderStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -2702,6 +4485,21 @@ export type BookingUpdateWithoutServiceInput = {
   boletaAnuladaAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2712,6 +4510,9 @@ export type BookingUpdateWithoutServiceInput = {
   review?: Prisma.ReviewUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutServiceInput = {
@@ -2740,6 +4541,21 @@ export type BookingUncheckedUpdateWithoutServiceInput = {
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2747,6 +4563,9 @@ export type BookingUncheckedUpdateWithoutServiceInput = {
   review?: Prisma.ReviewUncheckedUpdateOneWithoutBookingNestedInput
   earning?: Prisma.EarningUncheckedUpdateOneWithoutBookingNestedInput
   chatThread?: Prisma.ChatThreadUncheckedUpdateOneWithoutBookingNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutBookingNestedInput
+  cancellationRecord?: Prisma.CancellationRecordUncheckedUpdateOneWithoutBookingNestedInput
+  tip?: Prisma.TipUncheckedUpdateOneWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutServiceInput = {
@@ -2775,11 +4594,55 @@ export type BookingUncheckedUpdateManyWithoutServiceInput = {
   boletaAnulMotivo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   boletaTipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   barbershopId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cancelledByRole?: Prisma.NullableEnumCancellerRoleFieldUpdateOperationsInput | $Enums.CancellerRole | null
+  cancellationReason?: Prisma.NullableEnumCancellationReasonFieldUpdateOperationsInput | $Enums.CancellationReason | null
+  cancellationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refundAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  refundTransactionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compensationBonusAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  compensationBonusTxId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasTip?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  tipAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rateReminderSkipCount?: Prisma.IntFieldUpdateOperationsInput | number
+  rateReminderLastShownAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rateReminderStatus?: Prisma.EnumRateReminderStatusFieldUpdateOperationsInput | $Enums.RateReminderStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
+
+/**
+ * Count Type BookingCountOutputType
+ */
+
+export type BookingCountOutputType = {
+  creditTransactions: number
+}
+
+export type BookingCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  creditTransactions?: boolean | BookingCountOutputTypeCountCreditTransactionsArgs
+}
+
+/**
+ * BookingCountOutputType without action
+ */
+export type BookingCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BookingCountOutputType
+   */
+  select?: Prisma.BookingCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * BookingCountOutputType without action
+ */
+export type BookingCountOutputTypeCountCreditTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CreditTransactionWhereInput
+}
 
 
 export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -2809,6 +4672,21 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   boletaAnulMotivo?: boolean
   boletaTipo?: boolean
   barbershopId?: boolean
+  cancelledAt?: boolean
+  cancelledByUserId?: boolean
+  cancelledByRole?: boolean
+  cancellationReason?: boolean
+  cancellationNotes?: boolean
+  refundAmount?: boolean
+  refundTransactionId?: boolean
+  compensationBonusAmount?: boolean
+  compensationBonusTxId?: boolean
+  hasTip?: boolean
+  tipAmount?: boolean
+  tipId?: boolean
+  rateReminderSkipCount?: boolean
+  rateReminderLastShownAt?: boolean
+  rateReminderStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -2820,6 +4698,10 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   review?: boolean | Prisma.Booking$reviewArgs<ExtArgs>
   earning?: boolean | Prisma.Booking$earningArgs<ExtArgs>
   chatThread?: boolean | Prisma.Booking$chatThreadArgs<ExtArgs>
+  creditTransactions?: boolean | Prisma.Booking$creditTransactionsArgs<ExtArgs>
+  cancellationRecord?: boolean | Prisma.Booking$cancellationRecordArgs<ExtArgs>
+  tip?: boolean | Prisma.Booking$tipArgs<ExtArgs>
+  _count?: boolean | Prisma.BookingCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["booking"]>
 
 export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -2849,6 +4731,21 @@ export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   boletaAnulMotivo?: boolean
   boletaTipo?: boolean
   barbershopId?: boolean
+  cancelledAt?: boolean
+  cancelledByUserId?: boolean
+  cancelledByRole?: boolean
+  cancellationReason?: boolean
+  cancellationNotes?: boolean
+  refundAmount?: boolean
+  refundTransactionId?: boolean
+  compensationBonusAmount?: boolean
+  compensationBonusTxId?: boolean
+  hasTip?: boolean
+  tipAmount?: boolean
+  tipId?: boolean
+  rateReminderSkipCount?: boolean
+  rateReminderLastShownAt?: boolean
+  rateReminderStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -2885,6 +4782,21 @@ export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   boletaAnulMotivo?: boolean
   boletaTipo?: boolean
   barbershopId?: boolean
+  cancelledAt?: boolean
+  cancelledByUserId?: boolean
+  cancelledByRole?: boolean
+  cancellationReason?: boolean
+  cancellationNotes?: boolean
+  refundAmount?: boolean
+  refundTransactionId?: boolean
+  compensationBonusAmount?: boolean
+  compensationBonusTxId?: boolean
+  hasTip?: boolean
+  tipAmount?: boolean
+  tipId?: boolean
+  rateReminderSkipCount?: boolean
+  rateReminderLastShownAt?: boolean
+  rateReminderStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -2921,12 +4833,27 @@ export type BookingSelectScalar = {
   boletaAnulMotivo?: boolean
   boletaTipo?: boolean
   barbershopId?: boolean
+  cancelledAt?: boolean
+  cancelledByUserId?: boolean
+  cancelledByRole?: boolean
+  cancellationReason?: boolean
+  cancellationNotes?: boolean
+  refundAmount?: boolean
+  refundTransactionId?: boolean
+  compensationBonusAmount?: boolean
+  compensationBonusTxId?: boolean
+  hasTip?: boolean
+  tipAmount?: boolean
+  tipId?: boolean
+  rateReminderSkipCount?: boolean
+  rateReminderLastShownAt?: boolean
+  rateReminderStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "barberId" | "serviceId" | "scheduledAt" | "status" | "paymentMethod" | "currency" | "totalAmount" | "platformFee" | "barberNet" | "grossAmount" | "platformFeePercent" | "distributableAmount" | "barberAmount" | "shopAmount" | "netPayoutToBarber" | "serviceSnapshot" | "boletaFolio" | "boletaPdfUrl" | "boletaEstado" | "boletaEmitidaAt" | "boletaAnuladaAt" | "boletaAnulMotivo" | "boletaTipo" | "barbershopId" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["booking"]>
+export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "barberId" | "serviceId" | "scheduledAt" | "status" | "paymentMethod" | "currency" | "totalAmount" | "platformFee" | "barberNet" | "grossAmount" | "platformFeePercent" | "distributableAmount" | "barberAmount" | "shopAmount" | "netPayoutToBarber" | "serviceSnapshot" | "boletaFolio" | "boletaPdfUrl" | "boletaEstado" | "boletaEmitidaAt" | "boletaAnuladaAt" | "boletaAnulMotivo" | "boletaTipo" | "barbershopId" | "cancelledAt" | "cancelledByUserId" | "cancelledByRole" | "cancellationReason" | "cancellationNotes" | "refundAmount" | "refundTransactionId" | "compensationBonusAmount" | "compensationBonusTxId" | "hasTip" | "tipAmount" | "tipId" | "rateReminderSkipCount" | "rateReminderLastShownAt" | "rateReminderStatus" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["booking"]>
 export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   barber?: boolean | Prisma.BarberProfileDefaultArgs<ExtArgs>
@@ -2936,6 +4863,10 @@ export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   review?: boolean | Prisma.Booking$reviewArgs<ExtArgs>
   earning?: boolean | Prisma.Booking$earningArgs<ExtArgs>
   chatThread?: boolean | Prisma.Booking$chatThreadArgs<ExtArgs>
+  creditTransactions?: boolean | Prisma.Booking$creditTransactionsArgs<ExtArgs>
+  cancellationRecord?: boolean | Prisma.Booking$cancellationRecordArgs<ExtArgs>
+  tip?: boolean | Prisma.Booking$tipArgs<ExtArgs>
+  _count?: boolean | Prisma.BookingCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BookingIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -2961,6 +4892,9 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     review: Prisma.$ReviewPayload<ExtArgs> | null
     earning: Prisma.$EarningPayload<ExtArgs> | null
     chatThread: Prisma.$ChatThreadPayload<ExtArgs> | null
+    creditTransactions: Prisma.$CreditTransactionPayload<ExtArgs>[]
+    cancellationRecord: Prisma.$CancellationRecordPayload<ExtArgs> | null
+    tip: Prisma.$TipPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2989,6 +4923,21 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     boletaAnulMotivo: string | null
     boletaTipo: string | null
     barbershopId: string | null
+    cancelledAt: Date | null
+    cancelledByUserId: string | null
+    cancelledByRole: $Enums.CancellerRole | null
+    cancellationReason: $Enums.CancellationReason | null
+    cancellationNotes: string | null
+    refundAmount: number | null
+    refundTransactionId: string | null
+    compensationBonusAmount: number | null
+    compensationBonusTxId: string | null
+    hasTip: boolean
+    tipAmount: number | null
+    tipId: string | null
+    rateReminderSkipCount: number
+    rateReminderLastShownAt: Date | null
+    rateReminderStatus: $Enums.RateReminderStatus
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
@@ -3394,6 +5343,9 @@ export interface Prisma__BookingClient<T, Null = never, ExtArgs extends runtime.
   review<T extends Prisma.Booking$reviewArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$reviewArgs<ExtArgs>>): Prisma.Prisma__ReviewClient<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   earning<T extends Prisma.Booking$earningArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$earningArgs<ExtArgs>>): Prisma.Prisma__EarningClient<runtime.Types.Result.GetResult<Prisma.$EarningPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   chatThread<T extends Prisma.Booking$chatThreadArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$chatThreadArgs<ExtArgs>>): Prisma.Prisma__ChatThreadClient<runtime.Types.Result.GetResult<Prisma.$ChatThreadPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  creditTransactions<T extends Prisma.Booking$creditTransactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$creditTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cancellationRecord<T extends Prisma.Booking$cancellationRecordArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$cancellationRecordArgs<ExtArgs>>): Prisma.Prisma__CancellationRecordClient<runtime.Types.Result.GetResult<Prisma.$CancellationRecordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  tip<T extends Prisma.Booking$tipArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$tipArgs<ExtArgs>>): Prisma.Prisma__TipClient<runtime.Types.Result.GetResult<Prisma.$TipPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3449,6 +5401,21 @@ export interface BookingFieldRefs {
   readonly boletaAnulMotivo: Prisma.FieldRef<"Booking", 'String'>
   readonly boletaTipo: Prisma.FieldRef<"Booking", 'String'>
   readonly barbershopId: Prisma.FieldRef<"Booking", 'String'>
+  readonly cancelledAt: Prisma.FieldRef<"Booking", 'DateTime'>
+  readonly cancelledByUserId: Prisma.FieldRef<"Booking", 'String'>
+  readonly cancelledByRole: Prisma.FieldRef<"Booking", 'CancellerRole'>
+  readonly cancellationReason: Prisma.FieldRef<"Booking", 'CancellationReason'>
+  readonly cancellationNotes: Prisma.FieldRef<"Booking", 'String'>
+  readonly refundAmount: Prisma.FieldRef<"Booking", 'Int'>
+  readonly refundTransactionId: Prisma.FieldRef<"Booking", 'String'>
+  readonly compensationBonusAmount: Prisma.FieldRef<"Booking", 'Int'>
+  readonly compensationBonusTxId: Prisma.FieldRef<"Booking", 'String'>
+  readonly hasTip: Prisma.FieldRef<"Booking", 'Boolean'>
+  readonly tipAmount: Prisma.FieldRef<"Booking", 'Int'>
+  readonly tipId: Prisma.FieldRef<"Booking", 'String'>
+  readonly rateReminderSkipCount: Prisma.FieldRef<"Booking", 'Int'>
+  readonly rateReminderLastShownAt: Prisma.FieldRef<"Booking", 'DateTime'>
+  readonly rateReminderStatus: Prisma.FieldRef<"Booking", 'RateReminderStatus'>
   readonly createdAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"Booking", 'DateTime'>
@@ -3945,6 +5912,68 @@ export type Booking$chatThreadArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   include?: Prisma.ChatThreadInclude<ExtArgs> | null
   where?: Prisma.ChatThreadWhereInput
+}
+
+/**
+ * Booking.creditTransactions
+ */
+export type Booking$creditTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CreditTransaction
+   */
+  select?: Prisma.CreditTransactionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CreditTransaction
+   */
+  omit?: Prisma.CreditTransactionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CreditTransactionInclude<ExtArgs> | null
+  where?: Prisma.CreditTransactionWhereInput
+  orderBy?: Prisma.CreditTransactionOrderByWithRelationInput | Prisma.CreditTransactionOrderByWithRelationInput[]
+  cursor?: Prisma.CreditTransactionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CreditTransactionScalarFieldEnum | Prisma.CreditTransactionScalarFieldEnum[]
+}
+
+/**
+ * Booking.cancellationRecord
+ */
+export type Booking$cancellationRecordArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CancellationRecord
+   */
+  select?: Prisma.CancellationRecordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CancellationRecord
+   */
+  omit?: Prisma.CancellationRecordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CancellationRecordInclude<ExtArgs> | null
+  where?: Prisma.CancellationRecordWhereInput
+}
+
+/**
+ * Booking.tip
+ */
+export type Booking$tipArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Tip
+   */
+  select?: Prisma.TipSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Tip
+   */
+  omit?: Prisma.TipOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TipInclude<ExtArgs> | null
+  where?: Prisma.TipWhereInput
 }
 
 /**

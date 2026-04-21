@@ -65,6 +65,8 @@ export type ReviewCountAggregateOutputType = {
   barberId: number
   rating: number
   comment: number
+  compliments: number
+  issues: number
   createdAt: number
   updatedAt: number
   deletedAt: number
@@ -111,6 +113,8 @@ export type ReviewCountAggregateInputType = {
   barberId?: true
   rating?: true
   comment?: true
+  compliments?: true
+  issues?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -210,6 +214,8 @@ export type ReviewGroupByOutputType = {
   barberId: string
   rating: number
   comment: string | null
+  compliments: string[]
+  issues: string[]
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
@@ -245,6 +251,8 @@ export type ReviewWhereInput = {
   barberId?: Prisma.StringFilter<"Review"> | string
   rating?: Prisma.IntFilter<"Review"> | number
   comment?: Prisma.StringNullableFilter<"Review"> | string | null
+  compliments?: Prisma.StringNullableListFilter<"Review">
+  issues?: Prisma.StringNullableListFilter<"Review">
   createdAt?: Prisma.DateTimeFilter<"Review"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Review"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Review"> | Date | string | null
@@ -260,6 +268,8 @@ export type ReviewOrderByWithRelationInput = {
   barberId?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   comment?: Prisma.SortOrderInput | Prisma.SortOrder
+  compliments?: Prisma.SortOrder
+  issues?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -278,6 +288,8 @@ export type ReviewWhereUniqueInput = Prisma.AtLeast<{
   barberId?: Prisma.StringFilter<"Review"> | string
   rating?: Prisma.IntFilter<"Review"> | number
   comment?: Prisma.StringNullableFilter<"Review"> | string | null
+  compliments?: Prisma.StringNullableListFilter<"Review">
+  issues?: Prisma.StringNullableListFilter<"Review">
   createdAt?: Prisma.DateTimeFilter<"Review"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Review"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Review"> | Date | string | null
@@ -293,6 +305,8 @@ export type ReviewOrderByWithAggregationInput = {
   barberId?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   comment?: Prisma.SortOrderInput | Prisma.SortOrder
+  compliments?: Prisma.SortOrder
+  issues?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -313,6 +327,8 @@ export type ReviewScalarWhereWithAggregatesInput = {
   barberId?: Prisma.StringWithAggregatesFilter<"Review"> | string
   rating?: Prisma.IntWithAggregatesFilter<"Review"> | number
   comment?: Prisma.StringNullableWithAggregatesFilter<"Review"> | string | null
+  compliments?: Prisma.StringNullableListFilter<"Review">
+  issues?: Prisma.StringNullableListFilter<"Review">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Review"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Review"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Review"> | Date | string | null
@@ -322,6 +338,8 @@ export type ReviewCreateInput = {
   id?: string
   rating: number
   comment?: string | null
+  compliments?: Prisma.ReviewCreatecomplimentsInput | string[]
+  issues?: Prisma.ReviewCreateissuesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -337,6 +355,8 @@ export type ReviewUncheckedCreateInput = {
   barberId: string
   rating: number
   comment?: string | null
+  compliments?: Prisma.ReviewCreatecomplimentsInput | string[]
+  issues?: Prisma.ReviewCreateissuesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -346,6 +366,8 @@ export type ReviewUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compliments?: Prisma.ReviewUpdatecomplimentsInput | string[]
+  issues?: Prisma.ReviewUpdateissuesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -361,6 +383,8 @@ export type ReviewUncheckedUpdateInput = {
   barberId?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compliments?: Prisma.ReviewUpdatecomplimentsInput | string[]
+  issues?: Prisma.ReviewUpdateissuesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -373,6 +397,8 @@ export type ReviewCreateManyInput = {
   barberId: string
   rating: number
   comment?: string | null
+  compliments?: Prisma.ReviewCreatecomplimentsInput | string[]
+  issues?: Prisma.ReviewCreateissuesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -382,6 +408,8 @@ export type ReviewUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compliments?: Prisma.ReviewUpdatecomplimentsInput | string[]
+  issues?: Prisma.ReviewUpdateissuesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -394,6 +422,8 @@ export type ReviewUncheckedUpdateManyInput = {
   barberId?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compliments?: Prisma.ReviewUpdatecomplimentsInput | string[]
+  issues?: Prisma.ReviewUpdateissuesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -414,6 +444,14 @@ export type ReviewNullableScalarRelationFilter = {
   isNot?: Prisma.ReviewWhereInput | null
 }
 
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
 export type ReviewCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bookingId?: Prisma.SortOrder
@@ -421,6 +459,8 @@ export type ReviewCountOrderByAggregateInput = {
   barberId?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   comment?: Prisma.SortOrder
+  compliments?: Prisma.SortOrder
+  issues?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -574,10 +614,30 @@ export type ReviewUncheckedUpdateOneWithoutBookingNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ReviewUpdateToOneWithWhereWithoutBookingInput, Prisma.ReviewUpdateWithoutBookingInput>, Prisma.ReviewUncheckedUpdateWithoutBookingInput>
 }
 
+export type ReviewCreatecomplimentsInput = {
+  set: string[]
+}
+
+export type ReviewCreateissuesInput = {
+  set: string[]
+}
+
+export type ReviewUpdatecomplimentsInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type ReviewUpdateissuesInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 export type ReviewCreateWithoutClientInput = {
   id?: string
   rating: number
   comment?: string | null
+  compliments?: Prisma.ReviewCreatecomplimentsInput | string[]
+  issues?: Prisma.ReviewCreateissuesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -591,6 +651,8 @@ export type ReviewUncheckedCreateWithoutClientInput = {
   barberId: string
   rating: number
   comment?: string | null
+  compliments?: Prisma.ReviewCreatecomplimentsInput | string[]
+  issues?: Prisma.ReviewCreateissuesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -632,6 +694,8 @@ export type ReviewScalarWhereInput = {
   barberId?: Prisma.StringFilter<"Review"> | string
   rating?: Prisma.IntFilter<"Review"> | number
   comment?: Prisma.StringNullableFilter<"Review"> | string | null
+  compliments?: Prisma.StringNullableListFilter<"Review">
+  issues?: Prisma.StringNullableListFilter<"Review">
   createdAt?: Prisma.DateTimeFilter<"Review"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Review"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Review"> | Date | string | null
@@ -641,6 +705,8 @@ export type ReviewCreateWithoutBarberInput = {
   id?: string
   rating: number
   comment?: string | null
+  compliments?: Prisma.ReviewCreatecomplimentsInput | string[]
+  issues?: Prisma.ReviewCreateissuesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -654,6 +720,8 @@ export type ReviewUncheckedCreateWithoutBarberInput = {
   clientId: string
   rating: number
   comment?: string | null
+  compliments?: Prisma.ReviewCreatecomplimentsInput | string[]
+  issues?: Prisma.ReviewCreateissuesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -689,6 +757,8 @@ export type ReviewCreateWithoutBookingInput = {
   id?: string
   rating: number
   comment?: string | null
+  compliments?: Prisma.ReviewCreatecomplimentsInput | string[]
+  issues?: Prisma.ReviewCreateissuesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -702,6 +772,8 @@ export type ReviewUncheckedCreateWithoutBookingInput = {
   barberId: string
   rating: number
   comment?: string | null
+  compliments?: Prisma.ReviewCreatecomplimentsInput | string[]
+  issues?: Prisma.ReviewCreateissuesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -727,6 +799,8 @@ export type ReviewUpdateWithoutBookingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compliments?: Prisma.ReviewUpdatecomplimentsInput | string[]
+  issues?: Prisma.ReviewUpdateissuesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -740,6 +814,8 @@ export type ReviewUncheckedUpdateWithoutBookingInput = {
   barberId?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compliments?: Prisma.ReviewUpdatecomplimentsInput | string[]
+  issues?: Prisma.ReviewUpdateissuesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -751,6 +827,8 @@ export type ReviewCreateManyClientInput = {
   barberId: string
   rating: number
   comment?: string | null
+  compliments?: Prisma.ReviewCreatecomplimentsInput | string[]
+  issues?: Prisma.ReviewCreateissuesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -760,6 +838,8 @@ export type ReviewUpdateWithoutClientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compliments?: Prisma.ReviewUpdatecomplimentsInput | string[]
+  issues?: Prisma.ReviewUpdateissuesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -773,6 +853,8 @@ export type ReviewUncheckedUpdateWithoutClientInput = {
   barberId?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compliments?: Prisma.ReviewUpdatecomplimentsInput | string[]
+  issues?: Prisma.ReviewUpdateissuesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -784,6 +866,8 @@ export type ReviewUncheckedUpdateManyWithoutClientInput = {
   barberId?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compliments?: Prisma.ReviewUpdatecomplimentsInput | string[]
+  issues?: Prisma.ReviewUpdateissuesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -795,6 +879,8 @@ export type ReviewCreateManyBarberInput = {
   clientId: string
   rating: number
   comment?: string | null
+  compliments?: Prisma.ReviewCreatecomplimentsInput | string[]
+  issues?: Prisma.ReviewCreateissuesInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -804,6 +890,8 @@ export type ReviewUpdateWithoutBarberInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compliments?: Prisma.ReviewUpdatecomplimentsInput | string[]
+  issues?: Prisma.ReviewUpdateissuesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -817,6 +905,8 @@ export type ReviewUncheckedUpdateWithoutBarberInput = {
   clientId?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compliments?: Prisma.ReviewUpdatecomplimentsInput | string[]
+  issues?: Prisma.ReviewUpdateissuesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -828,6 +918,8 @@ export type ReviewUncheckedUpdateManyWithoutBarberInput = {
   clientId?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compliments?: Prisma.ReviewUpdatecomplimentsInput | string[]
+  issues?: Prisma.ReviewUpdateissuesInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -842,6 +934,8 @@ export type ReviewSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   barberId?: boolean
   rating?: boolean
   comment?: boolean
+  compliments?: boolean
+  issues?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -857,6 +951,8 @@ export type ReviewSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   barberId?: boolean
   rating?: boolean
   comment?: boolean
+  compliments?: boolean
+  issues?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -872,6 +968,8 @@ export type ReviewSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   barberId?: boolean
   rating?: boolean
   comment?: boolean
+  compliments?: boolean
+  issues?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -887,12 +985,14 @@ export type ReviewSelectScalar = {
   barberId?: boolean
   rating?: boolean
   comment?: boolean
+  compliments?: boolean
+  issues?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type ReviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookingId" | "clientId" | "barberId" | "rating" | "comment" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["review"]>
+export type ReviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookingId" | "clientId" | "barberId" | "rating" | "comment" | "compliments" | "issues" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["review"]>
 export type ReviewInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   booking?: boolean | Prisma.BookingDefaultArgs<ExtArgs>
   client?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -923,6 +1023,8 @@ export type $ReviewPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     barberId: string
     rating: number
     comment: string | null
+    compliments: string[]
+    issues: string[]
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
@@ -1358,6 +1460,8 @@ export interface ReviewFieldRefs {
   readonly barberId: Prisma.FieldRef<"Review", 'String'>
   readonly rating: Prisma.FieldRef<"Review", 'Int'>
   readonly comment: Prisma.FieldRef<"Review", 'String'>
+  readonly compliments: Prisma.FieldRef<"Review", 'String[]'>
+  readonly issues: Prisma.FieldRef<"Review", 'String[]'>
   readonly createdAt: Prisma.FieldRef<"Review", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Review", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"Review", 'DateTime'>

@@ -268,11 +268,83 @@ export class BookingsService {
       this.notifications.create(booking.clientId, NotificationType.BOOKING_CANCELLED, 'Reserva cancelada', `Tu reserva de ${serviceName} fue cancelada`).catch(() => {});
       this.chat.sendSystemMessage(booking.id, 'Reserva cancelada').catch(() => {});
     } else if (dto.status === BookingStatus.COMPLETED) {
-      this.notifications.create(booking.clientId, NotificationType.BOOKING_COMPLETED, '¿Cómo fue tu experiencia?', `Califica tu cita de ${serviceName} con ${barberName}`).catch(() => {});
+      this.notifications.create(booking.clientId, NotificationType.BOOKING_COMPLETED, `¿Cómo estuvo tu corte con ${barberName}?`, 'Califica y deja propina').catch(() => {});
       this.chat.sendSystemMessage(booking.id, 'Reserva completada').catch(() => {});
     }
 
     return this.formatBooking(updated);
+  }
+
+  // ── Rating reminder ──────────────────────────────────────────────────────
+
+  async getPendingRating(clientId: string) {
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    const twentyFourHoursAgo = new Date();
+    twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24);
+
+    const booking = await this.prisma.client.booking.findFirst({
+      where: {
+        clientId,
+        status: 'COMPLETED',
+        hasTip: false,
+        rateReminderStatus: 'PENDING',
+        updatedAt: { gte: sevenDaysAgo },
+        deletedAt: null,
+        OR: [
+          { rateReminderLastShownAt: null },
+          { rateReminderLastShownAt: { lt: twentyFourHoursAgo } },
+        ],
+      },
+      orderBy: { updatedAt: 'desc' },
+      include: {
+        barber: {
+          include: { user: { select: { id: true, name: true, avatarUrl: true } } },
+        },
+        service: { select: { name: true, durationMin: true } },
+      },
+    });
+
+    if (!booking) return null;
+
+    // Update lastShownAt
+    await this.prisma.client.booking.update({
+      where: { id: booking.id },
+      data: { rateReminderLastShownAt: new Date() },
+    });
+
+    return {
+      id: booking.id,
+      barberId: booking.barber.id,
+      barber: {
+        name: booking.barber.user.name,
+        avatarUrl: booking.barber.user.avatarUrl,
+        rating: booking.barber.rating,
+      },
+      service: { name: booking.service.name, durationMin: booking.service.durationMin },
+      scheduledAt: booking.scheduledAt,
+      completedAt: booking.updatedAt,
+      grossAmount: Number(booking.grossAmount),
+      paymentMethod: booking.paymentMethod,
+    };
+  }
+
+  async skipRating(bookingId: string, clientId: string) {
+    const booking = await this.prisma.client.booking.findFirst({
+      where: { id: bookingId, clientId, deletedAt: null },
+      select: { rateReminderSkipCount: true },
+    });
+    if (!booking) return;
+
+    const newCount = booking.rateReminderSkipCount + 1;
+    await this.prisma.client.booking.update({
+      where: { id: bookingId },
+      data: {
+        rateReminderSkipCount: newCount,
+        rateReminderLastShownAt: new Date(),
+        rateReminderStatus: newCount >= 3 ? 'SKIPPED_MAX' : 'PENDING',
+      },
+    });
   }
 
   // ── Helpers ────────────────────────────────────────────────────────────────

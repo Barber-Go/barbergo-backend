@@ -45,6 +45,22 @@ export class BookingsController {
     return this.bookingsService.findForClient(req.user.id);
   }
 
+  // GET /api/v1/bookings/pending-rating — booking awaiting client rating
+  @Get('pending-rating')
+  @Roles(Role.CLIENT)
+  async getPendingRating(@Request() req: { user: JwtUser }) {
+    const booking = await this.bookingsService.getPendingRating(req.user.id);
+    return { data: { booking }, message: 'Booking pendiente de calificación', statusCode: 200 };
+  }
+
+  // POST /api/v1/bookings/:id/skip-rating — client skips rating modal
+  @Post(':id/skip-rating')
+  @Roles(Role.CLIENT)
+  async skipRating(@Param('id') id: string, @Request() req: { user: JwtUser }) {
+    await this.bookingsService.skipRating(id, req.user.id);
+    return { data: null, message: 'Rating omitido', statusCode: 200 };
+  }
+
   // GET /api/v1/bookings/:id — single booking (owner or admin)
   @Get(':id')
   @Roles(Role.CLIENT, Role.BARBER, Role.BARBER_INDEPENDENT, Role.BARBER_EMPLOYEE, Role.ADMIN)

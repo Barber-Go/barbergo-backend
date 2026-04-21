@@ -53,7 +53,7 @@ export class BarbersService {
     const users = await this.prisma.client.user.findMany({
       where: {
         role: 'BARBER',
-        barberProfile: { isActive: true },
+        barberProfile: { isActive: true, isCurrentlySuspended: false },
       },
       include: {
         barberProfile: {
@@ -102,7 +102,7 @@ export class BarbersService {
         ? barbers.filter((b) => b.distance == null || b.distance <= radius)
         : barbers;
 
-    // Sort by distance if available, otherwise by rating
+    // Sort: distance first, then rating (warning-flagged barbers pushed down)
     return filtered.sort((a, b) => {
       if (a.distance != null && b.distance != null) return a.distance - b.distance;
       return b.rating - a.rating;

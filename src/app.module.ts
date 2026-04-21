@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ScheduleModule } from '@nestjs/schedule';
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { CommissionsModule } from './commissions/commissions.module';
@@ -26,6 +27,10 @@ import { BillingModule } from './billing/billing.module';
 import { PointsModule } from './points/points.module';
 import { ManualBookingsModule } from './manual-bookings/manual-bookings.module';
 import { BarberEmployeeModule } from './barber-employee/barber-employee.module';
+import { CreditsModule } from './credits/credits.module';
+import { CancellationsModule } from './cancellations/cancellations.module';
+import { TipsModule } from './tips/tips.module';
+import { ReportsModule } from './reports/reports.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -35,6 +40,7 @@ import { AppService } from './app.service';
       isGlobal: true,
       envFilePath: '.env',
     }),
+    ScheduleModule.forRoot(),
     PrismaModule,
     StorageModule,
     PushModule,
@@ -61,6 +67,10 @@ import { AppService } from './app.service';
     PointsModule,
     ManualBookingsModule,
     BarberEmployeeModule,
+    CreditsModule,
+    CancellationsModule,
+    TipsModule,
+    ReportsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

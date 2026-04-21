@@ -120,6 +120,40 @@ enum InvitationStatus {
   REVOKED
 }
 
+enum CancellerRole {
+  CLIENT
+  BARBER
+  BARBERSHOP
+  ADMIN
+}
+
+enum CancellationReason {
+  CLIENT_CANT_ATTEND
+  CLIENT_WRONG_TIME
+  CLIENT_CHANGED_MIND
+  CLIENT_EMERGENCY
+  CLIENT_OTHER
+  PROVIDER_ILLNESS
+  PROVIDER_PERSONAL_ISSUE
+  PROVIDER_LOCAL_ISSUE
+  PROVIDER_EQUIPMENT
+  PROVIDER_OVERBOOKING
+  PROVIDER_OTHER
+  ADMIN_POLICY
+}
+
+enum ProviderKind {
+  BARBER_INDEPENDENT
+  BARBERSHOP_OWNER
+  BARBER_EMPLOYEE
+}
+
+enum SuspensionLevel {
+  WARNING
+  TEMPORARY_SUSPENSION
+  UNDER_REVIEW
+}
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // Tenant (enterprise chain layer)
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -195,6 +229,18 @@ model User {
   invitationsSent     BarberInvitation[] @relation("UserInvitations")
   invitationsAccepted BarberInvitation[] @relation("AcceptedInvitations")
 
+  // Credits
+  creditWallet        CreditWallet?
+  creditTransactions  CreditTransaction[]
+  adminCreditGrants   CreditTransaction[]  @relation("AdminCreditGrants")
+
+  // Tips
+  tipsGiven     Tip[] @relation("ClientTips")
+  tipsReceived  Tip[] @relation("BarberTips")
+
+  // Reports
+  reports       Report[] @relation("ReporterReports")
+
   @@index([tenantId])
   @@map("users")
 }
@@ -227,6 +273,15 @@ model BarberProfile {
   rutTributario    String?
   tipoClaveSii     String?              // "tributaria" | "clave_unica"
   claveTributaria  String?              // AES-256-GCM encrypted
+
+  // Cancellation metrics
+  cancellationRate     Float?           @default(0)
+  cancellationCount30d Int              @default(0)
+  bookingsCount30d     Int              @default(0)
+  isCurrentlySuspended Boolean          @default(false)
+  suspensionLevel      SuspensionLevel?
+  suspensionExpiresAt  DateTime?
+
   createdAt        DateTime             @default(now())
   updatedAt        DateTime             @updatedAt
   deletedAt        DateTime?
@@ -266,6 +321,15 @@ model BarbershopProfile {
   currency     String           @default("CLP")
   country      String           @default("CL")
   scheduleJson String?
+
+  // Cancellation metrics
+  cancellationRate     Float?           @default(0)
+  cancellationCount30d Int              @default(0)
+  bookingsCount30d     Int              @default(0)
+  isCurrentlySuspended Boolean          @default(false)
+  suspensionLevel      SuspensionLevel?
+  suspensionExpiresAt  DateTime?
+
   createdAt    DateTime         @default(now())
   updatedAt    DateTime         @updatedAt
   deletedAt    DateTime?
@@ -464,6 +528,27 @@ model Booking {
   // Enterprise: direct barbershop reference
   barbershopId String?
 
+  // Cancellation
+  cancelledAt               DateTime?
+  cancelledByUserId         String?
+  cancelledByRole           CancellerRole?
+  cancellationReason        CancellationReason?
+  cancellationNotes         String?
+  refundAmount              Int?
+  refundTransactionId       String?
+  compensationBonusAmount   Int?
+  compensationBonusTxId     String?
+
+  // Tips
+  hasTip      Boolean  @default(false)
+  tipAmount   Int?
+  tipId       String?  @unique
+
+  // Rating reminder
+  rateReminderSkipCount    Int                @default(0)
+  rateReminderLastShownAt  DateTime?
+  rateReminderStatus       RateReminderStatus @default(PENDING)
+
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
@@ -472,13 +557,17 @@ model Booking {
   barber     BarberProfile      @relation("BarberBookings", fields: [barberId], references: [id])
   service    ServiceItem        @relation(fields: [serviceId], references: [id])
   barbershop BarbershopProfile? @relation("BarbershopBookings", fields: [barbershopId], references: [id])
-  payment    Payment?
-  review     Review?
-  earning    Earning?
-  chatThread ChatThread?
+  payment            Payment?
+  review             Review?
+  earning            Earning?
+  chatThread         ChatThread?
+  creditTransactions CreditTransaction[]
+  cancellationRecord CancellationRecord?
+  tip                Tip?
 
   @@index([barbershopId, scheduledAt])
   @@index([barbershopId, status])
+  @@index([cancelledByUserId, cancelledAt])
   @@map("bookings")
 }
 
@@ -559,11 +648,13 @@ model Review {
   bookingId String    @unique
   clientId  String
   barberId  String
-  rating    Int
-  comment   String?
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @default(now()) @updatedAt
-  deletedAt DateTime?
+  rating       Int
+  comment      String?
+  compliments  String[]  @default([])
+  issues       String[]  @default([])
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now()) @updatedAt
+  deletedAt    DateTime?
 
   booking Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
   client  User          @relation("ClientReviews", fields: [clientId], references: [id])
@@ -961,6 +1052,57 @@ model BillingRecord {
 
 // ── Tax Documents (Boletas/Facturas) ──────────────────────────────────────
 
+enum CreditTransactionType {
+  REFUND
+  ADMIN_GRANT
+  BOOKING_PAYMENT
+  EXPIRED
+  ADJUSTMENT
+  TIP_PAYMENT
+}
+
+enum TipStatus {
+  PENDING
+  PAID
+  FAILED
+  CANCELLED
+}
+
+enum TipPayStatus {
+  NONE
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+enum RateReminderStatus {
+  PENDING
+  RATED
+  SKIPPED_MAX
+}
+
+enum ReportTargetType {
+  BARBER
+  BARBERSHOP
+  BOOKING
+}
+
+enum ReportReason {
+  NO_SHOW
+  HYGIENE
+  INCORRECT_CHARGE
+  INAPPROPRIATE_ATTITUDE
+  QUALITY
+  OTHER
+}
+
+enum ReportStatus {
+  OPEN
+  IN_REVIEW
+  RESOLVED
+  DISMISSED
+}
+
 enum TaxDocumentType {
   BOLETA
   FACTURA
@@ -1007,4 +1149,148 @@ model TaxDocument {
 
   @@index([userId, period])
   @@map("tax_documents")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Credits Wallet
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model CreditWallet {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  balance     Int      @default(0)
+  totalEarned Int      @default(0)
+  totalSpent  Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user         User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions CreditTransaction[]
+
+  @@map("credit_wallets")
+}
+
+model CreditTransaction {
+  id           String                @id @default(cuid())
+  walletId     String
+  userId       String
+  type         CreditTransactionType
+  amount       Int
+  balanceAfter Int
+  description  String
+  metadata     Json?
+  expiresAt    DateTime?
+  isExpired    Boolean               @default(false)
+  bookingId    String?
+  grantedByAdminId String?
+  createdAt    DateTime              @default(now())
+  deletedAt    DateTime?
+
+  wallet         CreditWallet @relation(fields: [walletId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  booking        Booking?     @relation(fields: [bookingId], references: [id])
+  grantedByAdmin User?        @relation("AdminCreditGrants", fields: [grantedByAdminId], references: [id])
+
+  @@index([userId, createdAt])
+  @@index([walletId])
+  @@index([expiresAt, isExpired])
+  @@map("credit_transactions")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Cancellation System
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model CancellationRecord {
+  id                String             @id @default(cuid())
+  providerUserId    String
+  providerRole      ProviderKind
+  barbershopId      String?
+  bookingId         String             @unique
+  cancelledAt       DateTime           @default(now())
+  reason            CancellationReason
+  notes             String?
+  refundAmount      Int
+  compensationBonus Int                @default(0)
+  deletedAt         DateTime?
+
+  booking Booking @relation(fields: [bookingId], references: [id])
+
+  @@index([providerUserId, cancelledAt])
+  @@index([barbershopId, cancelledAt])
+  @@map("cancellation_records")
+}
+
+model ProviderSuspension {
+  id                String          @id @default(cuid())
+  providerUserId    String?
+  barbershopId      String?
+  level             SuspensionLevel
+  triggeredAt       DateTime        @default(now())
+  triggerReason     String
+  triggerMetrics    Json
+  expiresAt         DateTime?
+  resolvedAt        DateTime?
+  resolvedByAdminId String?
+  isActive          Boolean         @default(true)
+  createdAt         DateTime        @default(now())
+
+  @@index([providerUserId, isActive])
+  @@index([barbershopId, isActive])
+  @@map("provider_suspensions")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Tips
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model Tip {
+  id              String       @id @default(cuid())
+  bookingId       String       @unique
+  clientId        String
+  barberId        String
+  amount          Int
+  paidFromCredits Int          @default(0)
+  paidFromCard    Int          @default(0)
+  creditsTxId     String?
+  webpayTxId      String?
+  webpayStatus    TipPayStatus @default(NONE)
+  status          TipStatus    @default(PENDING)
+  createdAt       DateTime     @default(now())
+  paidAt          DateTime?
+  deletedAt       DateTime?
+
+  booking Booking @relation(fields: [bookingId], references: [id])
+  client  User    @relation("ClientTips", fields: [clientId], references: [id])
+  barber  User    @relation("BarberTips", fields: [barberId], references: [id])
+
+  @@index([clientId])
+  @@index([barberId, paidAt])
+  @@map("tips")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Reports
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model Report {
+  id              String           @id @default(cuid())
+  reporterId      String
+  targetType      ReportTargetType
+  targetId        String
+  bookingId       String?
+  reason          ReportReason
+  comment         String?
+  status          ReportStatus     @default(OPEN)
+  resolvedAt      DateTime?
+  resolvedBy      String?
+  resolutionNotes String?
+  createdAt       DateTime         @default(now())
+  deletedAt       DateTime?
+
+  reporter User @relation("ReporterReports", fields: [reporterId], references: [id])
+
+  @@index([targetId, targetType])
+  @@index([status])
+  @@map("reports")
 }

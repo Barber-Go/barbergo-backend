@@ -30,6 +30,7 @@ export class DiscoveryService {
       const barbers = await this.prisma.client.barberProfile.findMany({
         where: {
           isActive: true,
+          isCurrentlySuspended: false,
           employmentType: BarberEmploymentType.INDEPENDENT,
         },
         include: {
@@ -69,7 +70,7 @@ export class DiscoveryService {
     // Barbershops
     if (!q.type || q.type === PublicEntityType.BARBERSHOP) {
       const shops = await this.prisma.client.barbershopProfile.findMany({
-        where: { isActive: true },
+        where: { isActive: true, isCurrentlySuspended: false },
         include: { user: { select: { name: true, avatarUrl: true } } },
       });
 
@@ -110,7 +111,7 @@ export class DiscoveryService {
 
     if (!q.type || q.type === PublicEntityType.INDEPENDENT_BARBER) {
       const barbers = await this.prisma.client.barberProfile.findMany({
-        where: { isActive: true, employmentType: BarberEmploymentType.INDEPENDENT, lat: latFilter, lng: lngFilter },
+        where: { isActive: true, isCurrentlySuspended: false, employmentType: BarberEmploymentType.INDEPENDENT, lat: latFilter, lng: lngFilter },
         include: {
           user: { select: { name: true, avatarUrl: true } },
           services: { where: { isActive: true }, select: { id: true, name: true, price: true, durationMin: true } },
@@ -134,7 +135,7 @@ export class DiscoveryService {
 
     if (!q.type || q.type === PublicEntityType.BARBERSHOP) {
       const shops = await this.prisma.client.barbershopProfile.findMany({
-        where: { isActive: true, lat: latFilter, lng: lngFilter },
+        where: { isActive: true, isCurrentlySuspended: false, lat: latFilter, lng: lngFilter },
       });
 
       for (const s of shops) {

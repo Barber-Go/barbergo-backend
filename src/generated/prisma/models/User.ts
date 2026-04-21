@@ -280,6 +280,12 @@ export type UserWhereInput = {
   taxDocuments?: Prisma.TaxDocumentListRelationFilter
   invitationsSent?: Prisma.BarberInvitationListRelationFilter
   invitationsAccepted?: Prisma.BarberInvitationListRelationFilter
+  creditWallet?: Prisma.XOR<Prisma.CreditWalletNullableScalarRelationFilter, Prisma.CreditWalletWhereInput> | null
+  creditTransactions?: Prisma.CreditTransactionListRelationFilter
+  adminCreditGrants?: Prisma.CreditTransactionListRelationFilter
+  tipsGiven?: Prisma.TipListRelationFilter
+  tipsReceived?: Prisma.TipListRelationFilter
+  reports?: Prisma.ReportListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -316,6 +322,12 @@ export type UserOrderByWithRelationInput = {
   taxDocuments?: Prisma.TaxDocumentOrderByRelationAggregateInput
   invitationsSent?: Prisma.BarberInvitationOrderByRelationAggregateInput
   invitationsAccepted?: Prisma.BarberInvitationOrderByRelationAggregateInput
+  creditWallet?: Prisma.CreditWalletOrderByWithRelationInput
+  creditTransactions?: Prisma.CreditTransactionOrderByRelationAggregateInput
+  adminCreditGrants?: Prisma.CreditTransactionOrderByRelationAggregateInput
+  tipsGiven?: Prisma.TipOrderByRelationAggregateInput
+  tipsReceived?: Prisma.TipOrderByRelationAggregateInput
+  reports?: Prisma.ReportOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -355,6 +367,12 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   taxDocuments?: Prisma.TaxDocumentListRelationFilter
   invitationsSent?: Prisma.BarberInvitationListRelationFilter
   invitationsAccepted?: Prisma.BarberInvitationListRelationFilter
+  creditWallet?: Prisma.XOR<Prisma.CreditWalletNullableScalarRelationFilter, Prisma.CreditWalletWhereInput> | null
+  creditTransactions?: Prisma.CreditTransactionListRelationFilter
+  adminCreditGrants?: Prisma.CreditTransactionListRelationFilter
+  tipsGiven?: Prisma.TipListRelationFilter
+  tipsReceived?: Prisma.TipListRelationFilter
+  reports?: Prisma.ReportListRelationFilter
 }, "id" | "email" | "phone">
 
 export type UserOrderByWithAggregationInput = {
@@ -432,6 +450,12 @@ export type UserCreateInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -467,6 +491,12 @@ export type UserUncheckedCreateInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserUpdateInput = {
@@ -502,6 +532,12 @@ export type UserUpdateInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -537,6 +573,12 @@ export type UserUncheckedUpdateInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -956,6 +998,92 @@ export type UserUpdateOneRequiredWithoutTaxDocumentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTaxDocumentsInput, Prisma.UserUpdateWithoutTaxDocumentsInput>, Prisma.UserUncheckedUpdateWithoutTaxDocumentsInput>
 }
 
+export type UserCreateNestedOneWithoutCreditWalletInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCreditWalletInput, Prisma.UserUncheckedCreateWithoutCreditWalletInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreditWalletInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCreditWalletNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCreditWalletInput, Prisma.UserUncheckedCreateWithoutCreditWalletInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreditWalletInput
+  upsert?: Prisma.UserUpsertWithoutCreditWalletInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreditWalletInput, Prisma.UserUpdateWithoutCreditWalletInput>, Prisma.UserUncheckedUpdateWithoutCreditWalletInput>
+}
+
+export type UserCreateNestedOneWithoutCreditTransactionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCreditTransactionsInput, Prisma.UserUncheckedCreateWithoutCreditTransactionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreditTransactionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutAdminCreditGrantsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAdminCreditGrantsInput, Prisma.UserUncheckedCreateWithoutAdminCreditGrantsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAdminCreditGrantsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCreditTransactionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCreditTransactionsInput, Prisma.UserUncheckedCreateWithoutCreditTransactionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreditTransactionsInput
+  upsert?: Prisma.UserUpsertWithoutCreditTransactionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreditTransactionsInput, Prisma.UserUpdateWithoutCreditTransactionsInput>, Prisma.UserUncheckedUpdateWithoutCreditTransactionsInput>
+}
+
+export type UserUpdateOneWithoutAdminCreditGrantsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAdminCreditGrantsInput, Prisma.UserUncheckedCreateWithoutAdminCreditGrantsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAdminCreditGrantsInput
+  upsert?: Prisma.UserUpsertWithoutAdminCreditGrantsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAdminCreditGrantsInput, Prisma.UserUpdateWithoutAdminCreditGrantsInput>, Prisma.UserUncheckedUpdateWithoutAdminCreditGrantsInput>
+}
+
+export type UserCreateNestedOneWithoutTipsGivenInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTipsGivenInput, Prisma.UserUncheckedCreateWithoutTipsGivenInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTipsGivenInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutTipsReceivedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTipsReceivedInput, Prisma.UserUncheckedCreateWithoutTipsReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTipsReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutTipsGivenNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTipsGivenInput, Prisma.UserUncheckedCreateWithoutTipsGivenInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTipsGivenInput
+  upsert?: Prisma.UserUpsertWithoutTipsGivenInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTipsGivenInput, Prisma.UserUpdateWithoutTipsGivenInput>, Prisma.UserUncheckedUpdateWithoutTipsGivenInput>
+}
+
+export type UserUpdateOneRequiredWithoutTipsReceivedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTipsReceivedInput, Prisma.UserUncheckedCreateWithoutTipsReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTipsReceivedInput
+  upsert?: Prisma.UserUpsertWithoutTipsReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTipsReceivedInput, Prisma.UserUpdateWithoutTipsReceivedInput>, Prisma.UserUncheckedUpdateWithoutTipsReceivedInput>
+}
+
+export type UserCreateNestedOneWithoutReportsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReportsInput, Prisma.UserUncheckedCreateWithoutReportsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutReportsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReportsInput, Prisma.UserUncheckedCreateWithoutReportsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportsInput
+  upsert?: Prisma.UserUpsertWithoutReportsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReportsInput, Prisma.UserUpdateWithoutReportsInput>, Prisma.UserUncheckedUpdateWithoutReportsInput>
+}
+
 export type UserCreateWithoutTenantInput = {
   id?: string
   email: string
@@ -988,6 +1116,12 @@ export type UserCreateWithoutTenantInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutTenantInput = {
@@ -1022,6 +1156,12 @@ export type UserUncheckedCreateWithoutTenantInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutTenantInput = {
@@ -1103,6 +1243,12 @@ export type UserCreateWithoutClientProfileInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutClientProfileInput = {
@@ -1137,6 +1283,12 @@ export type UserUncheckedCreateWithoutClientProfileInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutClientProfileInput = {
@@ -1187,6 +1339,12 @@ export type UserUpdateWithoutClientProfileInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutClientProfileInput = {
@@ -1221,6 +1379,12 @@ export type UserUncheckedUpdateWithoutClientProfileInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutBarberProfileInput = {
@@ -1255,6 +1419,12 @@ export type UserCreateWithoutBarberProfileInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutBarberProfileInput = {
@@ -1289,6 +1459,12 @@ export type UserUncheckedCreateWithoutBarberProfileInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutBarberProfileInput = {
@@ -1339,6 +1515,12 @@ export type UserUpdateWithoutBarberProfileInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBarberProfileInput = {
@@ -1373,6 +1555,12 @@ export type UserUncheckedUpdateWithoutBarberProfileInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutBarbershopProfilesInput = {
@@ -1407,6 +1595,12 @@ export type UserCreateWithoutBarbershopProfilesInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutBarbershopProfilesInput = {
@@ -1441,6 +1635,12 @@ export type UserUncheckedCreateWithoutBarbershopProfilesInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutBarbershopProfilesInput = {
@@ -1491,6 +1691,12 @@ export type UserUpdateWithoutBarbershopProfilesInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBarbershopProfilesInput = {
@@ -1525,6 +1731,12 @@ export type UserUncheckedUpdateWithoutBarbershopProfilesInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutInvitationsSentInput = {
@@ -1559,6 +1771,12 @@ export type UserCreateWithoutInvitationsSentInput = {
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutInvitationsSentInput = {
@@ -1593,6 +1811,12 @@ export type UserUncheckedCreateWithoutInvitationsSentInput = {
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutInvitationsSentInput = {
@@ -1632,6 +1856,12 @@ export type UserCreateWithoutInvitationsAcceptedInput = {
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutInvitationsAcceptedInput = {
@@ -1666,6 +1896,12 @@ export type UserUncheckedCreateWithoutInvitationsAcceptedInput = {
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutInvitationsAcceptedInput = {
@@ -1716,6 +1952,12 @@ export type UserUpdateWithoutInvitationsSentInput = {
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInvitationsSentInput = {
@@ -1750,6 +1992,12 @@ export type UserUncheckedUpdateWithoutInvitationsSentInput = {
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUpsertWithoutInvitationsAcceptedInput = {
@@ -1795,6 +2043,12 @@ export type UserUpdateWithoutInvitationsAcceptedInput = {
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInvitationsAcceptedInput = {
@@ -1829,6 +2083,12 @@ export type UserUncheckedUpdateWithoutInvitationsAcceptedInput = {
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutBookingsInput = {
@@ -1863,6 +2123,12 @@ export type UserCreateWithoutBookingsInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutBookingsInput = {
@@ -1897,6 +2163,12 @@ export type UserUncheckedCreateWithoutBookingsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutBookingsInput = {
@@ -1947,6 +2219,12 @@ export type UserUpdateWithoutBookingsInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBookingsInput = {
@@ -1981,6 +2259,12 @@ export type UserUncheckedUpdateWithoutBookingsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutChatParticipantsInput = {
@@ -2015,6 +2299,12 @@ export type UserCreateWithoutChatParticipantsInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutChatParticipantsInput = {
@@ -2049,6 +2339,12 @@ export type UserUncheckedCreateWithoutChatParticipantsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutChatParticipantsInput = {
@@ -2099,6 +2395,12 @@ export type UserUpdateWithoutChatParticipantsInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChatParticipantsInput = {
@@ -2133,6 +2435,12 @@ export type UserUncheckedUpdateWithoutChatParticipantsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutChatMessagesInput = {
@@ -2167,6 +2475,12 @@ export type UserCreateWithoutChatMessagesInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutChatMessagesInput = {
@@ -2201,6 +2515,12 @@ export type UserUncheckedCreateWithoutChatMessagesInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutChatMessagesInput = {
@@ -2251,6 +2571,12 @@ export type UserUpdateWithoutChatMessagesInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChatMessagesInput = {
@@ -2285,6 +2611,12 @@ export type UserUncheckedUpdateWithoutChatMessagesInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutReviewsInput = {
@@ -2319,6 +2651,12 @@ export type UserCreateWithoutReviewsInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutReviewsInput = {
@@ -2353,6 +2691,12 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutReviewsInput = {
@@ -2403,6 +2747,12 @@ export type UserUpdateWithoutReviewsInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewsInput = {
@@ -2437,6 +2787,12 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -2471,6 +2827,12 @@ export type UserCreateWithoutNotificationsInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -2505,6 +2867,12 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -2555,6 +2923,12 @@ export type UserUpdateWithoutNotificationsInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -2589,6 +2963,12 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutFollowsInput = {
@@ -2623,6 +3003,12 @@ export type UserCreateWithoutFollowsInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutFollowsInput = {
@@ -2657,6 +3043,12 @@ export type UserUncheckedCreateWithoutFollowsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutFollowsInput = {
@@ -2707,6 +3099,12 @@ export type UserUpdateWithoutFollowsInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowsInput = {
@@ -2741,6 +3139,12 @@ export type UserUncheckedUpdateWithoutFollowsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutPointsWalletInput = {
@@ -2775,6 +3179,12 @@ export type UserCreateWithoutPointsWalletInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutPointsWalletInput = {
@@ -2809,6 +3219,12 @@ export type UserUncheckedCreateWithoutPointsWalletInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutPointsWalletInput = {
@@ -2859,6 +3275,12 @@ export type UserUpdateWithoutPointsWalletInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPointsWalletInput = {
@@ -2893,6 +3315,12 @@ export type UserUncheckedUpdateWithoutPointsWalletInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutCommunityMembershipsInput = {
@@ -2927,6 +3355,12 @@ export type UserCreateWithoutCommunityMembershipsInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
@@ -2961,6 +3395,12 @@ export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutCommunityMembershipsInput = {
@@ -3011,6 +3451,12 @@ export type UserUpdateWithoutCommunityMembershipsInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
@@ -3045,6 +3491,12 @@ export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutCommunityPostsInput = {
@@ -3079,6 +3531,12 @@ export type UserCreateWithoutCommunityPostsInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutCommunityPostsInput = {
@@ -3113,6 +3571,12 @@ export type UserUncheckedCreateWithoutCommunityPostsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutCommunityPostsInput = {
@@ -3163,6 +3627,12 @@ export type UserUpdateWithoutCommunityPostsInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommunityPostsInput = {
@@ -3197,6 +3667,12 @@ export type UserUncheckedUpdateWithoutCommunityPostsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutSettingsInput = {
@@ -3231,6 +3707,12 @@ export type UserCreateWithoutSettingsInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutSettingsInput = {
@@ -3265,6 +3747,12 @@ export type UserUncheckedCreateWithoutSettingsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutSettingsInput = {
@@ -3315,6 +3803,12 @@ export type UserUpdateWithoutSettingsInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSettingsInput = {
@@ -3349,6 +3843,12 @@ export type UserUncheckedUpdateWithoutSettingsInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutAiFaceAnalysesInput = {
@@ -3383,6 +3883,12 @@ export type UserCreateWithoutAiFaceAnalysesInput = {
   taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutAiFaceAnalysesInput = {
@@ -3417,6 +3923,12 @@ export type UserUncheckedCreateWithoutAiFaceAnalysesInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutAiFaceAnalysesInput = {
@@ -3467,6 +3979,12 @@ export type UserUpdateWithoutAiFaceAnalysesInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAiFaceAnalysesInput = {
@@ -3501,6 +4019,12 @@ export type UserUncheckedUpdateWithoutAiFaceAnalysesInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserCreateWithoutTaxDocumentsInput = {
@@ -3535,6 +4059,12 @@ export type UserCreateWithoutTaxDocumentsInput = {
   aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
 }
 
 export type UserUncheckedCreateWithoutTaxDocumentsInput = {
@@ -3569,6 +4099,12 @@ export type UserUncheckedCreateWithoutTaxDocumentsInput = {
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
   invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
 }
 
 export type UserCreateOrConnectWithoutTaxDocumentsInput = {
@@ -3619,6 +4155,12 @@ export type UserUpdateWithoutTaxDocumentsInput = {
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTaxDocumentsInput = {
@@ -3653,6 +4195,1068 @@ export type UserUncheckedUpdateWithoutTaxDocumentsInput = {
   aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserCreateWithoutCreditWalletInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  tenant?: Prisma.TenantCreateNestedOneWithoutUsersInput
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutCreditWalletInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  tenantId?: string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutCreditWalletInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCreditWalletInput, Prisma.UserUncheckedCreateWithoutCreditWalletInput>
+}
+
+export type UserUpsertWithoutCreditWalletInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCreditWalletInput, Prisma.UserUncheckedUpdateWithoutCreditWalletInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCreditWalletInput, Prisma.UserUncheckedCreateWithoutCreditWalletInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCreditWalletInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCreditWalletInput, Prisma.UserUncheckedUpdateWithoutCreditWalletInput>
+}
+
+export type UserUpdateWithoutCreditWalletInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenant?: Prisma.TenantUpdateOneWithoutUsersNestedInput
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCreditWalletInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserCreateWithoutCreditTransactionsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  tenant?: Prisma.TenantCreateNestedOneWithoutUsersInput
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutCreditTransactionsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  tenantId?: string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutCreditTransactionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCreditTransactionsInput, Prisma.UserUncheckedCreateWithoutCreditTransactionsInput>
+}
+
+export type UserCreateWithoutAdminCreditGrantsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  tenant?: Prisma.TenantCreateNestedOneWithoutUsersInput
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutAdminCreditGrantsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  tenantId?: string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutAdminCreditGrantsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAdminCreditGrantsInput, Prisma.UserUncheckedCreateWithoutAdminCreditGrantsInput>
+}
+
+export type UserUpsertWithoutCreditTransactionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCreditTransactionsInput, Prisma.UserUncheckedUpdateWithoutCreditTransactionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCreditTransactionsInput, Prisma.UserUncheckedCreateWithoutCreditTransactionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCreditTransactionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCreditTransactionsInput, Prisma.UserUncheckedUpdateWithoutCreditTransactionsInput>
+}
+
+export type UserUpdateWithoutCreditTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenant?: Prisma.TenantUpdateOneWithoutUsersNestedInput
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCreditTransactionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUpsertWithoutAdminCreditGrantsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAdminCreditGrantsInput, Prisma.UserUncheckedUpdateWithoutAdminCreditGrantsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAdminCreditGrantsInput, Prisma.UserUncheckedCreateWithoutAdminCreditGrantsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAdminCreditGrantsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAdminCreditGrantsInput, Prisma.UserUncheckedUpdateWithoutAdminCreditGrantsInput>
+}
+
+export type UserUpdateWithoutAdminCreditGrantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenant?: Prisma.TenantUpdateOneWithoutUsersNestedInput
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAdminCreditGrantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserCreateWithoutTipsGivenInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  tenant?: Prisma.TenantCreateNestedOneWithoutUsersInput
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutTipsGivenInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  tenantId?: string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutTipsGivenInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTipsGivenInput, Prisma.UserUncheckedCreateWithoutTipsGivenInput>
+}
+
+export type UserCreateWithoutTipsReceivedInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  tenant?: Prisma.TenantCreateNestedOneWithoutUsersInput
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  reports?: Prisma.ReportCreateNestedManyWithoutReporterInput
+}
+
+export type UserUncheckedCreateWithoutTipsReceivedInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  tenantId?: string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutReporterInput
+}
+
+export type UserCreateOrConnectWithoutTipsReceivedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTipsReceivedInput, Prisma.UserUncheckedCreateWithoutTipsReceivedInput>
+}
+
+export type UserUpsertWithoutTipsGivenInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTipsGivenInput, Prisma.UserUncheckedUpdateWithoutTipsGivenInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTipsGivenInput, Prisma.UserUncheckedCreateWithoutTipsGivenInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTipsGivenInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTipsGivenInput, Prisma.UserUncheckedUpdateWithoutTipsGivenInput>
+}
+
+export type UserUpdateWithoutTipsGivenInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenant?: Prisma.TenantUpdateOneWithoutUsersNestedInput
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTipsGivenInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUpsertWithoutTipsReceivedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTipsReceivedInput, Prisma.UserUncheckedUpdateWithoutTipsReceivedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTipsReceivedInput, Prisma.UserUncheckedCreateWithoutTipsReceivedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTipsReceivedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTipsReceivedInput, Prisma.UserUncheckedUpdateWithoutTipsReceivedInput>
+}
+
+export type UserUpdateWithoutTipsReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenant?: Prisma.TenantUpdateOneWithoutUsersNestedInput
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTipsReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
+}
+
+export type UserCreateWithoutReportsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  tenant?: Prisma.TenantCreateNestedOneWithoutUsersInput
+  clientProfile?: Prisma.ClientProfileCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipCreateNestedManyWithoutBarberInput
+}
+
+export type UserUncheckedCreateWithoutReportsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  name: string
+  avatarUrl?: string | null
+  pushToken?: string | null
+  role?: $Enums.Role
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  tenantId?: string | null
+  taxModuleEnabled?: boolean
+  taxModuleActivatedAt?: Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedCreateNestedOneWithoutUserInput
+  barberProfile?: Prisma.BarberProfileUncheckedCreateNestedOneWithoutUserInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedCreateNestedManyWithoutUserInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutClientInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  settings?: Prisma.UserSettingsUncheckedCreateNestedOneWithoutUserInput
+  follows?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  pointsWallet?: Prisma.PointsWalletUncheckedCreateNestedOneWithoutUserInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutAuthorInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedCreateNestedManyWithoutUserInput
+  chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutSenderInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedCreateNestedManyWithoutUserInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedCreateNestedManyWithoutAcceptedByInput
+  creditWallet?: Prisma.CreditWalletUncheckedCreateNestedOneWithoutUserInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutUserInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedCreateNestedManyWithoutGrantedByAdminInput
+  tipsGiven?: Prisma.TipUncheckedCreateNestedManyWithoutClientInput
+  tipsReceived?: Prisma.TipUncheckedCreateNestedManyWithoutBarberInput
+}
+
+export type UserCreateOrConnectWithoutReportsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReportsInput, Prisma.UserUncheckedCreateWithoutReportsInput>
+}
+
+export type UserUpsertWithoutReportsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReportsInput, Prisma.UserUncheckedUpdateWithoutReportsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReportsInput, Prisma.UserUncheckedCreateWithoutReportsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReportsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReportsInput, Prisma.UserUncheckedUpdateWithoutReportsInput>
+}
+
+export type UserUpdateWithoutReportsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenant?: Prisma.TenantUpdateOneWithoutUsersNestedInput
+  clientProfile?: Prisma.ClientProfileUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReportsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tenantId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxModuleEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  taxModuleActivatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clientProfile?: Prisma.ClientProfileUncheckedUpdateOneWithoutUserNestedInput
+  barberProfile?: Prisma.BarberProfileUncheckedUpdateOneWithoutUserNestedInput
+  barbershopProfiles?: Prisma.BarbershopProfileUncheckedUpdateManyWithoutUserNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutClientNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  settings?: Prisma.UserSettingsUncheckedUpdateOneWithoutUserNestedInput
+  follows?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  pointsWallet?: Prisma.PointsWalletUncheckedUpdateOneWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunityMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutAuthorNestedInput
+  chatParticipants?: Prisma.ChatParticipantUncheckedUpdateManyWithoutUserNestedInput
+  chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutSenderNestedInput
+  aiFaceAnalyses?: Prisma.AiFaceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
+  invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
 }
 
 export type UserCreateManyTenantInput = {
@@ -3704,6 +5308,12 @@ export type UserUpdateWithoutTenantInput = {
   taxDocuments?: Prisma.TaxDocumentUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTenantInput = {
@@ -3738,6 +5348,12 @@ export type UserUncheckedUpdateWithoutTenantInput = {
   taxDocuments?: Prisma.TaxDocumentUncheckedUpdateManyWithoutUserNestedInput
   invitationsSent?: Prisma.BarberInvitationUncheckedUpdateManyWithoutInvitedByNestedInput
   invitationsAccepted?: Prisma.BarberInvitationUncheckedUpdateManyWithoutAcceptedByNestedInput
+  creditWallet?: Prisma.CreditWalletUncheckedUpdateOneWithoutUserNestedInput
+  creditTransactions?: Prisma.CreditTransactionUncheckedUpdateManyWithoutUserNestedInput
+  adminCreditGrants?: Prisma.CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminNestedInput
+  tipsGiven?: Prisma.TipUncheckedUpdateManyWithoutClientNestedInput
+  tipsReceived?: Prisma.TipUncheckedUpdateManyWithoutBarberNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutReporterNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutTenantInput = {
@@ -3776,6 +5392,11 @@ export type UserCountOutputType = {
   taxDocuments: number
   invitationsSent: number
   invitationsAccepted: number
+  creditTransactions: number
+  adminCreditGrants: number
+  tipsGiven: number
+  tipsReceived: number
+  reports: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3792,6 +5413,11 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   taxDocuments?: boolean | UserCountOutputTypeCountTaxDocumentsArgs
   invitationsSent?: boolean | UserCountOutputTypeCountInvitationsSentArgs
   invitationsAccepted?: boolean | UserCountOutputTypeCountInvitationsAcceptedArgs
+  creditTransactions?: boolean | UserCountOutputTypeCountCreditTransactionsArgs
+  adminCreditGrants?: boolean | UserCountOutputTypeCountAdminCreditGrantsArgs
+  tipsGiven?: boolean | UserCountOutputTypeCountTipsGivenArgs
+  tipsReceived?: boolean | UserCountOutputTypeCountTipsReceivedArgs
+  reports?: boolean | UserCountOutputTypeCountReportsArgs
 }
 
 /**
@@ -3895,6 +5521,41 @@ export type UserCountOutputTypeCountInvitationsAcceptedArgs<ExtArgs extends runt
   where?: Prisma.BarberInvitationWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCreditTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CreditTransactionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAdminCreditGrantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CreditTransactionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTipsGivenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TipWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTipsReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TipWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReportWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -3930,6 +5591,12 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   taxDocuments?: boolean | Prisma.User$taxDocumentsArgs<ExtArgs>
   invitationsSent?: boolean | Prisma.User$invitationsSentArgs<ExtArgs>
   invitationsAccepted?: boolean | Prisma.User$invitationsAcceptedArgs<ExtArgs>
+  creditWallet?: boolean | Prisma.User$creditWalletArgs<ExtArgs>
+  creditTransactions?: boolean | Prisma.User$creditTransactionsArgs<ExtArgs>
+  adminCreditGrants?: boolean | Prisma.User$adminCreditGrantsArgs<ExtArgs>
+  tipsGiven?: boolean | Prisma.User$tipsGivenArgs<ExtArgs>
+  tipsReceived?: boolean | Prisma.User$tipsReceivedArgs<ExtArgs>
+  reports?: boolean | Prisma.User$reportsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -4009,6 +5676,12 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   taxDocuments?: boolean | Prisma.User$taxDocumentsArgs<ExtArgs>
   invitationsSent?: boolean | Prisma.User$invitationsSentArgs<ExtArgs>
   invitationsAccepted?: boolean | Prisma.User$invitationsAcceptedArgs<ExtArgs>
+  creditWallet?: boolean | Prisma.User$creditWalletArgs<ExtArgs>
+  creditTransactions?: boolean | Prisma.User$creditTransactionsArgs<ExtArgs>
+  adminCreditGrants?: boolean | Prisma.User$adminCreditGrantsArgs<ExtArgs>
+  tipsGiven?: boolean | Prisma.User$tipsGivenArgs<ExtArgs>
+  tipsReceived?: boolean | Prisma.User$tipsReceivedArgs<ExtArgs>
+  reports?: boolean | Prisma.User$reportsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -4039,6 +5712,12 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     taxDocuments: Prisma.$TaxDocumentPayload<ExtArgs>[]
     invitationsSent: Prisma.$BarberInvitationPayload<ExtArgs>[]
     invitationsAccepted: Prisma.$BarberInvitationPayload<ExtArgs>[]
+    creditWallet: Prisma.$CreditWalletPayload<ExtArgs> | null
+    creditTransactions: Prisma.$CreditTransactionPayload<ExtArgs>[]
+    adminCreditGrants: Prisma.$CreditTransactionPayload<ExtArgs>[]
+    tipsGiven: Prisma.$TipPayload<ExtArgs>[]
+    tipsReceived: Prisma.$TipPayload<ExtArgs>[]
+    reports: Prisma.$ReportPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -4468,6 +6147,12 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   taxDocuments<T extends Prisma.User$taxDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$taxDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaxDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invitationsSent<T extends Prisma.User$invitationsSentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$invitationsSentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BarberInvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invitationsAccepted<T extends Prisma.User$invitationsAcceptedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$invitationsAcceptedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BarberInvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  creditWallet<T extends Prisma.User$creditWalletArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$creditWalletArgs<ExtArgs>>): Prisma.Prisma__CreditWalletClient<runtime.Types.Result.GetResult<Prisma.$CreditWalletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  creditTransactions<T extends Prisma.User$creditTransactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$creditTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  adminCreditGrants<T extends Prisma.User$adminCreditGrantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$adminCreditGrantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CreditTransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tipsGiven<T extends Prisma.User$tipsGivenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$tipsGivenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tipsReceived<T extends Prisma.User$tipsReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$tipsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reports<T extends Prisma.User$reportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5317,6 +7002,145 @@ export type User$invitationsAcceptedArgs<ExtArgs extends runtime.Types.Extension
   take?: number
   skip?: number
   distinct?: Prisma.BarberInvitationScalarFieldEnum | Prisma.BarberInvitationScalarFieldEnum[]
+}
+
+/**
+ * User.creditWallet
+ */
+export type User$creditWalletArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CreditWallet
+   */
+  select?: Prisma.CreditWalletSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CreditWallet
+   */
+  omit?: Prisma.CreditWalletOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CreditWalletInclude<ExtArgs> | null
+  where?: Prisma.CreditWalletWhereInput
+}
+
+/**
+ * User.creditTransactions
+ */
+export type User$creditTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CreditTransaction
+   */
+  select?: Prisma.CreditTransactionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CreditTransaction
+   */
+  omit?: Prisma.CreditTransactionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CreditTransactionInclude<ExtArgs> | null
+  where?: Prisma.CreditTransactionWhereInput
+  orderBy?: Prisma.CreditTransactionOrderByWithRelationInput | Prisma.CreditTransactionOrderByWithRelationInput[]
+  cursor?: Prisma.CreditTransactionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CreditTransactionScalarFieldEnum | Prisma.CreditTransactionScalarFieldEnum[]
+}
+
+/**
+ * User.adminCreditGrants
+ */
+export type User$adminCreditGrantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CreditTransaction
+   */
+  select?: Prisma.CreditTransactionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CreditTransaction
+   */
+  omit?: Prisma.CreditTransactionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CreditTransactionInclude<ExtArgs> | null
+  where?: Prisma.CreditTransactionWhereInput
+  orderBy?: Prisma.CreditTransactionOrderByWithRelationInput | Prisma.CreditTransactionOrderByWithRelationInput[]
+  cursor?: Prisma.CreditTransactionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CreditTransactionScalarFieldEnum | Prisma.CreditTransactionScalarFieldEnum[]
+}
+
+/**
+ * User.tipsGiven
+ */
+export type User$tipsGivenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Tip
+   */
+  select?: Prisma.TipSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Tip
+   */
+  omit?: Prisma.TipOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TipInclude<ExtArgs> | null
+  where?: Prisma.TipWhereInput
+  orderBy?: Prisma.TipOrderByWithRelationInput | Prisma.TipOrderByWithRelationInput[]
+  cursor?: Prisma.TipWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TipScalarFieldEnum | Prisma.TipScalarFieldEnum[]
+}
+
+/**
+ * User.tipsReceived
+ */
+export type User$tipsReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Tip
+   */
+  select?: Prisma.TipSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Tip
+   */
+  omit?: Prisma.TipOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TipInclude<ExtArgs> | null
+  where?: Prisma.TipWhereInput
+  orderBy?: Prisma.TipOrderByWithRelationInput | Prisma.TipOrderByWithRelationInput[]
+  cursor?: Prisma.TipWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TipScalarFieldEnum | Prisma.TipScalarFieldEnum[]
+}
+
+/**
+ * User.reports
+ */
+export type User$reportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Report
+   */
+  select?: Prisma.ReportSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Report
+   */
+  omit?: Prisma.ReportOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReportInclude<ExtArgs> | null
+  where?: Prisma.ReportWhereInput
+  orderBy?: Prisma.ReportOrderByWithRelationInput | Prisma.ReportOrderByWithRelationInput[]
+  cursor?: Prisma.ReportWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReportScalarFieldEnum | Prisma.ReportScalarFieldEnum[]
 }
 
 /**

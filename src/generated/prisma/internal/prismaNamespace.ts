@@ -423,7 +423,13 @@ export const ModelName = {
   TaxObligation: 'TaxObligation',
   TaxDeclarationLog: 'TaxDeclarationLog',
   BillingRecord: 'BillingRecord',
-  TaxDocument: 'TaxDocument'
+  TaxDocument: 'TaxDocument',
+  CreditWallet: 'CreditWallet',
+  CreditTransaction: 'CreditTransaction',
+  CancellationRecord: 'CancellationRecord',
+  ProviderSuspension: 'ProviderSuspension',
+  Tip: 'Tip',
+  Report: 'Report'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -439,7 +445,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "tenant" | "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "barberInvitation" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "manualBooking" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "rewardsCatalog" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview" | "taxProfile" | "taxObligation" | "taxDeclarationLog" | "billingRecord" | "taxDocument"
+    modelProps: "tenant" | "user" | "clientProfile" | "barberProfile" | "barbershopProfile" | "barbershopStaffMembership" | "staffCompensationRule" | "barberInvitation" | "serviceItem" | "weeklyAvailability" | "availabilityBlock" | "manualBooking" | "booking" | "chatThread" | "chatParticipant" | "chatMessage" | "payment" | "review" | "notification" | "barberPortfolioItem" | "barberPortfolioMedia" | "earning" | "expense" | "dailyLedgerEntry" | "follow" | "pointsWallet" | "rewardsCatalog" | "community" | "communityMembership" | "communityPost" | "communityTopicTag" | "userSettings" | "aiFaceAnalysis" | "aiHairstyleRecommendation" | "aiHairstylePreview" | "taxProfile" | "taxObligation" | "taxDeclarationLog" | "billingRecord" | "taxDocument" | "creditWallet" | "creditTransaction" | "cancellationRecord" | "providerSuspension" | "tip" | "report"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3403,6 +3409,450 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    CreditWallet: {
+      payload: Prisma.$CreditWalletPayload<ExtArgs>
+      fields: Prisma.CreditWalletFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CreditWalletFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditWalletPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CreditWalletFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditWalletPayload>
+        }
+        findFirst: {
+          args: Prisma.CreditWalletFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditWalletPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CreditWalletFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditWalletPayload>
+        }
+        findMany: {
+          args: Prisma.CreditWalletFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditWalletPayload>[]
+        }
+        create: {
+          args: Prisma.CreditWalletCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditWalletPayload>
+        }
+        createMany: {
+          args: Prisma.CreditWalletCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CreditWalletCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditWalletPayload>[]
+        }
+        delete: {
+          args: Prisma.CreditWalletDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditWalletPayload>
+        }
+        update: {
+          args: Prisma.CreditWalletUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditWalletPayload>
+        }
+        deleteMany: {
+          args: Prisma.CreditWalletDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CreditWalletUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CreditWalletUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditWalletPayload>[]
+        }
+        upsert: {
+          args: Prisma.CreditWalletUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditWalletPayload>
+        }
+        aggregate: {
+          args: Prisma.CreditWalletAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCreditWallet>
+        }
+        groupBy: {
+          args: Prisma.CreditWalletGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CreditWalletGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CreditWalletCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CreditWalletCountAggregateOutputType> | number
+        }
+      }
+    }
+    CreditTransaction: {
+      payload: Prisma.$CreditTransactionPayload<ExtArgs>
+      fields: Prisma.CreditTransactionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CreditTransactionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CreditTransactionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>
+        }
+        findFirst: {
+          args: Prisma.CreditTransactionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CreditTransactionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>
+        }
+        findMany: {
+          args: Prisma.CreditTransactionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>[]
+        }
+        create: {
+          args: Prisma.CreditTransactionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>
+        }
+        createMany: {
+          args: Prisma.CreditTransactionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CreditTransactionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>[]
+        }
+        delete: {
+          args: Prisma.CreditTransactionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>
+        }
+        update: {
+          args: Prisma.CreditTransactionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>
+        }
+        deleteMany: {
+          args: Prisma.CreditTransactionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CreditTransactionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CreditTransactionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>[]
+        }
+        upsert: {
+          args: Prisma.CreditTransactionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreditTransactionPayload>
+        }
+        aggregate: {
+          args: Prisma.CreditTransactionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCreditTransaction>
+        }
+        groupBy: {
+          args: Prisma.CreditTransactionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CreditTransactionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CreditTransactionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CreditTransactionCountAggregateOutputType> | number
+        }
+      }
+    }
+    CancellationRecord: {
+      payload: Prisma.$CancellationRecordPayload<ExtArgs>
+      fields: Prisma.CancellationRecordFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CancellationRecordFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CancellationRecordPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CancellationRecordFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CancellationRecordPayload>
+        }
+        findFirst: {
+          args: Prisma.CancellationRecordFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CancellationRecordPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CancellationRecordFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CancellationRecordPayload>
+        }
+        findMany: {
+          args: Prisma.CancellationRecordFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CancellationRecordPayload>[]
+        }
+        create: {
+          args: Prisma.CancellationRecordCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CancellationRecordPayload>
+        }
+        createMany: {
+          args: Prisma.CancellationRecordCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CancellationRecordCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CancellationRecordPayload>[]
+        }
+        delete: {
+          args: Prisma.CancellationRecordDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CancellationRecordPayload>
+        }
+        update: {
+          args: Prisma.CancellationRecordUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CancellationRecordPayload>
+        }
+        deleteMany: {
+          args: Prisma.CancellationRecordDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CancellationRecordUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CancellationRecordUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CancellationRecordPayload>[]
+        }
+        upsert: {
+          args: Prisma.CancellationRecordUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CancellationRecordPayload>
+        }
+        aggregate: {
+          args: Prisma.CancellationRecordAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCancellationRecord>
+        }
+        groupBy: {
+          args: Prisma.CancellationRecordGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CancellationRecordGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CancellationRecordCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CancellationRecordCountAggregateOutputType> | number
+        }
+      }
+    }
+    ProviderSuspension: {
+      payload: Prisma.$ProviderSuspensionPayload<ExtArgs>
+      fields: Prisma.ProviderSuspensionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ProviderSuspensionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProviderSuspensionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ProviderSuspensionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProviderSuspensionPayload>
+        }
+        findFirst: {
+          args: Prisma.ProviderSuspensionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProviderSuspensionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ProviderSuspensionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProviderSuspensionPayload>
+        }
+        findMany: {
+          args: Prisma.ProviderSuspensionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProviderSuspensionPayload>[]
+        }
+        create: {
+          args: Prisma.ProviderSuspensionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProviderSuspensionPayload>
+        }
+        createMany: {
+          args: Prisma.ProviderSuspensionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ProviderSuspensionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProviderSuspensionPayload>[]
+        }
+        delete: {
+          args: Prisma.ProviderSuspensionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProviderSuspensionPayload>
+        }
+        update: {
+          args: Prisma.ProviderSuspensionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProviderSuspensionPayload>
+        }
+        deleteMany: {
+          args: Prisma.ProviderSuspensionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ProviderSuspensionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ProviderSuspensionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProviderSuspensionPayload>[]
+        }
+        upsert: {
+          args: Prisma.ProviderSuspensionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProviderSuspensionPayload>
+        }
+        aggregate: {
+          args: Prisma.ProviderSuspensionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateProviderSuspension>
+        }
+        groupBy: {
+          args: Prisma.ProviderSuspensionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProviderSuspensionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ProviderSuspensionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProviderSuspensionCountAggregateOutputType> | number
+        }
+      }
+    }
+    Tip: {
+      payload: Prisma.$TipPayload<ExtArgs>
+      fields: Prisma.TipFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TipFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TipPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TipFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TipPayload>
+        }
+        findFirst: {
+          args: Prisma.TipFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TipPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TipFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TipPayload>
+        }
+        findMany: {
+          args: Prisma.TipFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TipPayload>[]
+        }
+        create: {
+          args: Prisma.TipCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TipPayload>
+        }
+        createMany: {
+          args: Prisma.TipCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TipCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TipPayload>[]
+        }
+        delete: {
+          args: Prisma.TipDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TipPayload>
+        }
+        update: {
+          args: Prisma.TipUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TipPayload>
+        }
+        deleteMany: {
+          args: Prisma.TipDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TipUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TipUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TipPayload>[]
+        }
+        upsert: {
+          args: Prisma.TipUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TipPayload>
+        }
+        aggregate: {
+          args: Prisma.TipAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTip>
+        }
+        groupBy: {
+          args: Prisma.TipGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TipGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TipCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TipCountAggregateOutputType> | number
+        }
+      }
+    }
+    Report: {
+      payload: Prisma.$ReportPayload<ExtArgs>
+      fields: Prisma.ReportFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ReportFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReportPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ReportFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReportPayload>
+        }
+        findFirst: {
+          args: Prisma.ReportFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReportPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ReportFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReportPayload>
+        }
+        findMany: {
+          args: Prisma.ReportFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReportPayload>[]
+        }
+        create: {
+          args: Prisma.ReportCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReportPayload>
+        }
+        createMany: {
+          args: Prisma.ReportCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ReportCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReportPayload>[]
+        }
+        delete: {
+          args: Prisma.ReportDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReportPayload>
+        }
+        update: {
+          args: Prisma.ReportUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReportPayload>
+        }
+        deleteMany: {
+          args: Prisma.ReportDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ReportUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ReportUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReportPayload>[]
+        }
+        upsert: {
+          args: Prisma.ReportUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReportPayload>
+        }
+        aggregate: {
+          args: Prisma.ReportAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateReport>
+        }
+        groupBy: {
+          args: Prisma.ReportGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ReportGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ReportCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ReportCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -3506,6 +3956,12 @@ export const BarberProfileScalarFieldEnum = {
   rutTributario: 'rutTributario',
   tipoClaveSii: 'tipoClaveSii',
   claveTributaria: 'claveTributaria',
+  cancellationRate: 'cancellationRate',
+  cancellationCount30d: 'cancellationCount30d',
+  bookingsCount30d: 'bookingsCount30d',
+  isCurrentlySuspended: 'isCurrentlySuspended',
+  suspensionLevel: 'suspensionLevel',
+  suspensionExpiresAt: 'suspensionExpiresAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
@@ -3532,6 +3988,12 @@ export const BarbershopProfileScalarFieldEnum = {
   currency: 'currency',
   country: 'country',
   scheduleJson: 'scheduleJson',
+  cancellationRate: 'cancellationRate',
+  cancellationCount30d: 'cancellationCount30d',
+  bookingsCount30d: 'bookingsCount30d',
+  isCurrentlySuspended: 'isCurrentlySuspended',
+  suspensionLevel: 'suspensionLevel',
+  suspensionExpiresAt: 'suspensionExpiresAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt',
@@ -3677,6 +4139,21 @@ export const BookingScalarFieldEnum = {
   boletaAnulMotivo: 'boletaAnulMotivo',
   boletaTipo: 'boletaTipo',
   barbershopId: 'barbershopId',
+  cancelledAt: 'cancelledAt',
+  cancelledByUserId: 'cancelledByUserId',
+  cancelledByRole: 'cancelledByRole',
+  cancellationReason: 'cancellationReason',
+  cancellationNotes: 'cancellationNotes',
+  refundAmount: 'refundAmount',
+  refundTransactionId: 'refundTransactionId',
+  compensationBonusAmount: 'compensationBonusAmount',
+  compensationBonusTxId: 'compensationBonusTxId',
+  hasTip: 'hasTip',
+  tipAmount: 'tipAmount',
+  tipId: 'tipId',
+  rateReminderSkipCount: 'rateReminderSkipCount',
+  rateReminderLastShownAt: 'rateReminderLastShownAt',
+  rateReminderStatus: 'rateReminderStatus',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
@@ -3746,6 +4223,8 @@ export const ReviewScalarFieldEnum = {
   barberId: 'barberId',
   rating: 'rating',
   comment: 'comment',
+  compliments: 'compliments',
+  issues: 'issues',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
@@ -4093,6 +4572,113 @@ export const TaxDocumentScalarFieldEnum = {
 export type TaxDocumentScalarFieldEnum = (typeof TaxDocumentScalarFieldEnum)[keyof typeof TaxDocumentScalarFieldEnum]
 
 
+export const CreditWalletScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  balance: 'balance',
+  totalEarned: 'totalEarned',
+  totalSpent: 'totalSpent',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CreditWalletScalarFieldEnum = (typeof CreditWalletScalarFieldEnum)[keyof typeof CreditWalletScalarFieldEnum]
+
+
+export const CreditTransactionScalarFieldEnum = {
+  id: 'id',
+  walletId: 'walletId',
+  userId: 'userId',
+  type: 'type',
+  amount: 'amount',
+  balanceAfter: 'balanceAfter',
+  description: 'description',
+  metadata: 'metadata',
+  expiresAt: 'expiresAt',
+  isExpired: 'isExpired',
+  bookingId: 'bookingId',
+  grantedByAdminId: 'grantedByAdminId',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CreditTransactionScalarFieldEnum = (typeof CreditTransactionScalarFieldEnum)[keyof typeof CreditTransactionScalarFieldEnum]
+
+
+export const CancellationRecordScalarFieldEnum = {
+  id: 'id',
+  providerUserId: 'providerUserId',
+  providerRole: 'providerRole',
+  barbershopId: 'barbershopId',
+  bookingId: 'bookingId',
+  cancelledAt: 'cancelledAt',
+  reason: 'reason',
+  notes: 'notes',
+  refundAmount: 'refundAmount',
+  compensationBonus: 'compensationBonus',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CancellationRecordScalarFieldEnum = (typeof CancellationRecordScalarFieldEnum)[keyof typeof CancellationRecordScalarFieldEnum]
+
+
+export const ProviderSuspensionScalarFieldEnum = {
+  id: 'id',
+  providerUserId: 'providerUserId',
+  barbershopId: 'barbershopId',
+  level: 'level',
+  triggeredAt: 'triggeredAt',
+  triggerReason: 'triggerReason',
+  triggerMetrics: 'triggerMetrics',
+  expiresAt: 'expiresAt',
+  resolvedAt: 'resolvedAt',
+  resolvedByAdminId: 'resolvedByAdminId',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+} as const
+
+export type ProviderSuspensionScalarFieldEnum = (typeof ProviderSuspensionScalarFieldEnum)[keyof typeof ProviderSuspensionScalarFieldEnum]
+
+
+export const TipScalarFieldEnum = {
+  id: 'id',
+  bookingId: 'bookingId',
+  clientId: 'clientId',
+  barberId: 'barberId',
+  amount: 'amount',
+  paidFromCredits: 'paidFromCredits',
+  paidFromCard: 'paidFromCard',
+  creditsTxId: 'creditsTxId',
+  webpayTxId: 'webpayTxId',
+  webpayStatus: 'webpayStatus',
+  status: 'status',
+  createdAt: 'createdAt',
+  paidAt: 'paidAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type TipScalarFieldEnum = (typeof TipScalarFieldEnum)[keyof typeof TipScalarFieldEnum]
+
+
+export const ReportScalarFieldEnum = {
+  id: 'id',
+  reporterId: 'reporterId',
+  targetType: 'targetType',
+  targetId: 'targetId',
+  bookingId: 'bookingId',
+  reason: 'reason',
+  comment: 'comment',
+  status: 'status',
+  resolvedAt: 'resolvedAt',
+  resolvedBy: 'resolvedBy',
+  resolutionNotes: 'resolutionNotes',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ReportScalarFieldEnum = (typeof ReportScalarFieldEnum)[keyof typeof ReportScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -4107,6 +4693,13 @@ export const NullableJsonNullValueInput = {
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -4260,6 +4853,20 @@ export type ListEnumBarberEmploymentTypeFieldRefInput<$PrismaModel> = FieldRefIn
 
 
 /**
+ * Reference to a field of type 'SuspensionLevel'
+ */
+export type EnumSuspensionLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SuspensionLevel'>
+    
+
+
+/**
+ * Reference to a field of type 'SuspensionLevel[]'
+ */
+export type ListEnumSuspensionLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SuspensionLevel[]'>
+    
+
+
+/**
  * Reference to a field of type 'BarbershopStatus'
  */
 export type EnumBarbershopStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BarbershopStatus'>
@@ -4340,6 +4947,48 @@ export type EnumPaymentMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'PaymentMethod[]'
  */
 export type ListEnumPaymentMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentMethod[]'>
+    
+
+
+/**
+ * Reference to a field of type 'CancellerRole'
+ */
+export type EnumCancellerRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CancellerRole'>
+    
+
+
+/**
+ * Reference to a field of type 'CancellerRole[]'
+ */
+export type ListEnumCancellerRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CancellerRole[]'>
+    
+
+
+/**
+ * Reference to a field of type 'CancellationReason'
+ */
+export type EnumCancellationReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CancellationReason'>
+    
+
+
+/**
+ * Reference to a field of type 'CancellationReason[]'
+ */
+export type ListEnumCancellationReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CancellationReason[]'>
+    
+
+
+/**
+ * Reference to a field of type 'RateReminderStatus'
+ */
+export type EnumRateReminderStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RateReminderStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'RateReminderStatus[]'
+ */
+export type ListEnumRateReminderStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RateReminderStatus[]'>
     
 
 
@@ -4452,6 +5101,104 @@ export type EnumTaxDocStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pri
  * Reference to a field of type 'TaxDocStatus[]'
  */
 export type ListEnumTaxDocStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TaxDocStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'CreditTransactionType'
+ */
+export type EnumCreditTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CreditTransactionType'>
+    
+
+
+/**
+ * Reference to a field of type 'CreditTransactionType[]'
+ */
+export type ListEnumCreditTransactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CreditTransactionType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ProviderKind'
+ */
+export type EnumProviderKindFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProviderKind'>
+    
+
+
+/**
+ * Reference to a field of type 'ProviderKind[]'
+ */
+export type ListEnumProviderKindFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProviderKind[]'>
+    
+
+
+/**
+ * Reference to a field of type 'TipPayStatus'
+ */
+export type EnumTipPayStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipPayStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'TipPayStatus[]'
+ */
+export type ListEnumTipPayStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipPayStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'TipStatus'
+ */
+export type EnumTipStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'TipStatus[]'
+ */
+export type ListEnumTipStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ReportTargetType'
+ */
+export type EnumReportTargetTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReportTargetType'>
+    
+
+
+/**
+ * Reference to a field of type 'ReportTargetType[]'
+ */
+export type ListEnumReportTargetTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReportTargetType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ReportReason'
+ */
+export type EnumReportReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReportReason'>
+    
+
+
+/**
+ * Reference to a field of type 'ReportReason[]'
+ */
+export type ListEnumReportReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReportReason[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ReportStatus'
+ */
+export type EnumReportStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReportStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'ReportStatus[]'
+ */
+export type ListEnumReportStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReportStatus[]'>
     
 
 /**
@@ -4589,6 +5336,12 @@ export type GlobalOmitConfig = {
   taxDeclarationLog?: Prisma.TaxDeclarationLogOmit
   billingRecord?: Prisma.BillingRecordOmit
   taxDocument?: Prisma.TaxDocumentOmit
+  creditWallet?: Prisma.CreditWalletOmit
+  creditTransaction?: Prisma.CreditTransactionOmit
+  cancellationRecord?: Prisma.CancellationRecordOmit
+  providerSuspension?: Prisma.ProviderSuspensionOmit
+  tip?: Prisma.TipOmit
+  report?: Prisma.ReportOmit
 }
 
 /* Types for Logging */

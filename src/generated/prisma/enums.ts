@@ -151,6 +151,124 @@ export const InvitationStatus = {
 export type InvitationStatus = (typeof InvitationStatus)[keyof typeof InvitationStatus]
 
 
+export const CancellerRole = {
+  CLIENT: 'CLIENT',
+  BARBER: 'BARBER',
+  BARBERSHOP: 'BARBERSHOP',
+  ADMIN: 'ADMIN'
+} as const
+
+export type CancellerRole = (typeof CancellerRole)[keyof typeof CancellerRole]
+
+
+export const CancellationReason = {
+  CLIENT_CANT_ATTEND: 'CLIENT_CANT_ATTEND',
+  CLIENT_WRONG_TIME: 'CLIENT_WRONG_TIME',
+  CLIENT_CHANGED_MIND: 'CLIENT_CHANGED_MIND',
+  CLIENT_EMERGENCY: 'CLIENT_EMERGENCY',
+  CLIENT_OTHER: 'CLIENT_OTHER',
+  PROVIDER_ILLNESS: 'PROVIDER_ILLNESS',
+  PROVIDER_PERSONAL_ISSUE: 'PROVIDER_PERSONAL_ISSUE',
+  PROVIDER_LOCAL_ISSUE: 'PROVIDER_LOCAL_ISSUE',
+  PROVIDER_EQUIPMENT: 'PROVIDER_EQUIPMENT',
+  PROVIDER_OVERBOOKING: 'PROVIDER_OVERBOOKING',
+  PROVIDER_OTHER: 'PROVIDER_OTHER',
+  ADMIN_POLICY: 'ADMIN_POLICY'
+} as const
+
+export type CancellationReason = (typeof CancellationReason)[keyof typeof CancellationReason]
+
+
+export const ProviderKind = {
+  BARBER_INDEPENDENT: 'BARBER_INDEPENDENT',
+  BARBERSHOP_OWNER: 'BARBERSHOP_OWNER',
+  BARBER_EMPLOYEE: 'BARBER_EMPLOYEE'
+} as const
+
+export type ProviderKind = (typeof ProviderKind)[keyof typeof ProviderKind]
+
+
+export const SuspensionLevel = {
+  WARNING: 'WARNING',
+  TEMPORARY_SUSPENSION: 'TEMPORARY_SUSPENSION',
+  UNDER_REVIEW: 'UNDER_REVIEW'
+} as const
+
+export type SuspensionLevel = (typeof SuspensionLevel)[keyof typeof SuspensionLevel]
+
+
+export const CreditTransactionType = {
+  REFUND: 'REFUND',
+  ADMIN_GRANT: 'ADMIN_GRANT',
+  BOOKING_PAYMENT: 'BOOKING_PAYMENT',
+  EXPIRED: 'EXPIRED',
+  ADJUSTMENT: 'ADJUSTMENT',
+  TIP_PAYMENT: 'TIP_PAYMENT'
+} as const
+
+export type CreditTransactionType = (typeof CreditTransactionType)[keyof typeof CreditTransactionType]
+
+
+export const TipStatus = {
+  PENDING: 'PENDING',
+  PAID: 'PAID',
+  FAILED: 'FAILED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type TipStatus = (typeof TipStatus)[keyof typeof TipStatus]
+
+
+export const TipPayStatus = {
+  NONE: 'NONE',
+  PENDING: 'PENDING',
+  SUCCESS: 'SUCCESS',
+  FAILED: 'FAILED'
+} as const
+
+export type TipPayStatus = (typeof TipPayStatus)[keyof typeof TipPayStatus]
+
+
+export const RateReminderStatus = {
+  PENDING: 'PENDING',
+  RATED: 'RATED',
+  SKIPPED_MAX: 'SKIPPED_MAX'
+} as const
+
+export type RateReminderStatus = (typeof RateReminderStatus)[keyof typeof RateReminderStatus]
+
+
+export const ReportTargetType = {
+  BARBER: 'BARBER',
+  BARBERSHOP: 'BARBERSHOP',
+  BOOKING: 'BOOKING'
+} as const
+
+export type ReportTargetType = (typeof ReportTargetType)[keyof typeof ReportTargetType]
+
+
+export const ReportReason = {
+  NO_SHOW: 'NO_SHOW',
+  HYGIENE: 'HYGIENE',
+  INCORRECT_CHARGE: 'INCORRECT_CHARGE',
+  INAPPROPRIATE_ATTITUDE: 'INAPPROPRIATE_ATTITUDE',
+  QUALITY: 'QUALITY',
+  OTHER: 'OTHER'
+} as const
+
+export type ReportReason = (typeof ReportReason)[keyof typeof ReportReason]
+
+
+export const ReportStatus = {
+  OPEN: 'OPEN',
+  IN_REVIEW: 'IN_REVIEW',
+  RESOLVED: 'RESOLVED',
+  DISMISSED: 'DISMISSED'
+} as const
+
+export type ReportStatus = (typeof ReportStatus)[keyof typeof ReportStatus]
+
+
 export const TaxDocumentType = {
   BOLETA: 'BOLETA',
   FACTURA: 'FACTURA'

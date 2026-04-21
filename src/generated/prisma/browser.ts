@@ -217,3 +217,33 @@ export type BillingRecord = Prisma.BillingRecordModel
  * 
  */
 export type TaxDocument = Prisma.TaxDocumentModel
+/**
+ * Model CreditWallet
+ * 
+ */
+export type CreditWallet = Prisma.CreditWalletModel
+/**
+ * Model CreditTransaction
+ * 
+ */
+export type CreditTransaction = Prisma.CreditTransactionModel
+/**
+ * Model CancellationRecord
+ * 
+ */
+export type CancellationRecord = Prisma.CancellationRecordModel
+/**
+ * Model ProviderSuspension
+ * 
+ */
+export type ProviderSuspension = Prisma.ProviderSuspensionModel
+/**
+ * Model Tip
+ * 
+ */
+export type Tip = Prisma.TipModel
+/**
+ * Model Report
+ * 
+ */
+export type Report = Prisma.ReportModel
