@@ -25,7 +25,7 @@ async function main() {
   const clientPassword = await bcrypt.hash('12345678', BCRYPT_ROUNDS);
   const client = await prisma.user.create({
     data: {
-      name: 'Juan Cliente',
+      name: 'Juan Soto',
       email: 'cliente@test.com',
       password: clientPassword,
       role: 'CLIENT',
