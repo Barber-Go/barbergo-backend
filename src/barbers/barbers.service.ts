@@ -52,7 +52,7 @@ export class BarbersService {
   ): Promise<BarberResponse[]> {
     const users = await this.prisma.client.user.findMany({
       where: {
-        role: 'BARBER',
+        role: { in: ['BARBER', 'BARBER_INDEPENDENT', 'BARBER_EMPLOYEE'] },
         barberProfile: { isActive: true, isCurrentlySuspended: false },
       },
       include: {
