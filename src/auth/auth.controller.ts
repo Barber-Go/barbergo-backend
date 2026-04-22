@@ -42,6 +42,12 @@ export class AuthController {
     return this.authService.updateMe(req.user.id, dto);
   }
 
+  @Get('me/stats')
+  @UseGuards(JwtAuthGuard)
+  getMyStats(@Request() req: { user: { id: string } }) {
+    return this.authService.getMyStats(req.user.id);
+  }
+
   @Get('me/tax-status')
   @UseGuards(JwtAuthGuard)
   getTaxStatus(@Request() req: { user: { id: string } }) {

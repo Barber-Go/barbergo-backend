@@ -169,6 +169,30 @@ export class AuthService {
     return this.sanitize(user);
   }
 
+  async getMyStats(userId: string) {
+    const [completedBookings, tipsData, user] = await Promise.all([
+      this.prisma.client.booking.count({
+        where: { clientId: userId, status: 'COMPLETED', deletedAt: null },
+      }),
+      this.prisma.client.tip.findMany({
+        where: { clientId: userId, status: 'PAID', amount: { gt: 0 }, deletedAt: null },
+        select: { amount: true },
+      }),
+      this.prisma.client.user.findUnique({
+        where: { id: userId },
+        select: { createdAt: true },
+      }),
+    ]);
+
+    const totalTipsGiven = tipsData.reduce((sum, t) => sum + t.amount, 0);
+
+    return {
+      completedBookings,
+      totalTipsGiven,
+      memberSince: user?.createdAt ?? new Date(),
+    };
+  }
+
   async getTaxStatus(userId: string) {
     const user = await this.prisma.client.user.findUnique({
       where: { id: userId },
