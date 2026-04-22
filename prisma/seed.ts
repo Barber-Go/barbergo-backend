@@ -79,10 +79,10 @@ async function main() {
   await prisma.rewardsCatalog.deleteMany({});
   const rewards = await Promise.all([
     prisma.rewardsCatalog.create({
-      data: { title: '10% descuento en tu proximo corte', description: 'Aplica un 10% de descuento en tu siguiente reserva pagada con la app.', pointsCost: 500 },
+      data: { title: '10% descuento en tu próximo corte', description: 'Aplica un 10% de descuento en tu siguiente reserva pagada con la app.', pointsCost: 500 },
     }),
     prisma.rewardsCatalog.create({
-      data: { title: 'Producto capilar gratis', description: 'Canjea por un producto capilar de cortesia en tu proxima visita.', pointsCost: 1500 },
+      data: { title: 'Producto capilar gratis', description: 'Canjea por un producto capilar de cortesía en tu próxima visita.', pointsCost: 1500 },
     }),
     prisma.rewardsCatalog.create({
       data: { title: '50% descuento en un corte', description: 'Obtén un 50% de descuento en cualquier servicio de corte.', pointsCost: 3000 },
