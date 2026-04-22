@@ -1,6 +1,9 @@
 import { Injectable, BadRequestException, Logger, NotFoundException } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { PrismaService } from '../prisma/prisma.service';
+import type { Prisma } from '../generated/prisma/client';
+
+type Tx = Prisma.TransactionClient;
 
 @Injectable()
 export class CreditsService {
@@ -128,14 +131,17 @@ export class CreditsService {
     });
   }
 
-  async createRefund(params: {
-    userId: string;
-    amount: number;
-    bookingId: string;
-    description: string;
-  }) {
-    return this.prisma.client.$transaction(async (tx) => {
-      const wallet = await tx.creditWallet.upsert({
+  async createRefund(
+    params: {
+      userId: string;
+      amount: number;
+      bookingId: string;
+      description: string;
+    },
+    tx?: Tx,
+  ) {
+    const run = async (client: Tx) => {
+      const wallet = await client.creditWallet.upsert({
         where: { userId: params.userId },
         create: { userId: params.userId, balance: 0, totalEarned: 0, totalSpent: 0 },
         update: {},
@@ -145,7 +151,7 @@ export class CreditsService {
       const expiresAt = new Date();
       expiresAt.setMonth(expiresAt.getMonth() + 12);
 
-      const transaction = await tx.creditTransaction.create({
+      const transaction = await client.creditTransaction.create({
         data: {
           walletId: wallet.id,
           userId: params.userId,
@@ -158,7 +164,7 @@ export class CreditsService {
         },
       });
 
-      await tx.creditWallet.update({
+      await client.creditWallet.update({
         where: { id: wallet.id },
         data: {
           balance: newBalance,
@@ -167,17 +173,23 @@ export class CreditsService {
       });
 
       return transaction;
-    });
+    };
+
+    if (tx) return run(tx);
+    return this.prisma.client.$transaction(run);
   }
 
-  async createBonus(params: {
-    userId: string;
-    amount: number;
-    bookingId: string;
-    description: string;
-  }) {
-    return this.prisma.client.$transaction(async (tx) => {
-      const wallet = await tx.creditWallet.upsert({
+  async createBonus(
+    params: {
+      userId: string;
+      amount: number;
+      bookingId: string;
+      description: string;
+    },
+    tx?: Tx,
+  ) {
+    const run = async (client: Tx) => {
+      const wallet = await client.creditWallet.upsert({
         where: { userId: params.userId },
         create: { userId: params.userId, balance: 0, totalEarned: 0, totalSpent: 0 },
         update: {},
@@ -187,7 +199,7 @@ export class CreditsService {
       const expiresAt = new Date();
       expiresAt.setMonth(expiresAt.getMonth() + 12);
 
-      const transaction = await tx.creditTransaction.create({
+      const transaction = await client.creditTransaction.create({
         data: {
           walletId: wallet.id,
           userId: params.userId,
@@ -200,7 +212,7 @@ export class CreditsService {
         },
       });
 
-      await tx.creditWallet.update({
+      await client.creditWallet.update({
         where: { id: wallet.id },
         data: {
           balance: newBalance,
@@ -209,7 +221,10 @@ export class CreditsService {
       });
 
       return transaction;
-    });
+    };
+
+    if (tx) return run(tx);
+    return this.prisma.client.$transaction(run);
   }
 
   async spendCredits(params: {

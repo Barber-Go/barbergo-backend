@@ -77,82 +77,92 @@ export class CancellationsService {
     const grossAmount = Number(booking.grossAmount);
     const policy = this.calculatePolicy(grossAmount, booking.scheduledAt, booking.paymentMethod, cancellerRole);
 
-    // Update booking
-    await this.prisma.client.booking.update({
-      where: { id: bookingId },
-      data: {
-        status: 'CANCELLED',
-        cancelledAt: new Date(),
-        cancelledByUserId: userId,
-        cancelledByRole: cancellerRole,
-        cancellationReason: reason,
-        cancellationNotes: notes ?? null,
-        refundAmount: policy.refundAmount,
-        compensationBonusAmount: policy.bonusAmount,
+    // All booking mutation + credit grants + cancellation record in a single
+    // transaction so we never leave the system in a partial state.
+    const result = await this.prisma.client.$transaction(
+      async (tx) => {
+        await tx.booking.update({
+          where: { id: bookingId },
+          data: {
+            status: 'CANCELLED',
+            cancelledAt: new Date(),
+            cancelledByUserId: userId,
+            cancelledByRole: cancellerRole,
+            cancellationReason: reason,
+            cancellationNotes: notes ?? null,
+            refundAmount: policy.refundAmount,
+            compensationBonusAmount: policy.bonusAmount,
+          },
+        });
+
+        let refundTxId: string | null = null;
+        let bonusTxId: string | null = null;
+
+        if (policy.refundAmount > 0) {
+          const refundTx = await this.creditsService.createRefund(
+            {
+              userId: booking.clientId,
+              amount: policy.refundAmount,
+              bookingId: booking.id,
+              description: 'Reembolso por cancelación de reserva',
+            },
+            tx,
+          );
+          refundTxId = refundTx.id;
+        }
+
+        if (policy.bonusAmount > 0) {
+          const bonusTx = await this.creditsService.createBonus(
+            {
+              userId: booking.clientId,
+              amount: policy.bonusAmount,
+              bookingId: booking.id,
+              description: 'Bono de compensación por cancelación del proveedor',
+            },
+            tx,
+          );
+          bonusTxId = bonusTx.id;
+        }
+
+        if (refundTxId || bonusTxId) {
+          await tx.booking.update({
+            where: { id: bookingId },
+            data: {
+              refundTransactionId: refundTxId,
+              compensationBonusTxId: bonusTxId,
+            },
+          });
+        }
+
+        if (cancellerRole !== 'CLIENT') {
+          const providerRole = booking.barber.employmentType === 'EMPLOYEE'
+            ? 'BARBER_EMPLOYEE' as const
+            : 'BARBER_INDEPENDENT' as const;
+
+          await tx.cancellationRecord.create({
+            data: {
+              providerUserId: booking.barber.userId,
+              providerRole,
+              barbershopId: booking.barbershopId ?? null,
+              bookingId: booking.id,
+              reason,
+              notes: notes ?? null,
+              refundAmount: policy.refundAmount,
+              compensationBonus: policy.bonusAmount,
+            },
+          });
+        }
+
+        return { refundTxId, bonusTxId };
       },
-    });
+      { timeout: 10000 },
+    );
 
-    // Process refund + bonus
-    let refundTxId: string | null = null;
-    let bonusTxId: string | null = null;
-
-    if (policy.refundAmount > 0) {
-      const refundTx = await this.creditsService.createRefund({
-        userId: booking.clientId,
-        amount: policy.refundAmount,
-        bookingId: booking.id,
-        description: 'Reembolso por cancelación de reserva',
-      });
-      refundTxId = refundTx.id;
-    }
-
-    if (policy.bonusAmount > 0) {
-      const bonusTx = await this.creditsService.createBonus({
-        userId: booking.clientId,
-        amount: policy.bonusAmount,
-        bookingId: booking.id,
-        description: 'Bono de compensación por cancelación del proveedor',
-      });
-      bonusTxId = bonusTx.id;
-    }
-
-    // Store tx IDs on booking
-    if (refundTxId || bonusTxId) {
-      await this.prisma.client.booking.update({
-        where: { id: bookingId },
-        data: {
-          refundTransactionId: refundTxId,
-          compensationBonusTxId: bonusTxId,
-        },
-      });
-    }
-
-    // Provider cancellation tracking
+    // Post-commit side effects (safe to be fire-and-forget)
     if (cancellerRole !== 'CLIENT') {
-      const providerUserId = booking.barber.userId;
-      const providerRole = booking.barber.employmentType === 'EMPLOYEE'
-        ? 'BARBER_EMPLOYEE' as const
-        : 'BARBER_INDEPENDENT' as const;
-
-      await this.prisma.client.cancellationRecord.create({
-        data: {
-          providerUserId,
-          providerRole,
-          barbershopId: booking.barbershopId ?? null,
-          bookingId: booking.id,
-          reason,
-          notes: notes ?? null,
-          refundAmount: policy.refundAmount,
-          compensationBonus: policy.bonusAmount,
-        },
-      });
-
-      // Recalculate rate and evaluate penalties (fire-and-forget)
-      this.updateCancellationRate(providerUserId, booking.barbershopId).catch(() => {});
-      this.evaluatePenalties(providerUserId, booking.barbershopId).catch(() => {});
+      this.updateCancellationRate(booking.barber.userId, booking.barbershopId).catch(() => {});
+      this.evaluatePenalties(booking.barber.userId, booking.barbershopId).catch(() => {});
     }
-
-    // Notifications (fire-and-forget)
     this.sendCancellationNotifications(booking, cancellerRole, policy).catch(() => {});
 
     return {
@@ -167,8 +177,8 @@ export class CancellationsService {
         amount: policy.refundAmount,
         bonus: policy.bonusAmount,
         totalToCredits: policy.refundAmount + policy.bonusAmount,
-        refundTransactionId: refundTxId,
-        bonusTransactionId: bonusTxId,
+        refundTransactionId: result.refundTxId,
+        bonusTransactionId: result.bonusTxId,
       },
       cancellerRole,
       policy: policy.code,
