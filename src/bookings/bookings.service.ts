@@ -358,24 +358,54 @@ export class BookingsService {
     const b = booking as Record<string, unknown> & {
       id: string; status: string; scheduledAt: Date; paymentMethod: string;
       totalAmount: unknown; platformFee: unknown; barberNet: unknown; createdAt: Date;
+      grossAmount: unknown; platformFeePercent: number; distributableAmount: unknown;
+      barberAmount: unknown; shopAmount: unknown; netPayoutToBarber: unknown;
+      barbershopId: string | null;
       service: { id: string; name: string; price: unknown; durationMin: number };
       barber: { id: string; user: { name: string; avatarUrl: string | null } };
       client: { id: string; name: string; avatarUrl: string | null };
       review: { id: string } | null;
     };
+
+    const grossAmount = Number(b.grossAmount) || Number(b.totalAmount);
+    const platformFeePercent = Number(b.platformFeePercent);
+    const platformFee = Number(b.platformFee);
+    const barberAmount = Number(b.barberAmount) || Number(b.barberNet);
+    const shopAmount = Number(b.shopAmount);
+    const netPayoutToBarber = Number(b.netPayoutToBarber) || barberAmount;
+
+    let settlementContext: 'CASH' | 'INDEPENDENT_BARBER_IN_APP' | 'BARBERSHOP_IN_APP';
+    if (b.paymentMethod === PaymentMethod.CASH) {
+      settlementContext = 'CASH';
+    } else if (b.barbershopId || shopAmount > 0 || platformFeePercent === 0.10) {
+      settlementContext = 'BARBERSHOP_IN_APP';
+    } else {
+      settlementContext = 'INDEPENDENT_BARBER_IN_APP';
+    }
+
     return {
       id: b.id,
       status: b.status,
       scheduledAt: b.scheduledAt.toISOString(),
       paymentMethod: b.paymentMethod,
       totalAmount: Number(b.totalAmount),
-      platformFee: Number(b.platformFee),
+      platformFee,
       barberNet: Number(b.barberNet),
       createdAt: b.createdAt.toISOString(),
       service: { id: b.service.id, name: b.service.name, price: Number(b.service.price), durationMin: b.service.durationMin },
       barber: { id: b.barber.id, name: b.barber.user.name, avatarUrl: b.barber.user.avatarUrl },
       client: { id: b.client.id, name: b.client.name, avatarUrl: b.client.avatarUrl },
       hasReview: b.review != null,
+      // Fee breakdown (transparency)
+      feeBreakdown: {
+        grossAmount,
+        platformFee,
+        platformFeePercent,
+        barberAmount,
+        shopAmount,
+        netPayoutToBarber,
+        settlementContext,
+      },
     };
   }
 }

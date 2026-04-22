@@ -78,9 +78,11 @@ export class BarberEmployeeService {
     // KPIs
     let myEarnings = 0;
     let totalGross = 0;
+    let platformFee = 0;
     for (const b of bookings) {
       myEarnings += Number(b.barberAmount);
       totalGross += Number(b.grossAmount);
+      platformFee += Number(b.platformFee);
     }
     const totalBookings = bookings.length;
     const avgTicket = totalBookings > 0 ? Math.round(myEarnings / totalBookings) : 0;
@@ -202,6 +204,8 @@ export class BarberEmployeeService {
           totalReviews,
           avgTicket,
           uniqueClients: clientIds.size,
+          platformFee: Math.round(platformFee),
+          totalGross: Math.round(totalGross),
           comparison: { earningsPct, bookingsPct },
         },
         earningsByDay,
