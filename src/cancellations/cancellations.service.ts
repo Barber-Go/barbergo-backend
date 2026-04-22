@@ -75,6 +75,19 @@ export class CancellationsService {
 
     const cancellerRole = this.determineCancellerRole(booking, userId, userRole);
     const grossAmount = Number(booking.grossAmount);
+
+    // Block client-initiated cancellations inside the 24h window when the
+    // booking was paid in-app. Contacting the barber avoids the dispute.
+    // CASH bookings stay cancellable (no money to refund anyway).
+    // Providers can always cancel; penalties are tracked via suspensions.
+    const hoursUntil = (booking.scheduledAt.getTime() - Date.now()) / 3600000;
+    if (cancellerRole === 'CLIENT' && hoursUntil < 24 && booking.paymentMethod === 'IN_APP') {
+      throw new BadRequestException(
+        'No se puede cancelar una reserva pagada con menos de 24 horas de anticipación. ' +
+        'Contacta al barbero para coordinar.',
+      );
+    }
+
     const policy = this.calculatePolicy(grossAmount, booking.scheduledAt, booking.paymentMethod, cancellerRole);
 
     // All booking mutation + credit grants + cancellation record in a single
@@ -197,11 +210,15 @@ export class CancellationsService {
 
     if (!booking) throw new NotFoundException('Reserva no encontrada');
 
-    const canCancel = booking.status !== 'CANCELLED' && booking.status !== 'COMPLETED';
     const cancellerRole = this.determineCancellerRole(booking, userId, userRole);
     const grossAmount = Number(booking.grossAmount);
     const hoursUntil = (booking.scheduledAt.getTime() - Date.now()) / 3600000;
     const policy = this.calculatePolicy(grossAmount, booking.scheduledAt, booking.paymentMethod, cancellerRole);
+
+    const statusCancellable = booking.status !== 'CANCELLED' && booking.status !== 'COMPLETED';
+    const blockedByWindow =
+      cancellerRole === 'CLIENT' && hoursUntil < 24 && booking.paymentMethod === 'IN_APP';
+    const canCancel = statusCancellable && !blockedByWindow;
 
     const isClient = cancellerRole === 'CLIENT';
     const availableReasons = isClient ? CLIENT_REASONS : PROVIDER_REASONS;
