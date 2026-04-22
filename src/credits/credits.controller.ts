@@ -72,4 +72,18 @@ export class CreditsController {
     const data = await this.creditsService.getAdminUserBalance(userId);
     return { data, message: 'Saldo del usuario', statusCode: 200 };
   }
+
+  // POST /api/v1/credits/admin/expire-credits
+  // Manual trigger for the daily expiration cron (see @Cron in credits.service).
+  // Useful for QA or recovery when the scheduled run missed a window.
+  @Post('admin/expire-credits')
+  @Roles(Role.ADMIN)
+  async forceExpireCredits() {
+    const result = await this.creditsService.expireOldCredits();
+    return {
+      data: result,
+      message: `${result.expiredCount} credit transactions marked as EXPIRED`,
+      statusCode: 200,
+    };
+  }
 }

@@ -1176,6 +1176,10 @@ model CreditTransaction {
   userId       String
   type         CreditTransactionType
   amount       Int
+  // Unspent portion for positive transactions (REFUND, ADMIN_GRANT).
+  // Debit operations (BOOKING_PAYMENT, EXPIRED) decrement this on older
+  // credits first, enabling FIFO consumption by expiresAt.
+  remainingAmount Int @default(0)
   balanceAfter Int
   description  String
   metadata     Json?
@@ -1194,6 +1198,7 @@ model CreditTransaction {
   @@index([userId, createdAt])
   @@index([walletId])
   @@index([expiresAt, isExpired])
+  @@index([walletId, expiresAt, remainingAmount])
   @@map("credit_transactions")
 }
 

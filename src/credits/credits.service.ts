@@ -111,6 +111,7 @@ export class CreditsService {
           userId: params.userId,
           type: 'ADMIN_GRANT',
           amount: params.amount,
+          remainingAmount: params.amount,
           balanceAfter: newBalance,
           description: params.description,
           metadata: params.metadata ? JSON.parse(JSON.stringify(params.metadata)) : undefined,
@@ -157,6 +158,7 @@ export class CreditsService {
           userId: params.userId,
           type: 'REFUND',
           amount: params.amount,
+          remainingAmount: params.amount,
           balanceAfter: newBalance,
           description: params.description,
           bookingId: params.bookingId,
@@ -205,6 +207,7 @@ export class CreditsService {
           userId: params.userId,
           type: 'ADMIN_GRANT',
           amount: params.amount,
+          remainingAmount: params.amount,
           balanceAfter: newBalance,
           description: params.description,
           bookingId: params.bookingId,
@@ -241,6 +244,41 @@ export class CreditsService {
         throw new BadRequestException('Saldo insuficiente');
       }
 
+      // FIFO: consume the positive transactions closest to expiration first.
+      // Nulls (no expiry) go last. Only active credits (not expired, not deleted).
+      const available = await tx.creditTransaction.findMany({
+        where: {
+          walletId: wallet.id,
+          remainingAmount: { gt: 0 },
+          isExpired: false,
+          deletedAt: null,
+          type: { in: ['REFUND', 'ADMIN_GRANT'] },
+        },
+        orderBy: [
+          { expiresAt: { sort: 'asc', nulls: 'last' } },
+          { createdAt: 'asc' },
+        ],
+      });
+
+      let remaining = params.amount;
+      const consumedFrom: { id: string; amount: number }[] = [];
+
+      for (const credit of available) {
+        if (remaining === 0) break;
+        const take = Math.min(credit.remainingAmount, remaining);
+        await tx.creditTransaction.update({
+          where: { id: credit.id },
+          data: { remainingAmount: credit.remainingAmount - take },
+        });
+        consumedFrom.push({ id: credit.id, amount: take });
+        remaining -= take;
+      }
+
+      if (remaining > 0) {
+        // Shouldn't happen if wallet.balance was correct; fail safely.
+        throw new BadRequestException('Saldo insuficiente');
+      }
+
       const newBalance = wallet.balance - params.amount;
 
       const transaction = await tx.creditTransaction.create({
@@ -252,6 +290,7 @@ export class CreditsService {
           balanceAfter: newBalance,
           description: 'Pago de reserva con créditos',
           bookingId: params.bookingId,
+          metadata: { consumedFrom },
         },
       });
 
@@ -283,11 +322,14 @@ export class CreditsService {
   @Cron('0 3 * * *') // 3 AM daily
   async expireOldCredits() {
     this.logger.log('Running credit expiration cron job');
+    // Only expire the UNSPENT portion: remainingAmount drives the wallet
+    // balance delta, not the original amount. A credit partially consumed
+    // by prior spends should expire only the leftover.
     const expired = await this.prisma.client.creditTransaction.findMany({
       where: {
         expiresAt: { lt: new Date() },
         isExpired: false,
-        amount: { gt: 0 },
+        remainingAmount: { gt: 0 },
         type: { in: ['REFUND', 'ADMIN_GRANT'] },
         deletedAt: null,
       },
@@ -299,7 +341,7 @@ export class CreditsService {
       await this.prisma.client.$transaction(async (client) => {
         await client.creditTransaction.update({
           where: { id: tx.id },
-          data: { isExpired: true },
+          data: { isExpired: true, remainingAmount: 0 },
         });
 
         const wallet = await client.creditWallet.findUnique({
@@ -307,14 +349,14 @@ export class CreditsService {
         });
         if (!wallet) return;
 
-        const newBalance = Math.max(0, wallet.balance - tx.amount);
+        const newBalance = Math.max(0, wallet.balance - tx.remainingAmount);
 
         await client.creditTransaction.create({
           data: {
             walletId: tx.walletId,
             userId: tx.userId,
             type: 'EXPIRED',
-            amount: -tx.amount,
+            amount: -tx.remainingAmount,
             balanceAfter: newBalance,
             description: `Expiración de créditos del ${tx.createdAt.toISOString().split('T')[0]}`,
           },
