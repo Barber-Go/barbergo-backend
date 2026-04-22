@@ -45,6 +45,7 @@ export class BarberEmployeeService {
       select: {
         grossAmount: true,
         barberAmount: true,
+        platformFee: true,
         paymentMethod: true,
         scheduledAt: true,
         service: { select: { name: true } },

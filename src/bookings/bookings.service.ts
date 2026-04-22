@@ -34,6 +34,24 @@ const BOOKING_INCLUDE = {
   review: { select: { id: true } },
 } as const;
 
+// Extract weekday + minute-of-day in Chile local time.
+// The server runs in UTC but both the mobile client and the barber's stored
+// availability (e.g. "09:00"-"18:00") refer to America/Santiago wall-clock time.
+function chileLocalParts(d: Date): { dayOfWeek: number; minutes: number } {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Santiago',
+    hour12: false,
+    weekday: 'short',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).formatToParts(d);
+  const hour = Number(parts.find((p) => p.type === 'hour')?.value ?? '0') % 24;
+  const minute = Number(parts.find((p) => p.type === 'minute')?.value ?? '0');
+  const weekday = parts.find((p) => p.type === 'weekday')?.value ?? 'Sun';
+  const dayMap: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+  return { dayOfWeek: dayMap[weekday] ?? 0, minutes: hour * 60 + minute };
+}
+
 @Injectable()
 export class BookingsService {
   constructor(
@@ -67,8 +85,12 @@ export class BookingsService {
 
     // Atomic validation + creation in a transaction
     const booking = await this.prisma.client.$transaction(async (tx) => {
-      // Check weekly availability
-      const dayOfWeek = scheduledAt.getDay();
+      // Weekday + time of day must be evaluated in Chile local time,
+      // not in the server's UTC, to match stored availability strings.
+      const startParts = chileLocalParts(scheduledAt);
+      const endParts = chileLocalParts(endTime);
+      const dayOfWeek = startParts.dayOfWeek;
+
       const availability = await tx.weeklyAvailability.findFirst({
         where: { barberId: dto.barberId, dayOfWeek, isActive: true },
       });
@@ -77,8 +99,8 @@ export class BookingsService {
       }
 
       const toMinutes = (t: string) => { const [h, m] = t.split(':').map(Number); return h * 60 + (m || 0); };
-      const slotStart = scheduledAt.getHours() * 60 + scheduledAt.getMinutes();
-      const slotEnd = endTime.getHours() * 60 + endTime.getMinutes();
+      const slotStart = startParts.minutes;
+      const slotEnd = endParts.minutes;
       const availStart = toMinutes(availability.startTime);
       const availEnd = toMinutes(availability.endTime);
 
