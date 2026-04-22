@@ -28,11 +28,13 @@ export type AggregateCreditTransaction = {
 
 export type CreditTransactionAvgAggregateOutputType = {
   amount: number | null
+  remainingAmount: number | null
   balanceAfter: number | null
 }
 
 export type CreditTransactionSumAggregateOutputType = {
   amount: number | null
+  remainingAmount: number | null
   balanceAfter: number | null
 }
 
@@ -42,6 +44,7 @@ export type CreditTransactionMinAggregateOutputType = {
   userId: string | null
   type: $Enums.CreditTransactionType | null
   amount: number | null
+  remainingAmount: number | null
   balanceAfter: number | null
   description: string | null
   expiresAt: Date | null
@@ -58,6 +61,7 @@ export type CreditTransactionMaxAggregateOutputType = {
   userId: string | null
   type: $Enums.CreditTransactionType | null
   amount: number | null
+  remainingAmount: number | null
   balanceAfter: number | null
   description: string | null
   expiresAt: Date | null
@@ -74,6 +78,7 @@ export type CreditTransactionCountAggregateOutputType = {
   userId: number
   type: number
   amount: number
+  remainingAmount: number
   balanceAfter: number
   description: number
   metadata: number
@@ -89,11 +94,13 @@ export type CreditTransactionCountAggregateOutputType = {
 
 export type CreditTransactionAvgAggregateInputType = {
   amount?: true
+  remainingAmount?: true
   balanceAfter?: true
 }
 
 export type CreditTransactionSumAggregateInputType = {
   amount?: true
+  remainingAmount?: true
   balanceAfter?: true
 }
 
@@ -103,6 +110,7 @@ export type CreditTransactionMinAggregateInputType = {
   userId?: true
   type?: true
   amount?: true
+  remainingAmount?: true
   balanceAfter?: true
   description?: true
   expiresAt?: true
@@ -119,6 +127,7 @@ export type CreditTransactionMaxAggregateInputType = {
   userId?: true
   type?: true
   amount?: true
+  remainingAmount?: true
   balanceAfter?: true
   description?: true
   expiresAt?: true
@@ -135,6 +144,7 @@ export type CreditTransactionCountAggregateInputType = {
   userId?: true
   type?: true
   amount?: true
+  remainingAmount?: true
   balanceAfter?: true
   description?: true
   metadata?: true
@@ -239,6 +249,7 @@ export type CreditTransactionGroupByOutputType = {
   userId: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount: number
   balanceAfter: number
   description: string
   metadata: runtime.JsonValue | null
@@ -279,6 +290,7 @@ export type CreditTransactionWhereInput = {
   userId?: Prisma.StringFilter<"CreditTransaction"> | string
   type?: Prisma.EnumCreditTransactionTypeFilter<"CreditTransaction"> | $Enums.CreditTransactionType
   amount?: Prisma.IntFilter<"CreditTransaction"> | number
+  remainingAmount?: Prisma.IntFilter<"CreditTransaction"> | number
   balanceAfter?: Prisma.IntFilter<"CreditTransaction"> | number
   description?: Prisma.StringFilter<"CreditTransaction"> | string
   metadata?: Prisma.JsonNullableFilter<"CreditTransaction">
@@ -300,6 +312,7 @@ export type CreditTransactionOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   type?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  remainingAmount?: Prisma.SortOrder
   balanceAfter?: Prisma.SortOrder
   description?: Prisma.SortOrder
   metadata?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -324,6 +337,7 @@ export type CreditTransactionWhereUniqueInput = Prisma.AtLeast<{
   userId?: Prisma.StringFilter<"CreditTransaction"> | string
   type?: Prisma.EnumCreditTransactionTypeFilter<"CreditTransaction"> | $Enums.CreditTransactionType
   amount?: Prisma.IntFilter<"CreditTransaction"> | number
+  remainingAmount?: Prisma.IntFilter<"CreditTransaction"> | number
   balanceAfter?: Prisma.IntFilter<"CreditTransaction"> | number
   description?: Prisma.StringFilter<"CreditTransaction"> | string
   metadata?: Prisma.JsonNullableFilter<"CreditTransaction">
@@ -345,6 +359,7 @@ export type CreditTransactionOrderByWithAggregationInput = {
   userId?: Prisma.SortOrder
   type?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  remainingAmount?: Prisma.SortOrder
   balanceAfter?: Prisma.SortOrder
   description?: Prisma.SortOrder
   metadata?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -370,6 +385,7 @@ export type CreditTransactionScalarWhereWithAggregatesInput = {
   userId?: Prisma.StringWithAggregatesFilter<"CreditTransaction"> | string
   type?: Prisma.EnumCreditTransactionTypeWithAggregatesFilter<"CreditTransaction"> | $Enums.CreditTransactionType
   amount?: Prisma.IntWithAggregatesFilter<"CreditTransaction"> | number
+  remainingAmount?: Prisma.IntWithAggregatesFilter<"CreditTransaction"> | number
   balanceAfter?: Prisma.IntWithAggregatesFilter<"CreditTransaction"> | number
   description?: Prisma.StringWithAggregatesFilter<"CreditTransaction"> | string
   metadata?: Prisma.JsonNullableWithAggregatesFilter<"CreditTransaction">
@@ -385,6 +401,7 @@ export type CreditTransactionCreateInput = {
   id?: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -404,6 +421,7 @@ export type CreditTransactionUncheckedCreateInput = {
   userId: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -419,6 +437,7 @@ export type CreditTransactionUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -438,6 +457,7 @@ export type CreditTransactionUncheckedUpdateInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -455,6 +475,7 @@ export type CreditTransactionCreateManyInput = {
   userId: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -470,6 +491,7 @@ export type CreditTransactionUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -485,6 +507,7 @@ export type CreditTransactionUncheckedUpdateManyInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -512,6 +535,7 @@ export type CreditTransactionCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   type?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  remainingAmount?: Prisma.SortOrder
   balanceAfter?: Prisma.SortOrder
   description?: Prisma.SortOrder
   metadata?: Prisma.SortOrder
@@ -525,6 +549,7 @@ export type CreditTransactionCountOrderByAggregateInput = {
 
 export type CreditTransactionAvgOrderByAggregateInput = {
   amount?: Prisma.SortOrder
+  remainingAmount?: Prisma.SortOrder
   balanceAfter?: Prisma.SortOrder
 }
 
@@ -534,6 +559,7 @@ export type CreditTransactionMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   type?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  remainingAmount?: Prisma.SortOrder
   balanceAfter?: Prisma.SortOrder
   description?: Prisma.SortOrder
   expiresAt?: Prisma.SortOrder
@@ -550,6 +576,7 @@ export type CreditTransactionMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   type?: Prisma.SortOrder
   amount?: Prisma.SortOrder
+  remainingAmount?: Prisma.SortOrder
   balanceAfter?: Prisma.SortOrder
   description?: Prisma.SortOrder
   expiresAt?: Prisma.SortOrder
@@ -562,6 +589,7 @@ export type CreditTransactionMinOrderByAggregateInput = {
 
 export type CreditTransactionSumOrderByAggregateInput = {
   amount?: Prisma.SortOrder
+  remainingAmount?: Prisma.SortOrder
   balanceAfter?: Prisma.SortOrder
 }
 
@@ -741,6 +769,7 @@ export type CreditTransactionCreateWithoutUserInput = {
   id?: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -758,6 +787,7 @@ export type CreditTransactionUncheckedCreateWithoutUserInput = {
   walletId: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -783,6 +813,7 @@ export type CreditTransactionCreateWithoutGrantedByAdminInput = {
   id?: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -801,6 +832,7 @@ export type CreditTransactionUncheckedCreateWithoutGrantedByAdminInput = {
   userId: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -846,6 +878,7 @@ export type CreditTransactionScalarWhereInput = {
   userId?: Prisma.StringFilter<"CreditTransaction"> | string
   type?: Prisma.EnumCreditTransactionTypeFilter<"CreditTransaction"> | $Enums.CreditTransactionType
   amount?: Prisma.IntFilter<"CreditTransaction"> | number
+  remainingAmount?: Prisma.IntFilter<"CreditTransaction"> | number
   balanceAfter?: Prisma.IntFilter<"CreditTransaction"> | number
   description?: Prisma.StringFilter<"CreditTransaction"> | string
   metadata?: Prisma.JsonNullableFilter<"CreditTransaction">
@@ -877,6 +910,7 @@ export type CreditTransactionCreateWithoutBookingInput = {
   id?: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -895,6 +929,7 @@ export type CreditTransactionUncheckedCreateWithoutBookingInput = {
   userId: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -935,6 +970,7 @@ export type CreditTransactionCreateWithoutWalletInput = {
   id?: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -952,6 +988,7 @@ export type CreditTransactionUncheckedCreateWithoutWalletInput = {
   userId: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -994,6 +1031,7 @@ export type CreditTransactionCreateManyUserInput = {
   walletId: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1011,6 +1049,7 @@ export type CreditTransactionCreateManyGrantedByAdminInput = {
   userId: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1025,6 +1064,7 @@ export type CreditTransactionUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1042,6 +1082,7 @@ export type CreditTransactionUncheckedUpdateWithoutUserInput = {
   walletId?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1058,6 +1099,7 @@ export type CreditTransactionUncheckedUpdateManyWithoutUserInput = {
   walletId?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1073,6 +1115,7 @@ export type CreditTransactionUpdateWithoutGrantedByAdminInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1091,6 +1134,7 @@ export type CreditTransactionUncheckedUpdateWithoutGrantedByAdminInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1107,6 +1151,7 @@ export type CreditTransactionUncheckedUpdateManyWithoutGrantedByAdminInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1123,6 +1168,7 @@ export type CreditTransactionCreateManyBookingInput = {
   userId: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1137,6 +1183,7 @@ export type CreditTransactionUpdateWithoutBookingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1155,6 +1202,7 @@ export type CreditTransactionUncheckedUpdateWithoutBookingInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1171,6 +1219,7 @@ export type CreditTransactionUncheckedUpdateManyWithoutBookingInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1186,6 +1235,7 @@ export type CreditTransactionCreateManyWalletInput = {
   userId: string
   type: $Enums.CreditTransactionType
   amount: number
+  remainingAmount?: number
   balanceAfter: number
   description: string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1201,6 +1251,7 @@ export type CreditTransactionUpdateWithoutWalletInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1218,6 +1269,7 @@ export type CreditTransactionUncheckedUpdateWithoutWalletInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1234,6 +1286,7 @@ export type CreditTransactionUncheckedUpdateManyWithoutWalletInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.EnumCreditTransactionTypeFieldUpdateOperationsInput | $Enums.CreditTransactionType
   amount?: Prisma.IntFieldUpdateOperationsInput | number
+  remainingAmount?: Prisma.IntFieldUpdateOperationsInput | number
   balanceAfter?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1253,6 +1306,7 @@ export type CreditTransactionSelect<ExtArgs extends runtime.Types.Extensions.Int
   userId?: boolean
   type?: boolean
   amount?: boolean
+  remainingAmount?: boolean
   balanceAfter?: boolean
   description?: boolean
   metadata?: boolean
@@ -1274,6 +1328,7 @@ export type CreditTransactionSelectCreateManyAndReturn<ExtArgs extends runtime.T
   userId?: boolean
   type?: boolean
   amount?: boolean
+  remainingAmount?: boolean
   balanceAfter?: boolean
   description?: boolean
   metadata?: boolean
@@ -1295,6 +1350,7 @@ export type CreditTransactionSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   userId?: boolean
   type?: boolean
   amount?: boolean
+  remainingAmount?: boolean
   balanceAfter?: boolean
   description?: boolean
   metadata?: boolean
@@ -1316,6 +1372,7 @@ export type CreditTransactionSelectScalar = {
   userId?: boolean
   type?: boolean
   amount?: boolean
+  remainingAmount?: boolean
   balanceAfter?: boolean
   description?: boolean
   metadata?: boolean
@@ -1327,7 +1384,7 @@ export type CreditTransactionSelectScalar = {
   deletedAt?: boolean
 }
 
-export type CreditTransactionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "walletId" | "userId" | "type" | "amount" | "balanceAfter" | "description" | "metadata" | "expiresAt" | "isExpired" | "bookingId" | "grantedByAdminId" | "createdAt" | "deletedAt", ExtArgs["result"]["creditTransaction"]>
+export type CreditTransactionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "walletId" | "userId" | "type" | "amount" | "remainingAmount" | "balanceAfter" | "description" | "metadata" | "expiresAt" | "isExpired" | "bookingId" | "grantedByAdminId" | "createdAt" | "deletedAt", ExtArgs["result"]["creditTransaction"]>
 export type CreditTransactionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   wallet?: boolean | Prisma.CreditWalletDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1361,6 +1418,7 @@ export type $CreditTransactionPayload<ExtArgs extends runtime.Types.Extensions.I
     userId: string
     type: $Enums.CreditTransactionType
     amount: number
+    remainingAmount: number
     balanceAfter: number
     description: string
     metadata: runtime.JsonValue | null
@@ -1802,6 +1860,7 @@ export interface CreditTransactionFieldRefs {
   readonly userId: Prisma.FieldRef<"CreditTransaction", 'String'>
   readonly type: Prisma.FieldRef<"CreditTransaction", 'CreditTransactionType'>
   readonly amount: Prisma.FieldRef<"CreditTransaction", 'Int'>
+  readonly remainingAmount: Prisma.FieldRef<"CreditTransaction", 'Int'>
   readonly balanceAfter: Prisma.FieldRef<"CreditTransaction", 'Int'>
   readonly description: Prisma.FieldRef<"CreditTransaction", 'String'>
   readonly metadata: Prisma.FieldRef<"CreditTransaction", 'Json'>

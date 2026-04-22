@@ -4591,6 +4591,7 @@ export const CreditTransactionScalarFieldEnum = {
   userId: 'userId',
   type: 'type',
   amount: 'amount',
+  remainingAmount: 'remainingAmount',
   balanceAfter: 'balanceAfter',
   description: 'description',
   metadata: 'metadata',
