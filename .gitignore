@@ -5,3 +5,6 @@ coverage
 
 # Claude Code local cache
 .omc/
+
+# Backups locales
+*.backup
