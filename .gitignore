@@ -8,3 +8,6 @@ coverage
 
 # Backups locales
 *.backup
+
+# Auditorías locales (no commitear)
+AUDIT_*.md
