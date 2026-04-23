@@ -1,4 +1,5 @@
 ---
+name: design-agent
 description: Diseñador UI/UX de BarberGo. Crea sistema de diseño premium estilo Uber/startup.
 allowed-tools: Read, Write, Glob, Grep
 ---

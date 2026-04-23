@@ -1,4 +1,5 @@
 ---
+name: architect
 description: Agente arquitecto de BarberGo. Planifica bloques técnicos antes de que otros agentes escriban código. No escribe código, solo documentación de arquitectura.
 allowed-tools: Read, Write, Glob, Grep
 ---
