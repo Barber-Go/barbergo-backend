@@ -157,4 +157,61 @@ describe('validateEnv', () => {
     expect(output).toContain('TEST-...1234');
     expect(output).not.toContain('superSecretFull');
   });
+
+  it('10. SENTRY_DSN ausente no aborta (es opcional)', () => {
+    const env: NodeJS.ProcessEnv = { ...VALID_BASE };
+    delete env.SENTRY_DSN;
+    validateEnv(env);
+    expect(exitSpy).not.toHaveBeenCalled();
+    const output = stdoutSpy.mock.calls.map((c) => String(c[0])).join('');
+    expect(output).toContain('[ENV VALIDATION OK]');
+    expect(output).toContain('SENTRY_DSN');
+    expect(output).toContain('missing:');
+  });
+
+  it('11. SENTRY_DSN con formato válido region us pasa', () => {
+    const env: NodeJS.ProcessEnv = {
+      ...VALID_BASE,
+      SENTRY_DSN: 'https://abc@o123.ingest.us.sentry.io/456',
+    };
+    validateEnv(env);
+    expect(exitSpy).not.toHaveBeenCalled();
+    const output = stdoutSpy.mock.calls.map((c) => String(c[0])).join('');
+    expect(output).toContain('[ENV VALIDATION OK]');
+  });
+
+  it('12. SENTRY_DSN con formato válido region de pasa', () => {
+    const env: NodeJS.ProcessEnv = {
+      ...VALID_BASE,
+      SENTRY_DSN: 'https://abc@o123.ingest.de.sentry.io/456',
+    };
+    validateEnv(env);
+    expect(exitSpy).not.toHaveBeenCalled();
+    const output = stdoutSpy.mock.calls.map((c) => String(c[0])).join('');
+    expect(output).toContain('[ENV VALIDATION OK]');
+  });
+
+  it('13. SENTRY_DSN con formato inválido (not-a-dsn) falla con error descriptivo', () => {
+    const env: NodeJS.ProcessEnv = {
+      ...VALID_BASE,
+      SENTRY_DSN: 'not-a-dsn',
+    };
+    validateEnv(env);
+    expect(exitSpy).toHaveBeenCalledWith(1);
+    const output = stderrSpy.mock.calls.map((c) => String(c[0])).join('');
+    expect(output).toContain('SENTRY_DSN');
+    expect(output).toContain('does not match expected pattern');
+  });
+
+  it('14. SENTRY_DSN con http:// (sin https) falla', () => {
+    const env: NodeJS.ProcessEnv = {
+      ...VALID_BASE,
+      SENTRY_DSN: 'http://abc@o123.ingest.us.sentry.io/456',
+    };
+    validateEnv(env);
+    expect(exitSpy).toHaveBeenCalledWith(1);
+    const output = stderrSpy.mock.calls.map((c) => String(c[0])).join('');
+    expect(output).toContain('SENTRY_DSN');
+    expect(output).toContain('does not match expected pattern');
+  });
 });

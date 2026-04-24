@@ -16,6 +16,7 @@ export type EnvRule = {
   minLength?: number;
   allowed?: readonly string[];
   forbidden?: readonly (string | RegExp)[];
+  pattern?: RegExp;
   errorHint?: string;
 };
 
@@ -83,6 +84,21 @@ const OPTIONAL_NAMES: readonly string[] = [
   'FRONTEND_URL',
   'TRANSBANK_COMMERCE_CODE',
   'TRANSBANK_API_KEY',
+  'SENTRY_DSN',
+];
+
+/**
+ * Reglas opcionales que, si están presentes, deben cumplir un formato.
+ * Si están ausentes o vacías, se ignoran (pasan).
+ */
+const OPTIONAL_RULES: readonly EnvRule[] = [
+  {
+    name: 'SENTRY_DSN',
+    required: false,
+    pattern: /^https:\/\/[^@]+@[^/]+\.ingest\.(us|de)\.sentry\.io\/\d+$/,
+    errorHint:
+      'expected https://<publicKey>@o<orgId>.ingest.<us|de>.sentry.io/<projectId>',
+  },
 ];
 
 /**
@@ -102,6 +118,12 @@ export function applyRule(
       reason: 'missing or empty (required)',
       hint: rule.errorHint,
     };
+  }
+
+  // Si la regla es opcional y el valor está vacío, no corremos validaciones
+  // de forma/contenido: ausencia = "no configurado" y pasa.
+  if (!rule.required && value.length === 0) {
+    return null;
   }
 
   // Chequeamos forbidden antes que minLength: un valor default/placeholder
@@ -141,6 +163,14 @@ export function applyRule(
     return {
       name: rule.name,
       reason: `value "${value}" is not in allowed list [${rule.allowed.join(', ')}]`,
+      hint: rule.errorHint,
+    };
+  }
+
+  if (rule.pattern !== undefined && !rule.pattern.test(value)) {
+    return {
+      name: rule.name,
+      reason: `value does not match expected pattern ${rule.pattern.toString()}`,
       hint: rule.errorHint,
     };
   }
@@ -250,6 +280,15 @@ export function validateEnv(env: NodeJS.ProcessEnv): void {
   const violations: Violation[] = [];
 
   for (const rule of REQUIRED_RULES) {
+    const violation = applyRule(rule, env);
+    if (violation !== null) {
+      violations.push(violation);
+    }
+  }
+
+  // Opcionales con validación de formato: si ausentes, pasan; si presentes,
+  // deben cumplir el pattern.
+  for (const rule of OPTIONAL_RULES) {
     const violation = applyRule(rule, env);
     if (violation !== null) {
       violations.push(violation);
