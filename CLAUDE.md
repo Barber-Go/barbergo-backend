@@ -49,7 +49,7 @@ railway logs --tail 100
 2. **BARBER_INDEPENDENT** — barbero por cuenta propia
 3. **BARBER_EMPLOYEE** — barbero dentro de una barbería
 4. **BARBERSHOP_OWNER** — dueño de barbería
-5. **ADMIN_STAFF / ADMIN_SUPER** — personal BarberGo
+5. **ADMIN** — personal BarberGo (único rol admin en el schema actual)
 
 ## Reglas absolutas no negociables
 
